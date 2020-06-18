@@ -26,6 +26,10 @@
 // @run-at document-idle
 // ==/UserScript==
 
+setInterval(() => {
+  console.log(InstanceForSystem.downloadingItems)
+}, 1000)
+
 const InstanceForSystem = {
   list: require('system-core:context/context.js').instanceForSystem.list,
   autoStart: true,
@@ -37,26 +41,28 @@ const InstanceForSystem = {
   get selectedList() {
     return this.list
       .getSelected()
-      .filter(arr => {
+      .filter((arr) => {
         if (arr.isdir === 1) {
           isDir = true
           return false
         }
         return true
       })
-      .map(item => new Item(item))
+      .map((item) => new Item(item))
   },
 
   get itemsFromQueue() {
     const queue = {}
     const filterKeys = Object.keys(
-      Object.assign(this.downloadingItems, this.completedItems)
+      Object.assign({}, this.downloadingItems, this.completedItems)
     )
-    Object.keys(this.allDownloads).forEach(fs_id => {
+
+    Object.keys(this.allDownloads).forEach((fs_id) => {
       if (!filterKeys.includes(fs_id)) {
         queue[fs_id] = this.allDownloads[fs_id]
       }
     })
+
     return queue
   },
 
@@ -65,7 +71,7 @@ const InstanceForSystem = {
   },
 
   get currentList() {
-    return this.list.getCurrentList().map(item => new Item(item))
+    return this.list.getCurrentList().map((item) => new Item(item))
   },
 }
 
@@ -96,7 +102,7 @@ class Item {
 !(function() {
   initStyle()
 
-  let task = setInterval(() => {
+  const task = setInterval(() => {
     let dom,
       t = document.querySelector(
         'a.g-button[data-button-id][title=\u4e0b\u8f7d]'
@@ -118,16 +124,16 @@ class Item {
         dom.setAttribute('style', 'background-color: #09e; color: #fff')
 
         const requestList = []
-        selectedList.forEach(arr => {
+        selectedList.forEach((arr) => {
           if (typeof allDownloads[arr.fs_id] === 'undefined') {
             allDownloads[arr.fs_id] = arr
             requestList.push(getDownloadUrl(arr))
           }
         })
         openModal()
-        Promise.all(requestList).then(arrs => {
+        Promise.all(requestList).then((arrs) => {
           dom.removeAttribute('style')
-          arrs.forEach(arr => {
+          arrs.forEach((arr) => {
             if (autoStart && downloadable) {
               document.querySelector(`div[data-label="${arr.fs_id}"]`).click()
             }
@@ -249,7 +255,7 @@ function downloadWithGM(e) {
       'Accept-Language': 'ja-JP',
       'Accept-Charset': '*',
     },
-    onprogress: e => {
+    onprogress: (e) => {
       currentEvent = e
 
       const percent = Math.round(
@@ -258,10 +264,10 @@ function downloadWithGM(e) {
       progressRadial.className = `progress-radial progress-${percent}`
       percentOverlay.innerText = `${percent}%`
     },
-    onload: e => {
+    onload: (e) => {
       clearInterval(progressLoader)
-      progressRadial.className = `progress-radial progress-100`
-      percentOverlay.innerText = `100%`
+      progressRadial.className = 'progress-radial progress-100'
+      percentOverlay.innerText = '100%'
       speedOverlay.innerText = ''
       InstanceForSystem.completedItems[arr.fs_id] = arr
       delete InstanceForSystem.downloadingItems[arr.fs_id]
@@ -274,7 +280,7 @@ function downloadWithGM(e) {
 
       addNextDownloadRequest()
     },
-    onerror: e => {
+    onerror: (e) => {
       GM_notification({
         text: JSON.stringify(e),
         title: '出错啦 ！！',
@@ -285,6 +291,9 @@ function downloadWithGM(e) {
       addNextDownloadRequest()
     },
   })
+  setTimeout(() => {
+    request.abort()
+  }, 5000)
 
   const progressLoader = setInterval(() => {
     if (currentEvent) {
@@ -311,7 +320,7 @@ function getDownloadUrl(arr) {
       headers: {
         'User-Agent': 'netdisk;P2SP;2.2.60.26',
       },
-      onload: r => {
+      onload: (r) => {
         if (r.response.hasOwnProperty('client_ip')) {
           const url =
             r.response.urls[0].url +
@@ -356,7 +365,6 @@ function appendRow(arr) {
     `
         <tr>
           <td data-label="filename">${arr.server_filename}</td>
-          <td data-label="url">${formatByte(arr.size)}</td>
           <td data-label="download">
             <div class="wrap">
               <div class="progress-radial progress-0">
@@ -364,14 +372,15 @@ function appendRow(arr) {
               </div>
             </div>
           </td>
+          <td data-label="url">${formatByte(arr.size)}</td>
           <td data-label="speed">队列等待中</td>
+          <td data-label="speed"><button class="primary">停止</button></td>
         </tr>
   `
   )
 
-  document
-    .querySelector(`div[data-label="${arr.fs_id}"]`)
-    .addEventListener('click', downloadWithGM)
+  const target = document.querySelector(`div[data-label="${arr.fs_id}"]`)
+  target.addEventListener('click', downloadWithGM)
 }
 
 function initStyle() {
@@ -389,9 +398,10 @@ function initStyle() {
                 <thead>
                   <tr>
                     <th scope="col">文件</th>
+                    <th scope="col">进度</th>
                     <th scope="col">大小</th>
-                    <th scope="col">下载</th>
                     <th scope="col">速度</th>
+                    <th scope="col">操作</th>
                   </tr>
                 </thead>
                 <tbody id="popup-tbody"></tbody>
@@ -405,6 +415,6 @@ function initStyle() {
 
   document
     .querySelectorAll('.modal-overlay,.modal-close')
-    .forEach(e => e.addEventListener('click', closeModal))
+    .forEach((e) => e.addEventListener('click', closeModal))
   // document.getElementById('copy-code').addEventListener('click', copyCode)
 }

@@ -1,0 +1,47 @@
+{
+  "name": "Koiwaclib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "dev:watch": "npx ts-node-dev --respawn src/index.ts",
+    "clean": "rimraf dist/*",
+    "build": "npm-run-all clean tsc",
+    "start": "node .",
+    "eslint": "eslint --fix src/*.*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run eslint",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.2",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.1.0",
+    "ts-node-dev": "^1.0.0-pre.39"
+  }
+}
