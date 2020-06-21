@@ -26,6 +26,13 @@
 // @grant GM_deleteValue
 // @run-at document-idle
 // ==/UserScript==
+window.onunload = () => {
+  GM_setValue('downloadingItems', InstanceForSystem.downloadingItems)
+  GM_setValue('stoppedItems', InstanceForSystem.stoppedItems)
+  GM_setValue('completedItems', InstanceForSystem.completedItems)
+
+  InstanceForSystem.stopAll()
+}
 
 const InstanceForSystem = {
   list: require('system-core:context/context.js').instanceForSystem.list,
@@ -37,6 +44,10 @@ const InstanceForSystem = {
   allDownloads: {},
 
   get selectedList() {
+    const objectFromValue = Object.assign(GM_getValue('downloadingItems', {}), GM_getValue('stoppedItems', {}))
+    GM_deleteValue('downloadingItems')
+    GM_deleteValue('stoppedItems')
+
     return this.list
       .getSelected()
       .filter((arr) => {
@@ -47,13 +58,12 @@ const InstanceForSystem = {
         return true
       })
       .map((item) => new Item(item))
+      .concat(Object.values(objectFromValue))
   },
 
   get itemsFromQueue() {
     const queue = {}
-    const filterKeys = Object.keys(
-      Object.assign({}, this.downloadingItems, this.completedItems, this.stoppedItems)
-    )
+    const filterKeys = Object.keys(Object.assign({}, this.downloadingItems, this.completedItems, this.stoppedItems))
 
     Object.keys(this.allDownloads).forEach((fs_id) => {
       if (!filterKeys.includes(fs_id)) {
@@ -70,6 +80,12 @@ const InstanceForSystem = {
 
   get currentList() {
     return this.list.getCurrentList().map((item) => new Item(item))
+  },
+
+  stopAll: function () {
+    Object.values(this.downloadingItems).forEach((item) => {
+      item.request.abort()
+    })
   },
 }
 
@@ -96,32 +112,13 @@ class Item {
   }
 }
 
-// const selectedObject = GM_getValue('selectedObject', {})
 !(function() {
   initStyle()
+  startInstance()
 
   document.getElementById('floating-button').addEventListener('click', () => {
     openModal()
-    const {
-      selectedList,
-      allDownloads,
-      autoStart,
-    } = InstanceForSystem
-
-    const requestList = []
-    selectedList.forEach((arr) => {
-      if (typeof allDownloads[arr.fs_id] === 'undefined') {
-        allDownloads[arr.fs_id] = arr
-        requestList.push(getDownloadUrl(arr))
-      }
-    })
-    Promise.all(requestList).then((arrs) => {
-      arrs.forEach((arr) => {
-        if (autoStart) {
-          downloadItem(arr)
-        }
-      })
-    })
+    startInstance()
   })
 })()
 
@@ -205,15 +202,12 @@ function addNextDownloadRequest() {
 }
 
 function downloadItem(arr) {
-
   // Remove Item if target still in stop cluster
   if (InstanceForSystem.stoppedItems[arr.fs_id]) {
     delete InstanceForSystem.stoppedItems[arr.fs_id]
   }
 
-  const operationButton = document.querySelector(
-    `button[data-label="${arr.fs_id}"]`
-  )
+  const operationButton = document.querySelector(`button[data-label="${arr.fs_id}"]`)
   if (!InstanceForSystem.downloadable) {
     operationButton.innerText = '等待中'
     return
@@ -223,13 +217,9 @@ function downloadItem(arr) {
   const { url, server_filename } = arr
   let loaded = 0
   let currentEvent = undefined
-  const percentOverlay = document.querySelector(
-    `div[data-label="${arr.fs_id}"]`
-  )
+  const percentOverlay = document.querySelector(`div[data-label="${arr.fs_id}"]`)
   const progressRadial = percentOverlay.parentElement
-  const speedOverlay = percentOverlay
-    .closest('tr')
-    .querySelector('td[data-label="speed"]')
+  const speedOverlay = percentOverlay.closest('tr').querySelector('td[data-label="speed"]')
   operationButton.innerText = '停止'
   arr.request = GM_download({
     url,
@@ -246,9 +236,7 @@ function downloadItem(arr) {
     onprogress: (e) => {
       currentEvent = e
 
-      const percent = Math.round(
-        (currentEvent.loaded * 100) / currentEvent.total
-      )
+      const percent = Math.round((currentEvent.loaded * 100) / currentEvent.total)
       progressRadial.className = `progress-radial progress-${percent}`
       percentOverlay.innerText = `${percent}%`
     },
@@ -292,9 +280,7 @@ function downloadItem(arr) {
 }
 function formatByte(byte) {
   const KiByte = Math.round(byte / 1024)
-  return KiByte <= 1000
-    ? `${KiByte} KiB`
-    : `${Math.round(KiByte / 10.24) / 100} MiB`
+  return KiByte <= 1000 ? `${KiByte} KiB` : `${Math.round(KiByte / 10.24) / 100} MiB`
 }
 function getDownloadUrl(arr) {
   return new Promise((resolve, reject) => {
@@ -309,13 +295,7 @@ function getDownloadUrl(arr) {
       },
       onload: (r) => {
         if (r.response.hasOwnProperty('client_ip')) {
-          const url =
-            r.response.urls[0].url +
-            '&filename=' +
-            encodeURIComponent(arr.server_filename)
-          // document
-          //   .querySelector(".code")
-          //   .insertAdjacentHTML("beforeend", url + "\n");
+          const url = r.response.urls[0].url + '&filename=' + encodeURIComponent(arr.server_filename)
           arr.url = url
           appendRow(arr)
 
@@ -337,7 +317,6 @@ function openModal() {
 function closeModal() {
   const modalWrapper = document.querySelector('.modal-wrapper')
   modalWrapper.className = 'modal-wrapper'
-  document.querySelector('#copy-code').className = 'disable'
 }
 
 function appendRow(arr) {
@@ -357,32 +336,32 @@ function appendRow(arr) {
           <td data-label="speed"></td>
           <td data-label="operation">
             <button data-label="${arr.fs_id}">等待中</button>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
           </td>
         </tr>
   `
   )
 
-  document
-    .querySelector(`button[data-label="${arr.fs_id}"]`)
-    .addEventListener('click', (e) => {
-      const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
+  document.querySelector(`button[data-label="${arr.fs_id}"]`).addEventListener('click', (e) => {
+    const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
 
-      // Stop progress
-      if (targetItem) {
-        if (confirm('停止后将需要重新下载， 确认吗？')) {
-          targetItem.request.abort()
-          clearInterval(targetItem.progressLoader)
-          e.target.innerText = '重新下载'
-          InstanceForSystem.stoppedItems[arr.fs_id] = arr
-          delete InstanceForSystem.downloadingItems[arr.fs_id]
-          addNextDownloadRequest()
-
-        }
-        return false
+    // Stop progress
+    if (targetItem) {
+      if (confirm('停止后将需要重新下载， 确认吗？')) {
+        targetItem.request.abort()
+        clearInterval(targetItem.progressLoader)
+        e.target.innerText = '重新下载'
+        InstanceForSystem.stoppedItems[arr.fs_id] = arr
+        delete InstanceForSystem.downloadingItems[arr.fs_id]
+        addNextDownloadRequest()
       }
-      // Restart progress
-      downloadItem(arr)
-    })
+      return false
+    }
+    // Restart progress
+    downloadItem(arr)
+  })
 }
 
 function initStyle() {
@@ -424,9 +403,25 @@ function initStyle() {
     `
   )
 
-  document
-    .querySelectorAll('.modal-overlay,.modal-close')
-    .forEach((e) => e.addEventListener('click', closeModal))
+  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', closeModal))
   document.querySelector('#floating-button').addEventListener('click', openModal)
   // document.getElementById('copy-code').addEventListener('click', copyCode)
+}
+function startInstance() {
+  const { selectedList, allDownloads, autoStart } = InstanceForSystem
+
+  const requestList = []
+  selectedList.forEach((arr) => {
+    if (typeof allDownloads[arr.fs_id] === 'undefined') {
+      allDownloads[arr.fs_id] = arr
+      requestList.push(getDownloadUrl(arr))
+    }
+  })
+  Promise.all(requestList).then((arrs) => {
+    arrs.forEach((arr) => {
+      if (autoStart) {
+        downloadItem(arr)
+      }
+    })
+  })
 }
