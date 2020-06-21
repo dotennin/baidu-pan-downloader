@@ -82,7 +82,7 @@ const InstanceForSystem = {
     return this.list.getCurrentList().map((item) => new Item(item))
   },
 
-  stopAll: function () {
+  stopAll: function() {
     Object.values(this.downloadingItems).forEach((item) => {
       item.request.abort()
     })
@@ -323,7 +323,7 @@ function appendRow(arr) {
   document.getElementById('popup-tbody').insertAdjacentHTML(
     'beforeend',
     `
-        <tr>
+        <tr id="row-${arr.fs_id}">
           <td data-label="filename">${arr.server_filename}</td>
           <td data-label="download">
             <div class="wrap">
@@ -336,9 +336,11 @@ function appendRow(arr) {
           <td data-label="speed"></td>
           <td data-label="operation">
             <button data-label="${arr.fs_id}">等待中</button>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
+<!--            <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>-->
+            <svg id="delete-item-${
+              arr.fs_id
+            }" class="delete-item" style="cursor: pointer; position: absolute; right: 5px" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+<!--            <svg style="cursor: pointer" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>-->
           </td>
         </tr>
   `
@@ -361,6 +363,17 @@ function appendRow(arr) {
     }
     // Restart progress
     downloadItem(arr)
+  })
+  document.getElementById(`delete-item-${arr.fs_id}`).addEventListener('click', () => {
+    if (confirm('确认删除？')) {
+      arr.request && arr.request.abort()
+      delete InstanceForSystem.allDownloads[arr.fs_id]
+      delete InstanceForSystem.downloadingItems[arr.fs_id]
+      delete InstanceForSystem.completedItems[arr.fs_id]
+      delete InstanceForSystem.stoppedItems[arr.fs_id]
+      document.getElementById('popup-tbody').removeChild(document.getElementById(`row-${arr.fs_id}`))
+      addNextDownloadRequest()
+    }
   })
 }
 
