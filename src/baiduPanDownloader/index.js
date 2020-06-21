@@ -14,7 +14,7 @@
 // @include https://pan.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @resource cssProgressBar https://dotennin.github.io/css-progress-bar/css-progress-bar.css
+// @resource customStyle https://dotennin.github.io/baidu-disk-straight-chain/src/baiduPanDownloader/style.css
 // @grant GM_setClipboard
 // @grant GM_xmlhttpRequest
 // @grant GM_getResourceText
@@ -386,7 +386,7 @@ function appendRow(arr) {
 }
 
 function initStyle() {
-  const newCSS = GM_getResourceText('cssProgressBar')
+  const newCSS = GM_getResourceText('customStyle')
   GM_addStyle(newCSS)
   document.body.insertAdjacentHTML(
     'beforeend',
