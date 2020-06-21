@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-undef,@typescript-eslint/camelcase */
 // ==UserScript==
 // @namespace https://dotennin.blogspot.com/
-// @name 百度网盘下载管理器(beta)
+// @name 百度网盘下载管理器-alpha
 // @description A download manager for Baidu Yun
-// @version 0.1
+// @version 0.2
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
