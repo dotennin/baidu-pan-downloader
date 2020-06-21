@@ -3,4 +3,3 @@ function hello(name: string): string {
 }
 
 hello('333')
-console.log('3' === '3')
