@@ -6,10 +6,11 @@
 // @version 0.1
 // @author Dotennin
 // @license MIT
-// @compatible        chrome 测试通过
-// @compatible        firefox 未测试
-// @compatible        opera 未测试
-// @compatible        safari 未测试
+// @compatible        chrome/83.0.4103.97 passed
+// @compatible        edge/83.0.478.54 passed
+// @compatible        firefox untested
+// @compatible        opera untested
+// @compatible        safari untested
 // @include https://pan.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
@@ -26,15 +27,12 @@
 // @run-at document-idle
 // ==/UserScript==
 
-setInterval(() => {
-  console.log(InstanceForSystem.downloadingItems)
-}, 1000)
-
 const InstanceForSystem = {
   list: require('system-core:context/context.js').instanceForSystem.list,
   autoStart: true,
   maxDownloadCount: 1,
   downloadingItems: {},
+  stoppedItems: {},
   completedItems: {},
   allDownloads: {},
 
@@ -54,7 +52,7 @@ const InstanceForSystem = {
   get itemsFromQueue() {
     const queue = {}
     const filterKeys = Object.keys(
-      Object.assign({}, this.downloadingItems, this.completedItems)
+      Object.assign({}, this.downloadingItems, this.completedItems, this.stoppedItems)
     )
 
     Object.keys(this.allDownloads).forEach((fs_id) => {
@@ -102,46 +100,29 @@ class Item {
 !(function() {
   initStyle()
 
-  const task = setInterval(() => {
-    let dom,
-      t = document.querySelector(
-        'a.g-button[data-button-id][title=\u4e0b\u8f7d]'
-      )
-    if (t) {
-      clearInterval(task)
-      dom = t.cloneNode(true)
-      t.after(dom)
-      dom.removeAttribute('style')
-      t.remove()
-      dom.addEventListener('click', () => {
-        const dom = window.event.currentTarget
-        const {
-          selectedList,
-          downloadable,
-          allDownloads,
-          autoStart,
-        } = InstanceForSystem
-        dom.setAttribute('style', 'background-color: #09e; color: #fff')
+  document.getElementById('floating-button').addEventListener('click', () => {
+    openModal()
+    const {
+      selectedList,
+      allDownloads,
+      autoStart,
+    } = InstanceForSystem
 
-        const requestList = []
-        selectedList.forEach((arr) => {
-          if (typeof allDownloads[arr.fs_id] === 'undefined') {
-            allDownloads[arr.fs_id] = arr
-            requestList.push(getDownloadUrl(arr))
-          }
-        })
-        openModal()
-        Promise.all(requestList).then((arrs) => {
-          dom.removeAttribute('style')
-          arrs.forEach((arr) => {
-            if (autoStart && downloadable) {
-              document.querySelector(`div[data-label="${arr.fs_id}"]`).click()
-            }
-          })
-        })
+    const requestList = []
+    selectedList.forEach((arr) => {
+      if (typeof allDownloads[arr.fs_id] === 'undefined') {
+        allDownloads[arr.fs_id] = arr
+        requestList.push(getDownloadUrl(arr))
+      }
+    })
+    Promise.all(requestList).then((arrs) => {
+      arrs.forEach((arr) => {
+        if (autoStart) {
+          downloadItem(arr)
+        }
       })
-    }
-  }, 1e3)
+    })
+  })
 })()
 
 // @require https://jimmywarting.github.io/StreamSaver.js/StreamSaver.js
@@ -218,32 +199,39 @@ class Item {
 // }
 
 function addNextDownloadRequest() {
-  const fs_ids = Object.keys(InstanceForSystem.itemsFromQueue)
-  if (fs_ids.length > 0) {
-    document.querySelector(`div[data-label="${fs_ids[0]}"]`).click()
+  for (const fs_id in InstanceForSystem.itemsFromQueue) {
+    downloadItem(InstanceForSystem.allDownloads[fs_id])
   }
 }
 
-function downloadWithGM(e) {
+function downloadItem(arr) {
+
+  // Remove Item if target still in stop cluster
+  if (InstanceForSystem.stoppedItems[arr.fs_id]) {
+    delete InstanceForSystem.stoppedItems[arr.fs_id]
+  }
+
+  const operationButton = document.querySelector(
+    `button[data-label="${arr.fs_id}"]`
+  )
   if (!InstanceForSystem.downloadable) {
+    operationButton.innerText = '等待中'
     return
   }
 
-  e.currentTarget.style.pointerEvents = 'none'
-  const arr =
-    InstanceForSystem.allDownloads[
-      e.currentTarget.attributes['data-label'].value
-    ]
   InstanceForSystem.downloadingItems[arr.fs_id] = arr
   const { url, server_filename } = arr
   let loaded = 0
   let currentEvent = undefined
-  const percentOverlay = e.currentTarget
-  const progressRadial = e.currentTarget.parentElement
-  const speedOverlay = e.currentTarget
+  const percentOverlay = document.querySelector(
+    `div[data-label="${arr.fs_id}"]`
+  )
+  const progressRadial = percentOverlay.parentElement
+  const speedOverlay = percentOverlay
     .closest('tr')
     .querySelector('td[data-label="speed"]')
-  const request = GM_download({
+  operationButton.innerText = '停止'
+  arr.request = GM_download({
     url,
     name: server_filename,
     saveAs: true,
@@ -265,10 +253,11 @@ function downloadWithGM(e) {
       percentOverlay.innerText = `${percent}%`
     },
     onload: (e) => {
-      clearInterval(progressLoader)
+      clearInterval(arr.progressLoader)
       progressRadial.className = 'progress-radial progress-100'
       percentOverlay.innerText = '100%'
       speedOverlay.innerText = ''
+      operationButton.innerText = '重新下载'
       InstanceForSystem.completedItems[arr.fs_id] = arr
       delete InstanceForSystem.downloadingItems[arr.fs_id]
 
@@ -281,21 +270,19 @@ function downloadWithGM(e) {
       addNextDownloadRequest()
     },
     onerror: (e) => {
-      GM_notification({
-        text: JSON.stringify(e),
-        title: '出错啦 ！！',
-        highlight: true,
-      })
-      percentOverlay.style.pointerEvents = ''
-      speedOverlay.innerText = '出错啦 ！！'
+      clearInterval(arr.progressLoader)
+      progressRadial.className = 'progress-radial progress-0'
+      percentOverlay.innerHTML = `<span style="color: red">error</span>`
+      operationButton.innerText = '重新下载'
+      speedOverlay.innerText = ''
+      InstanceForSystem.stoppedItems[arr.fs_id] = arr
+      delete InstanceForSystem.downloadingItems[arr.fs_id]
+
       addNextDownloadRequest()
     },
   })
-  setTimeout(() => {
-    request.abort()
-  }, 5000)
 
-  const progressLoader = setInterval(() => {
+  arr.progressLoader = setInterval(() => {
     if (currentEvent) {
       const speed = currentEvent.loaded - loaded
       loaded = currentEvent.loaded
@@ -353,12 +340,6 @@ function closeModal() {
   document.querySelector('#copy-code').className = 'disable'
 }
 
-function copyCode() {
-  const urlElements = document.querySelector('.code')
-  window.getSelection().selectAllChildren(urlElements)
-  GM_setClipboard(urlElements.innerText, 'text')
-}
-
 function appendRow(arr) {
   document.getElementById('popup-tbody').insertAdjacentHTML(
     'beforeend',
@@ -373,14 +354,35 @@ function appendRow(arr) {
             </div>
           </td>
           <td data-label="url">${formatByte(arr.size)}</td>
-          <td data-label="speed">队列等待中</td>
-          <td data-label="speed"><button class="primary">停止</button></td>
+          <td data-label="speed"></td>
+          <td data-label="operation">
+            <button data-label="${arr.fs_id}">等待中</button>
+          </td>
         </tr>
   `
   )
 
-  const target = document.querySelector(`div[data-label="${arr.fs_id}"]`)
-  target.addEventListener('click', downloadWithGM)
+  document
+    .querySelector(`button[data-label="${arr.fs_id}"]`)
+    .addEventListener('click', (e) => {
+      const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
+
+      // Stop progress
+      if (targetItem) {
+        if (confirm('停止后将需要重新下载， 确认吗？')) {
+          targetItem.request.abort()
+          clearInterval(targetItem.progressLoader)
+          e.target.innerText = '重新下载'
+          InstanceForSystem.stoppedItems[arr.fs_id] = arr
+          delete InstanceForSystem.downloadingItems[arr.fs_id]
+          addNextDownloadRequest()
+
+        }
+        return false
+      }
+      // Restart progress
+      downloadItem(arr)
+    })
 }
 
 function initStyle() {
@@ -410,11 +412,21 @@ function initStyle() {
 <!--                <span class="modal-close">×</a>-->
             </div>
         </div>
+        <div id="container-floating">
+          <div class="nd1 nds" data-toggle="tooltip" data-placement="left" onclick="alert('此功能正在开发中...')">
+              <img class="reminder" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
+          </div>
+          <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create">
+            <p class="plus">+</p>
+            <img class="edit" src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png">
+          </div>
+        </div>
     `
   )
 
   document
     .querySelectorAll('.modal-overlay,.modal-close')
     .forEach((e) => e.addEventListener('click', closeModal))
+  document.querySelector('#floating-button').addEventListener('click', openModal)
   // document.getElementById('copy-code').addEventListener('click', copyCode)
 }
