@@ -9,10 +9,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "webpack": "webpack",
+    "webpack": "webpack --mode development",
     "dev:watch": "npx ts-node-dev --respawn src/index.ts",
     "clean": "rimraf dist/*",
-    "build": "npm-run-all clean webpack",
+    "clean:public": "rimraf public/*",
+    "build": "npm-run-all clean tsc",
+    "publish": "npm-run-all clean:public webpack",
     "start": "node .",
     "eslint": "eslint --fix src/*.*",
     "release": "standard-version"
@@ -32,9 +34,15 @@
     "typescript": "^3.4.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-typescript": "^7.10.1",
     "@types/node": "^12.0.2",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-loader": "^4.0.2",

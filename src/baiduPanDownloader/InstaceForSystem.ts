@@ -3,7 +3,7 @@ import { IItem } from './types'
 
 const InstanceForSystem = {
   // eslint-disable-next-line no-undef
-  list: require('system-core:context/context.js').instanceForSystem.list,
+  list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
   autoStart: true,
   maxDownloadCount: 1,
   downloadingItems: {} as Record<IItem['fs_id'], IItem>,
