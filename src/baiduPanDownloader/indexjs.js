@@ -52,7 +52,6 @@ const InstanceForSystem = {
       .getSelected()
       .filter((arr) => {
         if (arr.isdir === 1) {
-          isDir = true
           return false
         }
         return true
