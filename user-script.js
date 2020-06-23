@@ -14,7 +14,7 @@ module.exports = `
 // @include https://pan.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @resource customStyle https://dotennin.github.io/baidu-disk-straight-chain/src/baiduPanDownloader/style.css
+// @resource customStyle https://dotennin.github.io/baidu-disk-straight-chain/src/style.css
 // @grant GM_setClipboard
 // @grant GM_xmlhttpRequest
 // @grant GM_getResourceText
