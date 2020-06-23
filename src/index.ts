@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,no-undef,@typescript-eslint/camelcase */
 import { InstanceForSystem } from './InstaceForSystem'
 import { IItem } from './types'
+import { GM } from './gmInterface/gmInterface'
 
 window.onunload = () => {
-  // @ts-ignore
-  GM_setValue('downloadingItems', InstanceForSystem.downloadingItems)
-  // @ts-ignore
-  GM_setValue('stoppedItems', InstanceForSystem.stoppedItems)
-  // @ts-ignore
-  GM_setValue('completedItems', InstanceForSystem.completedItems)
+  GM.setValue('downloadingItems', InstanceForSystem.downloadingItems)
+  GM.setValue('stoppedItems', InstanceForSystem.stoppedItems)
+  GM.setValue('completedItems', InstanceForSystem.completedItems)
 
   InstanceForSystem.stopAll()
 }

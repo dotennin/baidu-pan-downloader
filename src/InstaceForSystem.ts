@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion,no-undef */
 import { IItem } from './types'
+import { GM } from './gmInterface/gmInterface'
 
 const InstanceForSystem = {
-  // eslint-disable-next-line no-undef
   list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
   autoStart: true,
   maxDownloadCount: 1,
@@ -12,16 +12,9 @@ const InstanceForSystem = {
   allDownloads: {} as Record<IItem['fs_id'], IItem>,
 
   get selectedList() {
-    const objectFromValue = Object.assign(
-      // @ts-ignore
-      GM_getValue('downloadingItems', {}),
-      // @ts-ignore
-      GM_getValue('stoppedItems', {})
-    )
-    // @ts-ignore
-    GM_deleteValue('downloadingItems')
-    // @ts-ignore
-    GM_deleteValue('stoppedItems')
+    const objectFromValue = Object.assign(GM.getValue('downloadingItems', {}), GM.getValue('stoppedItems', {}))
+    GM.deleteValue('downloadingItems')
+    GM.deleteValue('stoppedItems')
     const selected: IItem[] = this.list.getSelected()
 
     return selected
