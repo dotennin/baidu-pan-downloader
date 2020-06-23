@@ -1,0 +1,59 @@
+/*! exports provided: InstanceForSystem */
+
+/*! no exports provided */
+
+/*!*****************************************!*\
+  !*** ./src/baiduPanDownloader/index.ts ***!
+  \*****************************************/
+
+/*!****************************************************!*\
+  !*** ./src/baiduPanDownloader/InstaceForSystem.ts ***!
+  \****************************************************/
+
+/************************************************************************/
+
+/******/
+
+/***/
+
+// Check if module is in cache
+
+// Create a new module (and put it into the cache)
+
+// Execute the module function
+
+// Flag the module as loaded
+
+// Load entry module and return exports
+
+// Object.prototype.hasOwnProperty.call
+
+// Return the exports of the module
+
+// The module cache
+
+// The require function
+
+// __webpack_public_path__
+
+// create a fake namespace object
+
+// define __esModule on exports
+
+// define getter function for harmony exports
+
+// expose the module cache
+
+// expose the modules object (__webpack_modules__)
+
+// getDefaultExport function for compatibility with non-harmony modules
+
+// mode & 1: value is a module id, require it
+
+// mode & 2: merge all properties of value into the ns
+
+// mode & 4: return value when already ns object
+
+// mode & 8|1: behave like require
+
+// webpackBootstrap

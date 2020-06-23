@@ -1,6 +1,7 @@
 module.exports = {
   "env": {
-    "es6": true
+    "es6": true,
+    "node": true,
   },
   "extends": [
     "eslint:recommended",
@@ -40,5 +41,13 @@ module.exports = {
     "eqeqeq": 2,
     "no-var": 2,
     "prefer-const": 2,
-  }
+  },
+  overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": 0
+      }
+    }
+  ]
 }

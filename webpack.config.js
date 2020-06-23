@@ -1,6 +1,9 @@
 const { resolve } = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
+const UserScript = require('./src/baiduPanDownloader/UserScript')
 
 module.exports = {
+  mode: 'development',
   // エントリーポイントの設定
   entry: './src/baiduPanDownloader/index.ts',
   // 出力の設定
@@ -12,6 +15,19 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts'],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: {
+          condition: 'all',
+          banner: () => {
+            return UserScript
+          },
+        },
+      }),
+    ],
   },
   module: {
     rules: [
