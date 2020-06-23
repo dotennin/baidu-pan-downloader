@@ -1,9 +1,9 @@
 /*! 
 // ==UserScript==
-// @namespace https://dotennin.blogspot.com/
-// @name 百度网盘下载管理器-alpha
+// @namespace https://github.com/dotennin/baidu-pan-downloader
+// @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
-// @version 0.2
+// @version 1.01
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
@@ -14,7 +14,7 @@
 // @include https://pan.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @resource customStyle https://dotennin.github.io/baidu-disk-straight-chain/src/style.css
+// @resource customStyle https://dotennin.github.io/baidu-pan-downloader/src/style.css
 // @grant GM_setClipboard
 // @grant GM_xmlhttpRequest
 // @grant GM_getResourceText
