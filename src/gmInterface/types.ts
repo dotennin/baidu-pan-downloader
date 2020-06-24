@@ -82,74 +82,74 @@ export interface IOpenInTabOption {
 
 export interface IXMLHttpRequestDetail {
   // one of GET, HEAD, POST
-  method: 'GET' | 'HEAD' | 'POST'
+  method?: 'GET' | 'HEAD' | 'POST'
 
   // the destination URL
   url: string
 
   // ie. user-agent, referer, ... (some special headers are not supported by Safari and Android browsers)
-  headers: string
+  headers?: HeadersInit
 
   // some string to send via a POST request
-  data: any
+  data?: any
 
   //  a cookie to be patched into the sent cookie set
-  cookie: string
+  cookie?: string
 
   // send the data string in binary mode
-  binary: boolean
+  binary?: boolean
 
   //  don't cache the resource
-  nocache: boolean
+  nocache?: boolean
 
   // revalidate maybe cached content
-  revalidate: boolean | Date
+  revalidate?: boolean | Date
 
   // a timeout in ms
-  timeout: number
+  timeout?: number
 
   // a property which will be added to the response object
-  context: any
+  context?: any
 
   // one of arraybuffer, blob, json
-  responseType: 'arraybuffer' | 'blob' | 'json'
+  responseType?: 'arraybuffer' | 'blob' | 'json'
 
   //  a MIME type for the request
-  overrideMimeType: MimeType
+  overrideMimeType?: MimeType
 
   //  don't send cookies with the requests (please see the fetch notes)
-  anonymous: boolean
+  anonymous?: boolean
 
   //  (beta) use a fetch instead of a xhr request
   // (at Chrome this causes xhr.abort, details.timeout and xhr.onprogress to not work and makes xhr.onreadystatechange receive only readyState 4 events)
-  fetch: boolean
+  fetch?: boolean
 
   // a username for authentication
-  username: string
+  username?: string
 
   // a password
-  password: string
+  password?: string
 
   // callback to be executed if the request was aborted
-  onabort: (e: ProgressEvent) => void
+  onabort?: (e: ProgressEvent) => void
 
   // callback to be executed if the request ended up with an error
-  onerror: XMLHttpRequestEventTarget['onerror']
+  onerror?: XMLHttpRequestEventTarget['onerror']
 
   // callback to be executed if the request started to load
-  onloadstart: XMLHttpRequestEventTarget['onloadstart']
+  onloadstart?: XMLHttpRequestEventTarget['onloadstart']
 
   // callback to be executed if the request made some progress
-  onprogress: XMLHttpRequestEventTarget['onprogress']
+  onprogress?: XMLHttpRequestEventTarget['onprogress']
 
   // callback to be executed if the request's ready state changed
-  onreadystatechange: (e: Event) => void
+  onreadystatechange?: (e: Event) => void
 
   // callback to be executed if the request failed due to a timeout
-  ontimeout: XMLHttpRequestEventTarget['ontimeout']
+  ontimeout?: XMLHttpRequestEventTarget['ontimeout']
 
   // callback to be executed if the request was loaded.
-  onload: (e: {
+  onload?: (e: {
     // the final URL after all redirects from where the data was loaded
     finalUrl: string
 
@@ -181,28 +181,28 @@ export interface IDownloadDetail {
   url: string
 
   // the filename - for security reasons the file extension needs to be whitelisted at Tampermonkey's options page (required)
-  name: string
+  name?: string
 
   // - see GM_xmlhttpRequest for more details
-  headers: string
+  headers?: HeadersInit
 
   // boolean value, show a saveAs dialog
-  saveAs: boolean
+  saveAs?: boolean
 
   // callback to be executed if this download ended up with an error
-  onerror: (e: {
+  onerror?: (e: {
     error: 'not_enabled' | 'not_whitelisted' | 'not_permitted' | 'not_supported ' | 'not_succeeded'
     details: any
   }) => void
 
   // callback to be executed if this download finished
-  onload: IXMLHttpRequestDetail['onload']
+  onload?: IXMLHttpRequestDetail['onload']
 
   // callback to be executed if this download made some progress
-  onprogress: IXMLHttpRequestDetail['onprogress']
+  onprogress?: IXMLHttpRequestDetail['onprogress']
 
   // callback to be executed if this download failed due to a timeout}
-  ontimeout: IXMLHttpRequestDetail['ontimeout']
+  ontimeout?: IXMLHttpRequestDetail['ontimeout']
 }
 
 export interface INotification {
@@ -210,23 +210,23 @@ export interface INotification {
   text: string
 
   // the notificaton title
-  title: string
+  title?: string
 
   // the image
-  image: string
+  image?: string
 
   // a boolean flag whether to highlight the tab that sends the notfication (required unless text is set)
-  highlight: boolean
+  highlight?: boolean
 
   // a boolean flag whether to not play a sound
-  silent: boolean
+  silent?: boolean
 
   // the time after that the notification will be hidden (0 = disabled)
-  timeout: number
+  timeout?: number
 
   // called when the notification is closed (no matter if this was triggered by a timeout or a click) or the tab was highlighted
-  ondone: Function
+  ondone?: Function
 
   // called in case the user clicks the notification
-  onclick: Function
+  onclick?: Function
 }
