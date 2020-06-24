@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-use-before-define */
-import { IItem, valueTypes } from './types'
+import { IItem, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { InstanceForSystem } from './InstaceForSystem'
 import { formatByte } from './utils'
+import { renderOperationElement } from '.'
 
 export function getDownloadUrl(arr: IItem): Promise<IItem> {
   return new Promise((resolve, reject) => {
@@ -36,13 +37,14 @@ export function downloadItem(arr: IItem) {
     delete InstanceForSystem.stoppedItems[arr.fs_id]
   }
 
-  const operationButton = document.querySelector(`button[data-label="${arr.fs_id}"]`) as HTMLButtonElement
   if (!InstanceForSystem.downloadable) {
-    operationButton.innerText = '等待中'
+    arr.status = StatusTypes.inQueued
+    renderOperationElement(arr)
     return
   }
 
-  arr.status = valueTypes.downloadingItems
+  arr.status = StatusTypes.downloading
+  renderOperationElement(arr)
 
   InstanceForSystem.downloadingItems[arr.fs_id] = arr
   const { url, server_filename } = arr
@@ -51,7 +53,6 @@ export function downloadItem(arr: IItem) {
   const percentOverlay = document.querySelector(`div[data-label="${arr.fs_id}"]`) as HTMLDivElement
   const progressRadial = percentOverlay.parentElement as HTMLDivElement
   const speedOverlay = percentOverlay.closest('tr')!.querySelector('td[data-label="speed"]') as HTMLTableDataCellElement
-  operationButton.innerText = '停止'
 
   arr.request = GM.download({
     url,
@@ -73,11 +74,10 @@ export function downloadItem(arr: IItem) {
       percentOverlay.innerText = `${percent}%`
     },
     onload: () => {
-      arr.progressLoader && clearInterval(arr.progressLoader)
+      arr.progress_loader_id && clearInterval(arr.progress_loader_id)
       progressRadial.className = 'progress-radial progress-100'
       percentOverlay.innerText = '100%'
       speedOverlay.innerText = ''
-      operationButton.innerText = '重新下载'
       InstanceForSystem.completedItems[arr.fs_id] = arr
       delete InstanceForSystem.downloadingItems[arr.fs_id]
 
@@ -86,27 +86,30 @@ export function downloadItem(arr: IItem) {
         title: server_filename,
         highlight: true,
       })
+      arr.status = StatusTypes.completed
+      renderOperationElement(arr)
 
       addNextDownloadRequest()
     },
     onerror: () => {
-      arr.progressLoader && clearInterval(arr.progressLoader)
+      arr.progress_loader_id && clearInterval(arr.progress_loader_id)
       progressRadial.className = 'progress-radial progress-0'
       percentOverlay.innerHTML = `<span style="color: red">error</span>`
-      operationButton.innerText = '重新下载'
       speedOverlay.innerText = ''
       InstanceForSystem.stoppedItems[arr.fs_id] = arr
       delete InstanceForSystem.downloadingItems[arr.fs_id]
+      arr.status = StatusTypes.error
+      renderOperationElement(arr)
 
       addNextDownloadRequest()
     },
   })
 
-  arr.progressLoader = setInterval(() => {
+  arr.progress_loader_id = setInterval(() => {
     if (currentEvent) {
       const speed = currentEvent.loaded - loaded
       loaded = currentEvent.loaded
-      speedOverlay.innerText = `${formatByte(speed)}/秒`
+      speedOverlay.innerText = `${formatByte(speed)}/s`
     }
   }, 1000)
 }

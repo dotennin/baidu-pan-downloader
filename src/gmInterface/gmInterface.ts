@@ -43,9 +43,9 @@ export const GM = {
    * @param callback
    * @return number
    */
-  addValueChangeListener: <N extends string>(
+  addValueChangeListener: <N extends string, V extends any>(
     name: N,
-    callback: (name: N, oldValue: any, newValue: any, remote: boolean) => void
+    callback: (name: N, oldValue: V, newValue: V, remote: boolean) => void
   ): number => {
     // @ts-ignore
     return GM_addValueChangeListener(name, callback)
@@ -144,7 +144,7 @@ export const GM = {
    * Property of details:
    * @param details
    */
-  xmlHttpRequest: (details: IXMLHttpRequestDetail): { abort: () => boolean } => {
+  xmlHttpRequest: (details: IXMLHttpRequestDetail): { abort?: () => boolean } => {
     // @ts-ignore
     return GM_xmlhttpRequest(details)
   },
@@ -154,7 +154,7 @@ export const GM = {
    * @param urlOrdetails
    * @param name
    */
-  download: (urlOrdetails: string | IDownloadDetail, name?: string): { abort: () => boolean } => {
+  download: (urlOrdetails: string | IDownloadDetail, name?: string): { abort?: () => boolean } => {
     if (typeof urlOrdetails === 'string') {
       // @ts-ignore
       return GM_download(urlOrdetails, name)

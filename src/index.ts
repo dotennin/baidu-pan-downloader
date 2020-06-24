@@ -1,20 +1,30 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/camelcase */
 import { InstanceForSystem } from './InstaceForSystem'
-import { IItem, valueTypes } from './types'
+import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
-import { getDownloadUrl, downloadItem, addNextDownloadRequest } from './apis'
+import { addNextDownloadRequest, downloadItem, getDownloadUrl } from './apis'
 import { formatByte } from './utils'
 
 window.onunload = () => {
-  GM.setValue('downloadingItems', InstanceForSystem.downloadingItems)
-  GM.setValue('stoppedItems', InstanceForSystem.stoppedItems)
-  GM.setValue('completedItems', InstanceForSystem.completedItems)
+  GM.setValue(ValueTypes.items, InstanceForSystem.allDownloads)
 
   InstanceForSystem.stopAll()
 }
 ;(function() {
   initStyle()
-  startInstance()
+  Object.values(InstanceForSystem.initState().allDownloads).forEach((arr) => {
+    appendRow(arr)
+    if (arr.status === StatusTypes.downloading && InstanceForSystem.downloadable) {
+      downloadItem(arr)
+    }
+  })
+
+  // update operation dom
+  GM.addValueChangeListener(ValueTypes.items, (name, oldItems, newItems: typeof InstanceForSystem.allDownloads) => {
+    Object.values(newItems).forEach((item) => {
+      renderOperationElement(item)
+    })
+  })
 
   document.getElementById('floating-button')!.addEventListener('click', () => {
     openModal()
@@ -40,17 +50,31 @@ function appendRow(arr: IItem) {
           <td data-label="filename">${arr.server_filename}</td>
           <td data-label="download">
             <div class="wrap">
-              <div class="progress-radial progress-0">
-                <div data-label="${arr.fs_id}" class="overlay">0%</div>
+              <div class="progress-radial progress-${arr.status === StatusTypes.completed ? '100' : '0'}">
+                <div data-label="${arr.fs_id}"
+                    class="overlay">${arr.status === StatusTypes.completed ? '100' : '0'}%</div>
               </div>
             </div>
           </td>
           <td data-label="url">${formatByte(arr.size)}</td>
           <td data-label="speed"></td>
-          <td data-label="operation">
-            <button data-label="${arr.fs_id}">等待中</button>
+          <td data-label="operation"></td>
+        </tr>
+  `
+  )
+  renderOperationElement(arr)
+}
+
+export function renderOperationElement(arr: IItem) {
+  const target = document.getElementById(`row-${arr.fs_id}`)!.querySelector('td[data-label="operation"]')
+  if (target) {
+    target.innerHTML = ''
+    target.insertAdjacentHTML(
+      'beforeend',
+      `
             <svg
                 id="start-item-${arr.fs_id}"
+                class="${[StatusTypes.downloading, StatusTypes.inQueued].includes(arr.status) ? 'disabled' : ''}"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
                 viewBox="0 0 24 24"
@@ -60,6 +84,7 @@ function appendRow(arr: IItem) {
             </svg>
             <svg
                 id="stop-item-${arr.fs_id}"
+                class="${[StatusTypes.downloading, StatusTypes.inQueued].includes(arr.status) ? '' : 'disabled'}"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
                 viewBox="0 0 24 24"
@@ -76,43 +101,43 @@ function appendRow(arr: IItem) {
                     <path d="M0 0h24v24H0z" fill="none"/>
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
             </svg>
-          </td>
-        </tr>
-  `
-  )
+    `
+    )
 
-  document.querySelector(`button[data-label="${arr.fs_id}"]`)!.addEventListener('click', (e) => {
-    const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
+    const { allDownloads, downloadingItems, completedItems, stoppedItems } = InstanceForSystem
 
-    // Stop progress
-    if (targetItem) {
-      if (confirm('停止后将需要重新下载， 确认吗？')) {
-        targetItem.request!.abort()
-        clearInterval(targetItem.progressLoader!)
-        const target = e.target as HTMLButtonElement
-        target.innerText = '重新下载'
-        InstanceForSystem.stoppedItems[arr.fs_id] = arr
-        delete InstanceForSystem.downloadingItems[arr.fs_id]
-        addNextDownloadRequest()
+    document.getElementById(`start-item-${arr.fs_id}`)!.addEventListener('click', () => {
+      downloadItem(arr)
+    })
+    document.getElementById(`stop-item-${arr.fs_id}`)!.addEventListener('click', () => {
+      const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
+      if (targetItem) {
+        if (confirm('停止后将需要重新下载， 确认吗？')) {
+          arr.status = StatusTypes.stopped
+          targetItem.request && targetItem.request.abort && targetItem.request.abort()
+          clearInterval(targetItem.progress_loader_id!)
+          stoppedItems[arr.fs_id] = arr
+          delete downloadingItems[arr.fs_id]
+
+          renderOperationElement(arr)
+          addNextDownloadRequest()
+        }
+        return false
       }
-      return false
-    }
-    // Restart progress
-    downloadItem(arr)
-  })
-  document.getElementById(`delete-item-${arr.fs_id}`)!.addEventListener('click', () => {
-    if (confirm('确认删除？')) {
-      arr.request && arr.request.abort()
-      delete InstanceForSystem.allDownloads[arr.fs_id]
-      delete InstanceForSystem.downloadingItems[arr.fs_id]
-      delete InstanceForSystem.completedItems[arr.fs_id]
-      delete InstanceForSystem.stoppedItems[arr.fs_id]
+    })
+    document.getElementById(`delete-item-${arr.fs_id}`)!.addEventListener('click', () => {
+      arr.request && arr.request.abort && arr.request.abort()
+      delete allDownloads[arr.fs_id]
+      delete downloadingItems[arr.fs_id]
+      delete completedItems[arr.fs_id]
+      delete stoppedItems[arr.fs_id]
+
       document
         .getElementById('popup-tbody')!
         .removeChild(document.getElementById(`row-${arr.fs_id}`) as HTMLTableRowElement)
       addNextDownloadRequest()
-    }
-  })
+    })
+  }
 }
 
 function initStyle() {
@@ -166,8 +191,9 @@ function startInstance() {
   const requestList: Promise<IItem>[] = []
   selectedList.forEach((arr) => {
     if (typeof allDownloads[arr.fs_id] === 'undefined') {
+      arr.status = StatusTypes.inQueued
       allDownloads[arr.fs_id] = arr
-      arr.status = valueTypes.inQueuedItems
+
       appendRow(arr)
       requestList.push(getDownloadUrl(arr))
     }

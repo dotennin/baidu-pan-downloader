@@ -10,16 +10,4 @@
 -----------------------------------
 # Changelog
 点击 [这里](https://dotennin.github.io/baidu-pan-downloader/CHANGELOG) 查看更新日志
------------------------------------
-#
-#### 声明: 该脚本不存在窃取用户信息以及诱导客户安装脚本的行为。
-#### 所有的代码均公开于Github。对此， 使用该脚本造成的任何损失不承担任何义务和责任。
-#### https://github.com/dotennin/baidu-pan-downloader
-#
 ------------------------------------------
-
-# Todo
-##### 打包下载
-##### 断点续传, 通过curl -i [url]检查Accept-Ranges
-##### button UI
-##### config UI
