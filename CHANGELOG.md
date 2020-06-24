@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/dotennin/bai-du-pan-downloader/compare/v1.2.0...v1.3.0) (2020-06-24)
+
+
+### Features
+
+* operation icon style ([b5fd9df](https://github.com/dotennin/bai-du-pan-downloader/commit/b5fd9df35d86774d70944b6f9316b91c5dc66cf8))
+* update user script ([9816921](https://github.com/dotennin/bai-du-pan-downloader/commit/9816921d5e4395c6e8c312ca0593c74c04a8ff9b))
+* updated readme ([6bd2877](https://github.com/dotennin/bai-du-pan-downloader/commit/6bd287777f637455537f056b23005159dbc9dd50))
+
+
+### Bug Fixes
+
+* document not undef ([0ddb94e](https://github.com/dotennin/bai-du-pan-downloader/commit/0ddb94e6f1050c80e8df6e122a04900d6d16ef79))
+
 ## [1.2.0](https://github.com/dotennin/bai-du-pan-downloader/compare/v1.1.0...v1.2.0) (2020-06-23)
 
 
