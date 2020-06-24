@@ -112,18 +112,21 @@ export function renderOperationElement(arr: IItem) {
       downloadItem(arr)
     })
     document.getElementById(`stop-item-${arr.fs_id}`)!.addEventListener('click', () => {
-      const targetItem = InstanceForSystem.downloadingItems[arr.fs_id]
+      const targetItem = InstanceForSystem.allDownloads[arr.fs_id]
       if (targetItem) {
-        if (confirm('停止后将需要重新下载， 确认吗？')) {
-          arr.status = StatusTypes.stopped
-          targetItem.request && targetItem.request.abort && targetItem.request.abort()
-          clearInterval(targetItem.progress_loader_id!)
-          stoppedItems[arr.fs_id] = arr
-          delete downloadingItems[arr.fs_id]
-
-          renderOperationElement(arr)
-          addNextDownloadRequest()
+        if (arr.status === StatusTypes.downloading) {
+          if (!confirm('停止后将需要重新下载， 确认吗？')) {
+            return false
+          }
         }
+        arr.status = StatusTypes.stopped
+        targetItem.request && targetItem.request.abort && targetItem.request.abort()
+        clearInterval(targetItem.progress_loader_id!)
+        stoppedItems[arr.fs_id] = arr
+        delete downloadingItems[arr.fs_id]
+
+        renderOperationElement(arr)
+        addNextDownloadRequest()
         return false
       }
     })
