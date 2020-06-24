@@ -1,3 +1,8 @@
+export const initStyle = () => {
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `
+    <style>
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
 body {
   padding: 30px 0;
@@ -818,4 +823,8 @@ pre.code {
   top: 0;
   bottom: 0;
   line-height: 40px;
+}
+    </style>
+  `
+  )
 }
