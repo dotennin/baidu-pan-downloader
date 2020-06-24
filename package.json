@@ -3,7 +3,11 @@
   "version": "1.2.0",
   "description": "A download manager for Baidu Yun",
   "main": "dist/index.js",
-  "keywords": ["baidu", "baiduyun", "pandownload"],
+  "keywords": [
+    "baidu",
+    "baiduyun",
+    "pandownload"
+  ],
   "author": "Dotennin",
   "license": "MIT",
   "scripts": {
@@ -14,20 +18,20 @@
     "watch": "webpack --watch",
     "clean": "rimraf dist/*",
     "clean:public": "rimraf public/*",
-    "build": "npm-run-all clean:public webpack:dev",
-    "public": "npm-run-all clean:public webpack:prod",
+    "build:dev": "npm-run-all clean:public webpack:dev",
+    "build": "npm-run-all clean:public webpack:prod",
     "start": "webpack-dev-server",
     "eslint": "eslint --fix src/*.*",
     "release": "standard-version"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run build && git add public/ && lint-staged"
     }
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run eslint",
+      "eslint --fix",
       "git add"
     ]
   },
