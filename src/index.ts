@@ -97,7 +97,7 @@ export function renderOperationElement(arr: IItem) {
             <svg
                 id="delete-item-${arr.fs_id}"
                 class="delete-item"
-                style="cursor: pointer; position: absolute; right: 5px"
+                style="position: absolute; right: 5px"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24" viewBox="0 0 24 24" width="24">
                     <path d="M0 0h24v24H0z" fill="none"/>
