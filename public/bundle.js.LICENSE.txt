@@ -8,7 +8,7 @@
 
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion,no-undef */
 
-/* eslint-disable @typescript-eslint/no-use-before-define,no-undef,@typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/camelcase */
 
 /* harmony export (binding) */
 
