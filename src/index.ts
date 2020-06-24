@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define,no-undef,@typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { InstanceForSystem } from './InstaceForSystem'
 import { IItem } from './types'
 import { GM } from './gmInterface/gmInterface'
