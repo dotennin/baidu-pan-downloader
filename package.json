@@ -1,10 +1,10 @@
 {
   "name": "baidu-pan-downloader",
   "version": "1.2.0",
-  "description": "",
+  "description": "A download manager for Baidu Yun",
   "main": "dist/index.js",
-  "keywords": [],
-  "author": "",
+  "keywords": ["baidu", "baiduyun", "pandownload"],
+  "author": "Dotennin",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
