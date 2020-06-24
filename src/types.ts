@@ -1,8 +1,9 @@
 import { GM } from './gmInterface/gmInterface'
 export enum valueTypes {
-  downloadingItems = 'DOWNLOADING_ITEMS',
-  stoppedItems = 'STOPPED_ITEMS',
-  completedItems = 'COMPLETED_ITEMS',
+  downloadingItems = 'DOWNLOADING',
+  stoppedItems = 'STOPPED',
+  completedItems = 'COMPLETED',
+  inQueuedItems = 'IN_QUEUED',
 }
 
 export interface IItem {
@@ -25,4 +26,5 @@ export interface IItem {
   url: string
   request?: ReturnType<typeof GM.download>
   progressLoader?: NodeJS.Timeout
+  status: valueTypes
 }
