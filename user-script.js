@@ -25,6 +25,7 @@ module.exports = `
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_deleteValue
+// @grant GM_addValueChangeListener
 // @run-at document-idle
 // ==/UserScript==
 `

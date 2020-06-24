@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion,no-undef */
-import { IItem } from './types'
+import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 
 const InstanceForSystem = {
@@ -11,17 +11,27 @@ const InstanceForSystem = {
   completedItems: {} as Record<IItem['fs_id'], IItem>,
   allDownloads: {} as Record<IItem['fs_id'], IItem>,
 
+  initState: function() {
+    const objectFromValue: Record<IItem['fs_id'], IItem> = GM.getValue(ValueTypes.items, {})
+    GM.deleteValue(ValueTypes.items)
+
+    this.allDownloads = objectFromValue
+    Object.values(objectFromValue).forEach((item) => {
+      if (item.status === StatusTypes.completed) {
+        this.completedItems[item.fs_id] = item
+      }
+      if (item.status === StatusTypes.stopped) {
+        this.stoppedItems[item.fs_id] = item
+      }
+    })
+    return this
+  },
   get selectedList() {
-    const objectFromValue = Object.assign(GM.getValue('downloadingItems', {}), GM.getValue('stoppedItems', {}))
-    GM.deleteValue('downloadingItems')
-    GM.deleteValue('stoppedItems')
     const selected: IItem[] = this.list.getSelected()
 
-    return selected
-      .filter((arr) => {
-        return arr.isdir !== 1
-      })
-      .concat(Object.values(objectFromValue))
+    return selected.filter((arr) => {
+      return arr.isdir !== 1
+    })
   },
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -48,7 +58,7 @@ const InstanceForSystem = {
 
   stopAll: function() {
     Object.values(this.downloadingItems).forEach((item) => {
-      item.request!.abort()
+      item.request && item.request.abort && item.request.abort()
     })
   },
 }
