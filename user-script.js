@@ -15,12 +15,8 @@ module.exports = `
 // @include https://pan.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @resource customStyle https://dotennin.github.io/baidu-pan-downloader/src/style.css
-// @grant GM_setClipboard
 // @grant GM_xmlhttpRequest
-// @grant GM_getResourceText
 // @grant GM_download
-// @grant GM_addStyle
 // @grant GM_notification
 // @grant GM_getValue
 // @grant GM_setValue

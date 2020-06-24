@@ -4,6 +4,7 @@ import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { addNextDownloadRequest, downloadItem, getDownloadUrl } from './apis'
 import { formatByte } from './utils'
+import { initStyle } from './style'
 
 window.onunload = () => {
   GM.setValue(ValueTypes.items, InstanceForSystem.allDownloads)
@@ -12,6 +13,7 @@ window.onunload = () => {
 }
 ;(function() {
   initStyle()
+  renderElement()
   Object.values(InstanceForSystem.initState().allDownloads).forEach((arr) => {
     appendRow(arr)
     if (arr.status === StatusTypes.downloading && InstanceForSystem.downloadable) {
@@ -140,11 +142,7 @@ export function renderOperationElement(arr: IItem) {
   }
 }
 
-function initStyle() {
-  // @ts-ignore
-  const newCSS = GM.getResourceText('customStyle')
-  // @ts-ignore
-  GM.addStyle(newCSS)
+function renderElement() {
   document.body.insertAdjacentHTML(
     'beforeend',
     `

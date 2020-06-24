@@ -159,6 +159,8 @@
 
 // CONCATENATED MODULE: ./src/index.ts
 
+// CONCATENATED MODULE: ./src/style.ts
+
 // Check if module is in cache
 
 // Create a new module (and put it into the cache)
