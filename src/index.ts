@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/camelcase */
 import { InstanceForSystem } from './InstaceForSystem'
 import { IItem } from './types'
 import { GM } from './gmInterface/gmInterface'
@@ -10,9 +10,7 @@ window.onunload = () => {
 
   InstanceForSystem.stopAll()
 }
-
-// @ts-ignore
-!(function() {
+;(function() {
   initStyle()
   startInstance()
 
@@ -49,8 +47,7 @@ function downloadItem(arr: IItem) {
   const speedOverlay = percentOverlay.closest('tr')!.querySelector('td[data-label="speed"]') as HTMLTableDataCellElement
   operationButton.innerText = '停止'
 
-  // @ts-ignore
-  arr.request = GM_download({
+  arr.request = GM.download({
     url,
     name: server_filename,
     saveAs: true,
@@ -78,8 +75,7 @@ function downloadItem(arr: IItem) {
       InstanceForSystem.completedItems[arr.fs_id] = arr
       delete InstanceForSystem.downloadingItems[arr.fs_id]
 
-      // @ts-ignore
-      GM_notification({
+      GM.notification({
         text: '下载完成',
         title: server_filename,
         highlight: true,
@@ -114,8 +110,7 @@ function formatByte(byte: number) {
 }
 function getDownloadUrl(arr: IItem): Promise<IItem> {
   return new Promise((resolve, reject) => {
-    // @ts-ignore
-    GM_xmlhttpRequest({
+    GM.xmlHttpRequest({
       url:
         'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=' +
         encodeURIComponent(arr.path),
@@ -124,7 +119,7 @@ function getDownloadUrl(arr: IItem): Promise<IItem> {
       headers: {
         'User-Agent': 'netdisk;P2SP;2.2.60.26',
       },
-      onload: (r: XMLHttpRequest) => {
+      onload: (r) => {
         if (r.response.hasOwnProperty('client_ip')) {
           const url = r.response.urls[0].url + '&filename=' + encodeURIComponent(arr.server_filename)
           arr.url = url
@@ -216,9 +211,9 @@ function appendRow(arr: IItem) {
 
 function initStyle() {
   // @ts-ignore
-  const newCSS = GM_getResourceText('customStyle')
+  const newCSS = GM.getResourceText('customStyle')
   // @ts-ignore
-  GM_addStyle(newCSS)
+  GM.addStyle(newCSS)
   document.body.insertAdjacentHTML(
     'beforeend',
     `

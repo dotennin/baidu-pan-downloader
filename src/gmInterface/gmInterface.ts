@@ -199,7 +199,7 @@ export const GM = {
    */
   notification: <T extends string | INotification>(
     textOrDetails: T,
-    titleOrOndone: T extends string ? string : Function,
+    titleOrOndone?: T extends string ? string : Function,
     image?: string,
     onclick?: Function
   ) => {
