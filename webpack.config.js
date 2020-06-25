@@ -17,7 +17,7 @@ module.exports = {
     extensions: ['.ts'],
   },
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         extractComments: {
