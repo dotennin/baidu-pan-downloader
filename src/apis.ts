@@ -110,7 +110,7 @@ export async function downloadItem(arr: IItem) {
     },
   })
 
-  arr.progress_loader_id = setInterval(() => {
+  arr.progress_loader_id = window.setInterval(() => {
     if (currentEvent) {
       const speed = currentEvent.loaded - loaded
       loaded = currentEvent.loaded

@@ -11,6 +11,12 @@ window.onunload = () => {
 
   InstanceForSystem.stopAll()
 }
+window.onbeforeunload = (e: BeforeUnloadEvent) => {
+  if (Object.keys(InstanceForSystem.downloadingItems).length > 0) {
+    e.preventDefault()
+    e.returnValue = '有未完成的下载任务， 确认关闭吗?'
+  }
+}
 ;(function() {
   initStyle()
   renderElement()
