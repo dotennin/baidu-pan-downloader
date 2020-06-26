@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
   entry: './src/index.ts',
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.user.js',
     path: resolve(__dirname, 'public'),
   },
   resolve: {
