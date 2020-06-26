@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
@@ -22,6 +23,7 @@
 // @grant GM_addValueChangeListener
 // @run-at document-idle
 // ==/UserScript==
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -113,8 +115,31 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatusTypes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ValueTypes; });
+var StatusTypes;
+
+(function (StatusTypes) {
+  StatusTypes["downloading"] = "DOWNLOADING";
+  StatusTypes["stopped"] = "STOPPED";
+  StatusTypes["completed"] = "COMPLETED";
+  StatusTypes["inQueued"] = "IN_QUEUED";
+  StatusTypes["error"] = "ERROR";
+})(StatusTypes || (StatusTypes = {}));
+
+var ValueTypes;
+
+(function (ValueTypes) {
+  ValueTypes["items"] = "ITEM_LIST";
+})(ValueTypes || (ValueTypes = {}));
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* eslint-disable @typescript-eslint/no-object-literal-type-assertion,no-undef */
 
@@ -181,29 +206,6 @@ var InstanceForSystem = {
   }
 };
 
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatusTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ValueTypes; });
-var StatusTypes;
-
-(function (StatusTypes) {
-  StatusTypes["downloading"] = "DOWNLOADING";
-  StatusTypes["stopped"] = "STOPPED";
-  StatusTypes["completed"] = "COMPLETED";
-  StatusTypes["inQueued"] = "IN_QUEUED";
-  StatusTypes["error"] = "ERROR";
-})(StatusTypes || (StatusTypes = {}));
-
-var ValueTypes;
-
-(function (ValueTypes) {
-  ValueTypes["items"] = "ITEM_LIST";
-})(ValueTypes || (ValueTypes = {}));
 
 /***/ }),
 /* 2 */
@@ -451,10 +453,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.d(__webpack_exports__, "renderOperationElement", function() { return /* binding */ renderOperationElement; });
 
 // EXTERNAL MODULE: ./src/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(0);
+var InstaceForSystem = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/types.ts
-var types = __webpack_require__(1);
+var types = __webpack_require__(0);
 
 // EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
 var gmInterface = __webpack_require__(2);
@@ -469,6 +471,10 @@ var formatByte = function formatByte(_byte) {
   return KiByte <= 1000 ? "".concat(KiByte, " KB") : "".concat(Math.round(KiByte / 10.24) / 100, " MB");
 };
 // CONCATENATED MODULE: ./src/apis.ts
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-use-before-define */
 
 
@@ -497,82 +503,114 @@ function getDownloadUrl(arr) {
     });
   });
 }
-function downloadItem(arr) {
-  // Remove Item if target still in stop cluster
-  if (InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id]) {
-    delete InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id];
-  }
-
-  if (!InstaceForSystem["a" /* InstanceForSystem */].downloadable) {
-    arr.status = types["a" /* StatusTypes */].inQueued;
-    renderOperationElement(arr);
-    return;
-  }
-
-  arr.status = types["a" /* StatusTypes */].downloading;
-  renderOperationElement(arr);
-  InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id] = arr;
-  var url = arr.url,
-      server_filename = arr.server_filename;
-  var loaded = 0;
-  var currentEvent = undefined;
-  var percentOverlay = document.querySelector("div[data-label=\"".concat(arr.fs_id, "\"]"));
-  var progressRadial = percentOverlay.parentElement;
-  var speedOverlay = percentOverlay.closest('tr').querySelector('td[data-label="speed"]');
-  arr.request = gmInterface["a" /* GM */].download({
-    url: url,
-    name: server_filename,
-    saveAs: true,
-    headers: {
-      Host: 'qdall01.baidupcs.com',
-      Accept: '*/*',
-      'User-Agent': 'netdisk;P2SP;2.2.60.26',
-      'Accept-Encoding': 'identity',
-      'Accept-Language': 'ja-JP',
-      'Accept-Charset': '*'
-    },
-    onprogress: function onprogress(e) {
-      currentEvent = e;
-      var percent = Math.round(currentEvent.loaded * 100 / currentEvent.total);
-      progressRadial.className = "progress-radial progress-".concat(percent);
-      percentOverlay.innerText = "".concat(percent, "%");
-    },
-    onload: function onload() {
-      arr.progress_loader_id && clearInterval(arr.progress_loader_id);
-      progressRadial.className = 'progress-radial progress-100';
-      percentOverlay.innerText = '100%';
-      speedOverlay.innerText = '';
-      InstaceForSystem["a" /* InstanceForSystem */].completedItems[arr.fs_id] = arr;
-      delete InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id];
-      gmInterface["a" /* GM */].notification({
-        text: '下载完成',
-        title: server_filename,
-        highlight: true
-      });
-      arr.status = types["a" /* StatusTypes */].completed;
-      renderOperationElement(arr);
-      addNextDownloadRequest();
-    },
-    onerror: function onerror() {
-      arr.progress_loader_id && clearInterval(arr.progress_loader_id);
-      progressRadial.className = 'progress-radial progress-0';
-      percentOverlay.innerHTML = "<span style=\"color: red\">error</span>";
-      speedOverlay.innerText = '';
-      InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id] = arr;
-      delete InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id];
-      arr.status = types["a" /* StatusTypes */].error;
-      renderOperationElement(arr);
-      addNextDownloadRequest();
-    }
-  });
-  arr.progress_loader_id = setInterval(function () {
-    if (currentEvent) {
-      var speed = currentEvent.loaded - loaded;
-      loaded = currentEvent.loaded;
-      speedOverlay.innerText = "".concat(formatByte(speed), "/s");
-    }
-  }, 1000);
+function downloadItem(_x) {
+  return _downloadItem.apply(this, arguments);
 }
+
+function _downloadItem() {
+  _downloadItem = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(arr) {
+    var url, server_filename, loaded, currentEvent, percentOverlay, progressRadial, speedOverlay;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            // Remove Item if target still in stop cluster
+            if (InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id]) {
+              delete InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id];
+            }
+
+            if (InstaceForSystem["a" /* InstanceForSystem */].downloadable) {
+              _context.next = 5;
+              break;
+            }
+
+            arr.status = types["a" /* StatusTypes */].inQueued;
+            renderOperationElement(arr);
+            return _context.abrupt("return");
+
+          case 5:
+            if (!(arr.status === types["a" /* StatusTypes */].error)) {
+              _context.next = 8;
+              break;
+            }
+
+            _context.next = 8;
+            return getDownloadUrl(arr);
+
+          case 8:
+            arr.status = types["a" /* StatusTypes */].downloading;
+            renderOperationElement(arr);
+            InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id] = arr;
+            url = arr.url, server_filename = arr.server_filename;
+            loaded = 0;
+            currentEvent = undefined;
+            percentOverlay = document.querySelector("div[data-label=\"".concat(arr.fs_id, "\"]"));
+            progressRadial = percentOverlay.parentElement;
+            speedOverlay = percentOverlay.closest('tr').querySelector('td[data-label="speed"]');
+            arr.request = gmInterface["a" /* GM */].download({
+              url: url,
+              name: server_filename,
+              saveAs: true,
+              headers: {
+                Host: 'qdall01.baidupcs.com',
+                Accept: '*/*',
+                'User-Agent': 'netdisk;P2SP;2.2.60.26',
+                'Accept-Encoding': 'identity',
+                'Accept-Language': 'ja-JP',
+                'Accept-Charset': '*'
+              },
+              onprogress: function onprogress(e) {
+                currentEvent = e;
+                var percent = Math.round(currentEvent.loaded * 100 / currentEvent.total);
+                progressRadial.className = "progress-radial progress-".concat(percent);
+                percentOverlay.innerText = "".concat(percent, "%");
+              },
+              onload: function onload() {
+                arr.progress_loader_id && clearInterval(arr.progress_loader_id);
+                progressRadial.className = 'progress-radial progress-100';
+                percentOverlay.innerText = '100%';
+                speedOverlay.innerText = '';
+                InstaceForSystem["a" /* InstanceForSystem */].completedItems[arr.fs_id] = arr;
+                delete InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id];
+                gmInterface["a" /* GM */].notification({
+                  text: '下载完成',
+                  title: server_filename,
+                  highlight: true
+                });
+                arr.status = types["a" /* StatusTypes */].completed;
+                renderOperationElement(arr);
+                addNextDownloadRequest();
+              },
+              onerror: function onerror() {
+                arr.progress_loader_id && clearInterval(arr.progress_loader_id);
+                progressRadial.className = 'progress-radial progress-0';
+                percentOverlay.innerHTML = "<span style=\"color: red\">error</span>";
+                speedOverlay.innerText = '';
+                InstaceForSystem["a" /* InstanceForSystem */].stoppedItems[arr.fs_id] = arr;
+                delete InstaceForSystem["a" /* InstanceForSystem */].downloadingItems[arr.fs_id];
+                arr.status = types["a" /* StatusTypes */].error;
+                renderOperationElement(arr);
+                addNextDownloadRequest();
+              }
+            });
+            arr.progress_loader_id = setInterval(function () {
+              if (currentEvent) {
+                var speed = currentEvent.loaded - loaded;
+                loaded = currentEvent.loaded;
+                speedOverlay.innerText = "".concat(formatByte(speed), "/s");
+              }
+            }, 1000);
+
+          case 19:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _downloadItem.apply(this, arguments);
+}
+
 function addNextDownloadRequest() {
   for (var fs_id in InstaceForSystem["a" /* InstanceForSystem */].itemsFromQueue) {
     downloadItem(InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fs_id]);

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { resolve } = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const UserScript = require('./user-script')
@@ -16,14 +17,29 @@ module.exports = {
   resolve: {
     extensions: ['.ts'],
   },
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: UserScript,
+      raw: true,
+      entryOnly: true,
+    }),
+  ],
   optimization: {
     minimize: false,
     minimizer: [
       new TerserPlugin({
         extractComments: {
-          condition: 'all',
+          condition: /eslint-disable/i,
           banner: () => {
             return UserScript
+          },
+        },
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false,
           },
         },
       }),
