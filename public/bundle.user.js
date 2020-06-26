@@ -365,6 +365,12 @@ window.onunload = () => {
     gmInterface_1.GM.setValue(types_1.ValueTypes.items, InstaceForSystem_1.InstanceForSystem.allDownloads);
     InstaceForSystem_1.InstanceForSystem.stopAll();
 };
+window.onbeforeunload = (e) => {
+    if (Object.keys(InstaceForSystem_1.InstanceForSystem.downloadingItems).length > 0) {
+        e.preventDefault();
+        e.returnValue = '有未完成的下载任务， 确认关闭吗?';
+    }
+};
 (function () {
     style_1.initStyle();
     renderElement();
@@ -731,7 +737,7 @@ async function downloadItem(arr) {
             addNextDownloadRequest();
         },
     });
-    arr.progress_loader_id = setInterval(() => {
+    arr.progress_loader_id = window.setInterval(() => {
         if (currentEvent) {
             const speed = currentEvent.loaded - loaded;
             loaded = currentEvent.loaded;

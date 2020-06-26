@@ -30,6 +30,6 @@ export interface IItem {
   unlist: number
   url: string
   request?: ReturnType<typeof GM.download>
-  progress_loader_id?: NodeJS.Timeout
+  progress_loader_id?: number
   status: StatusTypes
 }
