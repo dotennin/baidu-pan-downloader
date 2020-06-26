@@ -31,7 +31,7 @@ export function getDownloadUrl(arr: IItem): Promise<IItem> {
   })
 }
 
-export function downloadItem(arr: IItem) {
+export async function downloadItem(arr: IItem) {
   // Remove Item if target still in stop cluster
   if (InstanceForSystem.stoppedItems[arr.fs_id]) {
     delete InstanceForSystem.stoppedItems[arr.fs_id]
@@ -41,6 +41,11 @@ export function downloadItem(arr: IItem) {
     arr.status = StatusTypes.inQueued
     renderOperationElement(arr)
     return
+  }
+
+  if (arr.status === StatusTypes.error) {
+    // re-getting url if it invalided
+    await getDownloadUrl(arr)
   }
 
   arr.status = StatusTypes.downloading
