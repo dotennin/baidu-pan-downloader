@@ -375,9 +375,10 @@ window.onbeforeunload = (e) => {
 (function () {
     style_1.initStyle();
     renderElement();
+    const { autoStart, downloadable } = InstaceForSystem_1.InstanceForSystem;
     Object.values(InstaceForSystem_1.InstanceForSystem.initState().allDownloads).forEach((arr) => {
         appendRow(arr);
-        if (arr.status === types_1.StatusTypes.downloading && InstaceForSystem_1.InstanceForSystem.downloadable) {
+        if (arr.status === types_1.StatusTypes.downloading && autoStart && downloadable) {
             apis_1.downloadItem(arr);
         }
     });
@@ -399,6 +400,10 @@ window.onbeforeunload = (e) => {
     document.getElementById('max-download-count').addEventListener('change', (e) => {
         const target = e.target;
         gmInterface_1.GM.setValue(types_1.ValueTypes.maxDownloadCount, parseInt(target.value));
+    });
+    document.getElementById('auto-start').addEventListener('change', (e) => {
+        const target = e.target;
+        gmInterface_1.GM.setValue(types_1.ValueTypes.autoStart, target.checked);
     });
     document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', () => {
         document.querySelectorAll('.modal-wrapper').forEach((element) => {
@@ -613,7 +618,6 @@ const types_1 = __webpack_require__(0);
 const gmInterface_1 = __webpack_require__(1);
 const InstanceForSystem = {
     list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
-    autoStart: true,
     maxDownloadCount: 2,
     downloadingItems: {},
     stoppedItems: {},
@@ -624,6 +628,10 @@ const InstanceForSystem = {
         gmInterface_1.GM.deleteValue(types_1.ValueTypes.items);
         this.allDownloads = objectFromValue;
         Object.values(objectFromValue).forEach((item) => {
+            if (!this.autoStart && item.status === types_1.StatusTypes.downloading) {
+                // stop downloading item if user set autoStart as false
+                item.status = types_1.StatusTypes.stopped;
+            }
             if (item.status === types_1.StatusTypes.completed) {
                 this.completedItems[item.fs_id] = item;
             }
@@ -632,6 +640,9 @@ const InstanceForSystem = {
             }
         });
         return this;
+    },
+    get autoStart() {
+        return gmInterface_1.GM.getValue(types_1.ValueTypes.autoStart, true);
     },
     get selectedList() {
         const selected = this.list.getSelected();
