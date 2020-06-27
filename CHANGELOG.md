@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/dotennin/baidu-pan-downloader/compare/v1.4.0...v1.4.1) (2020-06-27)
+
+
+### Features
+
+* update readme ([93dc826](https://github.com/dotennin/baidu-pan-downloader/commit/93dc826c42bffe81fc9c1baef588b078a2d85350))
+
+
+### Bug Fixes
+
+* style ([3b85b61](https://github.com/dotennin/baidu-pan-downloader/commit/3b85b617ced6a402d99524bb375659089d82ff3a))
+
 ## [1.4.0](https://github.com/dotennin/baidu-pan-downloader/compare/v1.3.3...v1.4.0) (2020-06-27)
 
 
