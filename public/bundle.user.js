@@ -736,7 +736,6 @@ async function downloadItem(arr) {
         await getDownloadUrl(arr);
     }
     arr.status = types_1.StatusTypes.downloading;
-    _1.renderOperationElement(arr);
     InstaceForSystem_1.InstanceForSystem.downloadingItems[arr.fs_id] = arr;
     const { url, server_filename } = arr;
     let loaded = 0;
@@ -789,6 +788,9 @@ async function downloadItem(arr) {
             _1.renderOperationElement(arr);
             addNextDownloadRequest();
         },
+    });
+    window.requestAnimationFrame(() => {
+        _1.renderOperationElement(arr);
     });
     arr.progress_loader_id = window.setInterval(() => {
         if (currentEvent) {

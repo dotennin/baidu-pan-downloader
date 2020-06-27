@@ -49,7 +49,6 @@ export async function downloadItem(arr: IItem) {
   }
 
   arr.status = StatusTypes.downloading
-  renderOperationElement(arr)
 
   InstanceForSystem.downloadingItems[arr.fs_id] = arr
   const { url, server_filename } = arr
@@ -108,6 +107,9 @@ export async function downloadItem(arr: IItem) {
 
       addNextDownloadRequest()
     },
+  })
+  window.requestAnimationFrame(() => {
+    renderOperationElement(arr)
   })
 
   arr.progress_loader_id = window.setInterval(() => {
