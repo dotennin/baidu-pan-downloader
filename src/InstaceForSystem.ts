@@ -5,7 +5,7 @@ import { GM } from './gmInterface/gmInterface'
 const InstanceForSystem = {
   list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
   autoStart: true,
-  maxDownloadCount: 1,
+  maxDownloadCount: 2,
   downloadingItems: {} as Record<IItem['fs_id'], IItem>,
   stoppedItems: {} as Record<IItem['fs_id'], IItem>,
   completedItems: {} as Record<IItem['fs_id'], IItem>,
@@ -24,6 +24,7 @@ const InstanceForSystem = {
         this.stoppedItems[item.fs_id] = item
       }
     })
+
     return this
   },
   get selectedList() {
@@ -49,7 +50,7 @@ const InstanceForSystem = {
   },
 
   get downloadable() {
-    return Object.keys(this.downloadingItems).length < this.maxDownloadCount
+    return Object.keys(this.downloadingItems).length < GM.getValue(ValueTypes.maxDownloadCount, this.maxDownloadCount)
   },
 
   get currentList() {

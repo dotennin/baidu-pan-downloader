@@ -43,6 +43,19 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
     const modalWrapper = document.getElementById('config-modal') as HTMLDivElement
     modalWrapper.className = modalWrapper.className + ' open'
   })
+
+  document.getElementById('max-download-count')!.addEventListener('change', (e) => {
+    const target = e.target as HTMLSelectElement
+    GM.setValue(ValueTypes.maxDownloadCount, parseInt(target!.value))
+  })
+
+  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) =>
+    e.addEventListener('click', () => {
+      document.querySelectorAll('.modal-wrapper').forEach((element) => {
+        element.className = 'modal-wrapper'
+      })
+    })
+  )
 })()
 
 function appendRow(arr: IItem) {
@@ -147,6 +160,14 @@ export function renderOperationElement(arr: IItem) {
 }
 
 function renderElement() {
+  const loopOption = (maxCount: number) => {
+    const currentValue = GM.getValue(ValueTypes.maxDownloadCount, InstanceForSystem.maxDownloadCount)
+    let text = ''
+    for (let i = 1; i <= maxCount; i++) {
+      text += `<option ${currentValue === i && 'selected'} value="${i}">${i}</option>`
+    }
+    return text
+  }
   document.body.insertAdjacentHTML(
     'beforeend',
     `
@@ -186,7 +207,12 @@ function renderElement() {
                         </legend>
                         <div>
                         <div>
-                          <input type="checkbox" name="checkbox" value="Checkbox 1" id="auto-start" tabindex="1">
+                          <input type="checkbox" name="checkbox"
+                             value="true"
+                             ${InstanceForSystem.autoStart && 'checked'}
+                             id="auto-start"
+                             tabindex="1"
+                           >
                           <label for="auto-start"></label>
                         </div>
                       </fieldset>
@@ -197,9 +223,8 @@ function renderElement() {
                         最大同时下载数
                       </label>
                       <div>
-                      <select class="field select medium" tabindex="2">
-                        <option value="First Choice">1</option>
-                        <option value="First Choice">2</option>
+                      <select id="max-download-count" class="field select medium" tabindex="2">
+                        ${loopOption(InstanceForSystem.maxDownloadCount)}
                       </select>
                       </div>
                     </div>
@@ -218,14 +243,6 @@ function renderElement() {
           </div>
         </div>
     `
-  )
-
-  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) =>
-    e.addEventListener('click', () => {
-      document.querySelectorAll('.modal-wrapper').forEach((element) => {
-        element.className = 'modal-wrapper'
-      })
-    })
   )
 }
 function startInstance() {
