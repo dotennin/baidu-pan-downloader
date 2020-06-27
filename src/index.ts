@@ -20,9 +20,10 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
 ;(function() {
   initStyle()
   renderElement()
+  const { autoStart, downloadable } = InstanceForSystem
   Object.values(InstanceForSystem.initState().allDownloads).forEach((arr) => {
     appendRow(arr)
-    if (arr.status === StatusTypes.downloading && InstanceForSystem.downloadable) {
+    if (arr.status === StatusTypes.downloading && autoStart && downloadable) {
       downloadItem(arr)
     }
   })
@@ -47,6 +48,10 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
   document.getElementById('max-download-count')!.addEventListener('change', (e) => {
     const target = e.target as HTMLSelectElement
     GM.setValue(ValueTypes.maxDownloadCount, parseInt(target!.value))
+  })
+  document.getElementById('auto-start')!.addEventListener('change', (e) => {
+    const target = e.target as HTMLInputElement
+    GM.setValue(ValueTypes.autoStart, target.checked)
   })
 
   document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) =>

@@ -4,7 +4,6 @@ import { GM } from './gmInterface/gmInterface'
 
 const InstanceForSystem = {
   list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
-  autoStart: true,
   maxDownloadCount: 2,
   downloadingItems: {} as Record<IItem['fs_id'], IItem>,
   stoppedItems: {} as Record<IItem['fs_id'], IItem>,
@@ -16,7 +15,12 @@ const InstanceForSystem = {
     GM.deleteValue(ValueTypes.items)
 
     this.allDownloads = objectFromValue
+
     Object.values(objectFromValue).forEach((item) => {
+      if (!this.autoStart && item.status === StatusTypes.downloading) {
+        // stop downloading item if user set autoStart as false
+        item.status = StatusTypes.stopped
+      }
       if (item.status === StatusTypes.completed) {
         this.completedItems[item.fs_id] = item
       }
@@ -26,6 +30,10 @@ const InstanceForSystem = {
     })
 
     return this
+  },
+
+  get autoStart() {
+    return GM.getValue(ValueTypes.autoStart, true)
   },
   get selectedList() {
     const selected: IItem[] = this.list.getSelected()
