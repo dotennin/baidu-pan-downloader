@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/dotennin/baidu-pan-downloader/compare/v1.3.3...v1.4.0) (2020-06-27)
+
+
+### Features
+
+* added console error ([90fbab9](https://github.com/dotennin/baidu-pan-downloader/commit/90fbab9ee153527442aedc9fd3421bbfdd331f40))
+* auto start config action ([ecd7b0c](https://github.com/dotennin/baidu-pan-downloader/commit/ecd7b0c19cdc7107b36f48c9d2536aae6ebd156b))
+* config setting for max-download-count ([123055d](https://github.com/dotennin/baidu-pan-downloader/commit/123055d11067fba74dfeb777b059176af88d0b83))
+
+
+### Bug Fixes
+
+* auto start download file when resumed window ([76b4ce2](https://github.com/dotennin/baidu-pan-downloader/commit/76b4ce2d64bfe07cd8dd158013bd2cd7f58e5ec4))
+* interface ([2e862e9](https://github.com/dotennin/baidu-pan-downloader/commit/2e862e97247d9fdd34732eee51a32ae6f5a18e0a))
+* removed unnecessary ([6beaa54](https://github.com/dotennin/baidu-pan-downloader/commit/6beaa544abe4a50640738d0ea82139236d10e76a))
+
 ### [1.3.3](https://github.com/dotennin/baidu-pan-downloader/compare/v1.3.1...v1.3.3) (2020-06-26)
 
 
