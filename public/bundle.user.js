@@ -788,7 +788,7 @@ async function downloadItem(arr) {
             _1.renderOperationElement(arr);
             addNextDownloadRequest();
         },
-        onerror: () => {
+        onerror: (e) => {
             arr.progress_loader_id && clearInterval(arr.progress_loader_id);
             progressRadial.className = 'progress-radial progress-0';
             percentOverlay.innerHTML = `<span style="color: red">error</span>`;
@@ -797,6 +797,8 @@ async function downloadItem(arr) {
             delete InstaceForSystem_1.InstanceForSystem.downloadingItems[arr.fs_id];
             arr.status = types_1.StatusTypes.error;
             _1.renderOperationElement(arr);
+            // eslint-disable-next-line no-console
+            console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e);
             addNextDownloadRequest();
         },
     });
