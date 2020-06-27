@@ -9,6 +9,8 @@ export enum StatusTypes {
 
 export enum ValueTypes {
   items = 'ITEM_LIST',
+  autoStart = 'AUTO_START',
+  maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
 }
 
 export interface IItem {

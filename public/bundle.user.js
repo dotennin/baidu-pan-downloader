@@ -128,6 +128,8 @@ var StatusTypes;
 var ValueTypes;
 (function (ValueTypes) {
     ValueTypes["items"] = "ITEM_LIST";
+    ValueTypes["autoStart"] = "AUTO_START";
+    ValueTypes["maxDownloadCount"] = "MAX_DOWNLOAD_COUNT";
 })(ValueTypes = exports.ValueTypes || (exports.ValueTypes = {}));
 
 
@@ -394,6 +396,15 @@ window.onbeforeunload = (e) => {
         const modalWrapper = document.getElementById('config-modal');
         modalWrapper.className = modalWrapper.className + ' open';
     });
+    document.getElementById('max-download-count').addEventListener('change', (e) => {
+        const target = e.target;
+        gmInterface_1.GM.setValue(types_1.ValueTypes.maxDownloadCount, parseInt(target.value));
+    });
+    document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', () => {
+        document.querySelectorAll('.modal-wrapper').forEach((element) => {
+            element.className = 'modal-wrapper';
+        });
+    }));
 })();
 function appendRow(arr) {
     document.getElementById('popup-tbody').insertAdjacentHTML('beforeend', `
@@ -486,6 +497,14 @@ function renderOperationElement(arr) {
 }
 exports.renderOperationElement = renderOperationElement;
 function renderElement() {
+    const loopOption = (maxCount) => {
+        const currentValue = gmInterface_1.GM.getValue(types_1.ValueTypes.maxDownloadCount, InstaceForSystem_1.InstanceForSystem.maxDownloadCount);
+        let text = '';
+        for (let i = 1; i <= maxCount; i++) {
+            text += `<option ${currentValue === i && 'selected'} value="${i}">${i}</option>`;
+        }
+        return text;
+    };
     document.body.insertAdjacentHTML('beforeend', `
         <div id="download-list" class="modal-wrapper">
             <div class="modal-overlay"></div>
@@ -523,7 +542,12 @@ function renderElement() {
                         </legend>
                         <div>
                         <div>
-                          <input type="checkbox" name="checkbox" value="Checkbox 1" id="auto-start" tabindex="1">
+                          <input type="checkbox" name="checkbox"
+                             value="true"
+                             ${InstaceForSystem_1.InstanceForSystem.autoStart && 'checked'}
+                             id="auto-start"
+                             tabindex="1"
+                           >
                           <label for="auto-start"></label>
                         </div>
                       </fieldset>
@@ -534,9 +558,8 @@ function renderElement() {
                         最大同时下载数
                       </label>
                       <div>
-                      <select class="field select medium" tabindex="2">
-                        <option value="First Choice">1</option>
-                        <option value="First Choice">2</option>
+                      <select id="max-download-count" class="field select medium" tabindex="2">
+                        ${loopOption(InstaceForSystem_1.InstanceForSystem.maxDownloadCount)}
                       </select>
                       </div>
                     </div>
@@ -555,11 +578,6 @@ function renderElement() {
           </div>
         </div>
     `);
-    document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', () => {
-        document.querySelectorAll('.modal-wrapper').forEach((element) => {
-            element.className = 'modal-wrapper';
-        });
-    }));
 }
 function startInstance() {
     const { selectedList, allDownloads, autoStart } = InstaceForSystem_1.InstanceForSystem;
@@ -596,7 +614,7 @@ const gmInterface_1 = __webpack_require__(1);
 const InstanceForSystem = {
     list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
     autoStart: true,
-    maxDownloadCount: 1,
+    maxDownloadCount: 2,
     downloadingItems: {},
     stoppedItems: {},
     completedItems: {},
@@ -633,7 +651,7 @@ const InstanceForSystem = {
         return queue;
     },
     get downloadable() {
-        return Object.keys(this.downloadingItems).length < this.maxDownloadCount;
+        return Object.keys(this.downloadingItems).length < gmInterface_1.GM.getValue(types_1.ValueTypes.maxDownloadCount, this.maxDownloadCount);
     },
     get currentList() {
         return this.list.getCurrentList();
