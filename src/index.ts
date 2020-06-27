@@ -198,7 +198,7 @@ function renderElement() {
         </div>
         <div id="config-modal" class="modal-wrapper">
             <div class="modal-overlay"></div>
-            <div class="modal-window">
+            <div class="modal-window" style="max-width: 500px">
                 <div class="modal-content">
                   <form action="#">
                     <header>
