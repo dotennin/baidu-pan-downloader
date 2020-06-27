@@ -159,19 +159,18 @@ function renderElement() {
             <div class="modal-overlay"></div>
             <div class="modal-window">
                 <div class="modal-content">
-<!--                    <button id="copy-code" class="disable">复制到剪切板</button>-->
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">文件</th>
-                    <th scope="col">进度</th>
-                    <th scope="col">大小</th>
-                    <th scope="col">速度</th>
-                    <th scope="col">操作</th>
-                  </tr>
-                </thead>
-                <tbody id="popup-tbody"></tbody>
-              </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">文件</th>
+                        <th scope="col">进度</th>
+                        <th scope="col">大小</th>
+                        <th scope="col">速度</th>
+                        <th scope="col">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody id="popup-tbody"></tbody>
+                  </table>
                 </div>
 <!--                <span class="modal-close">×</a>-->
             </div>
@@ -190,7 +189,6 @@ function renderElement() {
 
   document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', closeModal))
   document.querySelector('#floating-button')!.addEventListener('click', openModal)
-  // document.getElementById('copy-code').addEventListener('click', copyCode)
 }
 function startInstance() {
   const { selectedList, allDownloads, autoStart } = InstanceForSystem
