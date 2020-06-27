@@ -9,7 +9,6 @@ module.exports = `
 // @license ${packageJson.license}
 // @compatible        chrome/83.0.4103.97 passed
 // @compatible        edge/83.0.478.54 passed
-// @compatible        firefox untested
 // @compatible        opera untested
 // @compatible        safari untested
 // @include https://pan.baidu.com/disk/*

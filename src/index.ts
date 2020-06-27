@@ -35,20 +35,15 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
   })
 
   document.getElementById('floating-button')!.addEventListener('click', () => {
-    openModal()
+    const modalWrapper = document.getElementById('download-list') as HTMLDivElement
+    modalWrapper.className = modalWrapper.className + ' open'
     startInstance()
   })
+  document.getElementById('config-button')!.addEventListener('click', () => {
+    const modalWrapper = document.getElementById('config-modal') as HTMLDivElement
+    modalWrapper.className = modalWrapper.className + ' open'
+  })
 })()
-
-function openModal() {
-  const modalWrapper = document.querySelector('.modal-wrapper') as HTMLDivElement
-  modalWrapper.className = modalWrapper.className + ' open'
-}
-
-function closeModal() {
-  const modalWrapper = document.querySelector('.modal-wrapper') as HTMLDivElement
-  modalWrapper.className = 'modal-wrapper'
-}
 
 function appendRow(arr: IItem) {
   document.getElementById('popup-tbody')!.insertAdjacentHTML(
@@ -155,7 +150,7 @@ function renderElement() {
   document.body.insertAdjacentHTML(
     'beforeend',
     `
-        <div class="modal-wrapper">
+        <div id="download-list" class="modal-wrapper">
             <div class="modal-overlay"></div>
             <div class="modal-window">
                 <div class="modal-content">
@@ -175,8 +170,46 @@ function renderElement() {
 <!--                <span class="modal-close">×</a>-->
             </div>
         </div>
+        <div id="config-modal" class="modal-wrapper">
+            <div class="modal-overlay"></div>
+            <div class="modal-window">
+                <div class="modal-content">
+                  <form action="#">
+                    <header>
+                      <h2>下载设置</h2>
+                      <div>如果下载经常出错，建议将下载数设置为1</div>
+                    </header>
+                    <div>
+                      <fieldset>
+                        <legend class="desc">
+                          自动下载
+                        </legend>
+                        <div>
+                        <div>
+                          <input type="checkbox" name="checkbox" value="Checkbox 1" id="auto-start" tabindex="1">
+                          <label for="auto-start"></label>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div>
+                      <label class="desc" id="title106" for="Field106">
+                        最大同时下载数
+                      </label>
+                      <div>
+                      <select class="field select medium" tabindex="2">
+                        <option value="First Choice">1</option>
+                        <option value="First Choice">2</option>
+                      </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+<!--                <span class="modal-close">×</a>-->
+            </div>
+        </div>
         <div id="container-floating">
-          <div class="nd1 nds" data-toggle="tooltip" data-placement="left" onclick="alert('此功能正在开发中...')">
+          <div id="config-button" class="nd1 nds" data-toggle="tooltip" data-placement="left">
               <img class="reminder" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
           </div>
           <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create">
@@ -187,8 +220,13 @@ function renderElement() {
     `
   )
 
-  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', closeModal))
-  document.querySelector('#floating-button')!.addEventListener('click', openModal)
+  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) =>
+    e.addEventListener('click', () => {
+      document.querySelectorAll('.modal-wrapper').forEach((element) => {
+        element.className = 'modal-wrapper'
+      })
+    })
+  )
 }
 function startInstance() {
   const { selectedList, allDownloads, autoStart } = InstanceForSystem

@@ -8,7 +8,6 @@
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
 // @compatible        edge/83.0.478.54 passed
-// @compatible        firefox untested
 // @compatible        opera untested
 // @compatible        safari untested
 // @include https://pan.baidu.com/disk/*
@@ -387,18 +386,15 @@ window.onbeforeunload = (e) => {
         });
     });
     document.getElementById('floating-button').addEventListener('click', () => {
-        openModal();
+        const modalWrapper = document.getElementById('download-list');
+        modalWrapper.className = modalWrapper.className + ' open';
         startInstance();
     });
+    document.getElementById('config-button').addEventListener('click', () => {
+        const modalWrapper = document.getElementById('config-modal');
+        modalWrapper.className = modalWrapper.className + ' open';
+    });
 })();
-function openModal() {
-    const modalWrapper = document.querySelector('.modal-wrapper');
-    modalWrapper.className = modalWrapper.className + ' open';
-}
-function closeModal() {
-    const modalWrapper = document.querySelector('.modal-wrapper');
-    modalWrapper.className = 'modal-wrapper';
-}
 function appendRow(arr) {
     document.getElementById('popup-tbody').insertAdjacentHTML('beforeend', `
         <tr id="row-${arr.fs_id}">
@@ -491,7 +487,7 @@ function renderOperationElement(arr) {
 exports.renderOperationElement = renderOperationElement;
 function renderElement() {
     document.body.insertAdjacentHTML('beforeend', `
-        <div class="modal-wrapper">
+        <div id="download-list" class="modal-wrapper">
             <div class="modal-overlay"></div>
             <div class="modal-window">
                 <div class="modal-content">
@@ -511,8 +507,46 @@ function renderElement() {
 <!--                <span class="modal-close">×</a>-->
             </div>
         </div>
+        <div id="config-modal" class="modal-wrapper">
+            <div class="modal-overlay"></div>
+            <div class="modal-window">
+                <div class="modal-content">
+                  <form action="#">
+                    <header>
+                      <h2>下载设置</h2>
+                      <div>如果下载经常出错，建议将下载数设置为1</div>
+                    </header>
+                    <div>
+                      <fieldset>
+                        <legend class="desc">
+                          自动下载
+                        </legend>
+                        <div>
+                        <div>
+                          <input type="checkbox" name="checkbox" value="Checkbox 1" id="auto-start" tabindex="1">
+                          <label for="auto-start"></label>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div>
+                      <label class="desc" id="title106" for="Field106">
+                        最大同时下载数
+                      </label>
+                      <div>
+                      <select class="field select medium" tabindex="2">
+                        <option value="First Choice">1</option>
+                        <option value="First Choice">2</option>
+                      </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+<!--                <span class="modal-close">×</a>-->
+            </div>
+        </div>
         <div id="container-floating">
-          <div class="nd1 nds" data-toggle="tooltip" data-placement="left" onclick="alert('此功能正在开发中...')">
+          <div id="config-button" class="nd1 nds" data-toggle="tooltip" data-placement="left">
               <img class="reminder" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
           </div>
           <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create">
@@ -521,8 +555,11 @@ function renderElement() {
           </div>
         </div>
     `);
-    document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', closeModal));
-    document.querySelector('#floating-button').addEventListener('click', openModal);
+    document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) => e.addEventListener('click', () => {
+        document.querySelectorAll('.modal-wrapper').forEach((element) => {
+            element.className = 'modal-wrapper';
+        });
+    }));
 }
 function startInstance() {
     const { selectedList, allDownloads, autoStart } = InstaceForSystem_1.InstanceForSystem;
@@ -758,9 +795,27 @@ exports.addNextDownloadRequest = addNextDownloadRequest;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initStyle = void 0;
+const style_1 = __importDefault(__webpack_require__(7));
+const form_1 = __importDefault(__webpack_require__(8));
 exports.initStyle = () => {
+    style_1.default();
+    form_1.default();
+};
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = () => {
     document.body.insertAdjacentHTML('beforeend', `
     <style>
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
@@ -1394,61 +1449,6 @@ pre.code {
   line-height: normal;
 }
 
-#copy-code {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  box-sizing: border-box;
-  margin: 0;
-  font: inherit;
-  font-family: inherit;
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  user-select: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #337ab7;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
-  background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
-  background-repeat: repeat-x;
-  border-color: #245580;
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-#copy-code:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-#copy-code:active {
-  background-color: #265a88;
-  border-color: #245580;
-}
-#copy-code:hover {
-  background-color: #265a88;
-  background-position: 0 -15px;
-}
-#copy-code.disable {
-  background-repeat: repeat-x;
-  -webkit-appearance: button;
-  pointer-events: none;
-  cursor: not-allowed;
-  box-shadow: none;
-  opacity: .65;
-  border-color: #2e6da4;
-  background-color: #265a88;
-  background-image: none;
-}
-
-
 #floating-button{
   width: 55px;
   height: 55px;
@@ -1592,6 +1592,138 @@ td > svg:hover {
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
   background-color: rgba(255,255,255,0.56);
 }
+    </style>
+  `);
+};
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = () => {
+    document.body.insertAdjacentHTML('beforeend', `
+    <style>
+.modal-content > form {
+  text-align: left;
+  margin: 10px;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+form * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+form header {
+  margin: 0 0 20px 0;
+}
+form header div {
+  font-size: 90%;
+  color: #999;
+}
+form header h2 {
+  margin: 0 0 5px 0;
+}
+form > div {
+  clear: both;
+  overflow: hidden;
+  padding: 1px;
+  margin: 0 0 10px 0;
+}
+form > div > fieldset > div > div {
+  margin: 0 0 5px 0;
+}
+form > div > label,
+legend {
+	width: 25%;
+  float: left;
+  padding-right: 10px;
+}
+form > div > div,
+form > div > fieldset > div {
+  width: 75%;
+  float: right;
+}
+form > div > fieldset label {
+	font-size: 90%;
+}
+fieldset {
+	border: 0;
+  padding: 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password],
+textarea {
+	width: 100%;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password] {
+  width: 50%;
+}
+input[type=checkbox] {
+  transform: scale(1.2);
+}
+select {
+    min-width: 50px;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=password]:focus,
+textarea:focus {
+  outline: 0;
+  border-color: #4697e4;
+}
+
+@media (max-width: 600px) {
+  form > div {
+    margin: 0 0 15px 0;
+  }
+  form > div > label,
+  legend {
+	  width: 100%;
+    float: none;
+    margin: 0 0 5px 0;
+  }
+  form > div > div,
+  form > div > fieldset > div {
+    width: 100%;
+    float: none;
+  }
+  input[type=text],
+  input[type=email],
+  input[type=url],
+  input[type=password],
+  textarea,
+  select {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  form > div > label,
+	legend {
+  	text-align: right;
+  }
+}
+
+
     </style>
   `);
 };

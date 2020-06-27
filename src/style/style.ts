@@ -1,4 +1,4 @@
-export const initStyle = () => {
+export default () => {
   document.body.insertAdjacentHTML(
     'beforeend',
     `
@@ -633,61 +633,6 @@ pre.code {
   vertical-align: baseline;
   line-height: normal;
 }
-
-#copy-code {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  box-sizing: border-box;
-  margin: 0;
-  font: inherit;
-  font-family: inherit;
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  user-select: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #337ab7;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
-  background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
-  background-repeat: repeat-x;
-  border-color: #245580;
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-#copy-code:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-#copy-code:active {
-  background-color: #265a88;
-  border-color: #245580;
-}
-#copy-code:hover {
-  background-color: #265a88;
-  background-position: 0 -15px;
-}
-#copy-code.disable {
-  background-repeat: repeat-x;
-  -webkit-appearance: button;
-  pointer-events: none;
-  cursor: not-allowed;
-  box-shadow: none;
-  opacity: .65;
-  border-color: #2e6da4;
-  background-color: #265a88;
-  background-image: none;
-}
-
 
 #floating-button{
   width: 55px;
