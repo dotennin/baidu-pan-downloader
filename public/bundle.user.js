@@ -11,6 +11,7 @@
 // @compatible        opera untested
 // @compatible        safari untested
 // @include https://pan.baidu.com/disk/*
+// @include https://yun.baidu.com/disk/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
 // @grant GM_xmlhttpRequest
