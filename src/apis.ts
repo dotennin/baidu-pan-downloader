@@ -3,7 +3,7 @@ import { IItem, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { InstanceForSystem } from './InstaceForSystem'
 import { formatByte } from './utils'
-import { renderOperationElement } from '.'
+import { renderOperationElement } from './application'
 
 export function getDownloadUrl(arr: IItem): Promise<IItem> {
   return new Promise((resolve, reject) => {

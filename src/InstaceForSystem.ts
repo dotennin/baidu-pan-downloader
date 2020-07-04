@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-object-literal-type-assertion,no-undef */
 import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 

@@ -134,7 +134,7 @@ export function renderOperationElement(arr: IItem) {
       const targetItem = InstanceForSystem.allDownloads[arr.fs_id]
       if (targetItem) {
         if (arr.status === StatusTypes.downloading) {
-          if (!confirm('停止后将需要重新下载， 确认吗？')) {
+          if (!window.confirm('停止后将需要重新下载， 确认吗？')) {
             return false
           }
         }

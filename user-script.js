@@ -1,6 +1,5 @@
 const packageJson = require('./package.json')
-module.exports = `
-// ==UserScript==
+module.exports = `// ==UserScript==
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
 // @description ${packageJson.description}
