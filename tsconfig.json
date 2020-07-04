@@ -1,15 +1,28 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2020", "DOM"],
-   "module": "commonjs",
-   "sourceMap": true,
-   "outDir": "./dist",
-   "strict": true,
-   "esModuleInterop": true,
-   "typeRoots": ["./node_modules/@types"]
- },
- "include": [
-   "src/**/*"
- ]
+    "target": "es5",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "DOM"
+    ],
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": false,
+    "jsx": "react",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
