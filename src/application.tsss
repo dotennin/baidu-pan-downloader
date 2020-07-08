@@ -1,28 +1,16 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,@typescript-eslint/camelcase */
-import { InstanceForSystem } from './InstaceForSystem'
+import InstanceForSystem from './InstaceForSystem'
 import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
-import { addNextDownloadRequest, downloadItem, getDownloadUrl } from './apis'
+import { addNextDownloadRequest, downloadItem, getDownloadUrl } from './services/api'
 import { formatByte } from './utils'
 import { initStyle } from './style'
-
-window.onunload = () => {
-  GM.setValue(ValueTypes.items, InstanceForSystem.allDownloads)
-
-  InstanceForSystem.stopAll()
-}
-window.onbeforeunload = (e: BeforeUnloadEvent) => {
-  if (Object.keys(InstanceForSystem.downloadingItems).length > 0) {
-    e.preventDefault()
-    e.returnValue = '有未完成的下载任务， 确认关闭吗?'
-  }
-}
 ;(function() {
   initStyle()
   renderElement()
   const { autoStart, downloadable } = InstanceForSystem
   Object.values(InstanceForSystem.initState().allDownloads).forEach((arr) => {
-    appendRow(arr)
+    // appendRow(arr)
     if (arr.status === StatusTypes.downloading && autoStart && downloadable) {
       downloadItem(arr)
     }
@@ -35,32 +23,6 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
     })
   })
 
-  document.getElementById('floating-button')!.addEventListener('click', () => {
-    const modalWrapper = document.getElementById('download-list') as HTMLDivElement
-    modalWrapper.className = modalWrapper.className + ' open'
-    startInstance()
-  })
-  document.getElementById('config-button')!.addEventListener('click', () => {
-    const modalWrapper = document.getElementById('config-modal') as HTMLDivElement
-    modalWrapper.className = modalWrapper.className + ' open'
-  })
-
-  document.getElementById('max-download-count')!.addEventListener('change', (e) => {
-    const target = e.target as HTMLSelectElement
-    GM.setValue(ValueTypes.maxDownloadCount, parseInt(target!.value))
-  })
-  document.getElementById('auto-start')!.addEventListener('change', (e) => {
-    const target = e.target as HTMLInputElement
-    GM.setValue(ValueTypes.autoStart, target.checked)
-  })
-
-  document.querySelectorAll('.modal-overlay,.modal-close').forEach((e) =>
-    e.addEventListener('click', () => {
-      document.querySelectorAll('.modal-wrapper').forEach((element) => {
-        element.className = 'modal-wrapper'
-      })
-    })
-  )
 })()
 
 function appendRow(arr: IItem) {

@@ -5,12 +5,17 @@ export enum StatusTypes {
   completed = 'COMPLETED',
   inQueued = 'IN_QUEUED',
   error = 'ERROR',
+  unknow = 'UNKONW',
 }
 
 export enum ValueTypes {
   items = 'ITEM_LIST',
   autoStart = 'AUTO_START',
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
+}
+
+export enum HeaderTypes {
+  userAgent = 'netdisk;P2SP;2.2.60.26',
 }
 
 export interface IItem {
@@ -31,7 +36,12 @@ export interface IItem {
   size: number
   unlist: number
   url: string
-  request?: ReturnType<typeof GM.download>
-  progress_loader_id?: number
+}
+
+export interface IProgress {
+  intervalId?: number
   status: StatusTypes
+  percentCount: number
+  speedOverlay: string
+  request?: ReturnType<typeof GM.download>
 }

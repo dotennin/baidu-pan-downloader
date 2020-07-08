@@ -35,15 +35,18 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-object-literal-type-assertion': 0,
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
-    'indent': [2, 2],
+    'indent': [2, 2, {'SwitchCase': 1}],
     '@typescript-eslint/indent': [2, 2],
     'eqeqeq': 2,
     'no-var': 2,
     'prefer-const': 2,
     'react/no-find-dom-node': 'off',
-    'no-debugger': 'error'
+    'no-debugger': 'error',
+    'no-case-declarations': 'off'
   },
   overrides: [
     {
