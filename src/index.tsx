@@ -5,13 +5,17 @@ import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 import { addLocationChangeCallback, log } from './utils'
 import App from './App'
 import { GlobalStyle } from './GlobalStyle'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(
-    <Suspense fallback={<div>on suspensing....</div>}>
-      <GlobalStyle />
-      <RootComponent />
-    </Suspense>,
+    <Provider store={store}>
+      <Suspense fallback={<div>on suspensing....</div>}>
+        <GlobalStyle />
+        <RootComponent />
+      </Suspense>
+    </Provider>,
     document.getElementById(name)
   )
 }
