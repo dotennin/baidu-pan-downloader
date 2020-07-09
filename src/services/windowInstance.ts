@@ -1,7 +1,7 @@
 import { GM } from '../gmInterface/gmInterface'
-import { ValueTypes } from '../types'
+import { StatusTypes, ValueTypes } from '../types'
 import { store } from '../store'
-import { InstanceForSystem } from '../InstaceForSystem'
+import { InstanceForSystem } from './InstaceForSystem'
 
 window.onunload = () => {
   GM.setValue(ValueTypes.items, store.getState().download.allDownloads)
@@ -9,7 +9,8 @@ window.onunload = () => {
   InstanceForSystem.stopAll()
 }
 window.onbeforeunload = (e: BeforeUnloadEvent) => {
-  if (Object.keys(store.getState().download.downloadingItems).length > 0) {
+  const { allDownloads } = store.getState().download
+  if (Object.values(allDownloads).some((item) => item.progress.status === StatusTypes.downloading)) {
     e.preventDefault()
     e.returnValue = '有未完成的下载任务， 确认关闭吗?'
   }

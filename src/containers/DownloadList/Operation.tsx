@@ -1,30 +1,37 @@
 import React from 'react'
-import { StatusTypes } from '../types'
-import { addNextDownloadRequest } from '../services/api'
-import { ItemProxy } from '../Item'
-import { InstanceForSystem } from '../InstaceForSystem'
+import { StatusTypes } from '../../types'
+import { addNextDownloadRequest } from '../../services/api'
+import { ItemProxy } from '../../services/Item'
+import { InstanceForSystem } from '../../services/InstaceForSystem'
+import { IStoreState } from '../../store'
+import { connect } from 'react-redux'
 
 interface IProps {
-  item: ItemProxy
+  fsId: ItemProxy['fsId']
 }
-function Operation({ item }: IProps) {
+const mapStoreToProps = (store: IStoreState, props: IProps) => ({
+  status: store.download.allDownloads[props.fsId].progress.status,
+  request: store.download.allDownloads[props.fsId].progress.request,
+})
+function Operation({ fsId, status, request }: ReturnType<typeof mapStoreToProps> & IProps) {
   const { allDownloads, downloadingItems, completedItems, stoppedItems } = InstanceForSystem
+  console.log(status, request)
   const download = async () => {
     // downloadItem(item)
   }
   const stopItem = () => {
-    const targetItem = InstanceForSystem.allDownloads[item.fsId]
+    const targetItem = InstanceForSystem.allDownloads[fsId]
     if (targetItem) {
-      if (item.progress.status === StatusTypes.downloading) {
+      if (status === StatusTypes.downloading) {
         if (!window.confirm('停止后将需要重新下载， 确认吗？')) {
           return false
         }
       }
-      item.progress.status = StatusTypes.stopped
+      status = StatusTypes.stopped
       targetItem.progress.request && targetItem.progress.request.abort && targetItem.progress.request.abort()
       clearInterval(targetItem.progress.intervalId!)
-      stoppedItems[item.fsId] = item
-      delete downloadingItems[item.fsId]
+      // stoppedItems[fsId] = item
+      // delete downloadingItems[item.fsId]
 
       // renderOperationElement(item)
       addNextDownloadRequest()
@@ -32,11 +39,11 @@ function Operation({ item }: IProps) {
     }
   }
   const deleteItem = () => {
-    item.progress.request && item.progress.request.abort && item.progress.request.abort()
-    delete allDownloads[item.fsId]
-    delete downloadingItems[item.fsId]
-    delete completedItems[item.fsId]
-    delete stoppedItems[item.fsId]
+    request && request.abort && request.abort()
+    delete allDownloads[fsId]
+    delete downloadingItems[fsId]
+    delete completedItems[fsId]
+    delete stoppedItems[fsId]
 
     // document
     //   .getElementById('popup-tbody')!
@@ -46,10 +53,8 @@ function Operation({ item }: IProps) {
   return (
     <>
       <svg
-        id={`start-item-${item.fsId}`}
-        className={`${
-          [StatusTypes.downloading, StatusTypes.inQueued].includes(item.progress.status) ? 'disabled' : ''
-        }`}
+        id={`start-item-${fsId}`}
+        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? 'disabled' : ''}`}
         xmlns="http://www.w3.org/2000/svg"
         height="24"
         viewBox="0 0 24 24"
@@ -60,10 +65,8 @@ function Operation({ item }: IProps) {
         <path d="M8 5v14l11-7z" />
       </svg>
       <svg
-        id={`stop-item-${item.fsId}`}
-        className={`${
-          [StatusTypes.downloading, StatusTypes.inQueued].includes(item.progress.status) ? '' : 'disabled'
-        }`}
+        id={`stop-item-${fsId}`}
+        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? '' : 'disabled'}`}
         xmlns="http://www.w3.org/2000/svg"
         height="24"
         viewBox="0 0 24 24"
@@ -74,7 +77,7 @@ function Operation({ item }: IProps) {
         <path d="M6 6h12v12H6z" />
       </svg>
       <svg
-        id={`delete-item-${item.fsId}`}
+        id={`delete-item-${fsId}`}
         className="delete-item"
         style={{ position: 'absolute', right: 5 }}
         xmlns="http://www.w3.org/2000/svg"
@@ -90,4 +93,4 @@ function Operation({ item }: IProps) {
   )
 }
 
-export default Operation
+export default connect(mapStoreToProps)(Operation)

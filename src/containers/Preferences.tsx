@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { interfaceActionCreator } from '../store/Interface'
 import { Dispatch } from 'redux'
 import { Form, FormField } from '../components/Form'
-import { InstanceForSystem } from '../InstaceForSystem'
+import { InstanceForSystem } from '../services/InstaceForSystem'
 import { IStoreState } from '../store'
 
 // const CustomModal = styled(Modal)`

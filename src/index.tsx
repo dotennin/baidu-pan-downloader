@@ -6,7 +6,7 @@ import { addLocationChangeCallback, log } from './utils'
 import { GlobalStyle } from './GlobalStyle'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import { InstanceForSystem } from './InstaceForSystem'
+import { InstanceForSystem } from './services/InstaceForSystem'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(

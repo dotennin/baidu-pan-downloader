@@ -1,7 +1,7 @@
-import { IItem, StatusTypes, ValueTypes } from './types'
-import { GM } from './gmInterface/gmInterface'
+import { IItem, StatusTypes, ValueTypes } from '../types'
+import { GM } from '../gmInterface/gmInterface'
 import { ItemProxy } from './Item'
-import { store } from './store'
+import { store } from '../store'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -69,10 +69,12 @@ const InstanceForSystem = {
   },
 
   stopAll: function() {
-    const { downloadingItems } = store.getState().download
-    Object.values(downloadingItems).forEach((item) => {
-      item.progress.request && item.progress.request.abort && item.progress.request.abort()
-    })
+    const { allDownloads } = store.getState().download
+    Object.values(allDownloads)
+      .filter((item) => item.progress.status === StatusTypes.downloading)
+      .forEach((item) => {
+        item.progress.request && item.progress.request.abort && item.progress.request.abort()
+      })
   },
 }
 

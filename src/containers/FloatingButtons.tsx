@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { interfaceActionCreator } from '../store/Interface'
-import { InstanceForSystem } from '../InstaceForSystem'
+import { InstanceForSystem } from '../services/InstaceForSystem'
 import { StatusTypes } from '../types'
 import { downloadActionCreator } from '../store/download'
 import { IStoreState } from '../store'
@@ -50,7 +50,6 @@ const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapS
         onClick={() => {
           const { selectedList } = InstanceForSystem
 
-          console.log(selectedList)
           selectedList.forEach((item) => {
             if (typeof allDownloads[item.fsId] === 'undefined') {
               item.progress.status = StatusTypes.inQueued
