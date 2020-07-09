@@ -1,6 +1,7 @@
 import { IItem, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './Item'
+import { store } from './store'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -13,25 +14,26 @@ const InstanceForSystem = {
   allDownloads: {} as ItemObject,
 
   initState: function() {
-    const objectFromValue: ItemObject = GM.getValue(ValueTypes.items, {})
-    GM.deleteValue(ValueTypes.items)
+    return new Promise((resolve) => {
+      const objectFromValue: ItemObject = GM.getValue(ValueTypes.items, {})
+      GM.deleteValue(ValueTypes.items)
 
-    this.allDownloads = objectFromValue
+      this.allDownloads = objectFromValue
 
-    Object.values(objectFromValue).forEach((item) => {
-      if (!this.autoStart && item.progress.status === StatusTypes.downloading) {
-        // stop downloading item if user set autoStart as false
-        item.progress.status = StatusTypes.stopped
-      }
-      if (item.progress.status === StatusTypes.completed) {
-        this.completedItems[item.fsId] = item
-      }
-      if (item.progress.status === StatusTypes.stopped) {
-        this.stoppedItems[item.fsId] = item
-      }
+      Object.values(objectFromValue).forEach((item) => {
+        if (!this.autoStart && item.progress.status === StatusTypes.downloading) {
+          // stop downloading item if user set autoStart as false
+          item.progress.status = StatusTypes.stopped
+        }
+        if (item.progress.status === StatusTypes.completed) {
+          this.completedItems[item.fsId] = item
+        }
+        if (item.progress.status === StatusTypes.stopped) {
+          this.stoppedItems[item.fsId] = item
+        }
+      })
+      resolve(this)
     })
-
-    return this
   },
 
   get selectedList() {
@@ -67,11 +69,11 @@ const InstanceForSystem = {
   },
 
   stopAll: function() {
-    Object.values(this.downloadingItems).forEach((item) => {
+    const { downloadingItems } = store.getState().download
+    Object.values(downloadingItems).forEach((item) => {
       item.progress.request && item.progress.request.abort && item.progress.request.abort()
     })
   },
 }
-InstanceForSystem.initState()
 
 export { InstanceForSystem }

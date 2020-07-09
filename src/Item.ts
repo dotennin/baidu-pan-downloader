@@ -23,6 +23,7 @@ export class ProgressProxy {
 
   set status(v: StatusTypes) {
     this._status = v
+    console.log(v)
     // store.dispatch(downloadActionCreator.updateItem(this.item))
   }
   get status() {

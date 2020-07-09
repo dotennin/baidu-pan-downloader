@@ -8,18 +8,22 @@ import { IStoreState } from '../store'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
+  downloadable: store.interface.downloadable,
   allDownloads: store.download.allDownloads,
 })
 const mapActionToProps = {
   changeConfig: interfaceActionCreator.change,
   updateDownloadItem: downloadActionCreator.change.request,
+  download: downloadActionCreator.downloadURL.request,
 }
 
 const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapStoreToProps>> = ({
   changeConfig,
-  // autoStart,
+  autoStart,
+  downloadable,
   allDownloads,
   updateDownloadItem,
+  download,
 }) => {
   return (
     <div id="container-floating">
@@ -47,24 +51,18 @@ const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapS
           const { selectedList } = InstanceForSystem
 
           console.log(selectedList)
-          // const requestList: Promise<IItem>[] = []
           selectedList.forEach((item) => {
             if (typeof allDownloads[item.fsId] === 'undefined') {
               item.progress.status = StatusTypes.inQueued
               allDownloads[item.fsId] = item
 
-              // requestList.push(getDownloadUrl(arr))
+              if (downloadable && autoStart) {
+                download(item)
+              }
             }
           })
           updateDownloadItem({ allDownloads })
 
-          // Promise.all(requestList).then((arrs) => {
-          //   arrs.forEach((arr) => {
-          //     if (autoStart) {
-          //       downloadItem(arr)
-          //     }
-          //   })
-          // })
           changeConfig({ downloadModalOpen: true })
         }}
       >
