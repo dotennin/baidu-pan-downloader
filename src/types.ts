@@ -42,6 +42,6 @@ export interface IProgress {
   intervalId?: number
   status: StatusTypes
   percentCount: number
-  speedOverlay: string
+  speedOverlay: number
   request?: ReturnType<typeof GM.download>
 }

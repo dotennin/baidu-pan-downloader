@@ -6,7 +6,6 @@ import { storeSelector } from '../index'
 import { interfaceActionCreator } from '../Interface'
 import { HeaderTypes, StatusTypes } from '../../types'
 import { GM } from '../../gmInterface/gmInterface'
-import { formatByte } from '../../utils'
 
 function* requestDownloadURL(action: ActionType<typeof actionCreator.downloadURL.request>) {
   const item = action.payload
@@ -43,7 +42,7 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
     const { url, serverFilename } = item
     let currentEvent: ProgressEvent | undefined = undefined
     progress.percentCount = 0
-    progress.speedOverlay = '0'
+    progress.speedOverlay = 0
 
     progress.request = GM.download({
       url,
@@ -65,7 +64,7 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
       onload: () => {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 100
-        progress.speedOverlay = '0'
+        progress.speedOverlay = 0
         progress.status = StatusTypes.completed
 
         GM.notification({
@@ -79,7 +78,7 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
       onerror: (e) => {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 0
-        progress.speedOverlay = '0'
+        progress.speedOverlay = 0
         progress.status = StatusTypes.error
         // eslint-disable-next-line no-console
         console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e)
@@ -93,7 +92,7 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
       if (currentEvent) {
         const speed = currentEvent.loaded - loaded
         loaded = currentEvent.loaded
-        progress.speedOverlay = `${formatByte(speed)}/s`
+        progress.speedOverlay = speed
       }
     }, 1000)
   } catch (e) {
