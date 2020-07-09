@@ -1,30 +1,54 @@
-import { IItem, IProgress, StatusTypes } from './types'
-import { GM } from './gmInterface/gmInterface'
+import { IItem, IProgress, StatusTypes } from '../types'
+import { GM } from '../gmInterface/gmInterface'
+import { downloadActionCreator } from '../store/download'
+import { store } from '../store'
 
 export class ProgressProxy {
   public readonly intervalId: number | undefined
-  private _status!: StatusTypes
-  public readonly percentCount: number
   public readonly speedOverlay: string
   public readonly request: ReturnType<typeof GM.download> | undefined
-  // private item: ItemProxy
-  public static Parse(): ProgressProxy {
-    return ProgressProxy.Create()
+  private _status!: StatusTypes
+  private _percentCount!: number
+  private fsId: string | number
+
+  public static Parse(d: any): ProgressProxy {
+    return ProgressProxy.Create(d)
   }
-  public static Create(): ProgressProxy {
-    return new ProgressProxy()
+  public static Create(fsId: string | number): ProgressProxy {
+    return new ProgressProxy(fsId)
   }
-  private constructor() {
-    this.status = StatusTypes.unknow
+  private constructor(fsId: string | number) {
+    this.fsId = fsId
     this.percentCount = 0
     this.speedOverlay = ''
-    // this.item = i
+    this.status = StatusTypes.unknow
+  }
+  set percentCount(v: number) {
+    if (this._percentCount !== v) {
+      const { allDownloads } = store.getState().download
+      if (allDownloads[this.fsId]) {
+        this._percentCount = v
+        store.dispatch(downloadActionCreator.updateItem(allDownloads[this.fsId]))
+        return
+      }
+    }
+    this._percentCount = v
+  }
+
+  get percentCount() {
+    return this._percentCount
   }
 
   set status(v: StatusTypes) {
     this._status = v
-    console.log(v)
-    // store.dispatch(downloadActionCreator.updateItem(this.item))
+    const { allDownloads } = store.getState().download
+    console.log(v, allDownloads)
+    if (v !== StatusTypes.unknow && allDownloads[this.fsId]) {
+      store.dispatch(downloadActionCreator.updateItem(allDownloads[this.fsId]))
+    }
+
+    // completedItems[item.fsId] = item
+    // delete downloadingItems[item.fsId]
   }
   get status() {
     return this._status
@@ -74,6 +98,6 @@ export class ItemProxy {
     this.size = d.size
     this.unList = d.unlist
     this.url = d.url
-    this.progress = ProgressProxy.Create()
+    this.progress = ProgressProxy.Create(this.fsId)
   }
 }

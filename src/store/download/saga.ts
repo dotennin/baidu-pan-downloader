@@ -1,4 +1,4 @@
-import { call, put, takeEvery, select } from 'redux-saga/effects'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
 import { ActionType, getType } from 'typesafe-actions'
 import actionCreator from './actionCreator'
 import { getDownloadUrl } from '../../services/api'
@@ -24,16 +24,9 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
   const item = action.payload
   const { progress } = item
   const {
-    download: { stoppedItems, downloadingItems, completedItems },
     interface: { downloadable },
   } = storeSelector(yield select())
   try {
-    // Remove Item if target still in stop cluster
-    if (stoppedItems[item.fsId]) {
-      delete stoppedItems[item.fsId]
-      yield put(actionCreator.change.request({ stoppedItems }))
-    }
-
     if (!downloadable) {
       progress.status = StatusTypes.inQueued
       return
@@ -46,9 +39,6 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
     }
 
     progress.status = StatusTypes.downloading
-
-    downloadingItems[item.fsId] = item
-    yield put(actionCreator.change.request({ downloadingItems }))
 
     const { url, serverFilename } = item
     let currentEvent: ProgressEvent | undefined = undefined
@@ -72,30 +62,24 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
 
         progress.percentCount = Math.round((currentEvent.loaded * 100) / currentEvent.total)
       },
-      onload: function*() {
+      onload: () => {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 100
         progress.speedOverlay = '0'
-        completedItems[item.fsId] = item
-        delete downloadingItems[item.fsId]
-        yield put(actionCreator.change.request({ downloadingItems, completedItems }))
+        progress.status = StatusTypes.completed
 
         GM.notification({
           text: '下载完成',
           title: serverFilename,
           highlight: true,
         })
-        progress.status = StatusTypes.completed
 
         // addNextDownloadRequest()
       },
-      onerror: function*(e) {
+      onerror: (e) => {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 0
         progress.speedOverlay = '0'
-        stoppedItems[item.fsId] = item
-        delete downloadingItems[item.fsId]
-        yield put(actionCreator.change.request({ stoppedItems, downloadingItems }))
         progress.status = StatusTypes.error
         // eslint-disable-next-line no-console
         console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e)
@@ -113,6 +97,7 @@ function* requestDownloadItem(action: ActionType<typeof actionCreator.downloadIt
       }
     }, 1000)
   } catch (e) {
+    console.error(e)
     yield put(actionCreator.downloadItem.failure(e))
   }
 }
@@ -135,8 +120,10 @@ function* onChangeEventSuccess(action: ActionType<typeof actionCreator.change.su
   const keys = Object.keys(action.payload) as [keyof typeof download]
   for (const key of keys) {
     switch (key) {
-      case 'downloadingItems':
-        const downloadable = Object.keys(download.downloadingItems).length < maxDownloadCount
+      case 'allDownloads':
+        const downloadable =
+          Object.values(download.allDownloads).filter((item) => item.progress.status === StatusTypes.downloading)
+            .length < maxDownloadCount
         yield put(interfaceActionCreator.change({ downloadable }))
         break
     }

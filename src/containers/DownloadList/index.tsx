@@ -1,11 +1,10 @@
 import React from 'react'
-import { Item } from '../components/Item'
-import { StatusTypes } from '../types'
-import { Modal } from '../components/Modal'
+import { Item } from './Item'
+import { Modal } from '../../components/Modal'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { interfaceActionCreator } from '../store/Interface'
-import { IStoreState } from '../store'
+import { interfaceActionCreator } from '../../store/Interface'
+import { IStoreState } from '../../store'
 
 const mapStoreToProps = (store: IStoreState) => ({
   allDownloads: store.download.allDownloads,
@@ -23,8 +22,6 @@ const mapActionsToProps = (dispatch: Dispatch) => ({
 function DownloadList({
   allDownloads,
   downloadModalOpen,
-  downloadable,
-  autoStart,
   closeModal,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
   return (
@@ -41,9 +38,6 @@ function DownloadList({
         </thead>
         <tbody id="popup-tbody">
           {Object.values(allDownloads).map((item, key) => {
-            if (item.progress.status === StatusTypes.downloading && autoStart && downloadable) {
-              // downloadItem(arr)
-            }
             return <Item key={key} item={item} />
           })}
         </tbody>

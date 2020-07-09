@@ -1,6 +1,6 @@
 import { createStandardAction, createAsyncAction } from 'typesafe-actions'
 import { downloadState } from './index'
-import { ItemProxy } from '../../Item'
+import { ItemProxy } from '../../services/Item'
 
 const actionCreator = {
   change: createAsyncAction(
