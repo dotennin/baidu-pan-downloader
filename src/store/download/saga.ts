@@ -14,6 +14,7 @@ function* requestDownloadURL(action: ActionType<typeof actionCreator.downloadURL
     const res = yield call(getDownloadUrl, item.path)
     item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
     yield put(actionCreator.downloadURL.success(item))
+    yield put(actionCreator.downloadItem.request(item))
   } catch (e) {
     yield put(actionCreator.downloadURL.failure(e))
   }

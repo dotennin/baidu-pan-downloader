@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import { name } from '../package.json'
 import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 import { addLocationChangeCallback, log } from './utils'
-import App from './App'
 import { GlobalStyle } from './GlobalStyle'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { InstanceForSystem } from './InstaceForSystem'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(
@@ -25,7 +25,9 @@ function render(RootComponent: ComponentType) {
 // different routes.
 async function main() {
   document.body.insertAdjacentHTML('beforeend', `<div id="${name}"></div>`)
-  render(App)
+  InstanceForSystem.initState().then(() => {
+    render(require('./App').default)
+  })
 }
 
 addLocationChangeCallback(() => {
@@ -36,7 +38,6 @@ addLocationChangeCallback(() => {
 
 if (devNodeEnv && module.hot) {
   module.hot.accept('./App.tsx', () => {
-    // const newApp = require('./app').default
-    render(App)
+    render(require('./App').default)
   })
 }
