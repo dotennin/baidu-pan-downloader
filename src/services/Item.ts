@@ -40,15 +40,14 @@ export class ProgressProxy {
   }
 
   set status(v: StatusTypes) {
+    if (this._status === v) return
     this._status = v
+    if (v === StatusTypes.unknow) return
+
     const { allDownloads } = store.getState().download
-    console.log(v, allDownloads)
-    if (v !== StatusTypes.unknow && allDownloads[this.fsId]) {
+    if (allDownloads[this.fsId]) {
       store.dispatch(downloadActionCreator.updateItem(allDownloads[this.fsId]))
     }
-
-    // completedItems[item.fsId] = item
-    // delete downloadingItems[item.fsId]
   }
   get status() {
     return this._status

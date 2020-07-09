@@ -1,54 +1,58 @@
 import React from 'react'
 import { StatusTypes } from '../../types'
-import { addNextDownloadRequest } from '../../services/api'
 import { ItemProxy } from '../../services/Item'
-import { InstanceForSystem } from '../../services/InstaceForSystem'
-import { IStoreState } from '../../store'
+import { IStoreState, store } from '../../store'
 import { connect } from 'react-redux'
+import { downloadActionCreator } from '../../store/download'
 
 interface IProps {
   fsId: ItemProxy['fsId']
 }
 const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  status: store.download.allDownloads[props.fsId].progress.status,
-  request: store.download.allDownloads[props.fsId].progress.request,
+  status: store.download.allDownloads[props.fsId]?.progress.status,
+  request: store.download.allDownloads[props.fsId]?.progress.request,
 })
-function Operation({ fsId, status, request }: ReturnType<typeof mapStoreToProps> & IProps) {
-  const { allDownloads, downloadingItems, completedItems, stoppedItems } = InstanceForSystem
-  console.log(status, request)
-  const download = async () => {
-    // downloadItem(item)
-  }
+
+const mapActionsToProps = {
+  download: downloadActionCreator.downloadURL.request,
+  updateDownloadList: downloadActionCreator.change.request,
+}
+function Operation({
+  fsId,
+  status,
+  request,
+  download,
+  updateDownloadList,
+}: typeof mapActionsToProps & ReturnType<typeof mapStoreToProps> & IProps) {
   const stopItem = () => {
-    const targetItem = InstanceForSystem.allDownloads[fsId]
+    const {
+      download: { allDownloads },
+    } = store.getState()
+    const targetItem = allDownloads[fsId]
+
     if (targetItem) {
       if (status === StatusTypes.downloading) {
         if (!window.confirm('停止后将需要重新下载， 确认吗？')) {
           return false
         }
       }
-      status = StatusTypes.stopped
-      targetItem.progress.request && targetItem.progress.request.abort && targetItem.progress.request.abort()
+      targetItem.progress.status = StatusTypes.stopped
+      targetItem.progress.request?.abort && targetItem.progress.request.abort()
       clearInterval(targetItem.progress.intervalId!)
-      // stoppedItems[fsId] = item
-      // delete downloadingItems[item.fsId]
 
-      // renderOperationElement(item)
-      addNextDownloadRequest()
+      // addNextDownloadRequest()
       return false
     }
   }
   const deleteItem = () => {
-    request && request.abort && request.abort()
+    request?.abort && request.abort()
+    const {
+      download: { allDownloads },
+    } = store.getState()
     delete allDownloads[fsId]
-    delete downloadingItems[fsId]
-    delete completedItems[fsId]
-    delete stoppedItems[fsId]
+    updateDownloadList(allDownloads)
 
-    // document
-    //   .getElementById('popup-tbody')!
-    //   .removeChild(document.getElementById(`row-${item.fs_id}`) as HTMLTableRowElement)
-    addNextDownloadRequest()
+    // addNextDownloadRequest()
   }
   return (
     <>
@@ -59,7 +63,12 @@ function Operation({ fsId, status, request }: ReturnType<typeof mapStoreToProps>
         height="24"
         viewBox="0 0 24 24"
         width="24"
-        onClick={download}
+        onClick={() => {
+          const {
+            download: { allDownloads },
+          } = store.getState()
+          download(allDownloads[fsId])
+        }}
       >
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M8 5v14l11-7z" />
@@ -93,4 +102,4 @@ function Operation({ fsId, status, request }: ReturnType<typeof mapStoreToProps>
   )
 }
 
-export default connect(mapStoreToProps)(Operation)
+export default connect(mapStoreToProps, mapActionsToProps)(Operation)

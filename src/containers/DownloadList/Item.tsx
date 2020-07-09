@@ -4,27 +4,34 @@ import { ItemProxy } from '../../services/Item'
 import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
 import SpeedStatus from './SpeedStatus'
+import { IStoreState } from '../../store'
+import { connect } from 'react-redux'
 
 interface IProps {
-  item: ItemProxy
+  fsId: ItemProxy['fsId']
 }
-function Item({ item }: IProps) {
+
+const mapStoreToProps = (store: IStoreState, props: IProps) => ({
+  serverFilename: store.download.allDownloads[props.fsId]?.serverFilename,
+  size: store.download.allDownloads[props.fsId]?.size,
+})
+function Item({ fsId, serverFilename, size }: IProps & ReturnType<typeof mapStoreToProps>) {
   return (
-    <tr id={'row-' + item.fsId}>
-      <td data-label="filename">{item.serverFilename}</td>
+    <tr id={'row-' + fsId}>
+      <td data-label="filename">{serverFilename}</td>
       <td data-label="download">
         <div className="wrap">
-          <ProgressStatus fsId={item.fsId} />
+          <ProgressStatus fsId={fsId} />
         </div>
       </td>
-      <td data-label="url">{formatByte(item.size)}</td>
+      <td data-label="url">{formatByte(size)}</td>
       <td data-label="speed">
-        <SpeedStatus fsId={item.fsId} />
+        <SpeedStatus fsId={fsId} />
       </td>
       <td data-label="operation">
-        <Operation fsId={item.fsId} />
+        <Operation fsId={fsId} />
       </td>
     </tr>
   )
 }
-export { Item }
+export default connect(mapStoreToProps)(Item)
