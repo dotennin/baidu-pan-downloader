@@ -8,7 +8,7 @@ interface IProps {
   fsId: ItemProxy['fsId']
 }
 const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  speedOverlay: store.download.allDownloads[props.fsId].progress.speedOverlay,
+  speedOverlay: store.download.allDownloads[props.fsId]?.progress.speedOverlay,
 })
 function SpeedStatus({ speedOverlay }: ReturnType<typeof mapStoreToProps & IProps>) {
   return <>{formatByte(speedOverlay)} /s</>

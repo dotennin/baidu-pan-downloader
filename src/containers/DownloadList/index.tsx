@@ -1,16 +1,18 @@
 import React from 'react'
-import { Item } from './Item'
 import { Modal } from '../../components/Modal'
-import { connect } from 'react-redux'
+import { connect, shallowEqual } from 'react-redux'
 import { Dispatch } from 'redux'
 import { interfaceActionCreator } from '../../store/Interface'
 import { IStoreState } from '../../store'
+import Item from './Item'
+import { createSelector } from 'reselect'
 
 const mapStoreToProps = (store: IStoreState) => ({
-  allDownloads: store.download.allDownloads,
+  fsIdList: createSelector(
+    (store: IStoreState) => store.download.allDownloads,
+    (allDownloads) => Object.keys(allDownloads)
+  )(store),
   downloadModalOpen: store.interface.downloadModalOpen,
-  autoStart: store.interface.autoStart,
-  downloadable: store.interface.downloadable,
 })
 
 const mapActionsToProps = (dispatch: Dispatch) => ({
@@ -20,10 +22,11 @@ const mapActionsToProps = (dispatch: Dispatch) => ({
 })
 
 function DownloadList({
-  allDownloads,
+  fsIdList,
   downloadModalOpen,
   closeModal,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
+  console.log(fsIdList, downloadModalOpen)
   return (
     <Modal open={downloadModalOpen} close={closeModal}>
       <table>
@@ -37,13 +40,19 @@ function DownloadList({
           </tr>
         </thead>
         <tbody id="popup-tbody">
-          {Object.values(allDownloads).map((item, key) => {
-            return <Item key={key} item={item} />
+          {fsIdList.map((fsId, key) => {
+            return <Item key={key} fsId={fsId} />
           })}
         </tbody>
       </table>
     </Modal>
   )
 }
+const DL = React.memo(DownloadList, (prevProps, nextProps) => {
+  return (
+    shallowEqual(prevProps.fsIdList, nextProps.fsIdList) &&
+    shallowEqual(prevProps.downloadModalOpen, nextProps.downloadModalOpen)
+  )
+})
 
-export default connect(mapStoreToProps, mapActionsToProps)(DownloadList)
+export default connect(mapStoreToProps, mapActionsToProps)(DL)
