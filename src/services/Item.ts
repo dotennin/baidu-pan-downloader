@@ -5,7 +5,7 @@ import { store } from '../store'
 
 export class ProgressProxy {
   public readonly intervalId: number | undefined
-  public readonly speedOverlay: string
+  public readonly speedOverlay: number
   public readonly request: ReturnType<typeof GM.download> | undefined
   private _status!: StatusTypes
   private _percentCount!: number
@@ -20,7 +20,7 @@ export class ProgressProxy {
   private constructor(fsId: string | number) {
     this.fsId = fsId
     this.percentCount = 0
-    this.speedOverlay = ''
+    this.speedOverlay = 0
     this.status = StatusTypes.unknow
   }
   set percentCount(v: number) {

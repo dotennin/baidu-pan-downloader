@@ -3,6 +3,7 @@ import { formatByte } from '../../utils'
 import { ItemProxy } from '../../services/Item'
 import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
+import SpeedStatus from './SpeedStatus'
 
 interface IProps {
   item: ItemProxy
@@ -17,7 +18,9 @@ function Item({ item }: IProps) {
         </div>
       </td>
       <td data-label="url">{formatByte(item.size)}</td>
-      <td data-label="speed" />
+      <td data-label="speed">
+        <SpeedStatus fsId={item.fsId} />
+      </td>
       <td data-label="operation">
         <Operation fsId={item.fsId} />
       </td>
