@@ -18,7 +18,7 @@ Opera:   未测试
 Safari:  未测试
 ```
 
-##关于默认下载位置，以Chrome为例(这里感谢[cw2012](https://greasyfork.org/en/users/20287-cw2012) 的帮忙)：
+## 关于默认下载位置，以Chrome为例(这里感谢[cw2012](https://greasyfork.org/en/users/20287-cw2012) 的帮忙)：
 1. 打开设置页面：`chrome://settings/?search=下载`
 2. 修改图中的设置项即可
 
