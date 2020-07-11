@@ -1,12 +1,12 @@
-import { IItem, IProgress, StatusTypes } from '../types'
+import { IItem, StatusTypes } from '../types'
 import { GM } from '../gmInterface/gmInterface'
-import { downloadActionCreator } from '../store/download'
 import { store } from '../store'
+import downloadModule from '../modules/downloadModule'
 
 export class ProgressProxy {
-  public readonly intervalId: number | undefined
-  public readonly speedOverlay: number
-  public readonly request: ReturnType<typeof GM.download> | undefined
+  public intervalId: number | undefined
+  public request: ReturnType<typeof GM.download> | undefined
+  public _speedOverlay!: number
   private _status!: StatusTypes
   private _percentCount!: number
   private fsId: string | number
@@ -23,16 +23,33 @@ export class ProgressProxy {
     this.speedOverlay = 0
     this.status = StatusTypes.unknow
   }
-  set percentCount(v: number) {
-    if (this._percentCount !== v) {
-      const { allDownloads } = store.getState().download
-      if (allDownloads[this.fsId]) {
-        this._percentCount = v
-        store.dispatch(downloadActionCreator.updateItem(allDownloads[this.fsId]))
-        return
-      }
-    }
+  set speedOverlay(v: number) {
+    if (this._speedOverlay === v) return
+    this._speedOverlay = v
     this._percentCount = v
+    store.dispatch(
+      downloadModule.actions.updateProgress({
+        fsId: this.fsId,
+        progress: {
+          speedOverlay: this.speedOverlay,
+        },
+      })
+    )
+  }
+  get speedOverlay() {
+    return this._speedOverlay
+  }
+  set percentCount(v: number) {
+    if (this._percentCount === v) return
+    this._percentCount = v
+    store.dispatch(
+      downloadModule.actions.updateProgress({
+        fsId: this.fsId,
+        progress: {
+          percentCount: this.percentCount,
+        },
+      })
+    )
   }
 
   get percentCount() {
@@ -43,11 +60,14 @@ export class ProgressProxy {
     if (this._status === v) return
     this._status = v
     if (v === StatusTypes.unknow) return
-
-    const { allDownloads } = store.getState().download
-    if (allDownloads[this.fsId]) {
-      store.dispatch(downloadActionCreator.updateItem(allDownloads[this.fsId]))
-    }
+    store.dispatch(
+      downloadModule.actions.updateProgress({
+        fsId: this.fsId,
+        progress: {
+          status: this.status,
+        },
+      })
+    )
   }
   get status() {
     return this._status
@@ -55,24 +75,24 @@ export class ProgressProxy {
 }
 
 export class ItemProxy {
-  public readonly category: number
-  public readonly fsId: string | number
-  public readonly isDir: number
-  public readonly localCtime: number
-  public readonly localMtime: number
-  public readonly md5: string
-  public readonly operId: number
-  public readonly path: string
-  public readonly privacy: number
-  public readonly serverAtime: number
-  public readonly serverCtime: number
-  public readonly serverFilename: string
-  public readonly serverMtime: number
-  public readonly share: number
-  public readonly size: number
-  public readonly unList: number
+  public category: number
+  public fsId: string | number
+  public isDir: number
+  public localCtime: number
+  public localMtime: number
+  public md5: string
+  public operId: number
+  public path: string
+  public privacy: number
+  public serverAtime: number
+  public serverCtime: number
+  public serverFilename: string
+  public serverMtime: number
+  public share: number
+  public size: number
+  public unList: number
   public url: string
-  public readonly progress: IProgress
+  public progress: ProgressProxy
   public static Parse(d: string): ItemProxy {
     return ItemProxy.Create(JSON.parse(d))
   }

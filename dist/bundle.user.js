@@ -108,7 +108,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -119,823 +119,11 @@
 
 
 if (true) {
-  module.exports = __webpack_require__(45);
+  module.exports = __webpack_require__(44);
 } else {}
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export $ */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return logError; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CALL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return wrapSagaDispatch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return identity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return FORK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return GET_CONTEXT; });
-/* unused harmony export H */
-/* unused harmony export I */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return JOIN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return take; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return fork; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return cancel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return call; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return actionChannel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return PUT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return sliding; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return RACE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return SELECT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return TAKE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return delay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return race; });
-/* unused harmony export W */
-/* unused harmony export X */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return put; });
-/* unused harmony export Z */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return all; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return CPS; });
-/* unused harmony export a0 */
-/* unused harmony export a1 */
-/* unused harmony export a2 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return select; });
-/* unused harmony export a4 */
-/* unused harmony export a5 */
-/* unused harmony export a6 */
-/* unused harmony export a7 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return check; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return ACTION_CHANNEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return expanding; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return CANCELLED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return FLUSH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return SET_CONTEXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return internalErr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return getMetaInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return kTrue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return createAllStyleChildCallbacks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return createEmptyArray; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return none; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return once; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return assignWithSymbols; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return makeIterator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return remove; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return shouldComplete; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return noop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return flatMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return getLocation; });
-/* unused harmony export w */
-/* unused harmony export x */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return shouldCancel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return shouldTerminate; });
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
-/* harmony import */ var _redux_saga_delay_p__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(25);
-
-
-
-
-
-var konst = function konst(v) {
-  return function () {
-    return v;
-  };
-};
-
-var kTrue = /*#__PURE__*/konst(true);
-
-var noop = function noop() {};
-
-if (false) {}
-
-var identity = function identity(v) {
-  return v;
-};
-
-var hasSymbol = typeof Symbol === 'function';
-var asyncIteratorSymbol = hasSymbol && Symbol.asyncIterator ? Symbol.asyncIterator : '@@asyncIterator';
-
-function check(value, predicate, error) {
-  if (!predicate(value)) {
-    throw new Error(error);
-  }
-}
-
-var assignWithSymbols = function assignWithSymbols(target, source) {
-  Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(target, source);
-
-  if (Object.getOwnPropertySymbols) {
-    Object.getOwnPropertySymbols(source).forEach(function (s) {
-      target[s] = source[s];
-    });
-  }
-};
-
-var flatMap = function flatMap(mapper, arr) {
-  var _ref;
-
-  return (_ref = []).concat.apply(_ref, arr.map(mapper));
-};
-
-function remove(array, item) {
-  var index = array.indexOf(item);
-
-  if (index >= 0) {
-    array.splice(index, 1);
-  }
-}
-
-function once(fn) {
-  var called = false;
-  return function () {
-    if (called) {
-      return;
-    }
-
-    called = true;
-    fn();
-  };
-}
-
-var kThrow = function kThrow(err) {
-  throw err;
-};
-
-var kReturn = function kReturn(value) {
-  return {
-    value: value,
-    done: true
-  };
-};
-
-function makeIterator(next, thro, name) {
-  if (thro === void 0) {
-    thro = kThrow;
-  }
-
-  if (name === void 0) {
-    name = 'iterator';
-  }
-
-  var iterator = {
-    meta: {
-      name: name
-    },
-    next: next,
-    throw: thro,
-    return: kReturn,
-    isSagaIterator: true
-  };
-
-  if (typeof Symbol !== 'undefined') {
-    iterator[Symbol.iterator] = function () {
-      return iterator;
-    };
-  }
-
-  return iterator;
-}
-
-function logError(error, _ref2) {
-  var sagaStack = _ref2.sagaStack;
-  /*eslint-disable no-console*/
-
-  console.error(error);
-  console.error(sagaStack);
-}
-
-var internalErr = function internalErr(err) {
-  return new Error("\n  redux-saga: Error checking hooks detected an inconsistent state. This is likely a bug\n  in redux-saga code and not yours. Thanks for reporting this in the project's github repo.\n  Error: " + err + "\n");
-};
-
-var createSetContextWarning = function createSetContextWarning(ctx, props) {
-  return (ctx ? ctx + '.' : '') + "setContext(props): argument " + props + " is not a plain object";
-};
-
-var FROZEN_ACTION_ERROR = "You can't put (a.k.a. dispatch from saga) frozen actions.\nWe have to define a special non-enumerable property on those actions for scheduling purposes.\nOtherwise you wouldn't be able to communicate properly between sagas & other subscribers (action ordering would become far less predictable).\nIf you are using redux and you care about this behaviour (frozen actions),\nthen you might want to switch to freezing actions in a middleware rather than in action creator.\nExample implementation:\n\nconst freezeActions = store => next => action => next(Object.freeze(action))\n"; // creates empty, but not-holey array
-
-var createEmptyArray = function createEmptyArray(n) {
-  return Array.apply(null, new Array(n));
-};
-
-var wrapSagaDispatch = function wrapSagaDispatch(dispatch) {
-  return function (action) {
-    if (false) {}
-
-    return dispatch(Object.defineProperty(action, _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_ACTION */ "f"], {
-      value: true
-    }));
-  };
-};
-
-var shouldTerminate = function shouldTerminate(res) {
-  return res === _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TERMINATE */ "k"];
-};
-
-var shouldCancel = function shouldCancel(res) {
-  return res === _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TASK_CANCEL */ "j"];
-};
-
-var shouldComplete = function shouldComplete(res) {
-  return shouldTerminate(res) || shouldCancel(res);
-};
-
-function createAllStyleChildCallbacks(shape, parentCallback) {
-  var keys = Object.keys(shape);
-  var totalCount = keys.length;
-
-  if (false) {}
-
-  var completedCount = 0;
-  var completed;
-  var results = Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(shape) ? createEmptyArray(totalCount) : {};
-  var childCallbacks = {};
-
-  function checkEnd() {
-    if (completedCount === totalCount) {
-      completed = true;
-      parentCallback(results);
-    }
-  }
-
-  keys.forEach(function (key) {
-    var chCbAtKey = function chCbAtKey(res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      if (isErr || shouldComplete(res)) {
-        parentCallback.cancel();
-        parentCallback(res, isErr);
-      } else {
-        results[key] = res;
-        completedCount++;
-        checkEnd();
-      }
-    };
-
-    chCbAtKey.cancel = noop;
-    childCallbacks[key] = chCbAtKey;
-  });
-
-  parentCallback.cancel = function () {
-    if (!completed) {
-      completed = true;
-      keys.forEach(function (key) {
-        return childCallbacks[key].cancel();
-      });
-    }
-  };
-
-  return childCallbacks;
-}
-
-function getMetaInfo(fn) {
-  return {
-    name: fn.name || 'anonymous',
-    location: getLocation(fn)
-  };
-}
-
-function getLocation(instrumented) {
-  return instrumented[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_LOCATION */ "g"]];
-}
-
-var BUFFER_OVERFLOW = "Channel's Buffer overflow!";
-var ON_OVERFLOW_THROW = 1;
-var ON_OVERFLOW_DROP = 2;
-var ON_OVERFLOW_SLIDE = 3;
-var ON_OVERFLOW_EXPAND = 4;
-var zeroBuffer = {
-  isEmpty: kTrue,
-  put: noop,
-  take: noop
-};
-
-function ringBuffer(limit, overflowAction) {
-  if (limit === void 0) {
-    limit = 10;
-  }
-
-  var arr = new Array(limit);
-  var length = 0;
-  var pushIndex = 0;
-  var popIndex = 0;
-
-  var push = function push(it) {
-    arr[pushIndex] = it;
-    pushIndex = (pushIndex + 1) % limit;
-    length++;
-  };
-
-  var take = function take() {
-    if (length != 0) {
-      var it = arr[popIndex];
-      arr[popIndex] = null;
-      length--;
-      popIndex = (popIndex + 1) % limit;
-      return it;
-    }
-  };
-
-  var flush = function flush() {
-    var items = [];
-
-    while (length) {
-      items.push(take());
-    }
-
-    return items;
-  };
-
-  return {
-    isEmpty: function isEmpty() {
-      return length == 0;
-    },
-    put: function put(it) {
-      if (length < limit) {
-        push(it);
-      } else {
-        var doubledLimit;
-
-        switch (overflowAction) {
-          case ON_OVERFLOW_THROW:
-            throw new Error(BUFFER_OVERFLOW);
-
-          case ON_OVERFLOW_SLIDE:
-            arr[pushIndex] = it;
-            pushIndex = (pushIndex + 1) % limit;
-            popIndex = pushIndex;
-            break;
-
-          case ON_OVERFLOW_EXPAND:
-            doubledLimit = 2 * limit;
-            arr = flush();
-            length = arr.length;
-            pushIndex = arr.length;
-            popIndex = 0;
-            arr.length = doubledLimit;
-            limit = doubledLimit;
-            push(it);
-            break;
-
-          default: // DROP
-
-        }
-      }
-    },
-    take: take,
-    flush: flush
-  };
-}
-
-var none = function none() {
-  return zeroBuffer;
-};
-
-var fixed = function fixed(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_THROW);
-};
-
-var dropping = function dropping(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_DROP);
-};
-
-var sliding = function sliding(limit) {
-  return ringBuffer(limit, ON_OVERFLOW_SLIDE);
-};
-
-var expanding = function expanding(initialSize) {
-  return ringBuffer(initialSize, ON_OVERFLOW_EXPAND);
-};
-
-var buffers = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  none: none,
-  fixed: fixed,
-  dropping: dropping,
-  sliding: sliding,
-  expanding: expanding
-});
-var TAKE = 'TAKE';
-var PUT = 'PUT';
-var ALL = 'ALL';
-var RACE = 'RACE';
-var CALL = 'CALL';
-var CPS = 'CPS';
-var FORK = 'FORK';
-var JOIN = 'JOIN';
-var CANCEL = 'CANCEL';
-var SELECT = 'SELECT';
-var ACTION_CHANNEL = 'ACTION_CHANNEL';
-var CANCELLED = 'CANCELLED';
-var FLUSH = 'FLUSH';
-var GET_CONTEXT = 'GET_CONTEXT';
-var SET_CONTEXT = 'SET_CONTEXT';
-var effectTypes = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  TAKE: TAKE,
-  PUT: PUT,
-  ALL: ALL,
-  RACE: RACE,
-  CALL: CALL,
-  CPS: CPS,
-  FORK: FORK,
-  JOIN: JOIN,
-  CANCEL: CANCEL,
-  SELECT: SELECT,
-  ACTION_CHANNEL: ACTION_CHANNEL,
-  CANCELLED: CANCELLED,
-  FLUSH: FLUSH,
-  GET_CONTEXT: GET_CONTEXT,
-  SET_CONTEXT: SET_CONTEXT
-});
-var TEST_HINT = '\n(HINT: if you are getting these errors in tests, consider using createMockTask from @redux-saga/testing-utils)';
-
-var makeEffect = function makeEffect(type, payload) {
-  var _ref;
-
-  return _ref = {}, _ref[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* IO */ "c"]] = true, _ref.combinator = false, _ref.type = type, _ref.payload = payload, _ref;
-};
-
-var isForkEffect = function isForkEffect(eff) {
-  return Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* effect */ "c"])(eff) && eff.type === FORK;
-};
-
-var detach = function detach(eff) {
-  if (false) {}
-
-  return makeEffect(FORK, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({}, eff.payload, {
-    detached: true
-  }));
-};
-
-function take(patternOrChannel, multicastPattern) {
-  if (patternOrChannel === void 0) {
-    patternOrChannel = '*';
-  }
-
-  if (false) {}
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* pattern */ "i"])(patternOrChannel)) {
-    return makeEffect(TAKE, {
-      pattern: patternOrChannel
-    });
-  }
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* multicast */ "f"])(patternOrChannel) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"])(multicastPattern) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* pattern */ "i"])(multicastPattern)) {
-    return makeEffect(TAKE, {
-      channel: patternOrChannel,
-      pattern: multicastPattern
-    });
-  }
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* channel */ "b"])(patternOrChannel)) {
-    return makeEffect(TAKE, {
-      channel: patternOrChannel
-    });
-  }
-
-  if (false) {}
-}
-
-var takeMaybe = function takeMaybe() {
-  var eff = take.apply(void 0, arguments);
-  eff.payload.maybe = true;
-  return eff;
-};
-
-function put(channel$1, action) {
-  if (false) {}
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* undef */ "n"])(action)) {
-    action = channel$1; // `undefined` instead of `null` to make default parameter work
-
-    channel$1 = undefined;
-  }
-
-  return makeEffect(PUT, {
-    channel: channel$1,
-    action: action
-  });
-}
-
-var putResolve = function putResolve() {
-  var eff = put.apply(void 0, arguments);
-  eff.payload.resolve = true;
-  return eff;
-};
-
-function all(effects) {
-  var eff = makeEffect(ALL, effects);
-  eff.combinator = true;
-  return eff;
-}
-
-function race(effects) {
-  var eff = makeEffect(RACE, effects);
-  eff.combinator = true;
-  return eff;
-} // this match getFnCallDescriptor logic
-
-
-var validateFnDescriptor = function validateFnDescriptor(effectName, fnDescriptor) {
-  check(fnDescriptor, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument fn is undefined or null");
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(fnDescriptor)) {
-    return;
-  }
-
-  var context = null;
-  var fn;
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(fnDescriptor)) {
-    context = fnDescriptor[0];
-    fn = fnDescriptor[1];
-    check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument of type [context, fn] has undefined or null `fn`");
-  } else if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* object */ "h"])(fnDescriptor)) {
-    context = fnDescriptor.context;
-    fn = fnDescriptor.fn;
-    check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* notUndef */ "g"], effectName + ": argument of type {context, fn} has undefined or null `fn`");
-  } else {
-    check(fnDescriptor, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": argument fn is not function");
-    return;
-  }
-
-  if (context && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* string */ "k"])(fn)) {
-    check(context[fn], _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": context arguments has no such method - \"" + fn + "\"");
-    return;
-  }
-
-  check(fn, _redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"], effectName + ": unpacked fn argument (from [context, fn] or {context, fn}) is not a function");
-};
-
-function getFnCallDescriptor(fnDescriptor, args) {
-  var context = null;
-  var fn;
-
-  if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(fnDescriptor)) {
-    fn = fnDescriptor;
-  } else {
-    if (Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* array */ "a"])(fnDescriptor)) {
-      context = fnDescriptor[0];
-      fn = fnDescriptor[1];
-    } else {
-      context = fnDescriptor.context;
-      fn = fnDescriptor.fn;
-    }
-
-    if (context && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* string */ "k"])(fn) && Object(_redux_saga_is__WEBPACK_IMPORTED_MODULE_2__[/* func */ "d"])(context[fn])) {
-      fn = context[fn];
-    }
-  }
-
-  return {
-    context: context,
-    fn: fn,
-    args: args
-  };
-}
-
-var isNotDelayEffect = function isNotDelayEffect(fn) {
-  return fn !== delay;
-};
-
-function call(fnDescriptor) {
-  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
-  }
-
-  if (false) { var arg0; }
-
-  return makeEffect(CALL, getFnCallDescriptor(fnDescriptor, args));
-}
-
-function apply(context, fn, args) {
-  if (args === void 0) {
-    args = [];
-  }
-
-  var fnDescriptor = [context, fn];
-
-  if (false) {}
-
-  return makeEffect(CALL, getFnCallDescriptor([context, fn], args));
-}
-
-function cps(fnDescriptor) {
-  if (false) {}
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
-  }
-
-  return makeEffect(CPS, getFnCallDescriptor(fnDescriptor, args));
-}
-
-function fork(fnDescriptor) {
-  if (false) {}
-
-  for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-    args[_key3 - 1] = arguments[_key3];
-  }
-
-  return makeEffect(FORK, getFnCallDescriptor(fnDescriptor, args));
-}
-
-function spawn(fnDescriptor) {
-  if (false) {}
-
-  for (var _len4 = arguments.length, args = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-    args[_key4 - 1] = arguments[_key4];
-  }
-
-  return detach(fork.apply(void 0, [fnDescriptor].concat(args)));
-}
-
-function join(taskOrTasks) {
-  if (false) {}
-
-  return makeEffect(JOIN, taskOrTasks);
-}
-
-function cancel(taskOrTasks) {
-  if (taskOrTasks === void 0) {
-    taskOrTasks = _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SELF_CANCELLATION */ "h"];
-  }
-
-  if (false) {}
-
-  return makeEffect(CANCEL, taskOrTasks);
-}
-
-function select(selector) {
-  if (selector === void 0) {
-    selector = identity;
-  }
-
-  for (var _len5 = arguments.length, args = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-    args[_key5 - 1] = arguments[_key5];
-  }
-
-  if (false) {}
-
-  return makeEffect(SELECT, {
-    selector: selector,
-    args: args
-  });
-}
-/**
-  channel(pattern, [buffer])    => creates a proxy channel for store actions
-**/
-
-
-function actionChannel(pattern$1, buffer$1) {
-  if (false) {}
-
-  return makeEffect(ACTION_CHANNEL, {
-    pattern: pattern$1,
-    buffer: buffer$1
-  });
-}
-
-function cancelled() {
-  return makeEffect(CANCELLED, {});
-}
-
-function flush(channel$1) {
-  if (false) {}
-
-  return makeEffect(FLUSH, channel$1);
-}
-
-function getContext(prop) {
-  if (false) {}
-
-  return makeEffect(GET_CONTEXT, prop);
-}
-
-function setContext(props) {
-  if (false) {}
-
-  return makeEffect(SET_CONTEXT, props);
-}
-
-var delay = /*#__PURE__*/call.bind(null, _redux_saga_delay_p__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return array; });
-/* unused harmony export buffer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return channel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return effect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return func; });
-/* unused harmony export iterable */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return iterator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return multicast; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return notUndef; });
-/* unused harmony export number */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return object; });
-/* unused harmony export observable */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return pattern; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return promise; });
-/* unused harmony export sagaAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return string; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return stringableFunc; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return symbol; });
-/* unused harmony export task */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return undef; });
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-
-
-var undef = function undef(v) {
-  return v === null || v === undefined;
-};
-
-var notUndef = function notUndef(v) {
-  return v !== null && v !== undefined;
-};
-
-var func = function func(f) {
-  return typeof f === 'function';
-};
-
-var number = function number(n) {
-  return typeof n === 'number';
-};
-
-var string = function string(s) {
-  return typeof s === 'string';
-};
-
-var array = Array.isArray;
-
-var object = function object(obj) {
-  return obj && !array(obj) && typeof obj === 'object';
-};
-
-var promise = function promise(p) {
-  return p && func(p.then);
-};
-
-var iterator = function iterator(it) {
-  return it && func(it.next) && func(it.throw);
-};
-
-var iterable = function iterable(it) {
-  return it && func(Symbol) ? func(it[Symbol.iterator]) : array(it);
-};
-
-var task = function task(t) {
-  return t && t[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* TASK */ "i"]];
-};
-
-var sagaAction = function sagaAction(a) {
-  return Boolean(a && a[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* SAGA_ACTION */ "f"]]);
-};
-
-var observable = function observable(ob) {
-  return ob && func(ob.subscribe);
-};
-
-var buffer = function buffer(buf) {
-  return buf && func(buf.isEmpty) && func(buf.take) && func(buf.put);
-};
-
-var pattern = function pattern(pat) {
-  return pat && (string(pat) || symbol(pat) || func(pat) || array(pat) && pat.every(pattern));
-};
-
-var channel = function channel(ch) {
-  return ch && func(ch.take) && func(ch.close);
-};
-
-var stringableFunc = function stringableFunc(f) {
-  return func(f) && f.hasOwnProperty('toString');
-};
-
-var symbol = function symbol(sym) {
-  return Boolean(sym) && typeof Symbol === 'function' && sym.constructor === Symbol && sym !== Symbol.prototype;
-};
-
-var multicast = function multicast(ch) {
-  return channel(ch) && ch[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* MULTICAST */ "e"]];
-};
-
-var effect = function effect(eff) {
-  return eff && eff[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* IO */ "c"]];
-};
-
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -945,2210 +133,7 @@ var effect = function effect(eff) {
 var StatusTypes;(function(StatusTypes){StatusTypes["downloading"]="DOWNLOADING";StatusTypes["stopped"]="STOPPED";StatusTypes["completed"]="COMPLETED";StatusTypes["inQueued"]="IN_QUEUED";StatusTypes["error"]="ERROR";StatusTypes["unknow"]="UNKONW";})(StatusTypes||(StatusTypes={}));var ValueTypes;(function(ValueTypes){ValueTypes["items"]="ITEM_LIST";ValueTypes["autoStart"]="AUTO_START";ValueTypes["maxDownloadCount"]="MAX_DOWNLOAD_COUNT";})(ValueTypes||(ValueTypes={}));var HeaderTypes;(function(HeaderTypes){HeaderTypes["userAgent"]="netdisk;P2SP;2.2.60.26";})(HeaderTypes||(HeaderTypes={}));
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CHANNEL_END_TYPE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return IO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MATCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return MULTICAST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return SAGA_ACTION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SAGA_LOCATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return SELF_CANCELLATION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TASK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TASK_CANCEL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return TERMINATE; });
-var createSymbol = function createSymbol(name) {
-  return "@@redux-saga/" + name;
-};
-
-var CANCEL = /*#__PURE__*/createSymbol('CANCEL_PROMISE');
-var CHANNEL_END_TYPE = /*#__PURE__*/createSymbol('CHANNEL_END');
-var IO = /*#__PURE__*/createSymbol('IO');
-var MATCH = /*#__PURE__*/createSymbol('MATCH');
-var MULTICAST = /*#__PURE__*/createSymbol('MULTICAST');
-var SAGA_ACTION = /*#__PURE__*/createSymbol('SAGA_ACTION');
-var SELF_CANCELLATION = /*#__PURE__*/createSymbol('SELF_CANCELLATION');
-var TASK = /*#__PURE__*/createSymbol('TASK');
-var TASK_CANCEL = /*#__PURE__*/createSymbol('TASK_CANCEL');
-var TERMINATE = /*#__PURE__*/createSymbol('TERMINATE');
-var SAGA_LOCATION = /*#__PURE__*/createSymbol('LOCATION');
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function (n, t) {
-   true ? t(exports) : undefined;
-}(this, function (n) {
-  "use strict";
-
-  function t(n, t) {
-    return void 0 === t && (t = 1), null == n;
-  }
-
-  function r(n) {
-    throw void 0 === n && (n = 1), new Error("Argument " + n + " is empty.");
-  }
-
-  function e(n) {
-    return "function" == typeof n && "getType" in n;
-  }
-
-  function i(n) {
-    throw void 0 === n && (n = 1), new Error("Argument " + n + ' is invalid, it should be an action-creator instance from "typesafe-actions"');
-  }
-
-  function o(n, t) {
-    if (null == n) throw new Error("Argument contains array with empty element at index " + t);
-    if (null == n.getType) throw new Error("Argument contains array with invalid element at index " + t + ', it should be an action-creator instance from "typesafe-actions"');
-  }
-
-  function u(n) {
-    return "string" == typeof n || "symbol" == typeof n;
-  }
-
-  function c(n) {
-    return !u(n);
-  }
-
-  function a(n) {
-    throw void 0 === n && (n = 1), new Error("Argument " + n + " is invalid, it should be an action type of type: string | symbol");
-  }
-
-  function f(n, t) {
-    if (null == n) throw new Error("Argument contains array with empty element at index " + t);
-    if ("string" != typeof n && "symbol" != typeof n) throw new Error("Argument contains array with invalid element at index " + t + ", it should be of type: string | symbol");
-  }
-
-  function s(n, e, o, u) {
-    return t(n) && r(1), c(n) && i(1), {
-      type: n,
-      payload: e,
-      meta: o,
-      error: u
-    };
-  }
-
-  function y(n, e) {
-    t(n) && r(1), c(n) && a(1);
-    var i = null != e ? e(n) : function () {
-      return {
-        type: n
-      };
-    };
-    return Object.assign(i, {
-      getType: function getType() {
-        return n;
-      },
-      toString: function toString() {
-        return n;
-      }
-    });
-  }
-
-  function p(n) {
-    return t(n) && r(1), c(n) && a(1), Object.assign(function () {
-      return y(n, function (n) {
-        return function (t, r) {
-          return {
-            type: n,
-            payload: t,
-            meta: r
-          };
-        };
-      });
-    }, {
-      map: function map(t) {
-        return y(n, function (n) {
-          return function (r, e) {
-            return Object.assign(t(r, e), {
-              type: n
-            });
-          };
-        });
-      }
-    });
-  }
-
-  function l(n) {
-    return t(n) && r(1), e(n) || i(1), n.getType();
-  }
-
-  n.action = s, n.createAction = function (n, t) {
-    var r = null == t ? function () {
-      return s(n);
-    } : t(s.bind(null, n));
-    return Object.assign(r, {
-      getType: function getType() {
-        return n;
-      },
-      toString: function toString() {
-        return n;
-      }
-    });
-  }, n.createActionDeprecated = function (n, t) {
-    var r;
-
-    if (null != t) {
-      if ("function" != typeof t) throw new Error("second argument is not a function");
-      r = t;
-    } else r = function r() {
-      return {
-        type: n
-      };
-    };
-
-    if (null == n) throw new Error("first argument is missing");
-    if ("string" != typeof n && "symbol" != typeof n) throw new Error("first argument should be type of: string | symbol");
-    return r;
-  }, n.createAsyncAction = function (n, t, r, e) {
-    return [n, t, r].forEach(f), Object.assign(function () {
-      return {
-        request: p(n)(),
-        success: p(t)(),
-        failure: p(r)(),
-        cancel: e && p(e)()
-      };
-    }, {});
-  }, n.createCustomAction = y, n.createReducer = function n(t, r) {
-    void 0 === r && (r = {});
-    var i = Object.assign({}, r);
-    return Object.assign(function (n, r) {
-      if (void 0 === n && (n = t), i.hasOwnProperty(r.type)) {
-        var e = i[r.type];
-        if ("function" != typeof e) throw Error('Reducer under "' + r.type + '" key is not a valid reducer');
-        return e(n, r);
-      }
-
-      return n;
-    }, {
-      handlers: Object.assign({}, i),
-      handleAction: function handleAction(r, o) {
-        var c = Array.isArray(r) ? r : [r],
-            a = {};
-        return c.map(function (n) {
-          return e(n) ? l(n) : u(n) ? n : function (n) {
-            throw void 0 === n && (n = 1), new Error("Argument " + n + ' is invalid, it should be an action-creator instance from "typesafe-actions" or action type of type: string | symbol');
-          }();
-        }).forEach(function (n) {
-          return a[n] = o;
-        }), n(t, Object.assign({}, i, a));
-      }
-    });
-  }, n.createStandardAction = p, n.getType = l, n.isActionOf = function (n, e) {
-    t(n) && r(1);
-    var i = Array.isArray(n) ? n : [n];
-    i.forEach(o);
-
-    var u = function u(n) {
-      return i.some(function (t) {
-        return n.type === t.getType();
-      });
-    };
-
-    return void 0 === e ? u : u(e);
-  }, n.isOfType = function (n, e) {
-    t(n) && r(1);
-    var i = Array.isArray(n) ? n : [n];
-    i.forEach(f);
-
-    var o = function o(n) {
-      return i.includes(n.type);
-    };
-
-    return void 0 === e ? o : o(e);
-  };
-});
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var typesafe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
-/* harmony import */ var typesafe_actions__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__);
-var actionCreator={change:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__["createAsyncAction"])('DOWNLOAD_CHANGE_REQUEST','DOWNLOAD_CHANGE_SUCCESS','DOWNLOAD_CHANGE_FAILURE','DOWNLOAD_CHANGE_CANCEL')(),updateItem:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__["createStandardAction"])('DOWNLOAD_UPDATE_ITEM')(),reset:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__["createStandardAction"])('DOWNLOAD_RESET')(),downloadURL:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__["createAsyncAction"])('DOWNLOAD_URL_REQUEST','DOWNLOAD_URL_SUCCESS','DOWNLOAD_URL_FAILURE','DOWNLOAD_URL_CANCEL')(),downloadItem:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_0__["createAsyncAction"])('DOWNLOAD_ITEM_REQUEST','DOWNLOAD_ITEM_SUCCESS','DOWNLOAD_ITEM_FAILURE','DOWNLOAD_ITEM_CANCEL')()};/* harmony default export */ __webpack_exports__["a"] = (actionCreator);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ io_6de156f3["v" /* _ */]; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ io_6de156f3["l" /* N */]; });
-__webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ io_6de156f3["k" /* M */]; });
-__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ io_6de156f3["j" /* L */]; });
-__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ io_6de156f3["u" /* Y */]; });
-__webpack_require__.d(__webpack_exports__, "f", function() { return /* reexport */ io_6de156f3["x" /* a3 */]; });
-__webpack_require__.d(__webpack_exports__, "g", function() { return /* reexport */ io_6de156f3["i" /* K */]; });
-__webpack_require__.d(__webpack_exports__, "h", function() { return /* reexport */ takeEvery$1; });
-
-// UNUSED EXPORTS: actionChannel, apply, cancelled, cps, delay, effectTypes, flush, getContext, join, putResolve, race, setContext, spawn, takeMaybe, debounce, retry, takeLatest, takeLeading, throttle
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
-var redux_saga_symbols_esm = __webpack_require__(4);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(12);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
-var redux_saga_is_esm = __webpack_require__(2);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/core/dist/io-6de156f3.js
-var io_6de156f3 = __webpack_require__(1);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
-var redux_saga_delay_p_esm = __webpack_require__(25);
-
-// CONCATENATED MODULE: ./node_modules/@redux-saga/core/dist/redux-saga-effects.esm.js
-
-
-
-
-
-
-
-var done = function done(value) {
-  return {
-    done: true,
-    value: value
-  };
-};
-
-var qEnd = {};
-
-function safeName(patternOrChannel) {
-  if (Object(redux_saga_is_esm["b" /* channel */])(patternOrChannel)) {
-    return 'channel';
-  }
-
-  if (Object(redux_saga_is_esm["l" /* stringableFunc */])(patternOrChannel)) {
-    return String(patternOrChannel);
-  }
-
-  if (Object(redux_saga_is_esm["d" /* func */])(patternOrChannel)) {
-    return patternOrChannel.name;
-  }
-
-  return String(patternOrChannel);
-}
-
-function fsmIterator(fsm, startState, name) {
-  var stateUpdater,
-      errorState,
-      effect,
-      nextState = startState;
-
-  function next(arg, error) {
-    if (nextState === qEnd) {
-      return done(arg);
-    }
-
-    if (error && !errorState) {
-      nextState = qEnd;
-      throw error;
-    } else {
-      stateUpdater && stateUpdater(arg);
-      var currentState = error ? fsm[errorState](error) : fsm[nextState]();
-      nextState = currentState.nextState;
-      effect = currentState.effect;
-      stateUpdater = currentState.stateUpdater;
-      errorState = currentState.errorState;
-      return nextState === qEnd ? done(arg) : effect;
-    }
-  }
-
-  return Object(io_6de156f3["N" /* q */])(next, function (error) {
-    return next(null, error);
-  }, name);
-}
-
-function takeEvery(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_6de156f3["i" /* K */])(patternOrChannel)
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_6de156f3["j" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var action,
-      setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q1',
-        effect: yFork(action)
-      };
-    }
-  }, 'q1', "takeEvery(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function takeLatest(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_6de156f3["i" /* K */])(patternOrChannel)
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_6de156f3["j" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yCancel = function yCancel(task) {
-    return {
-      done: false,
-      value: Object(io_6de156f3["k" /* M */])(task)
-    };
-  };
-
-  var task, action;
-
-  var setTask = function setTask(t) {
-    return task = t;
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return task ? {
-        nextState: 'q3',
-        effect: yCancel(task)
-      } : {
-        nextState: 'q1',
-        effect: yFork(action),
-        stateUpdater: setTask
-      };
-    },
-    q3: function q3() {
-      return {
-        nextState: 'q1',
-        effect: yFork(action),
-        stateUpdater: setTask
-      };
-    }
-  }, 'q1', "takeLatest(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function takeLeading(patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var yTake = {
-    done: false,
-    value: Object(io_6de156f3["i" /* K */])(patternOrChannel)
-  };
-
-  var yCall = function yCall(ac) {
-    return {
-      done: false,
-      value: io_6de156f3["l" /* N */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var action;
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q1',
-        effect: yCall(action)
-      };
-    }
-  }, 'q1', "takeLeading(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-function throttle(delayLength, pattern, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var action, channel;
-  var yActionChannel = {
-    done: false,
-    value: Object(io_6de156f3["m" /* O */])(pattern, Object(io_6de156f3["o" /* Q */])(1))
-  };
-
-  var yTake = function yTake() {
-    return {
-      done: false,
-      value: Object(io_6de156f3["i" /* K */])(channel)
-    };
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_6de156f3["j" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yDelay = {
-    done: false,
-    value: Object(io_6de156f3["s" /* U */])(delayLength)
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  var setChannel = function setChannel(ch) {
-    return channel = ch;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yActionChannel,
-        stateUpdater: setChannel
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q3',
-        effect: yTake(),
-        stateUpdater: setAction
-      };
-    },
-    q3: function q3() {
-      return {
-        nextState: 'q4',
-        effect: yFork(action)
-      };
-    },
-    q4: function q4() {
-      return {
-        nextState: 'q2',
-        effect: yDelay
-      };
-    }
-  }, 'q1', "throttle(" + safeName(pattern) + ", " + worker.name + ")");
-}
-
-function retry(maxTries, delayLength, fn) {
-  var counter = maxTries;
-
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var yCall = {
-    done: false,
-    value: io_6de156f3["l" /* N */].apply(void 0, [fn].concat(args))
-  };
-  var yDelay = {
-    done: false,
-    value: Object(io_6de156f3["s" /* U */])(delayLength)
-  };
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yCall,
-        errorState: 'q10'
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: qEnd
-      };
-    },
-    q10: function q10(error) {
-      counter -= 1;
-
-      if (counter <= 0) {
-        throw error;
-      }
-
-      return {
-        nextState: 'q1',
-        effect: yDelay
-      };
-    }
-  }, 'q1', "retry(" + fn.name + ")");
-}
-
-function debounceHelper(delayLength, patternOrChannel, worker) {
-  for (var _len = arguments.length, args = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    args[_key - 3] = arguments[_key];
-  }
-
-  var action, raceOutput;
-  var yTake = {
-    done: false,
-    value: Object(io_6de156f3["i" /* K */])(patternOrChannel)
-  };
-  var yRace = {
-    done: false,
-    value: Object(io_6de156f3["t" /* V */])({
-      action: Object(io_6de156f3["i" /* K */])(patternOrChannel),
-      debounce: Object(io_6de156f3["s" /* U */])(delayLength)
-    })
-  };
-
-  var yFork = function yFork(ac) {
-    return {
-      done: false,
-      value: io_6de156f3["j" /* L */].apply(void 0, [worker].concat(args, [ac]))
-    };
-  };
-
-  var yNoop = function yNoop(value) {
-    return {
-      done: false,
-      value: value
-    };
-  };
-
-  var setAction = function setAction(ac) {
-    return action = ac;
-  };
-
-  var setRaceOutput = function setRaceOutput(ro) {
-    return raceOutput = ro;
-  };
-
-  return fsmIterator({
-    q1: function q1() {
-      return {
-        nextState: 'q2',
-        effect: yTake,
-        stateUpdater: setAction
-      };
-    },
-    q2: function q2() {
-      return {
-        nextState: 'q3',
-        effect: yRace,
-        stateUpdater: setRaceOutput
-      };
-    },
-    q3: function q3() {
-      return raceOutput.debounce ? {
-        nextState: 'q1',
-        effect: yFork(action)
-      } : {
-        nextState: 'q2',
-        effect: yNoop(raceOutput.action),
-        stateUpdater: setAction
-      };
-    }
-  }, 'q1', "debounce(" + safeName(patternOrChannel) + ", " + worker.name + ")");
-}
-
-var redux_saga_effects_esm_validateTakeEffect = function validateTakeEffect(fn, patternOrChannel, worker) {
-  Object(io_6de156f3["z" /* c */])(patternOrChannel, redux_saga_is_esm["g" /* notUndef */], fn.name + " requires a pattern or channel");
-  Object(io_6de156f3["z" /* c */])(worker, redux_saga_is_esm["g" /* notUndef */], fn.name + " requires a saga parameter");
-};
-
-function takeEvery$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  return io_6de156f3["j" /* L */].apply(void 0, [takeEvery, patternOrChannel, worker].concat(args));
-}
-
-function takeLatest$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-    args[_key2 - 2] = arguments[_key2];
-  }
-
-  return io_6de156f3["j" /* L */].apply(void 0, [takeLatest, patternOrChannel, worker].concat(args));
-}
-
-function takeLeading$1(patternOrChannel, worker) {
-  if (false) {}
-
-  for (var _len3 = arguments.length, args = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-    args[_key3 - 2] = arguments[_key3];
-  }
-
-  return io_6de156f3["j" /* L */].apply(void 0, [takeLeading, patternOrChannel, worker].concat(args));
-}
-
-function throttle$1(ms, pattern, worker) {
-  if (false) {}
-
-  for (var _len4 = arguments.length, args = new Array(_len4 > 3 ? _len4 - 3 : 0), _key4 = 3; _key4 < _len4; _key4++) {
-    args[_key4 - 3] = arguments[_key4];
-  }
-
-  return io_6de156f3["j" /* L */].apply(void 0, [throttle, ms, pattern, worker].concat(args));
-}
-
-function retry$1(maxTries, delayLength, worker) {
-  for (var _len5 = arguments.length, args = new Array(_len5 > 3 ? _len5 - 3 : 0), _key5 = 3; _key5 < _len5; _key5++) {
-    args[_key5 - 3] = arguments[_key5];
-  }
-
-  return io_6de156f3["l" /* N */].apply(void 0, [retry, maxTries, delayLength, worker].concat(args));
-}
-
-function debounce(delayLength, pattern, worker) {
-  for (var _len6 = arguments.length, args = new Array(_len6 > 3 ? _len6 - 3 : 0), _key6 = 3; _key6 < _len6; _key6++) {
-    args[_key6 - 3] = arguments[_key6];
-  }
-
-  return io_6de156f3["j" /* L */].apply(void 0, [debounceHelper, delayLength, pattern, worker].concat(args));
-}
-
-
-// CONCATENATED MODULE: ./node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(44);
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ store_store; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ storeSelector; });
-
-// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
-var redux = __webpack_require__(16);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/symbols/dist/redux-saga-symbols.esm.js
-var redux_saga_symbols_esm = __webpack_require__(4);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(12);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(17);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/is/dist/redux-saga-is.esm.js
-var redux_saga_is_esm = __webpack_require__(2);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/core/dist/io-6de156f3.js
-var io_6de156f3 = __webpack_require__(1);
-
-// CONCATENATED MODULE: ./node_modules/@redux-saga/deferred/dist/redux-saga-deferred.esm.js
-function deferred() {
-  var def = {};
-  def.promise = new Promise(function (resolve, reject) {
-    def.resolve = resolve;
-    def.reject = reject;
-  });
-  return def;
-}
-
-function arrayOfDeferred(length) {
-  var arr = [];
-
-  for (var i = 0; i < length; i++) {
-    arr.push(deferred());
-  }
-
-  return arr;
-}
-
-/* harmony default export */ var redux_saga_deferred_esm = (deferred);
-
-// EXTERNAL MODULE: ./node_modules/@redux-saga/delay-p/dist/redux-saga-delay-p.esm.js
-var redux_saga_delay_p_esm = __webpack_require__(25);
-
-// CONCATENATED MODULE: ./node_modules/@redux-saga/core/dist/redux-saga-core.esm.js
-
-
-
-
-
-
-
-
-
-
-var redux_saga_core_esm_queue = [];
-/**
-  Variable to hold a counting semaphore
-  - Incrementing adds a lock and puts the scheduler in a `suspended` state (if it's not
-    already suspended)
-  - Decrementing releases a lock. Zero locks puts the scheduler in a `released` state. This
-    triggers flushing the queued tasks.
-**/
-
-var semaphore = 0;
-/**
-  Executes a task 'atomically'. Tasks scheduled during this execution will be queued
-  and flushed after this task has finished (assuming the scheduler endup in a released
-  state).
-**/
-
-function exec(task) {
-  try {
-    suspend();
-    task();
-  } finally {
-    release();
-  }
-}
-/**
-  Executes or queues a task depending on the state of the scheduler (`suspended` or `released`)
-**/
-
-
-function asap(task) {
-  redux_saga_core_esm_queue.push(task);
-
-  if (!semaphore) {
-    suspend();
-    redux_saga_core_esm_flush();
-  }
-}
-/**
- * Puts the scheduler in a `suspended` state and executes a task immediately.
- */
-
-
-function immediately(task) {
-  try {
-    suspend();
-    return task();
-  } finally {
-    redux_saga_core_esm_flush();
-  }
-}
-/**
-  Puts the scheduler in a `suspended` state. Scheduled tasks will be queued until the
-  scheduler is released.
-**/
-
-
-function suspend() {
-  semaphore++;
-}
-/**
-  Puts the scheduler in a `released` state.
-**/
-
-
-function release() {
-  semaphore--;
-}
-/**
-  Releases the current lock. Executes all queued tasks if the scheduler is in the released state.
-**/
-
-
-function redux_saga_core_esm_flush() {
-  release();
-  var task;
-
-  while (!semaphore && (task = redux_saga_core_esm_queue.shift()) !== undefined) {
-    exec(task);
-  }
-}
-
-var array = function array(patterns) {
-  return function (input) {
-    return patterns.some(function (p) {
-      return redux_saga_core_esm_matcher(p)(input);
-    });
-  };
-};
-
-var predicate = function predicate(_predicate) {
-  return function (input) {
-    return _predicate(input);
-  };
-};
-
-var string = function string(pattern) {
-  return function (input) {
-    return input.type === String(pattern);
-  };
-};
-
-var symbol = function symbol(pattern) {
-  return function (input) {
-    return input.type === pattern;
-  };
-};
-
-var redux_saga_core_esm_wildcard = function wildcard() {
-  return io_6de156f3["H" /* k */];
-};
-
-function redux_saga_core_esm_matcher(pattern) {
-  // prettier-ignore
-  var matcherCreator = pattern === '*' ? redux_saga_core_esm_wildcard : Object(redux_saga_is_esm["k" /* string */])(pattern) ? string : Object(redux_saga_is_esm["a" /* array */])(pattern) ? array : Object(redux_saga_is_esm["l" /* stringableFunc */])(pattern) ? string : Object(redux_saga_is_esm["d" /* func */])(pattern) ? predicate : Object(redux_saga_is_esm["m" /* symbol */])(pattern) ? symbol : null;
-
-  if (matcherCreator === null) {
-    throw new Error("invalid pattern: " + pattern);
-  }
-
-  return matcherCreator(pattern);
-}
-
-var END = {
-  type: redux_saga_symbols_esm["b" /* CHANNEL_END_TYPE */]
-};
-
-var redux_saga_core_esm_isEnd = function isEnd(a) {
-  return a && a.type === redux_saga_symbols_esm["b" /* CHANNEL_END_TYPE */];
-};
-
-var CLOSED_CHANNEL_WITH_TAKERS = 'Cannot have a closed channel with pending takers';
-var INVALID_BUFFER = 'invalid buffer passed to channel factory function';
-var UNDEFINED_INPUT_ERROR = "Saga or channel was provided with an undefined action\nHints:\n  - check that your Action Creator returns a non-undefined value\n  - if the Saga was started using runSaga, check that your subscribe source provides the action to its listeners";
-
-function redux_saga_core_esm_channel(buffer$1) {
-  if (buffer$1 === void 0) {
-    buffer$1 = Object(io_6de156f3["B" /* e */])();
-  }
-
-  var closed = false;
-  var takers = [];
-
-  if (false) {}
-
-  function checkForbiddenStates() {
-    if (closed && takers.length) {
-      throw Object(io_6de156f3["F" /* i */])(CLOSED_CHANNEL_WITH_TAKERS);
-    }
-
-    if (takers.length && !buffer$1.isEmpty()) {
-      throw Object(io_6de156f3["F" /* i */])('Cannot have pending takers with non empty buffer');
-    }
-  }
-
-  function put(input) {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    if (takers.length === 0) {
-      return buffer$1.put(input);
-    }
-
-    var cb = takers.shift();
-    cb(input);
-  }
-
-  function take(cb) {
-    if (false) {}
-
-    if (closed && buffer$1.isEmpty()) {
-      cb(END);
-    } else if (!buffer$1.isEmpty()) {
-      cb(buffer$1.take());
-    } else {
-      takers.push(cb);
-
-      cb.cancel = function () {
-        Object(io_6de156f3["O" /* r */])(takers, cb);
-      };
-    }
-  }
-
-  function flush(cb) {
-    if (false) {}
-
-    if (closed && buffer$1.isEmpty()) {
-      cb(END);
-      return;
-    }
-
-    cb(buffer$1.flush());
-  }
-
-  function close() {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    closed = true;
-    var arr = takers;
-    takers = [];
-
-    for (var i = 0, len = arr.length; i < len; i++) {
-      var taker = arr[i];
-      taker(END);
-    }
-  }
-
-  return {
-    take: take,
-    put: put,
-    flush: flush,
-    close: close
-  };
-}
-
-function eventChannel(subscribe, buffer) {
-  if (buffer === void 0) {
-    buffer = Object(io_6de156f3["K" /* n */])();
-  }
-
-  var closed = false;
-  var unsubscribe;
-  var chan = redux_saga_core_esm_channel(buffer);
-
-  var close = function close() {
-    if (closed) {
-      return;
-    }
-
-    closed = true;
-
-    if (Object(redux_saga_is_esm["d" /* func */])(unsubscribe)) {
-      unsubscribe();
-    }
-
-    chan.close();
-  };
-
-  unsubscribe = subscribe(function (input) {
-    if (redux_saga_core_esm_isEnd(input)) {
-      close();
-      return;
-    }
-
-    chan.put(input);
-  });
-
-  if (false) {}
-
-  unsubscribe = Object(io_6de156f3["L" /* o */])(unsubscribe);
-
-  if (closed) {
-    unsubscribe();
-  }
-
-  return {
-    take: chan.take,
-    flush: chan.flush,
-    close: close
-  };
-}
-
-function multicastChannel() {
-  var _ref;
-
-  var closed = false;
-  var currentTakers = [];
-  var nextTakers = currentTakers;
-
-  function checkForbiddenStates() {
-    if (closed && nextTakers.length) {
-      throw Object(io_6de156f3["F" /* i */])(CLOSED_CHANNEL_WITH_TAKERS);
-    }
-  }
-
-  var ensureCanMutateNextTakers = function ensureCanMutateNextTakers() {
-    if (nextTakers !== currentTakers) {
-      return;
-    }
-
-    nextTakers = currentTakers.slice();
-  };
-
-  var close = function close() {
-    if (false) {}
-
-    closed = true;
-    var takers = currentTakers = nextTakers;
-    nextTakers = [];
-    takers.forEach(function (taker) {
-      taker(END);
-    });
-  };
-
-  return _ref = {}, _ref[redux_saga_symbols_esm["e" /* MULTICAST */]] = true, _ref.put = function put(input) {
-    if (false) {}
-
-    if (closed) {
-      return;
-    }
-
-    if (redux_saga_core_esm_isEnd(input)) {
-      close();
-      return;
-    }
-
-    var takers = currentTakers = nextTakers;
-
-    for (var i = 0, len = takers.length; i < len; i++) {
-      var taker = takers[i];
-
-      if (taker[redux_saga_symbols_esm["d" /* MATCH */]](input)) {
-        taker.cancel();
-        taker(input);
-      }
-    }
-  }, _ref.take = function take(cb, matcher) {
-    if (matcher === void 0) {
-      matcher = redux_saga_core_esm_wildcard;
-    }
-
-    if (false) {}
-
-    if (closed) {
-      cb(END);
-      return;
-    }
-
-    cb[redux_saga_symbols_esm["d" /* MATCH */]] = matcher;
-    ensureCanMutateNextTakers();
-    nextTakers.push(cb);
-    cb.cancel = Object(io_6de156f3["L" /* o */])(function () {
-      ensureCanMutateNextTakers();
-      Object(io_6de156f3["O" /* r */])(nextTakers, cb);
-    });
-  }, _ref.close = close, _ref;
-}
-
-function stdChannel() {
-  var chan = multicastChannel();
-  var put = chan.put;
-
-  chan.put = function (input) {
-    if (input[redux_saga_symbols_esm["f" /* SAGA_ACTION */]]) {
-      put(input);
-      return;
-    }
-
-    asap(function () {
-      put(input);
-    });
-  };
-
-  return chan;
-}
-
-var RUNNING = 0;
-var CANCELLED = 1;
-var ABORTED = 2;
-var DONE = 3;
-
-function resolvePromise(promise, cb) {
-  var cancelPromise = promise[redux_saga_symbols_esm["a" /* CANCEL */]];
-
-  if (Object(redux_saga_is_esm["d" /* func */])(cancelPromise)) {
-    cb.cancel = cancelPromise;
-  }
-
-  promise.then(cb, function (error) {
-    cb(error, true);
-  });
-}
-
-var current = 0;
-
-var nextSagaId = function nextSagaId() {
-  return ++current;
-};
-
-var _effectRunnerMap;
-
-function getIteratorMetaInfo(iterator, fn) {
-  if (iterator.isSagaIterator) {
-    return {
-      name: iterator.meta.name
-    };
-  }
-
-  return Object(io_6de156f3["G" /* j */])(fn);
-}
-
-function createTaskIterator(_ref) {
-  var context = _ref.context,
-      fn = _ref.fn,
-      args = _ref.args; // catch synchronous failures; see #152 and #441
-
-  try {
-    var result = fn.apply(context, args); // i.e. a generator function returns an iterator
-
-    if (Object(redux_saga_is_esm["e" /* iterator */])(result)) {
-      return result;
-    }
-
-    var resolved = false;
-
-    var next = function next(arg) {
-      if (!resolved) {
-        resolved = true; // Only promises returned from fork will be interpreted. See #1573
-
-        return {
-          value: result,
-          done: !Object(redux_saga_is_esm["j" /* promise */])(result)
-        };
-      } else {
-        return {
-          value: arg,
-          done: true
-        };
-      }
-    };
-
-    return Object(io_6de156f3["N" /* q */])(next);
-  } catch (err) {
-    // do not bubble up synchronous failures for detached forks
-    // instead create a failed task. See #152 and #441
-    return Object(io_6de156f3["N" /* q */])(function () {
-      throw err;
-    });
-  }
-}
-
-function runPutEffect(env, _ref2, cb) {
-  var channel = _ref2.channel,
-      action = _ref2.action,
-      resolve = _ref2.resolve;
-  /**
-   Schedule the put in case another saga is holding a lock.
-   The put will be executed atomically. ie nested puts will execute after
-   this put has terminated.
-   **/
-
-  asap(function () {
-    var result;
-
-    try {
-      result = (channel ? channel.put : env.dispatch)(action);
-    } catch (error) {
-      cb(error, true);
-      return;
-    }
-
-    if (resolve && Object(redux_saga_is_esm["j" /* promise */])(result)) {
-      resolvePromise(result, cb);
-    } else {
-      cb(result);
-    }
-  }); // Put effects are non cancellables
-}
-
-function runTakeEffect(env, _ref3, cb) {
-  var _ref3$channel = _ref3.channel,
-      channel = _ref3$channel === void 0 ? env.channel : _ref3$channel,
-      pattern = _ref3.pattern,
-      maybe = _ref3.maybe;
-
-  var takeCb = function takeCb(input) {
-    if (input instanceof Error) {
-      cb(input, true);
-      return;
-    }
-
-    if (redux_saga_core_esm_isEnd(input) && !maybe) {
-      cb(redux_saga_symbols_esm["k" /* TERMINATE */]);
-      return;
-    }
-
-    cb(input);
-  };
-
-  try {
-    channel.take(takeCb, Object(redux_saga_is_esm["g" /* notUndef */])(pattern) ? redux_saga_core_esm_matcher(pattern) : null);
-  } catch (err) {
-    cb(err, true);
-    return;
-  }
-
-  cb.cancel = takeCb.cancel;
-}
-
-function runCallEffect(env, _ref4, cb, _ref5) {
-  var context = _ref4.context,
-      fn = _ref4.fn,
-      args = _ref4.args;
-  var task = _ref5.task; // catch synchronous failures; see #152
-
-  try {
-    var result = fn.apply(context, args);
-
-    if (Object(redux_saga_is_esm["j" /* promise */])(result)) {
-      resolvePromise(result, cb);
-      return;
-    }
-
-    if (Object(redux_saga_is_esm["e" /* iterator */])(result)) {
-      // resolve iterator
-      proc(env, result, task.context, current, Object(io_6de156f3["G" /* j */])(fn),
-      /* isRoot */
-      false, cb);
-      return;
-    }
-
-    cb(result);
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runCPSEffect(env, _ref6, cb) {
-  var context = _ref6.context,
-      fn = _ref6.fn,
-      args = _ref6.args; // CPS (ie node style functions) can define their own cancellation logic
-  // by setting cancel field on the cb
-  // catch synchronous failures; see #152
-
-  try {
-    var cpsCb = function cpsCb(err, res) {
-      if (Object(redux_saga_is_esm["n" /* undef */])(err)) {
-        cb(res);
-      } else {
-        cb(err, true);
-      }
-    };
-
-    fn.apply(context, args.concat(cpsCb));
-
-    if (cpsCb.cancel) {
-      cb.cancel = cpsCb.cancel;
-    }
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runForkEffect(env, _ref7, cb, _ref8) {
-  var context = _ref7.context,
-      fn = _ref7.fn,
-      args = _ref7.args,
-      detached = _ref7.detached;
-  var parent = _ref8.task;
-  var taskIterator = createTaskIterator({
-    context: context,
-    fn: fn,
-    args: args
-  });
-  var meta = getIteratorMetaInfo(taskIterator, fn);
-  immediately(function () {
-    var child = proc(env, taskIterator, parent.context, current, meta, detached, undefined);
-
-    if (detached) {
-      cb(child);
-    } else {
-      if (child.isRunning()) {
-        parent.queue.addTask(child);
-        cb(child);
-      } else if (child.isAborted()) {
-        parent.queue.abort(child.error());
-      } else {
-        cb(child);
-      }
-    }
-  }); // Fork effects are non cancellables
-}
-
-function runJoinEffect(env, taskOrTasks, cb, _ref9) {
-  var task = _ref9.task;
-
-  var joinSingleTask = function joinSingleTask(taskToJoin, cb) {
-    if (taskToJoin.isRunning()) {
-      var joiner = {
-        task: task,
-        cb: cb
-      };
-
-      cb.cancel = function () {
-        if (taskToJoin.isRunning()) Object(io_6de156f3["O" /* r */])(taskToJoin.joiners, joiner);
-      };
-
-      taskToJoin.joiners.push(joiner);
-    } else {
-      if (taskToJoin.isAborted()) {
-        cb(taskToJoin.error(), true);
-      } else {
-        cb(taskToJoin.result());
-      }
-    }
-  };
-
-  if (Object(redux_saga_is_esm["a" /* array */])(taskOrTasks)) {
-    if (taskOrTasks.length === 0) {
-      cb([]);
-      return;
-    }
-
-    var childCallbacks = Object(io_6de156f3["I" /* l */])(taskOrTasks, cb);
-    taskOrTasks.forEach(function (t, i) {
-      joinSingleTask(t, childCallbacks[i]);
-    });
-  } else {
-    joinSingleTask(taskOrTasks, cb);
-  }
-}
-
-function cancelSingleTask(taskToCancel) {
-  if (taskToCancel.isRunning()) {
-    taskToCancel.cancel();
-  }
-}
-
-function runCancelEffect(env, taskOrTasks, cb, _ref10) {
-  var task = _ref10.task;
-
-  if (taskOrTasks === redux_saga_symbols_esm["h" /* SELF_CANCELLATION */]) {
-    cancelSingleTask(task);
-  } else if (Object(redux_saga_is_esm["a" /* array */])(taskOrTasks)) {
-    taskOrTasks.forEach(cancelSingleTask);
-  } else {
-    cancelSingleTask(taskOrTasks);
-  }
-
-  cb(); // cancel effects are non cancellables
-}
-
-function runAllEffect(env, effects, cb, _ref11) {
-  var digestEffect = _ref11.digestEffect;
-  var effectId = current;
-  var keys = Object.keys(effects);
-
-  if (keys.length === 0) {
-    cb(Object(redux_saga_is_esm["a" /* array */])(effects) ? [] : {});
-    return;
-  }
-
-  var childCallbacks = Object(io_6de156f3["I" /* l */])(effects, cb);
-  keys.forEach(function (key) {
-    digestEffect(effects[key], effectId, childCallbacks[key], key);
-  });
-}
-
-function runRaceEffect(env, effects, cb, _ref12) {
-  var digestEffect = _ref12.digestEffect;
-  var effectId = current;
-  var keys = Object.keys(effects);
-  var response = Object(redux_saga_is_esm["a" /* array */])(effects) ? Object(io_6de156f3["J" /* m */])(keys.length) : {};
-  var childCbs = {};
-  var completed = false;
-  keys.forEach(function (key) {
-    var chCbAtKey = function chCbAtKey(res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      if (isErr || Object(io_6de156f3["P" /* s */])(res)) {
-        // Race Auto cancellation
-        cb.cancel();
-        cb(res, isErr);
-      } else {
-        cb.cancel();
-        completed = true;
-        response[key] = res;
-        cb(response);
-      }
-    };
-
-    chCbAtKey.cancel = io_6de156f3["Q" /* t */];
-    childCbs[key] = chCbAtKey;
-  });
-
-  cb.cancel = function () {
-    // prevents unnecessary cancellation
-    if (!completed) {
-      completed = true;
-      keys.forEach(function (key) {
-        return childCbs[key].cancel();
-      });
-    }
-  };
-
-  keys.forEach(function (key) {
-    if (completed) {
-      return;
-    }
-
-    digestEffect(effects[key], effectId, childCbs[key], key);
-  });
-}
-
-function runSelectEffect(env, _ref13, cb) {
-  var selector = _ref13.selector,
-      args = _ref13.args;
-
-  try {
-    var state = selector.apply(void 0, [env.getState()].concat(args));
-    cb(state);
-  } catch (error) {
-    cb(error, true);
-  }
-}
-
-function runChannelEffect(env, _ref14, cb) {
-  var pattern = _ref14.pattern,
-      buffer = _ref14.buffer;
-  var chan = redux_saga_core_esm_channel(buffer);
-  var match = redux_saga_core_esm_matcher(pattern);
-
-  var taker = function taker(action) {
-    if (!redux_saga_core_esm_isEnd(action)) {
-      env.channel.take(taker, match);
-    }
-
-    chan.put(action);
-  };
-
-  var close = chan.close;
-
-  chan.close = function () {
-    taker.cancel();
-    close();
-  };
-
-  env.channel.take(taker, match);
-  cb(chan);
-}
-
-function runCancelledEffect(env, data, cb, _ref15) {
-  var task = _ref15.task;
-  cb(task.isCancelled());
-}
-
-function runFlushEffect(env, channel, cb) {
-  channel.flush(cb);
-}
-
-function runGetContextEffect(env, prop, cb, _ref16) {
-  var task = _ref16.task;
-  cb(task.context[prop]);
-}
-
-function runSetContextEffect(env, props, cb, _ref17) {
-  var task = _ref17.task;
-  Object(io_6de156f3["M" /* p */])(task.context, props);
-  cb();
-}
-
-var effectRunnerMap = (_effectRunnerMap = {}, _effectRunnerMap[io_6de156f3["r" /* T */]] = runTakeEffect, _effectRunnerMap[io_6de156f3["n" /* P */]] = runPutEffect, _effectRunnerMap[io_6de156f3["a" /* A */]] = runAllEffect, _effectRunnerMap[io_6de156f3["p" /* R */]] = runRaceEffect, _effectRunnerMap[io_6de156f3["c" /* C */]] = runCallEffect, _effectRunnerMap[io_6de156f3["w" /* a */]] = runCPSEffect, _effectRunnerMap[io_6de156f3["f" /* F */]] = runForkEffect, _effectRunnerMap[io_6de156f3["h" /* J */]] = runJoinEffect, _effectRunnerMap[io_6de156f3["y" /* b */]] = runCancelEffect, _effectRunnerMap[io_6de156f3["q" /* S */]] = runSelectEffect, _effectRunnerMap[io_6de156f3["A" /* d */]] = runChannelEffect, _effectRunnerMap[io_6de156f3["C" /* f */]] = runCancelledEffect, _effectRunnerMap[io_6de156f3["D" /* g */]] = runFlushEffect, _effectRunnerMap[io_6de156f3["g" /* G */]] = runGetContextEffect, _effectRunnerMap[io_6de156f3["E" /* h */]] = runSetContextEffect, _effectRunnerMap);
-/**
- Used to track a parent task and its forks
- In the fork model, forked tasks are attached by default to their parent
- We model this using the concept of Parent task && main Task
- main task is the main flow of the current Generator, the parent tasks is the
- aggregation of the main tasks + all its forked tasks.
- Thus the whole model represents an execution tree with multiple branches (vs the
- linear execution tree in sequential (non parallel) programming)
-
- A parent tasks has the following semantics
- - It completes if all its forks either complete or all cancelled
- - If it's cancelled, all forks are cancelled as well
- - It aborts if any uncaught error bubbles up from forks
- - If it completes, the return value is the one returned by the main task
- **/
-
-function forkQueue(mainTask, onAbort, cont) {
-  var tasks = [];
-  var result;
-  var completed = false;
-  addTask(mainTask);
-
-  var getTasks = function getTasks() {
-    return tasks;
-  };
-
-  function abort(err) {
-    onAbort();
-    cancelAll();
-    cont(err, true);
-  }
-
-  function addTask(task) {
-    tasks.push(task);
-
-    task.cont = function (res, isErr) {
-      if (completed) {
-        return;
-      }
-
-      Object(io_6de156f3["O" /* r */])(tasks, task);
-      task.cont = io_6de156f3["Q" /* t */];
-
-      if (isErr) {
-        abort(res);
-      } else {
-        if (task === mainTask) {
-          result = res;
-        }
-
-        if (!tasks.length) {
-          completed = true;
-          cont(result);
-        }
-      }
-    };
-  }
-
-  function cancelAll() {
-    if (completed) {
-      return;
-    }
-
-    completed = true;
-    tasks.forEach(function (t) {
-      t.cont = io_6de156f3["Q" /* t */];
-      t.cancel();
-    });
-    tasks = [];
-  }
-
-  return {
-    addTask: addTask,
-    cancelAll: cancelAll,
-    abort: abort,
-    getTasks: getTasks
-  };
-} // there can be only a single saga error created at any given moment
-
-
-function formatLocation(fileName, lineNumber) {
-  return fileName + "?" + lineNumber;
-}
-
-function effectLocationAsString(effect) {
-  var location = Object(io_6de156f3["S" /* v */])(effect);
-
-  if (location) {
-    var code = location.code,
-        fileName = location.fileName,
-        lineNumber = location.lineNumber;
-    var source = code + "  " + formatLocation(fileName, lineNumber);
-    return source;
-  }
-
-  return '';
-}
-
-function sagaLocationAsString(sagaMeta) {
-  var name = sagaMeta.name,
-      location = sagaMeta.location;
-
-  if (location) {
-    return name + "  " + formatLocation(location.fileName, location.lineNumber);
-  }
-
-  return name;
-}
-
-function cancelledTasksAsString(sagaStack) {
-  var cancelledTasks = Object(io_6de156f3["R" /* u */])(function (i) {
-    return i.cancelledTasks;
-  }, sagaStack);
-
-  if (!cancelledTasks.length) {
-    return '';
-  }
-
-  return ['Tasks cancelled due to error:'].concat(cancelledTasks).join('\n');
-}
-
-var crashedEffect = null;
-var redux_saga_core_esm_sagaStack = [];
-
-var addSagaFrame = function addSagaFrame(frame) {
-  frame.crashedEffect = crashedEffect;
-  redux_saga_core_esm_sagaStack.push(frame);
-};
-
-var clear = function clear() {
-  crashedEffect = null;
-  redux_saga_core_esm_sagaStack.length = 0;
-}; // this sets crashed effect for the soon-to-be-reported saga frame
-// this slightly streatches the singleton nature of this module into wrong direction
-// as it's even less obvious what's the data flow here, but it is what it is for now
-
-
-var setCrashedEffect = function setCrashedEffect(effect) {
-  crashedEffect = effect;
-};
-/**
-  @returns {string}
-
-  @example
-  The above error occurred in task errorInPutSaga {pathToFile}
-  when executing effect put({type: 'REDUCER_ACTION_ERROR_IN_PUT'}) {pathToFile}
-      created by fetchSaga {pathToFile}
-      created by rootSaga {pathToFile}
-*/
-
-
-var redux_saga_core_esm_toString = function toString() {
-  var firstSaga = redux_saga_core_esm_sagaStack[0],
-      otherSagas = redux_saga_core_esm_sagaStack.slice(1);
-  var crashedEffectLocation = firstSaga.crashedEffect ? effectLocationAsString(firstSaga.crashedEffect) : null;
-  var errorMessage = "The above error occurred in task " + sagaLocationAsString(firstSaga.meta) + (crashedEffectLocation ? " \n when executing effect " + crashedEffectLocation : '');
-  return [errorMessage].concat(otherSagas.map(function (s) {
-    return "    created by " + sagaLocationAsString(s.meta);
-  }), [cancelledTasksAsString(redux_saga_core_esm_sagaStack)]).join('\n');
-};
-
-function newTask(env, mainTask, parentContext, parentEffectId, meta, isRoot, cont) {
-  var _task;
-
-  if (cont === void 0) {
-    cont = io_6de156f3["Q" /* t */];
-  }
-
-  var status = RUNNING;
-  var taskResult;
-  var taskError;
-  var deferredEnd = null;
-  var cancelledDueToErrorTasks = [];
-  var context = Object.create(parentContext);
-  var queue = forkQueue(mainTask, function onAbort() {
-    cancelledDueToErrorTasks.push.apply(cancelledDueToErrorTasks, queue.getTasks().map(function (t) {
-      return t.meta.name;
-    }));
-  }, end);
-  /**
-   This may be called by a parent generator to trigger/propagate cancellation
-   cancel all pending tasks (including the main task), then end the current task.
-    Cancellation propagates down to the whole execution tree held by this Parent task
-   It's also propagated to all joiners of this task and their execution tree/joiners
-    Cancellation is noop for terminated/Cancelled tasks tasks
-   **/
-
-  function cancel() {
-    if (status === RUNNING) {
-      // Setting status to CANCELLED does not necessarily mean that the task/iterators are stopped
-      // effects in the iterator's finally block will still be executed
-      status = CANCELLED;
-      queue.cancelAll(); // Ending with a TASK_CANCEL will propagate the Cancellation to all joiners
-
-      end(redux_saga_symbols_esm["j" /* TASK_CANCEL */], false);
-    }
-  }
-
-  function end(result, isErr) {
-    if (!isErr) {
-      // The status here may be RUNNING or CANCELLED
-      // If the status is CANCELLED, then we do not need to change it here
-      if (result === redux_saga_symbols_esm["j" /* TASK_CANCEL */]) {
-        status = CANCELLED;
-      } else if (status !== CANCELLED) {
-        status = DONE;
-      }
-
-      taskResult = result;
-      deferredEnd && deferredEnd.resolve(result);
-    } else {
-      status = ABORTED;
-      addSagaFrame({
-        meta: meta,
-        cancelledTasks: cancelledDueToErrorTasks
-      });
-
-      if (task.isRoot) {
-        var sagaStack = redux_saga_core_esm_toString(); // we've dumped the saga stack to string and are passing it to user's code
-        // we know that it won't be needed anymore and we need to clear it
-
-        clear();
-        env.onError(result, {
-          sagaStack: sagaStack
-        });
-      }
-
-      taskError = result;
-      deferredEnd && deferredEnd.reject(result);
-    }
-
-    task.cont(result, isErr);
-    task.joiners.forEach(function (joiner) {
-      joiner.cb(result, isErr);
-    });
-    task.joiners = null;
-  }
-
-  function setContext(props) {
-    if (false) {}
-
-    Object(io_6de156f3["M" /* p */])(context, props);
-  }
-
-  function toPromise() {
-    if (deferredEnd) {
-      return deferredEnd.promise;
-    }
-
-    deferredEnd = redux_saga_deferred_esm();
-
-    if (status === ABORTED) {
-      deferredEnd.reject(taskError);
-    } else if (status !== RUNNING) {
-      deferredEnd.resolve(taskResult);
-    }
-
-    return deferredEnd.promise;
-  }
-
-  var task = (_task = {}, _task[redux_saga_symbols_esm["i" /* TASK */]] = true, _task.id = parentEffectId, _task.meta = meta, _task.isRoot = isRoot, _task.context = context, _task.joiners = [], _task.queue = queue, _task.cancel = cancel, _task.cont = cont, _task.end = end, _task.setContext = setContext, _task.toPromise = toPromise, _task.isRunning = function isRunning() {
-    return status === RUNNING;
-  }, _task.isCancelled = function isCancelled() {
-    return status === CANCELLED || status === RUNNING && mainTask.status === CANCELLED;
-  }, _task.isAborted = function isAborted() {
-    return status === ABORTED;
-  }, _task.result = function result() {
-    return taskResult;
-  }, _task.error = function error() {
-    return taskError;
-  }, _task);
-  return task;
-}
-
-function proc(env, iterator$1, parentContext, parentEffectId, meta, isRoot, cont) {
-  if (false) {}
-
-  var finalRunEffect = env.finalizeRunEffect(runEffect);
-  /**
-    Tracks the current effect cancellation
-    Each time the generator progresses. calling runEffect will set a new value
-    on it. It allows propagating cancellation to child effects
-  **/
-
-  next.cancel = io_6de156f3["Q" /* t */];
-  /** Creates a main task to track the main flow */
-
-  var mainTask = {
-    meta: meta,
-    cancel: cancelMain,
-    status: RUNNING
-  };
-  /**
-   Creates a new task descriptor for this generator.
-   A task is the aggregation of it's mainTask and all it's forked tasks.
-   **/
-
-  var task = newTask(env, mainTask, parentContext, parentEffectId, meta, isRoot, cont);
-  var executingContext = {
-    task: task,
-    digestEffect: digestEffect
-  };
-  /**
-    cancellation of the main task. We'll simply resume the Generator with a TASK_CANCEL
-  **/
-
-  function cancelMain() {
-    if (mainTask.status === RUNNING) {
-      mainTask.status = CANCELLED;
-      next(redux_saga_symbols_esm["j" /* TASK_CANCEL */]);
-    }
-  }
-  /**
-    attaches cancellation logic to this task's continuation
-    this will permit cancellation to propagate down the call chain
-  **/
-
-
-  if (cont) {
-    cont.cancel = task.cancel;
-  } // kicks up the generator
-
-
-  next(); // then return the task descriptor to the caller
-
-  return task;
-  /**
-   * This is the generator driver
-   * It's a recursive async/continuation function which calls itself
-   * until the generator terminates or throws
-   * @param {internal commands(TASK_CANCEL | TERMINATE) | any} arg - value, generator will be resumed with.
-   * @param {boolean} isErr - the flag shows if effect finished with an error
-   *
-   * receives either (command | effect result, false) or (any thrown thing, true)
-   */
-
-  function next(arg, isErr) {
-    try {
-      var result;
-
-      if (isErr) {
-        result = iterator$1.throw(arg); // user handled the error, we can clear bookkept values
-
-        clear();
-      } else if (Object(io_6de156f3["T" /* y */])(arg)) {
-        /**
-          getting TASK_CANCEL automatically cancels the main task
-          We can get this value here
-           - By cancelling the parent task manually
-          - By joining a Cancelled task
-        **/
-        mainTask.status = CANCELLED;
-        /**
-          Cancels the current effect; this will propagate the cancellation down to any called tasks
-        **/
-
-        next.cancel();
-        /**
-          If this Generator has a `return` method then invokes it
-          This will jump to the finally block
-        **/
-
-        result = Object(redux_saga_is_esm["d" /* func */])(iterator$1.return) ? iterator$1.return(redux_saga_symbols_esm["j" /* TASK_CANCEL */]) : {
-          done: true,
-          value: redux_saga_symbols_esm["j" /* TASK_CANCEL */]
-        };
-      } else if (Object(io_6de156f3["U" /* z */])(arg)) {
-        // We get TERMINATE flag, i.e. by taking from a channel that ended using `take` (and not `takem` used to trap End of channels)
-        result = Object(redux_saga_is_esm["d" /* func */])(iterator$1.return) ? iterator$1.return() : {
-          done: true
-        };
-      } else {
-        result = iterator$1.next(arg);
-      }
-
-      if (!result.done) {
-        digestEffect(result.value, parentEffectId, next);
-      } else {
-        /**
-          This Generator has ended, terminate the main task and notify the fork queue
-        **/
-        if (mainTask.status !== CANCELLED) {
-          mainTask.status = DONE;
-        }
-
-        mainTask.cont(result.value);
-      }
-    } catch (error) {
-      if (mainTask.status === CANCELLED) {
-        throw error;
-      }
-
-      mainTask.status = ABORTED;
-      mainTask.cont(error, true);
-    }
-  }
-
-  function runEffect(effect, effectId, currCb) {
-    /**
-      each effect runner must attach its own logic of cancellation to the provided callback
-      it allows this generator to propagate cancellation downward.
-       ATTENTION! effect runners must setup the cancel logic by setting cb.cancel = [cancelMethod]
-      And the setup must occur before calling the callback
-       This is a sort of inversion of control: called async functions are responsible
-      of completing the flow by calling the provided continuation; while caller functions
-      are responsible for aborting the current flow by calling the attached cancel function
-       Library users can attach their own cancellation logic to promises by defining a
-      promise[CANCEL] method in their returned promises
-      ATTENTION! calling cancel must have no effect on an already completed or cancelled effect
-    **/
-    if (Object(redux_saga_is_esm["j" /* promise */])(effect)) {
-      resolvePromise(effect, currCb);
-    } else if (Object(redux_saga_is_esm["e" /* iterator */])(effect)) {
-      // resolve iterator
-      proc(env, effect, task.context, effectId, meta,
-      /* isRoot */
-      false, currCb);
-    } else if (effect && effect[redux_saga_symbols_esm["c" /* IO */]]) {
-      var effectRunner = effectRunnerMap[effect.type];
-      effectRunner(env, effect.payload, currCb, executingContext);
-    } else {
-      // anything else returned as is
-      currCb(effect);
-    }
-  }
-
-  function digestEffect(effect, parentEffectId, cb, label) {
-    if (label === void 0) {
-      label = '';
-    }
-
-    var effectId = nextSagaId();
-    env.sagaMonitor && env.sagaMonitor.effectTriggered({
-      effectId: effectId,
-      parentEffectId: parentEffectId,
-      label: label,
-      effect: effect
-    });
-    /**
-      completion callback and cancel callback are mutually exclusive
-      We can't cancel an already completed effect
-      And We can't complete an already cancelled effectId
-    **/
-
-    var effectSettled; // Completion callback passed to the appropriate effect runner
-
-    function currCb(res, isErr) {
-      if (effectSettled) {
-        return;
-      }
-
-      effectSettled = true;
-      cb.cancel = io_6de156f3["Q" /* t */]; // defensive measure
-
-      if (env.sagaMonitor) {
-        if (isErr) {
-          env.sagaMonitor.effectRejected(effectId, res);
-        } else {
-          env.sagaMonitor.effectResolved(effectId, res);
-        }
-      }
-
-      if (isErr) {
-        setCrashedEffect(effect);
-      }
-
-      cb(res, isErr);
-    } // tracks down the current cancel
-
-
-    currCb.cancel = io_6de156f3["Q" /* t */]; // setup cancellation logic on the parent cb
-
-    cb.cancel = function () {
-      // prevents cancelling an already completed effect
-      if (effectSettled) {
-        return;
-      }
-
-      effectSettled = true;
-      currCb.cancel(); // propagates cancel downward
-
-      currCb.cancel = io_6de156f3["Q" /* t */]; // defensive measure
-
-      env.sagaMonitor && env.sagaMonitor.effectCancelled(effectId);
-    };
-
-    finalRunEffect(effect, effectId, currCb);
-  }
-}
-
-var RUN_SAGA_SIGNATURE = 'runSaga(options, saga, ...args)';
-var NON_GENERATOR_ERR = RUN_SAGA_SIGNATURE + ": saga argument must be a Generator function!";
-
-function runSaga(_ref, saga) {
-  var _ref$channel = _ref.channel,
-      channel = _ref$channel === void 0 ? stdChannel() : _ref$channel,
-      dispatch = _ref.dispatch,
-      getState = _ref.getState,
-      _ref$context = _ref.context,
-      context = _ref$context === void 0 ? {} : _ref$context,
-      sagaMonitor = _ref.sagaMonitor,
-      effectMiddlewares = _ref.effectMiddlewares,
-      _ref$onError = _ref.onError,
-      onError = _ref$onError === void 0 ? io_6de156f3["b" /* B */] : _ref$onError;
-
-  if (false) {}
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  var iterator$1 = saga.apply(void 0, args);
-
-  if (false) {}
-
-  var effectId = nextSagaId();
-
-  if (sagaMonitor) {
-    // monitors are expected to have a certain interface, let's fill-in any missing ones
-    sagaMonitor.rootSagaStarted = sagaMonitor.rootSagaStarted || io_6de156f3["Q" /* t */];
-    sagaMonitor.effectTriggered = sagaMonitor.effectTriggered || io_6de156f3["Q" /* t */];
-    sagaMonitor.effectResolved = sagaMonitor.effectResolved || io_6de156f3["Q" /* t */];
-    sagaMonitor.effectRejected = sagaMonitor.effectRejected || io_6de156f3["Q" /* t */];
-    sagaMonitor.effectCancelled = sagaMonitor.effectCancelled || io_6de156f3["Q" /* t */];
-    sagaMonitor.actionDispatched = sagaMonitor.actionDispatched || io_6de156f3["Q" /* t */];
-    sagaMonitor.rootSagaStarted({
-      effectId: effectId,
-      saga: saga,
-      args: args
-    });
-  }
-
-  if (false) { var MIDDLEWARE_TYPE_ERROR; }
-
-  var finalizeRunEffect;
-
-  if (effectMiddlewares) {
-    var middleware = redux["d" /* compose */].apply(void 0, effectMiddlewares);
-
-    finalizeRunEffect = function finalizeRunEffect(runEffect) {
-      return function (effect, effectId, currCb) {
-        var plainRunEffect = function plainRunEffect(eff) {
-          return runEffect(eff, effectId, currCb);
-        };
-
-        return middleware(plainRunEffect)(effect);
-      };
-    };
-  } else {
-    finalizeRunEffect = io_6de156f3["e" /* E */];
-  }
-
-  var env = {
-    channel: channel,
-    dispatch: Object(io_6de156f3["d" /* D */])(dispatch),
-    getState: getState,
-    sagaMonitor: sagaMonitor,
-    onError: onError,
-    finalizeRunEffect: finalizeRunEffect
-  };
-  return immediately(function () {
-    var task = proc(env, iterator$1, context, effectId, Object(io_6de156f3["G" /* j */])(saga),
-    /* isRoot */
-    true, undefined);
-
-    if (sagaMonitor) {
-      sagaMonitor.effectResolved(effectId, task);
-    }
-
-    return task;
-  });
-}
-
-function sagaMiddlewareFactory(_temp) {
-  var _ref = _temp === void 0 ? {} : _temp,
-      _ref$context = _ref.context,
-      context = _ref$context === void 0 ? {} : _ref$context,
-      _ref$channel = _ref.channel,
-      channel = _ref$channel === void 0 ? stdChannel() : _ref$channel,
-      sagaMonitor = _ref.sagaMonitor,
-      options = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref, ["context", "channel", "sagaMonitor"]);
-
-  var boundRunSaga;
-
-  if (false) {}
-
-  function sagaMiddleware(_ref2) {
-    var getState = _ref2.getState,
-        dispatch = _ref2.dispatch;
-    boundRunSaga = runSaga.bind(null, Object(esm_extends["a" /* default */])({}, options, {
-      context: context,
-      channel: channel,
-      dispatch: dispatch,
-      getState: getState,
-      sagaMonitor: sagaMonitor
-    }));
-    return function (next) {
-      return function (action) {
-        if (sagaMonitor && sagaMonitor.actionDispatched) {
-          sagaMonitor.actionDispatched(action);
-        }
-
-        var result = next(action); // hit reducers
-
-        channel.put(action);
-        return result;
-      };
-    };
-  }
-
-  sagaMiddleware.run = function () {
-    if (false) {}
-
-    return boundRunSaga.apply(void 0, arguments);
-  };
-
-  sagaMiddleware.setContext = function (props) {
-    if (false) {}
-
-    Object(io_6de156f3["M" /* p */])(context, props);
-  };
-
-  return sagaMiddleware;
-}
-
-/* harmony default export */ var redux_saga_core_esm = (sagaMiddlewareFactory);
-
-// CONCATENATED MODULE: ./node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js
-
-
-/* harmony default export */ var redux_saga_core_npm_proxy_esm = (redux_saga_core_esm);
-// EXTERNAL MODULE: ./src/store/download/index.ts + 2 modules
-var download = __webpack_require__(15);
-
-// EXTERNAL MODULE: ./src/store/Interface/index.ts
-var Interface = __webpack_require__(14);
-
-// CONCATENATED MODULE: ./src/store/rootReducer.ts
-var combineReducer=Object(redux["c" /* combineReducers */])({download:download["b" /* downloadReducer */],interface:Interface["b" /* interfaceReducer */]});function createReducer(){return combineReducer;}
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(8);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 5 modules
-var toConsumableArray = __webpack_require__(28);
-
-// EXTERNAL MODULE: ./node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js + 1 modules
-var redux_saga_effects_npm_proxy_esm = __webpack_require__(7);
-
-// EXTERNAL MODULE: ./src/utils/nodeEnvIs/devNodeEnv/index.ts + 1 modules
-var devNodeEnv = __webpack_require__(29);
-
-// EXTERNAL MODULE: ./src/store/download/saga.ts + 1 modules
-var download_saga = __webpack_require__(26);
-
-// CONCATENATED MODULE: ./src/store/rootSaga.ts
-var _marked=/*#__PURE__*/regenerator_default.a.mark(rootSaga);function rootSaga(){return regenerator_default.a.wrap(function rootSaga$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return Object(redux_saga_effects_npm_proxy_esm["a" /* all */])(Object(toConsumableArray["a" /* default */])(download_saga["a" /* default */]));case 2:case"end":return _context.stop();}}},_marked);}var sagas=[rootSaga];var CANCEL_SAGAS_HMR='CANCEL_SAGAS_HMR';function createAbortableSaga(saga){if(devNodeEnv["a" /* default */]){return/*#__PURE__*/regenerator_default.a.mark(function main(){var sagaTask;return regenerator_default.a.wrap(function main$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:_context2.next=2;return Object(redux_saga_effects_npm_proxy_esm["d" /* fork */])(saga);case 2:sagaTask=_context2.sent;_context2.next=5;return Object(redux_saga_effects_npm_proxy_esm["g" /* take */])(CANCEL_SAGAS_HMR);case 5:_context2.next=7;return Object(redux_saga_effects_npm_proxy_esm["c" /* cancel */])(sagaTask);case 7:case"end":return _context2.stop();}}},main);});}return saga;}var sagaManager={startSaga:function startSaga(sagaMiddleware){sagas.map(createAbortableSaga).forEach(function(saga){return sagaMiddleware.run(saga);});},cancelSaga:function cancelSaga(store){store.dispatch({type:CANCEL_SAGAS_HMR});}};
-// CONCATENATED MODULE: ./src/store/configureStore.ts
-function configureStore(){var sagaMiddleware=redux_saga_core_npm_proxy_esm();var middlewares=[sagaMiddleware];var enhancers=[redux["a" /* applyMiddleware */].apply(void 0,middlewares)];var composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true,traceLimit:10}):redux["d" /* compose */];var rootReducer=createReducer();var store=Object(redux["e" /* createStore */])(rootReducer,composeEnhancers.apply(void 0,enhancers));store.runSaga=sagaMiddleware.run;store.startAbortableSaga=function(){return sagaManager.startSaga(sagaMiddleware);};store.close=function(){return store.dispatch(END);};if(false){}sagaManager.startSaga(sagaMiddleware);return store;}
-// CONCATENATED MODULE: ./src/store/index.ts
-var store_store=configureStore();var storeSelector=function storeSelector(store){return store;};
-
-/***/ }),
-/* 10 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3156,16 +141,18 @@ var store_store=configureStore();var storeSelector=function storeSelector(store)
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ components_Provider; });
 __webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ connect_connect; });
+__webpack_require__.d(__webpack_exports__, "d", function() { return /* reexport */ useDispatch; });
+__webpack_require__.d(__webpack_exports__, "e", function() { return /* reexport */ useSelector; });
 __webpack_require__.d(__webpack_exports__, "c", function() { return /* reexport */ shallowEqual; });
 
-// UNUSED EXPORTS: connectAdvanced, ReactReduxContext, batch, useDispatch, createDispatchHook, useSelector, createSelectorHook, useStore, createStoreHook
+// UNUSED EXPORTS: connectAdvanced, ReactReduxContext, batch, createDispatchHook, createSelectorHook, useStore, createStoreHook
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(51);
+var prop_types = __webpack_require__(50);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/components/Context.js
 
@@ -3355,18 +342,45 @@ function Provider(_ref) {
 if (false) {}
 
 /* harmony default export */ var components_Provider = (Provider);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(12);
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(17);
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
 
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
 // EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(22);
+var hoist_non_react_statics_cjs = __webpack_require__(21);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
 // EXTERNAL MODULE: ./node_modules/react-is/index.js
-var react_is = __webpack_require__(21);
+var react_is = __webpack_require__(18);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js
  // React currently throws a warning when using useLayoutEffect on the server.
@@ -3545,7 +559,7 @@ _ref) {
       forwardRef = _ref2$forwardRef === void 0 ? false : _ref2$forwardRef,
       _ref2$context = _ref2.context,
       context = _ref2$context === void 0 ? ReactReduxContext : _ref2$context,
-      connectOptions = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref2, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context"]);
+      connectOptions = _objectWithoutPropertiesLoose(_ref2, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context"]);
 
   if (false) { var customStoreWarningMessage; }
 
@@ -3556,7 +570,7 @@ _ref) {
     var wrappedComponentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
     var displayName = getDisplayName(wrappedComponentName);
 
-    var selectorFactoryOptions = Object(esm_extends["a" /* default */])({}, connectOptions, {
+    var selectorFactoryOptions = _extends({}, connectOptions, {
       getDisplayName: getDisplayName,
       methodName: methodName,
       renderCountProp: renderCountProp,
@@ -3586,7 +600,7 @@ _ref) {
         // and values needed to control behavior (forwarded refs, alternate context instances).
         // To maintain the wrapperProps object reference, memoize this destructuring.
         var forwardedRef = props.forwardedRef,
-            wrapperProps = Object(objectWithoutPropertiesLoose["a" /* default */])(props, ["forwardedRef"]);
+            wrapperProps = _objectWithoutPropertiesLoose(props, ["forwardedRef"]);
 
         return [props.context, forwardedRef, wrapperProps];
       }, [props]),
@@ -3644,7 +658,7 @@ _ref) {
         // connected descendants won't update until after this component is done
 
 
-        return Object(esm_extends["a" /* default */])({}, contextValue, {
+        return _extends({}, contextValue, {
           subscription: subscription
         });
       }, [didStoreComeFromProps, contextValue, subscription]); // We need to force this wrapper component to re-render whenever a Redux store update
@@ -3691,7 +705,7 @@ _ref) {
       // We memoize the elements for the rendered child component as an optimization.
 
       var renderedWrappedComponent = Object(react["useMemo"])(function () {
-        return react_default.a.createElement(WrappedComponent, Object(esm_extends["a" /* default */])({}, actualChildProps, {
+        return react_default.a.createElement(WrappedComponent, _extends({}, actualChildProps, {
           ref: forwardedRef
         }));
       }, [forwardedRef, WrappedComponent, actualChildProps]); // If React sees the exact same element reference as last time, it bails out of re-rendering
@@ -3719,7 +733,7 @@ _ref) {
 
     if (forwardRef) {
       var forwarded = react_default.a.forwardRef(function forwardConnectRef(props, ref) {
-        return react_default.a.createElement(Connect, Object(esm_extends["a" /* default */])({}, props, {
+        return react_default.a.createElement(Connect, _extends({}, props, {
           forwardedRef: ref
         }));
       });
@@ -3760,7 +774,7 @@ function shallowEqual(objA, objB) {
   return true;
 }
 // EXTERNAL MODULE: ./node_modules/redux/es/redux.js
-var redux = __webpack_require__(16);
+var redux = __webpack_require__(8);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/isPlainObject.js
 /**
@@ -3911,7 +925,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 
 
 function defaultMergeProps(stateProps, dispatchProps, ownProps) {
-  return Object(esm_extends["a" /* default */])({}, ownProps, {}, stateProps, {}, dispatchProps);
+  return _extends({}, ownProps, {}, stateProps, {}, dispatchProps);
 }
 function wrapMergePropsFunc(mergeProps) {
   return function initMergePropsProxy(dispatch, _ref) {
@@ -4037,7 +1051,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
   var initMapStateToProps = _ref2.initMapStateToProps,
       initMapDispatchToProps = _ref2.initMapDispatchToProps,
       initMergeProps = _ref2.initMergeProps,
-      options = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref2, ["initMapStateToProps", "initMapDispatchToProps", "initMergeProps"]);
+      options = _objectWithoutPropertiesLoose(_ref2, ["initMapStateToProps", "initMapDispatchToProps", "initMergeProps"]);
 
   var mapStateToProps = initMapStateToProps(dispatch, options);
   var mapDispatchToProps = initMapDispatchToProps(dispatch, options);
@@ -4120,12 +1134,12 @@ function createConnect(_temp) {
         areStatePropsEqual = _ref3$areStatePropsEq === void 0 ? shallowEqual : _ref3$areStatePropsEq,
         _ref3$areMergedPropsE = _ref3.areMergedPropsEqual,
         areMergedPropsEqual = _ref3$areMergedPropsE === void 0 ? shallowEqual : _ref3$areMergedPropsE,
-        extraOptions = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref3, ["pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual"]);
+        extraOptions = _objectWithoutPropertiesLoose(_ref3, ["pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual"]);
 
     var initMapStateToProps = match(mapStateToProps, mapStateToPropsFactories, 'mapStateToProps');
     var initMapDispatchToProps = match(mapDispatchToProps, mapDispatchToPropsFactories, 'mapDispatchToProps');
     var initMergeProps = match(mergeProps, mergePropsFactories, 'mergeProps');
-    return connectHOC(selectorFactory, Object(esm_extends["a" /* default */])({
+    return connectHOC(selectorFactory, _extends({
       // used in error messages
       methodName: 'connect',
       // used to compute Connect's displayName from the wrapped component's displayName.
@@ -4391,7 +1405,7 @@ function createSelectorHook(context) {
 
 var useSelector = /*#__PURE__*/createSelectorHook();
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
-var react_dom = __webpack_require__(24);
+var react_dom = __webpack_require__(23);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/reactBatchedUpdates.js
 /* eslint-disable import/no-unresolved */
@@ -4411,7 +1425,7 @@ setBatch(react_dom["unstable_batchedUpdates"]);
 
 
 /***/ }),
-/* 11 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4527,96 +1541,298 @@ GM_setClipboard(data,info);},/**
 info:GM_info};
 
 /***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-/* 13 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
-/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(41);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,autoStart:true,downloadingItems:{},stoppedItems:{},completedItems:{},allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);_this.allDownloads=objectFromValue;Object.values(objectFromValue).forEach(function(item){if(!_this.autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
-item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}if(item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].completed){_this.completedItems[item.fsId]=item;}if(item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped){_this.stoppedItems[item.fsId]=item;}});resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-get itemsFromQueue(){var _this2=this;var queue={};var filterKeys=Object.keys(Object.assign({},this.downloadingItems,this.completedItems,this.stoppedItems));Object.keys(this.allDownloads).forEach(function(fsId){if(!filterKeys.includes(fsId)){queue[fsId]=_this2.allDownloads[fsId];}});return queue;},get downloadable(){return Object.keys(this.downloadingItems).length<_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].maxDownloadCount,this.maxDownloadCount);},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){var allDownloads=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState().download.allDownloads;Object.values(allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
+var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,autoStart:true,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);_this.allDownloads=objectFromValue;Object.values(objectFromValue).forEach(function(item){if(!_this.autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
+item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}});resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};
 
 /***/ }),
-/* 14 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionCreator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return reducer; });
-/* unused harmony export interfaceState */
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
-/* harmony import */ var typesafe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-/* harmony import */ var typesafe_actions__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(typesafe_actions__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
-/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
-var maxDownloadCount=_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_4__[/* InstanceForSystem */ "a"].maxDownloadCount,autoStart=_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_4__[/* InstanceForSystem */ "a"].autoStart;var initState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_2__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_3__[/* ValueTypes */ "c"].maxDownloadCount,maxDownloadCount),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_2__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_3__[/* ValueTypes */ "c"].autoStart,autoStart),downloadable:true,downloadModalOpen:false,configModalOpen:false};var actionCreator={change:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_1__["createStandardAction"])('INTERFACE/CHANGE')(),reset:Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_1__["createStandardAction"])('INTERFACE/RESET')()};var reducer=function reducer(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initState;var action=arguments.length>1?arguments[1]:undefined;switch(action.type){case Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_1__["getType"])(actionCreator.reset):return Object.assign({},initState);case Object(typesafe_actions__WEBPACK_IMPORTED_MODULE_1__["getType"])(actionCreator.change):Object.keys(action.payload).forEach(function(k){// Set key event
-var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_2__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_3__[/* ValueTypes */ "c"].autoStart,action.payload.maxDownloadCount);break;case'maxDownloadCount':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_2__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_3__[/* ValueTypes */ "c"].maxDownloadCount,action.payload.maxDownloadCount);}});return Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);}return state;};
+/* unused harmony export defaultMemoize */
+/* unused harmony export createSelectorCreator */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createSelector; });
+/* unused harmony export createStructuredSelector */
+function defaultEqualityCheck(a, b) {
+  return a === b;
+}
+
+function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
+  if (prev === null || next === null || prev.length !== next.length) {
+    return false;
+  } // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
+
+
+  var length = prev.length;
+
+  for (var i = 0; i < length; i++) {
+    if (!equalityCheck(prev[i], next[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function defaultMemoize(func) {
+  var equalityCheck = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultEqualityCheck;
+  var lastArgs = null;
+  var lastResult = null; // we reference arguments instead of spreading them for performance reasons
+
+  return function () {
+    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
+      // apply arguments instead of spreading for performance.
+      lastResult = func.apply(null, arguments);
+    }
+
+    lastArgs = arguments;
+    return lastResult;
+  };
+}
+
+function getDependencies(funcs) {
+  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+  if (!dependencies.every(function (dep) {
+    return typeof dep === 'function';
+  })) {
+    var dependencyTypes = dependencies.map(function (dep) {
+      return typeof dep;
+    }).join(', ');
+    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+  }
+
+  return dependencies;
+}
+
+function createSelectorCreator(memoize) {
+  for (var _len = arguments.length, memoizeOptions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    memoizeOptions[_key - 1] = arguments[_key];
+  }
+
+  return function () {
+    for (var _len2 = arguments.length, funcs = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      funcs[_key2] = arguments[_key2];
+    }
+
+    var recomputations = 0;
+    var resultFunc = funcs.pop();
+    var dependencies = getDependencies(funcs);
+    var memoizedResultFunc = memoize.apply(undefined, [function () {
+      recomputations++; // apply arguments instead of spreading for performance.
+
+      return resultFunc.apply(null, arguments);
+    }].concat(memoizeOptions)); // If a selector is called with the exact same arguments we don't need to traverse our dependencies again.
+
+    var selector = memoize(function () {
+      var params = [];
+      var length = dependencies.length;
+
+      for (var i = 0; i < length; i++) {
+        // apply arguments instead of spreading and mutate a local list of params for performance.
+        params.push(dependencies[i].apply(null, arguments));
+      } // apply arguments instead of spreading for performance.
+
+
+      return memoizedResultFunc.apply(null, params);
+    });
+    selector.resultFunc = resultFunc;
+    selector.dependencies = dependencies;
+
+    selector.recomputations = function () {
+      return recomputations;
+    };
+
+    selector.resetRecomputations = function () {
+      return recomputations = 0;
+    };
+
+    return selector;
+  };
+}
+var createSelector = createSelectorCreator(defaultMemoize);
+function createStructuredSelector(selectors) {
+  var selectorCreator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : createSelector;
+
+  if (typeof selectors !== 'object') {
+    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+  }
+
+  var objectKeys = Object.keys(selectors);
+  return selectorCreator(objectKeys.map(function (key) {
+    return selectors[key];
+  }), function () {
+    for (var _len3 = arguments.length, values = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      values[_key3] = arguments[_key3];
+    }
+
+    return values.reduce(function (composition, value, index) {
+      composition[objectKeys[index]] = value;
+      return composition;
+    }, {});
+  });
+}
 
 /***/ }),
-/* 15 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* reexport */ actionCreator["a" /* default */]; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport */ download_reducer; });
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ downloadModule_fetchItem; });
 
-// UNUSED EXPORTS: downloadState, downloadSaga
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(10);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
-// EXTERNAL MODULE: ./src/store/download/actionCreator.ts
-var actionCreator = __webpack_require__(6);
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(16);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js + 1 modules
-var objectSpread2 = __webpack_require__(23);
+var objectSpread2 = __webpack_require__(15);
 
-// EXTERNAL MODULE: ./node_modules/typesafe-actions/dist/typesafe-actions.umd.production.js
-var typesafe_actions_umd_production = __webpack_require__(5);
+// EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
+var gmInterface = __webpack_require__(3);
 
-// EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(13);
+// EXTERNAL MODULE: ./src/types.ts
+var types = __webpack_require__(1);
 
-// CONCATENATED MODULE: ./src/store/download/state.ts
-var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;var state={allDownloads:allDownloads,processing:{url:0,data:0}};/* harmony default export */ var download_state = (state);
-// CONCATENATED MODULE: ./src/store/download/reducer.ts
-var reducer_reducer=function reducer(){var originState=arguments.length>0&&arguments[0]!==undefined?arguments[0]:download_state;var action=arguments.length>1?arguments[1]:undefined;var draft=Object(objectSpread2["a" /* default */])({},originState);switch(action.type){case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].reset):return Object.assign({},draft);case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].change.request):return Object.assign(Object(objectSpread2["a" /* default */])({},draft),action.payload);case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].updateItem):draft.allDownloads[action.payload.fsId]=action.payload;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadURL.request):draft.processing.url+=1;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadURL.success):draft.processing.url-=1;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadURL.failure):draft.processing.url-=1;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadItem.request):draft.processing.data+=1;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadItem.success):draft.processing.data-=1;break;case Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadItem.failure):draft.processing.data-=1;break;}return draft;};/* harmony default export */ var download_reducer = (reducer_reducer);
-// EXTERNAL MODULE: ./src/store/download/saga.ts + 1 modules
-var saga = __webpack_require__(26);
+// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
+var redux_toolkit_esm = __webpack_require__(9);
 
-// CONCATENATED MODULE: ./src/store/download/index.ts
+// CONCATENATED MODULE: ./src/services/api.ts
+function getDownloadUrl(path){return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
+return reject(r);}}});});}// export async function downloadItem(arr: IItem) {
+//   // Remove Item if target still in stop cluster
+//   if (InstanceForSystem.stoppedItems[arr.fs_id]) {
+//     delete InstanceForSystem.stoppedItems[arr.fs_id]
+//   }
+//
+//   if (!InstanceForSystem.downloadable) {
+//     arr.status = StatusTypes.inQueued
+//     renderOperationElement(arr)
+//     return
+//   }
+//
+//   if (arr.status === StatusTypes.error) {
+//     // re-getting url if it invalided
+//     await getDownloadUrl(arr)
+//   }
+//
+//   arr.status = StatusTypes.downloading
+//
+//   InstanceForSystem.downloadingItems[arr.fs_id] = arr
+//   const { url, server_filename } = arr
+//   let loaded = 0
+//   let currentEvent: ProgressEvent | undefined = undefined
+//   const percentOverlay = document.querySelector(`div[data-label="${arr.fs_id}"]`) as HTMLDivElement
+//   const progressRadial = percentOverlay.parentElement as HTMLDivElement
+//   const speedOverlay = percentOverlay.closest('tr')!.querySelector('td[data-label="speed"]') as HTMLTableDataCellElement
+//
+//   arr.request = GM.download({
+//     url,
+//     name: server_filename,
+//     saveAs: true,
+//     headers: {
+//       Host: 'qdall01.baidupcs.com',
+//       Accept: '*/*',
+//       'User-Agent': HeaderTypes.userAgent,
+//       'Accept-Encoding': 'identity',
+//       'Accept-Language': 'ja-JP',
+//       'Accept-Charset': '*',
+//     },
+//     onprogress: (e: ProgressEvent) => {
+//       currentEvent = e
+//
+//       const percent = Math.round((currentEvent.loaded * 100) / currentEvent.total)
+//       progressRadial.className = `progress-radial progress-${percent}`
+//       percentOverlay.innerText = `${percent}%`
+//     },
+//     onload: () => {
+//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
+//       progressRadial.className = 'progress-radial progress-100'
+//       percentOverlay.innerText = '100%'
+//       speedOverlay.innerText = ''
+//       InstanceForSystem.completedItems[arr.fs_id] = arr
+//       delete InstanceForSystem.downloadingItems[arr.fs_id]
+//
+//       GM.notification({
+//         text: '下载完成',
+//         title: server_filename,
+//         highlight: true,
+//       })
+//       arr.status = StatusTypes.completed
+//       renderOperationElement(arr)
+//
+//       addNextDownloadRequest()
+//     },
+//     onerror: (e) => {
+//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
+//       progressRadial.className = 'progress-radial progress-0'
+//       percentOverlay.innerHTML = `<span style="color: red">error</span>`
+//       speedOverlay.innerText = ''
+//       InstanceForSystem.stoppedItems[arr.fs_id] = arr
+//       delete InstanceForSystem.downloadingItems[arr.fs_id]
+//       arr.status = StatusTypes.error
+//       renderOperationElement(arr)
+//       // eslint-disable-next-line no-console
+//       console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e)
+//
+//       addNextDownloadRequest()
+//     },
+//   })
+//   window.requestAnimationFrame(() => {
+//     renderOperationElement(arr)
+//   })
+//
+//   arr.progress_loader_id = window.setInterval(() => {
+//     if (currentEvent) {
+//       const speed = currentEvent.loaded - loaded
+//       loaded = currentEvent.loaded
+//       speedOverlay.innerText = `${formatByte(speed)}/s`
+//     }
+//   }, 1000)
+// }
+function addNextDownloadRequest(){// for (const fs_id in InstanceForSystem.itemsFromQueue) {
+//   // downloadItem(InstanceForSystem.allDownloads[fs_id])
+// }
+}
+// EXTERNAL MODULE: ./src/selectors.ts
+var selectors = __webpack_require__(17);
 
+// CONCATENATED MODULE: ./src/modules/downloadModule.ts
+var allDownloads={};var initialState={downloadItems:allDownloads,processing:0,error:''};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId].status;delete state.downloadItems[action.payload.fsId].intervalId;delete state.downloadItems[action.payload.fsId].speedOverlay;delete state.downloadItems[action.payload.fsId].percentCount;delete state.downloadItems[action.payload.fsId];// state.downloadItems[action.payload.fsId].status = StatusTypes.unknow
+// state.downloadItems[action.payload.fsId].percentCount = 0
+// state.downloadItems[action.payload.fsId].intervalId = 0
+// state.downloadItems[action.payload.fsId].speedOverlay = 0
+return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state,action){state.processing-=1;state.error=action.toString();return state;}}});var downloadModule_fetchItem=function fetchItem(item){return/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(dispatch,getState){var progress,res,downloadable,url,serverFilename,currentEvent,loaded;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:dispatch(downloadModule.actions.requestDownload());_context.prev=1;progress=item.progress;_context.next=5;return getDownloadUrl(item.path);case 5:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);downloadable=Object(selectors["a" /* downloadableSelector */])(getState());if(downloadable){_context.next=11;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context.abrupt("return");case 11:progress.status=types["b" /* StatusTypes */].downloading;url=item.url,serverFilename=item.serverFilename;currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});dispatch(downloadModule.actions.successDownload());// addNextDownloadRequest()
+},onerror:function onerror(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;// eslint-disable-next-line no-console
+throw new Error('出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录');// addNextDownloadRequest()
+}});loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);_context.next=24;break;case 21:_context.prev=21;_context.t0=_context["catch"](1);dispatch(downloadModule.actions.failureDownload(_context.t0));case 24:case"end":return _context.stop();}}},_callee,null,[[1,21]]);}));return function(_x,_x2){return _ref.apply(this,arguments);};}();};/* harmony default export */ var modules_downloadModule = __webpack_exports__["a"] = (downloadModule);
 
 /***/ }),
-/* 16 */
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+var initialState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
+var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;}}}));
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4626,7 +1842,7 @@ var saga = __webpack_require__(26);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return combineReducers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return compose; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return createStore; });
-/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(31);
+/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
 
 /**
  * These are private action types reserved by Redux.
@@ -5280,28 +2496,2780 @@ if (false) {}
 
 
 /***/ }),
-/* 17 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutPropertiesLoose; });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ configureStore; });
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ createSlice; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ getDefaultMiddleware; });
+
+// UNUSED EXPORTS: createNextState, current, __DO_NOT_USE__ActionTypes, applyMiddleware, bindActionCreators, combineReducers, compose, createStore, createSelector, MiddlewareArray, createAction, createAsyncThunk, createEntityAdapter, createImmutableStateInvariantMiddleware, createReducer, createSerializableStateInvariantMiddleware, findNonSerializableValue, getType, isImmutableDefault, isPlain, nanoid, unwrapResult
+
+// CONCATENATED MODULE: ./node_modules/immer/dist/immer.esm.js
+function n(n) {
+  for (var t = arguments.length, r = Array(t > 1 ? t - 1 : 0), e = 1; e < t; e++) {
+    r[e - 1] = arguments[e];
   }
 
-  return target;
+  if (false) { var i, o; }
+
+  throw Error("[Immer] minified error nr: " + n + (r.length ? " " + r.join(",") : "") + ". Find the full error at: https://bit.ly/3cXEKWf");
 }
 
+function t(n) {
+  return !!n && !!n[L];
+}
+
+function r(n) {
+  return !!n && (function (n) {
+    if (!n || "object" != typeof n) return !1;
+    var t = Object.getPrototypeOf(n);
+    return !t || t === Object.prototype;
+  }(n) || Array.isArray(n) || !!n[H] || !!n.constructor[H] || s(n) || v(n));
+}
+
+function e(r) {
+  return t(r) || n(23, r), r[L].t;
+}
+
+function i(n, t, r) {
+  void 0 === r && (r = !1), 0 === o(n) ? (r ? Object.keys : Y)(n).forEach(function (e) {
+    r && "symbol" == typeof e || t(e, n[e], n);
+  }) : n.forEach(function (r, e) {
+    return t(e, r, n);
+  });
+}
+
+function o(n) {
+  var t = n[L];
+  return t ? t.i > 3 ? t.i - 4 : t.i : Array.isArray(n) ? 1 : s(n) ? 2 : v(n) ? 3 : 0;
+}
+
+function u(n, t) {
+  return 2 === o(n) ? n.has(t) : Object.prototype.hasOwnProperty.call(n, t);
+}
+
+function a(n, t) {
+  return 2 === o(n) ? n.get(t) : n[t];
+}
+
+function f(n, t, r) {
+  var e = o(n);
+  2 === e ? n.set(t, r) : 3 === e ? (n.delete(t), n.add(r)) : n[t] = r;
+}
+
+function c(n, t) {
+  return n === t ? 0 !== n || 1 / n == 1 / t : n != n && t != t;
+}
+
+function s(n) {
+  return W && n instanceof Map;
+}
+
+function v(n) {
+  return X && n instanceof Set;
+}
+
+function p(n) {
+  return n.o || n.t;
+}
+
+function l(n) {
+  if (Array.isArray(n)) return n.slice();
+  var t = Z(n);
+  delete t[L];
+
+  for (var r = Y(t), e = 0; e < r.length; e++) {
+    var i = r[e],
+        o = t[i];
+    !1 === o.writable && (o.writable = !0, o.configurable = !0), (o.get || o.set) && (t[i] = {
+      configurable: !0,
+      writable: !0,
+      enumerable: o.enumerable,
+      value: n[i]
+    });
+  }
+
+  return Object.create(Object.getPrototypeOf(n), t);
+}
+
+function d(n, e) {
+  b(n) || t(n) || !r(n) || (o(n) > 1 && (n.set = n.add = n.clear = n.delete = h), Object.freeze(n), e && i(n, function (n, t) {
+    return d(t, !0);
+  }, !0));
+}
+
+function h() {
+  n(2);
+}
+
+function b(n) {
+  return null == n || "object" != typeof n || Object.isFrozen(n);
+}
+
+function y(t) {
+  var r = nn[t];
+  return r || n( false ? undefined : 19, t), r;
+}
+
+function m(n, t) {
+  nn[n] = t;
+}
+
+function _() {
+  return  true || false, G;
+}
+
+function j(n, t) {
+  t && (y("Patches"), n.u = [], n.s = [], n.v = t);
+}
+
+function g(n) {
+  O(n), n.p.forEach(S), n.p = null;
+}
+
+function O(n) {
+  n === G && (G = n.l);
+}
+
+function w(n) {
+  return G = {
+    p: [],
+    l: G,
+    h: n,
+    m: !0,
+    _: 0
+  };
+}
+
+function S(n) {
+  var t = n[L];
+  0 === t.i || 1 === t.i ? t.j() : t.g = !0;
+}
+
+function P(t, e) {
+  e._ = e.p.length;
+  var i = e.p[0],
+      o = void 0 !== t && t !== i;
+  return e.h.O || y("ES5").S(e, t, o), o ? (i[L].P && (g(e), n(4)), r(t) && (t = M(e, t), e.l || x(e, t)), e.u && y("Patches").M(i[L], t, e.u, e.s)) : t = M(e, i, []), g(e), e.u && e.v(e.u, e.s), t !== B ? t : void 0;
+}
+
+function M(n, t, r) {
+  if (b(t)) return t;
+  var e = t[L];
+  if (!e) return i(t, function (i, o) {
+    return A(n, e, t, i, o, r);
+  }, !0), t;
+  if (e.A !== n) return t;
+  if (!e.P) return x(n, e.t, !0), e.t;
+
+  if (!e.I) {
+    e.I = !0, e.A._--;
+    var o = 4 === e.i || 5 === e.i ? e.o = l(e.k) : e.o;
+    i(o, function (t, i) {
+      return A(n, e, o, t, i, r);
+    }), x(n, o, !1), r && n.u && y("Patches").R(e, r, n.u, n.s);
+  }
+
+  return e.o;
+}
+
+function A(e, i, o, a, c, s) {
+  if ( false && false, t(c)) {
+    var v = M(e, c, s && i && 3 !== i.i && !u(i.D, a) ? s.concat(a) : void 0);
+    if (f(o, a, v), !t(v)) return;
+    e.m = !1;
+  }
+
+  if (r(c) && !b(c)) {
+    if (!e.h.N && e._ < 1) return;
+    M(e, c), i && i.A.l || x(e, c);
+  }
+}
+
+function x(n, t, r) {
+  void 0 === r && (r = !1), n.h.N && n.m && d(t, r);
+}
+
+function z(n, t) {
+  var r = n[L];
+  return (r ? p(r) : n)[t];
+}
+
+function I(n) {
+  n.P || (n.P = !0, n.l && I(n.l));
+}
+
+function E(n) {
+  n.o || (n.o = l(n.t));
+}
+
+function k(n, t, r) {
+  var e = s(t) ? y("MapSet").T(t, r) : v(t) ? y("MapSet").F(t, r) : n.O ? function (n, t) {
+    var r = Array.isArray(n),
+        e = {
+      i: r ? 1 : 0,
+      A: t ? t.A : _(),
+      P: !1,
+      I: !1,
+      D: {},
+      l: t,
+      t: n,
+      k: null,
+      o: null,
+      j: null,
+      C: !1
+    },
+        i = e,
+        o = tn;
+    r && (i = [e], o = rn);
+    var u = Proxy.revocable(i, o),
+        a = u.revoke,
+        f = u.proxy;
+    return e.k = f, e.j = a, f;
+  }(t, r) : y("ES5").J(t, r);
+  return (r ? r.A : _()).p.push(e), e;
+}
+
+function R(e) {
+  return t(e) || n(22, e), function n(t) {
+    if (!r(t)) return t;
+    var e,
+        u = t[L],
+        c = o(t);
+
+    if (u) {
+      if (!u.P && (u.i < 4 || !y("ES5").K(u))) return u.t;
+      u.I = !0, e = D(t, c), u.I = !1;
+    } else e = D(t, c);
+
+    return i(e, function (t, r) {
+      u && a(u.t, t) === r || f(e, t, n(r));
+    }), 3 === c ? new Set(e) : e;
+  }(e);
+}
+
+function D(n, t) {
+  switch (t) {
+    case 2:
+      return new Map(n);
+
+    case 3:
+      return Array.from(n);
+  }
+
+  return l(n);
+}
+
+function N() {
+  function r(n, t) {
+    var r = s[n];
+    return r ? r.enumerable = t : s[n] = r = {
+      configurable: !0,
+      enumerable: t,
+      get: function get() {
+        var t = this[L];
+        return  false && false, tn.get(t, n);
+      },
+      set: function set(t) {
+        var r = this[L];
+         false && false, tn.set(r, n, t);
+      }
+    }, r;
+  }
+
+  function e(n) {
+    for (var t = n.length - 1; t >= 0; t--) {
+      var r = n[t][L];
+      if (!r.P) switch (r.i) {
+        case 5:
+          a(r) && I(r);
+          break;
+
+        case 4:
+          o(r) && I(r);
+      }
+    }
+  }
+
+  function o(n) {
+    for (var t = n.t, r = n.k, e = Y(r), i = e.length - 1; i >= 0; i--) {
+      var o = e[i];
+
+      if (o !== L) {
+        var a = t[o];
+        if (void 0 === a && !u(t, o)) return !0;
+        var f = r[o],
+            s = f && f[L];
+        if (s ? s.t !== a : !c(f, a)) return !0;
+      }
+    }
+
+    var v = !!t[L];
+    return e.length !== Y(t).length + (v ? 0 : 1);
+  }
+
+  function a(n) {
+    var t = n.k;
+    if (t.length !== n.t.length) return !0;
+    var r = Object.getOwnPropertyDescriptor(t, t.length - 1);
+    return !(!r || r.get);
+  }
+
+  function f(t) {
+    t.g && n(3, JSON.stringify(p(t)));
+  }
+
+  var s = {};
+  m("ES5", {
+    J: function J(n, t) {
+      var e = Array.isArray(n),
+          i = function (n, t) {
+        var e = Z(t);
+        n && delete e.length, delete e[L];
+
+        for (var i = Y(e), o = 0; o < i.length; o++) {
+          var u = i[o];
+          e[u] = r(u, n || !!e[u].enumerable);
+        }
+
+        if (n) {
+          var a = Array(t.length);
+          return Object.defineProperties(a, e), a;
+        }
+
+        return Object.create(Object.getPrototypeOf(t), e);
+      }(e, n),
+          o = {
+        i: e ? 5 : 4,
+        A: t ? t.A : _(),
+        P: !1,
+        I: !1,
+        D: {},
+        l: t,
+        t: n,
+        k: i,
+        o: null,
+        g: !1,
+        C: !1
+      };
+
+      return Object.defineProperty(i, L, {
+        value: o,
+        writable: !0
+      }), i;
+    },
+    S: function S(n, r, o) {
+      o ? t(r) && r[L].A === n && e(n.p) : (n.u && function n(t) {
+        if (t && "object" == typeof t) {
+          var r = t[L];
+
+          if (r) {
+            var e = r.t,
+                o = r.k,
+                f = r.D,
+                c = r.i;
+            if (4 === c) i(o, function (t) {
+              t !== L && (void 0 !== e[t] || u(e, t) ? f[t] || n(o[t]) : (f[t] = !0, I(r)));
+            }), i(e, function (n) {
+              void 0 !== o[n] || u(o, n) || (f[n] = !1, I(r));
+            });else if (5 === c) {
+              if (a(r) && (I(r), f.length = !0), o.length < e.length) for (var s = o.length; s < e.length; s++) {
+                f[s] = !1;
+              } else for (var v = e.length; v < o.length; v++) {
+                f[v] = !0;
+              }
+
+              for (var p = Math.min(o.length, e.length), l = 0; l < p; l++) {
+                void 0 === f[l] && n(o[l]);
+              }
+            }
+          }
+        }
+      }(n.p[0]), e(n.p));
+    },
+    K: function K(n) {
+      return 4 === n.i ? o(n) : a(n);
+    }
+  });
+}
+
+function T() {
+  function r(n) {
+    if (!n || "object" != typeof n) return n;
+    if (Array.isArray(n)) return n.map(r);
+    if (s(n)) return new Map(Array.from(n.entries()).map(function (n) {
+      return [n[0], r(n[1])];
+    }));
+    if (v(n)) return new Set(Array.from(n).map(r));
+    var t = Object.create(Object.getPrototypeOf(n));
+
+    for (var e in n) {
+      t[e] = r(n[e]);
+    }
+
+    return t;
+  }
+
+  function e(n) {
+    return t(n) ? r(n) : n;
+  }
+
+  var f = "add";
+  m("Patches", {
+    $: function $(t, e) {
+      return e.forEach(function (e) {
+        for (var i = e.path, u = e.op, c = t, s = 0; s < i.length - 1; s++) {
+          "object" != typeof (c = a(c, i[s])) && n(15, i.join("/"));
+        }
+
+        var v = o(c),
+            p = r(e.value),
+            l = i[i.length - 1];
+
+        switch (u) {
+          case "replace":
+            switch (v) {
+              case 2:
+                return c.set(l, p);
+
+              case 3:
+                n(16);
+
+              default:
+                return c[l] = p;
+            }
+
+          case f:
+            switch (v) {
+              case 1:
+                return c.splice(l, 0, p);
+
+              case 2:
+                return c.set(l, p);
+
+              case 3:
+                return c.add(p);
+
+              default:
+                return c[l] = p;
+            }
+
+          case "remove":
+            switch (v) {
+              case 1:
+                return c.splice(l, 1);
+
+              case 2:
+                return c.delete(l);
+
+              case 3:
+                return c.delete(e.value);
+
+              default:
+                return delete c[l];
+            }
+
+          default:
+            n(17, u);
+        }
+      }), t;
+    },
+    R: function R(n, t, r, o) {
+      switch (n.i) {
+        case 0:
+        case 4:
+        case 2:
+          return function (n, t, r, o) {
+            var c = n.t,
+                s = n.o;
+            i(n.D, function (n, i) {
+              var v = a(c, n),
+                  p = a(s, n),
+                  l = i ? u(c, n) ? "replace" : f : "remove";
+
+              if (v !== p || "replace" !== l) {
+                var d = t.concat(n);
+                r.push("remove" === l ? {
+                  op: l,
+                  path: d
+                } : {
+                  op: l,
+                  path: d,
+                  value: p
+                }), o.push(l === f ? {
+                  op: "remove",
+                  path: d
+                } : "remove" === l ? {
+                  op: f,
+                  path: d,
+                  value: e(v)
+                } : {
+                  op: "replace",
+                  path: d,
+                  value: e(v)
+                });
+              }
+            });
+          }(n, t, r, o);
+
+        case 5:
+        case 1:
+          return function (n, t, r, i) {
+            var o = n.t,
+                u = n.D,
+                a = n.o;
+
+            if (a.length < o.length) {
+              var c = [a, o];
+              o = c[0], a = c[1];
+              var s = [i, r];
+              r = s[0], i = s[1];
+            }
+
+            for (var v = 0; v < o.length; v++) {
+              if (u[v] && a[v] !== o[v]) {
+                var p = t.concat([v]);
+                r.push({
+                  op: "replace",
+                  path: p,
+                  value: e(a[v])
+                }), i.push({
+                  op: "replace",
+                  path: p,
+                  value: e(o[v])
+                });
+              }
+            }
+
+            for (var l = o.length; l < a.length; l++) {
+              var d = t.concat([l]);
+              r.push({
+                op: f,
+                path: d,
+                value: e(a[l])
+              });
+            }
+
+            o.length < a.length && i.push({
+              op: "replace",
+              path: t.concat(["length"]),
+              value: o.length
+            });
+          }(n, t, r, o);
+
+        case 3:
+          return function (n, t, r, e) {
+            var i = n.t,
+                o = n.o,
+                u = 0;
+            i.forEach(function (n) {
+              if (!o.has(n)) {
+                var i = t.concat([u]);
+                r.push({
+                  op: "remove",
+                  path: i,
+                  value: n
+                }), e.unshift({
+                  op: f,
+                  path: i,
+                  value: n
+                });
+              }
+
+              u++;
+            }), u = 0, o.forEach(function (n) {
+              if (!i.has(n)) {
+                var o = t.concat([u]);
+                r.push({
+                  op: f,
+                  path: o,
+                  value: n
+                }), e.unshift({
+                  op: "remove",
+                  path: o,
+                  value: n
+                });
+              }
+
+              u++;
+            });
+          }(n, t, r, o);
+      }
+    },
+    M: function M(n, t, r, e) {
+      r.push({
+        op: "replace",
+        path: [],
+        value: t
+      }), e.push({
+        op: "replace",
+        path: [],
+        value: n.t
+      });
+    }
+  });
+}
+
+function F() {
+  function t(n, t) {
+    function r() {
+      this.constructor = n;
+    }
+
+    _u(n, t), n.prototype = (r.prototype = t.prototype, new r());
+  }
+
+  function e(n) {
+    n.o || (n.D = new Map(), n.o = new Map(n.t));
+  }
+
+  function i(n) {
+    n.o || (n.o = new Set(), n.t.forEach(function (t) {
+      if (r(t)) {
+        var e = k(n.A.h, t, n);
+        n.p.set(t, e), n.o.add(e);
+      } else n.o.add(t);
+    }));
+  }
+
+  function o(t) {
+    t.g && n(3, JSON.stringify(p(t)));
+  }
+
+  var _u = function u(n, t) {
+    return (_u = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (n, t) {
+      n.__proto__ = t;
+    } || function (n, t) {
+      for (var r in t) {
+        t.hasOwnProperty(r) && (n[r] = t[r]);
+      }
+    })(n, t);
+  },
+      a = function () {
+    function n(n, t) {
+      return this[L] = {
+        i: 2,
+        l: t,
+        A: t ? t.A : _(),
+        P: !1,
+        I: !1,
+        o: void 0,
+        D: void 0,
+        t: n,
+        k: this,
+        C: !1,
+        g: !1
+      }, this;
+    }
+
+    t(n, Map);
+    var i = n.prototype;
+    return Object.defineProperty(i, "size", {
+      get: function get() {
+        return p(this[L]).size;
+      }
+    }), i.has = function (n) {
+      return p(this[L]).has(n);
+    }, i.set = function (n, t) {
+      var r = this[L];
+      return o(r), p(r).has(n) && p(r).get(n) === t || (e(r), I(r), r.D.set(n, !0), r.o.set(n, t), r.D.set(n, !0)), this;
+    }, i.delete = function (n) {
+      if (!this.has(n)) return !1;
+      var t = this[L];
+      return o(t), e(t), I(t), t.D.set(n, !1), t.o.delete(n), !0;
+    }, i.clear = function () {
+      var n = this[L];
+      return o(n), e(n), I(n), n.D = new Map(), n.o.clear();
+    }, i.forEach = function (n, t) {
+      var r = this;
+      p(this[L]).forEach(function (e, i) {
+        n.call(t, r.get(i), i, r);
+      });
+    }, i.get = function (n) {
+      var t = this[L];
+      o(t);
+      var i = p(t).get(n);
+      if (t.I || !r(i)) return i;
+      if (i !== t.t.get(n)) return i;
+      var u = k(t.A.h, i, t);
+      return e(t), t.o.set(n, u), u;
+    }, i.keys = function () {
+      return p(this[L]).keys();
+    }, i.values = function () {
+      var n,
+          t = this,
+          r = this.keys();
+      return (n = {})[Q] = function () {
+        return t.values();
+      }, n.next = function () {
+        var n = r.next();
+        return n.done ? n : {
+          done: !1,
+          value: t.get(n.value)
+        };
+      }, n;
+    }, i.entries = function () {
+      var n,
+          t = this,
+          r = this.keys();
+      return (n = {})[Q] = function () {
+        return t.entries();
+      }, n.next = function () {
+        var n = r.next();
+        if (n.done) return n;
+        var e = t.get(n.value);
+        return {
+          done: !1,
+          value: [n.value, e]
+        };
+      }, n;
+    }, i[Q] = function () {
+      return this.entries();
+    }, n;
+  }(),
+      f = function () {
+    function n(n, t) {
+      return this[L] = {
+        i: 3,
+        l: t,
+        A: t ? t.A : _(),
+        P: !1,
+        I: !1,
+        o: void 0,
+        t: n,
+        k: this,
+        p: new Map(),
+        g: !1,
+        C: !1
+      }, this;
+    }
+
+    t(n, Set);
+    var r = n.prototype;
+    return Object.defineProperty(r, "size", {
+      get: function get() {
+        return p(this[L]).size;
+      }
+    }), r.has = function (n) {
+      var t = this[L];
+      return o(t), t.o ? !!t.o.has(n) || !(!t.p.has(n) || !t.o.has(t.p.get(n))) : t.t.has(n);
+    }, r.add = function (n) {
+      var t = this[L];
+      return o(t), this.has(n) || (i(t), I(t), t.o.add(n)), this;
+    }, r.delete = function (n) {
+      if (!this.has(n)) return !1;
+      var t = this[L];
+      return o(t), i(t), I(t), t.o.delete(n) || !!t.p.has(n) && t.o.delete(t.p.get(n));
+    }, r.clear = function () {
+      var n = this[L];
+      return o(n), i(n), I(n), n.o.clear();
+    }, r.values = function () {
+      var n = this[L];
+      return o(n), i(n), n.o.values();
+    }, r.entries = function () {
+      var n = this[L];
+      return o(n), i(n), n.o.entries();
+    }, r.keys = function () {
+      return this.values();
+    }, r[Q] = function () {
+      return this.values();
+    }, r.forEach = function (n, t) {
+      for (var r = this.values(), e = r.next(); !e.done;) {
+        n.call(t, e.value, e.value, this), e = r.next();
+      }
+    }, n;
+  }();
+
+  m("MapSet", {
+    T: function T(n, t) {
+      return new a(n, t);
+    },
+    F: function F(n, t) {
+      return new f(n, t);
+    }
+  });
+}
+
+function C() {
+  N(), F(), T();
+}
+
+function J(n) {
+  return n;
+}
+
+function K(n) {
+  return n;
+}
+
+var $,
+    G,
+    U = "undefined" != typeof Symbol && "symbol" == typeof Symbol("x"),
+    W = "undefined" != typeof Map,
+    X = "undefined" != typeof Set,
+    q = "undefined" != typeof Proxy && void 0 !== Proxy.revocable && "undefined" != typeof Reflect,
+    B = U ? Symbol("immer-nothing") : (($ = {})["immer-nothing"] = !0, $),
+    H = U ? Symbol("immer-draftable") : "__$immer_draftable",
+    L = U ? Symbol("immer-state") : "__$immer_state",
+    Q = "undefined" != typeof Symbol && Symbol.iterator || "@@iterator",
+    V = {
+  0: "Illegal state",
+  1: "Immer drafts cannot have computed properties",
+  2: "This object has been frozen and should not be mutated",
+  3: function _(n) {
+    return "Cannot use a proxy that has been revoked. Did you pass an object from inside an immer function to an async process? " + n;
+  },
+  4: "An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft.",
+  5: "Immer forbids circular references",
+  6: "The first or second argument to `produce` must be a function",
+  7: "The third argument to `produce` must be a function or undefined",
+  8: "First argument to `createDraft` must be a plain object, an array, or an immerable object",
+  9: "First argument to `finishDraft` must be a draft returned by `createDraft`",
+  10: "The given draft is already finalized",
+  11: "Object.defineProperty() cannot be used on an Immer draft",
+  12: "Object.setPrototypeOf() cannot be used on an Immer draft",
+  13: "Immer only supports deleting array indices",
+  14: "Immer only supports setting array indices and the 'length' property",
+  15: function _(n) {
+    return "Cannot apply patch, path doesn't resolve: " + n;
+  },
+  16: 'Sets cannot have "replace" patches.',
+  17: function _(n) {
+    return "Unsupported patch operation: " + n;
+  },
+  18: function _(n) {
+    return "The plugin for '" + n + "' has not been loaded into Immer. To enable the plugin, import and call `enable" + n + "()` when initializing your application.";
+  },
+  19: "plugin not loaded",
+  20: "Cannot use proxies if Proxy, Proxy.revocable or Reflect are not available",
+  21: function _(n) {
+    return "produce can only be called on things that are draftable: plain objects, arrays, Map, Set or classes that are marked with '[immerable]: true'. Got '" + n + "'";
+  },
+  22: function _(n) {
+    return "'current' expects a draft, got: " + n;
+  },
+  23: function _(n) {
+    return "'original' expects a draft, got: " + n;
+  }
+},
+    Y = "undefined" != typeof Reflect && Reflect.ownKeys ? Reflect.ownKeys : void 0 !== Object.getOwnPropertySymbols ? function (n) {
+  return Object.getOwnPropertyNames(n).concat(Object.getOwnPropertySymbols(n));
+} : Object.getOwnPropertyNames,
+    Z = Object.getOwnPropertyDescriptors || function (n) {
+  var t = {};
+  return Y(n).forEach(function (r) {
+    t[r] = Object.getOwnPropertyDescriptor(n, r);
+  }), t;
+},
+    nn = {},
+    tn = {
+  get: function get(n, t) {
+    if (t === L) return n;
+    var e = p(n);
+    if (!u(e, t)) return function (n, t, r) {
+      if (r in t) for (var e = Object.getPrototypeOf(t); e;) {
+        var i,
+            o = Object.getOwnPropertyDescriptor(e, r);
+        if (o) return "value" in o ? o.value : null === (i = o.get) || void 0 === i ? void 0 : i.call(n.k);
+        e = Object.getPrototypeOf(e);
+      }
+    }(n, e, t);
+    var i = e[t];
+    return n.I || !r(i) ? i : i === z(n.t, t) ? (E(n), n.o[t] = k(n.A.h, i, n)) : i;
+  },
+  has: function has(n, t) {
+    return t in p(n);
+  },
+  ownKeys: function ownKeys(n) {
+    return Reflect.ownKeys(p(n));
+  },
+  set: function set(n, t, r) {
+    if (n.D[t] = !0, !n.P) {
+      if (c(r, z(p(n), t)) && void 0 !== r) return !0;
+      E(n), I(n);
+    }
+
+    return n.o[t] = r, !0;
+  },
+  deleteProperty: function deleteProperty(n, t) {
+    return void 0 !== z(n.t, t) || t in n.t ? (n.D[t] = !1, E(n), I(n)) : delete n.D[t], n.o && delete n.o[t], !0;
+  },
+  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(n, t) {
+    var r = p(n),
+        e = Reflect.getOwnPropertyDescriptor(r, t);
+    return e ? {
+      writable: !0,
+      configurable: 1 !== n.i || "length" !== t,
+      enumerable: e.enumerable,
+      value: r[t]
+    } : e;
+  },
+  defineProperty: function defineProperty() {
+    n(11);
+  },
+  getPrototypeOf: function getPrototypeOf(n) {
+    return Object.getPrototypeOf(n.t);
+  },
+  setPrototypeOf: function setPrototypeOf() {
+    n(12);
+  }
+},
+    rn = {};
+
+i(tn, function (n, t) {
+  rn[n] = function () {
+    return arguments[0] = arguments[0][0], t.apply(this, arguments);
+  };
+}), rn.deleteProperty = function (t, r) {
+  return  false && false, tn.deleteProperty.call(this, t[0], r);
+}, rn.set = function (t, r, e) {
+  return  false && false, tn.set.call(this, t[0], r, e, t[0]);
+};
+
+var en = function () {
+  function e(n) {
+    this.O = q, this.N = "production" !== "production", "boolean" == typeof (null == n ? void 0 : n.useProxies) && this.setUseProxies(n.useProxies), "boolean" == typeof (null == n ? void 0 : n.autoFreeze) && this.setAutoFreeze(n.autoFreeze), this.produce = this.produce.bind(this), this.produceWithPatches = this.produceWithPatches.bind(this);
+  }
+
+  var i = e.prototype;
+  return i.produce = function (t, e, i) {
+    if ("function" == typeof t && "function" != typeof e) {
+      var o = e;
+      e = t;
+      var u = this;
+      return function (n) {
+        var t = this;
+        void 0 === n && (n = o);
+
+        for (var r = arguments.length, i = Array(r > 1 ? r - 1 : 0), a = 1; a < r; a++) {
+          i[a - 1] = arguments[a];
+        }
+
+        return u.produce(n, function (n) {
+          var r;
+          return (r = e).call.apply(r, [t, n].concat(i));
+        });
+      };
+    }
+
+    var a;
+
+    if ("function" != typeof e && n(6), void 0 !== i && "function" != typeof i && n(7), r(t)) {
+      var f = w(this),
+          c = k(this, t, void 0),
+          s = !0;
+
+      try {
+        a = e(c), s = !1;
+      } finally {
+        s ? g(f) : O(f);
+      }
+
+      return "undefined" != typeof Promise && a instanceof Promise ? a.then(function (n) {
+        return j(f, i), P(n, f);
+      }, function (n) {
+        throw g(f), n;
+      }) : (j(f, i), P(a, f));
+    }
+
+    if (!t || "object" != typeof t) {
+      if ((a = e(t)) === B) return;
+      return void 0 === a && (a = t), this.N && d(a, !0), a;
+    }
+
+    n(21, t);
+  }, i.produceWithPatches = function (n, t) {
+    var r,
+        e,
+        i = this;
+    return "function" == typeof n ? function (t) {
+      for (var r = arguments.length, e = Array(r > 1 ? r - 1 : 0), o = 1; o < r; o++) {
+        e[o - 1] = arguments[o];
+      }
+
+      return i.produceWithPatches(t, function (t) {
+        return n.apply(void 0, [t].concat(e));
+      });
+    } : [this.produce(n, t, function (n, t) {
+      r = n, e = t;
+    }), r, e];
+  }, i.createDraft = function (e) {
+    r(e) || n(8), t(e) && (e = R(e));
+    var i = w(this),
+        o = k(this, e, void 0);
+    return o[L].C = !0, O(i), o;
+  }, i.finishDraft = function (t, r) {
+    var e = t && t[L];
+     false && (false);
+    var i = e.A;
+    return j(i, r), P(void 0, i);
+  }, i.setAutoFreeze = function (n) {
+    this.N = n;
+  }, i.setUseProxies = function (t) {
+    t && !q && n(20), this.O = t;
+  }, i.applyPatches = function (n, r) {
+    var e;
+
+    for (e = r.length - 1; e >= 0; e--) {
+      var i = r[e];
+
+      if (0 === i.path.length && "replace" === i.op) {
+        n = i.value;
+        break;
+      }
+    }
+
+    var o = y("Patches").$;
+    return t(n) ? o(n, r) : this.produce(n, function (n) {
+      return o(n, r.slice(e + 1));
+    });
+  }, e;
+}(),
+    on = new en(),
+    un = on.produce,
+    an = on.produceWithPatches.bind(on),
+    fn = on.setAutoFreeze.bind(on),
+    cn = on.setUseProxies.bind(on),
+    sn = on.applyPatches.bind(on),
+    vn = on.createDraft.bind(on),
+    pn = on.finishDraft.bind(on);
+
+/* harmony default export */ var immer_esm = (un);
+
+// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
+var redux = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/reselect/es/index.js
+var es = __webpack_require__(5);
+
+// CONCATENATED MODULE: ./node_modules/redux-thunk/es/index.js
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var es_thunk = createThunkMiddleware();
+es_thunk.withExtraArgument = createThunkMiddleware;
+/* harmony default export */ var redux_thunk_es = (es_thunk);
+// CONCATENATED MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js
+
+
+
+
+
+
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _construct(Parent, args, Class) {
+  if (isNativeReflectConstruct()) {
+    _construct = Reflect.construct;
+  } else {
+    _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return _construct.apply(null, arguments);
+}
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+
+  _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrapNativeSuper(Class);
+}
+/**
+ * @public
+ */
+
+
+var composeWithDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : function () {
+  if (arguments.length === 0) return undefined;
+  if (typeof arguments[0] === 'object') return redux["d" /* compose */];
+  return redux["d" /* compose */].apply(null, arguments);
+};
+/**
+ * Returns true if the passed value is "plain" object, i.e. an object whose
+ * protoype is the root `Object.prototype`. This includes objects created
+ * using object literals, but not for instance for class instances.
+ *
+ * @param {any} value The value to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+
+function isPlainObject(value) {
+  if (typeof value !== 'object' || value === null) return false;
+  var proto = value;
+
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return Object.getPrototypeOf(value) === proto;
+}
+
+function getTimeMeasureUtils(maxDelay, fnName) {
+  var elapsed = 0;
+  return {
+    measureTime: function measureTime(fn) {
+      var started = Date.now();
+
+      try {
+        return fn();
+      } finally {
+        var finished = Date.now();
+        elapsed += finished - started;
+      }
+    },
+    warnIfExceeded: function warnIfExceeded() {
+      if (elapsed > maxDelay) {
+        console.warn(fnName + " took " + elapsed + "ms, which is more than the warning threshold of " + maxDelay + "ms. \nIf your state or actions are very large, you may want to disable the middleware as it might cause too much of a slowdown in development mode. See https://redux-toolkit.js.org/api/getDefaultMiddleware for instructions.\nIt is disabled in production builds, so you don't need to worry about that.");
+      }
+    }
+  };
+}
+/**
+ * @public
+ */
+
+
+var MiddlewareArray = /*#__PURE__*/function (_Array) {
+  _inheritsLoose(MiddlewareArray, _Array);
+
+  function MiddlewareArray() {
+    return _Array.apply(this, arguments) || this;
+  }
+
+  var _proto = MiddlewareArray.prototype;
+
+  _proto.concat = function concat() {
+    var _Array$prototype$conc;
+
+    for (var _len = arguments.length, arr = new Array(_len), _key = 0; _key < _len; _key++) {
+      arr[_key] = arguments[_key];
+    }
+
+    return _construct(MiddlewareArray, (_Array$prototype$conc = _Array.prototype.concat).call.apply(_Array$prototype$conc, [this].concat(arr)));
+  };
+
+  _proto.prepend = function prepend() {
+    for (var _len2 = arguments.length, arr = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      arr[_key2] = arguments[_key2];
+    }
+
+    if (arr.length === 1 && Array.isArray(arr[0])) {
+      return _construct(MiddlewareArray, arr[0].concat(this));
+    }
+
+    return _construct(MiddlewareArray, arr.concat(this));
+  };
+
+  return MiddlewareArray;
+}( /*#__PURE__*/_wrapNativeSuper(Array));
+
+var isProduction = "production" === 'production';
+var prefix = 'Invariant failed'; // Throw an error if the condition fails
+// Strip out error messages for production
+// > Not providing an inline default argument for message as the result is smaller
+
+function invariant(condition, message) {
+  if (condition) {
+    return;
+  } // Condition not passed
+  // In production we strip the message but still throw
+
+
+  if (isProduction) {
+    throw new Error(prefix);
+  } // When not in production we allow the message to pass through
+  // *This block will be removed in production builds*
+
+
+  throw new Error(prefix + ": " + (message || ''));
+}
+
+function stringify(obj, serializer, indent, decycler) {
+  return JSON.stringify(obj, getSerialize(serializer, decycler), indent);
+}
+
+function getSerialize(serializer, decycler) {
+  var stack = [],
+      keys = [];
+  if (!decycler) decycler = function decycler(_, value) {
+    if (stack[0] === value) return '[Circular ~]';
+    return '[Circular ~.' + keys.slice(0, stack.indexOf(value)).join('.') + ']';
+  };
+  return function (key, value) {
+    if (stack.length > 0) {
+      var thisPos = stack.indexOf(this);
+      ~thisPos ? stack.splice(thisPos + 1) : stack.push(this);
+      ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key);
+      if (~stack.indexOf(value)) value = decycler.call(this, key, value);
+    } else stack.push(value);
+
+    return serializer == null ? value : serializer.call(this, key, value);
+  };
+}
+/**
+ * The default `isImmutable` function.
+ *
+ * @public
+ */
+
+
+function isImmutableDefault(value) {
+  return typeof value !== 'object' || value === null || typeof value === 'undefined';
+}
+
+function trackForMutations(isImmutable, ignorePaths, obj) {
+  var trackedProperties = trackProperties(isImmutable, ignorePaths, obj);
+  return {
+    detectMutations: function detectMutations() {
+      return _detectMutations(isImmutable, ignorePaths, trackedProperties, obj);
+    }
+  };
+}
+
+function trackProperties(isImmutable, ignorePaths, obj, path) {
+  if (ignorePaths === void 0) {
+    ignorePaths = [];
+  }
+
+  if (path === void 0) {
+    path = [];
+  }
+
+  var tracked = {
+    value: obj
+  };
+
+  if (!isImmutable(obj)) {
+    tracked.children = {};
+
+    for (var key in obj) {
+      var childPath = path.concat(key);
+
+      if (ignorePaths.length && ignorePaths.indexOf(childPath.join('.')) !== -1) {
+        continue;
+      }
+
+      tracked.children[key] = trackProperties(isImmutable, ignorePaths, obj[key], childPath);
+    }
+  }
+
+  return tracked;
+}
+
+function _detectMutations(isImmutable, ignorePaths, trackedProperty, obj, sameParentRef, path) {
+  if (ignorePaths === void 0) {
+    ignorePaths = [];
+  }
+
+  if (sameParentRef === void 0) {
+    sameParentRef = false;
+  }
+
+  if (path === void 0) {
+    path = [];
+  }
+
+  var prevObj = trackedProperty ? trackedProperty.value : undefined;
+  var sameRef = prevObj === obj;
+
+  if (sameParentRef && !sameRef && !Number.isNaN(obj)) {
+    return {
+      wasMutated: true,
+      path: path
+    };
+  }
+
+  if (isImmutable(prevObj) || isImmutable(obj)) {
+    return {
+      wasMutated: false
+    };
+  } // Gather all keys from prev (tracked) and after objs
+
+
+  var keysToDetect = {};
+  Object.keys(trackedProperty.children).forEach(function (key) {
+    keysToDetect[key] = true;
+  });
+  Object.keys(obj).forEach(function (key) {
+    keysToDetect[key] = true;
+  });
+  var keys = Object.keys(keysToDetect);
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var childPath = path.concat(key);
+
+    if (ignorePaths.length && ignorePaths.indexOf(childPath.join('.')) !== -1) {
+      continue;
+    }
+
+    var result = _detectMutations(isImmutable, ignorePaths, trackedProperty.children[key], obj[key], sameRef, childPath);
+
+    if (result.wasMutated) {
+      return result;
+    }
+  }
+
+  return {
+    wasMutated: false
+  };
+}
+/**
+ * Creates a middleware that checks whether any state was mutated in between
+ * dispatches or during a dispatch. If any mutations are detected, an error is
+ * thrown.
+ *
+ * @param options Middleware options.
+ *
+ * @public
+ */
+
+
+function createImmutableStateInvariantMiddleware(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  if (true) {
+    return function () {
+      return function (next) {
+        return function (action) {
+          return next(action);
+        };
+      };
+    };
+  }
+
+  var _options = options,
+      _options$isImmutable = _options.isImmutable,
+      isImmutable = _options$isImmutable === void 0 ? isImmutableDefault : _options$isImmutable,
+      ignoredPaths = _options.ignoredPaths,
+      _options$warnAfter = _options.warnAfter,
+      warnAfter = _options$warnAfter === void 0 ? 32 : _options$warnAfter,
+      ignore = _options.ignore; // Alias ignore->ignoredPaths, but prefer ignoredPaths if present
+
+  ignoredPaths = ignoredPaths || ignore;
+  var track = trackForMutations.bind(null, isImmutable, ignoredPaths);
+  return function (_ref) {
+    var getState = _ref.getState;
+    var state = getState();
+    var tracker = track(state);
+    var result;
+    return function (next) {
+      return function (action) {
+        var measureUtils = getTimeMeasureUtils(warnAfter, 'ImmutableStateInvariantMiddleware');
+        measureUtils.measureTime(function () {
+          state = getState();
+          result = tracker.detectMutations(); // Track before potentially not meeting the invariant
+
+          tracker = track(state);
+          !!result.wasMutated ?  false ? undefined : invariant(false) : void 0;
+        });
+        var dispatchedAction = next(action);
+        measureUtils.measureTime(function () {
+          state = getState();
+          result = tracker.detectMutations(); // Track before potentially not meeting the invariant
+
+          tracker = track(state);
+          result.wasMutated && (!!result.wasMutated ?  false ? undefined : invariant(false) : void 0);
+        });
+        measureUtils.warnIfExceeded();
+        return dispatchedAction;
+      };
+    };
+  };
+}
+/**
+ * Returns true if the passed value is "plain", i.e. a value that is either
+ * directly JSON-serializable (boolean, number, string, array, plain object)
+ * or `undefined`.
+ *
+ * @param val The value to check.
+ *
+ * @public
+ */
+
+
+function isPlain(val) {
+  return typeof val === 'undefined' || val === null || typeof val === 'string' || typeof val === 'boolean' || typeof val === 'number' || Array.isArray(val) || isPlainObject(val);
+}
+/**
+ * @public
+ */
+
+
+function findNonSerializableValue(value, path, isSerializable, getEntries, ignoredPaths) {
+  if (path === void 0) {
+    path = [];
+  }
+
+  if (isSerializable === void 0) {
+    isSerializable = isPlain;
+  }
+
+  if (ignoredPaths === void 0) {
+    ignoredPaths = [];
+  }
+
+  var foundNestedSerializable;
+
+  if (!isSerializable(value)) {
+    return {
+      keyPath: path.join('.') || '<root>',
+      value: value
+    };
+  }
+
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  var entries = getEntries != null ? getEntries(value) : Object.entries(value);
+  var hasIgnoredPaths = ignoredPaths.length > 0;
+
+  for (var _iterator = entries, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+    var _ref;
+
+    if (_isArray) {
+      if (_i >= _iterator.length) break;
+      _ref = _iterator[_i++];
+    } else {
+      _i = _iterator.next();
+      if (_i.done) break;
+      _ref = _i.value;
+    }
+
+    var _ref2 = _ref,
+        property = _ref2[0],
+        nestedValue = _ref2[1];
+    var nestedPath = path.concat(property);
+
+    if (hasIgnoredPaths && ignoredPaths.indexOf(nestedPath.join('.')) >= 0) {
+      continue;
+    }
+
+    if (!isSerializable(nestedValue)) {
+      return {
+        keyPath: nestedPath.join('.'),
+        value: nestedValue
+      };
+    }
+
+    if (typeof nestedValue === 'object') {
+      foundNestedSerializable = findNonSerializableValue(nestedValue, nestedPath, isSerializable, getEntries, ignoredPaths);
+
+      if (foundNestedSerializable) {
+        return foundNestedSerializable;
+      }
+    }
+  }
+
+  return false;
+}
+/**
+ * Creates a middleware that, after every state change, checks if the new
+ * state is serializable. If a non-serializable value is found within the
+ * state, an error is printed to the console.
+ *
+ * @param options Middleware options.
+ *
+ * @public
+ */
+
+
+function createSerializableStateInvariantMiddleware(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  if (true) {
+    return function () {
+      return function (next) {
+        return function (action) {
+          return next(action);
+        };
+      };
+    };
+  }
+
+  var _options = options,
+      _options$isSerializab = _options.isSerializable,
+      isSerializable = _options$isSerializab === void 0 ? isPlain : _options$isSerializab,
+      getEntries = _options.getEntries,
+      _options$ignoredActio = _options.ignoredActions,
+      ignoredActions = _options$ignoredActio === void 0 ? [] : _options$ignoredActio,
+      _options$ignoredActio2 = _options.ignoredActionPaths,
+      ignoredActionPaths = _options$ignoredActio2 === void 0 ? ['meta.arg'] : _options$ignoredActio2,
+      _options$ignoredPaths = _options.ignoredPaths,
+      ignoredPaths = _options$ignoredPaths === void 0 ? [] : _options$ignoredPaths,
+      _options$warnAfter = _options.warnAfter,
+      warnAfter = _options$warnAfter === void 0 ? 32 : _options$warnAfter;
+  return function (storeAPI) {
+    return function (next) {
+      return function (action) {
+        if (ignoredActions.length && ignoredActions.indexOf(action.type) !== -1) {
+          return next(action);
+        }
+
+        var measureUtils = getTimeMeasureUtils(warnAfter, 'SerializableStateInvariantMiddleware');
+        measureUtils.measureTime(function () {
+          var foundActionNonSerializableValue = findNonSerializableValue(action, [], isSerializable, getEntries, ignoredActionPaths);
+
+          if (foundActionNonSerializableValue) {
+            var keyPath = foundActionNonSerializableValue.keyPath,
+                value = foundActionNonSerializableValue.value;
+            console.error("A non-serializable value was detected in an action, in the path: `" + keyPath + "`. Value:", value, '\nTake a look at the logic that dispatched this action: ', action, '\n(See https://redux.js.org/faq/actions#why-should-type-be-a-string-or-at-least-serializable-why-should-my-action-types-be-constants)', '\n(To allow non-serializable values see: https://redux-toolkit.js.org/usage/usage-guide#working-with-non-serializable-data)');
+          }
+        });
+        var result = next(action);
+        measureUtils.measureTime(function () {
+          var state = storeAPI.getState();
+          var foundStateNonSerializableValue = findNonSerializableValue(state, [], isSerializable, getEntries, ignoredPaths);
+
+          if (foundStateNonSerializableValue) {
+            var keyPath = foundStateNonSerializableValue.keyPath,
+                value = foundStateNonSerializableValue.value;
+            console.error("A non-serializable value was detected in the state, in the path: `" + keyPath + "`. Value:", value, "\nTake a look at the reducer(s) handling this action type: " + action.type + ".\n(See https://redux.js.org/faq/organizing-state#can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state)");
+          }
+        });
+        measureUtils.warnIfExceeded();
+        return result;
+      };
+    };
+  };
+}
+
+function isBoolean(x) {
+  return typeof x === 'boolean';
+}
+
+function curryGetDefaultMiddleware() {
+  return function curriedGetDefaultMiddleware(options) {
+    return getDefaultMiddleware(options);
+  };
+}
+/**
+ * Returns any array containing the default middleware installed by
+ * `configureStore()`. Useful if you want to configure your store with a custom
+ * `middleware` array but still keep the default set.
+ *
+ * @return The default middleware used by `configureStore()`.
+ *
+ * @public
+ */
+
+
+function getDefaultMiddleware(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var _options = options,
+      _options$thunk = _options.thunk,
+      thunk = _options$thunk === void 0 ? true : _options$thunk,
+      _options$immutableChe = _options.immutableCheck,
+      immutableCheck = _options$immutableChe === void 0 ? true : _options$immutableChe,
+      _options$serializable = _options.serializableCheck,
+      serializableCheck = _options$serializable === void 0 ? true : _options$serializable;
+  var middlewareArray = new MiddlewareArray();
+
+  if (thunk) {
+    if (isBoolean(thunk)) {
+      middlewareArray.push(redux_thunk_es);
+    } else {
+      middlewareArray.push(redux_thunk_es.withExtraArgument(thunk.extraArgument));
+    }
+  }
+
+  if (false) { var serializableOptions, immutableOptions; }
+
+  return middlewareArray;
+}
+
+var IS_PRODUCTION = "production" === 'production';
+/**
+ * A friendly abstraction over the standard Redux `createStore()` function.
+ *
+ * @param config The store configuration.
+ * @returns A configured Redux store.
+ *
+ * @public
+ */
+
+function configureStore(options) {
+  var curriedGetDefaultMiddleware = curryGetDefaultMiddleware();
+
+  var _ref = options || {},
+      _ref$reducer = _ref.reducer,
+      reducer = _ref$reducer === void 0 ? undefined : _ref$reducer,
+      _ref$middleware = _ref.middleware,
+      middleware = _ref$middleware === void 0 ? curriedGetDefaultMiddleware() : _ref$middleware,
+      _ref$devTools = _ref.devTools,
+      devTools = _ref$devTools === void 0 ? true : _ref$devTools,
+      _ref$preloadedState = _ref.preloadedState,
+      preloadedState = _ref$preloadedState === void 0 ? undefined : _ref$preloadedState,
+      _ref$enhancers = _ref.enhancers,
+      enhancers = _ref$enhancers === void 0 ? undefined : _ref$enhancers;
+
+  var rootReducer;
+
+  if (typeof reducer === 'function') {
+    rootReducer = reducer;
+  } else if (isPlainObject(reducer)) {
+    rootReducer = Object(redux["c" /* combineReducers */])(reducer);
+  } else {
+    throw new Error('"reducer" is a required argument, and must be a function or an object of functions that can be passed to combineReducers');
+  }
+
+  var middlewareEnhancer = redux["a" /* applyMiddleware */].apply(void 0, typeof middleware === 'function' ? middleware(curriedGetDefaultMiddleware) : middleware);
+  var finalCompose = redux["d" /* compose */];
+
+  if (devTools) {
+    finalCompose = composeWithDevTools(_extends({
+      // Enable capture of stack traces for dispatched Redux actions
+      trace: !IS_PRODUCTION
+    }, typeof devTools === 'object' && devTools));
+  }
+
+  var storeEnhancers = [middlewareEnhancer];
+
+  if (Array.isArray(enhancers)) {
+    storeEnhancers = [middlewareEnhancer].concat(enhancers);
+  } else if (typeof enhancers === 'function') {
+    storeEnhancers = enhancers(storeEnhancers);
+  }
+
+  var composedEnhancer = finalCompose.apply(void 0, storeEnhancers);
+  return Object(redux["e" /* createStore */])(rootReducer, preloadedState, composedEnhancer);
+}
+
+function createAction(type, prepareAction) {
+  function actionCreator() {
+    if (prepareAction) {
+      var prepared = prepareAction.apply(void 0, arguments);
+
+      if (!prepared) {
+        throw new Error('prepareAction did not return an object');
+      }
+
+      return _extends({
+        type: type,
+        payload: prepared.payload
+      }, 'meta' in prepared && {
+        meta: prepared.meta
+      }, {}, 'error' in prepared && {
+        error: prepared.error
+      });
+    }
+
+    return {
+      type: type,
+      payload: arguments.length <= 0 ? undefined : arguments[0]
+    };
+  }
+
+  actionCreator.toString = function () {
+    return "" + type;
+  };
+
+  actionCreator.type = type;
+
+  actionCreator.match = function (action) {
+    return action.type === type;
+  };
+
+  return actionCreator;
+}
+
+function isFSA(action) {
+  return isPlainObject(action) && typeof action.type === 'string' && Object.keys(action).every(isValidKey);
+}
+
+function isValidKey(key) {
+  return ['type', 'payload', 'error', 'meta'].indexOf(key) > -1;
+}
+/**
+ * Returns the action type of the actions created by the passed
+ * `createAction()`-generated action creator (arbitrary action creators
+ * are not supported).
+ *
+ * @param action The action creator whose action type to get.
+ * @returns The action type used by the action creator.
+ *
+ * @public
+ */
+
+
+function getType(actionCreator) {
+  return "" + actionCreator;
+}
+
+function executeReducerBuilderCallback(builderCallback) {
+  var actionsMap = {};
+  var actionMatchers = [];
+  var defaultCaseReducer;
+  var builder = {
+    addCase: function addCase(typeOrActionCreator, reducer) {
+      if (false) {}
+
+      var type = typeof typeOrActionCreator === 'string' ? typeOrActionCreator : typeOrActionCreator.type;
+
+      if (type in actionsMap) {
+        throw new Error('addCase cannot be called with two reducers for the same action type');
+      }
+
+      actionsMap[type] = reducer;
+      return builder;
+    },
+    addMatcher: function addMatcher(matcher, reducer) {
+      if (false) {}
+
+      actionMatchers.push({
+        matcher: matcher,
+        reducer: reducer
+      });
+      return builder;
+    },
+    addDefaultCase: function addDefaultCase(reducer) {
+      if (false) {}
+
+      defaultCaseReducer = reducer;
+      return builder;
+    }
+  };
+  builderCallback(builder);
+  return [actionsMap, actionMatchers, defaultCaseReducer];
+}
+
+function createReducer(initialState, mapOrBuilderCallback, actionMatchers, defaultCaseReducer) {
+  if (actionMatchers === void 0) {
+    actionMatchers = [];
+  }
+
+  var _ref = typeof mapOrBuilderCallback === 'function' ? executeReducerBuilderCallback(mapOrBuilderCallback) : [mapOrBuilderCallback, actionMatchers, defaultCaseReducer],
+      actionsMap = _ref[0],
+      finalActionMatchers = _ref[1],
+      finalDefaultCaseReducer = _ref[2];
+
+  return function (state, action) {
+    if (state === void 0) {
+      state = initialState;
+    }
+
+    var caseReducers = [actionsMap[action.type]].concat(finalActionMatchers.filter(function (_ref2) {
+      var matcher = _ref2.matcher;
+      return matcher(action);
+    }).map(function (_ref3) {
+      var reducer = _ref3.reducer;
+      return reducer;
+    }));
+
+    if (caseReducers.filter(function (cr) {
+      return !!cr;
+    }).length === 0) {
+      caseReducers = [finalDefaultCaseReducer];
+    }
+
+    return caseReducers.reduce(function (previousState, caseReducer) {
+      if (caseReducer) {
+        if (t(previousState)) {
+          // If it's already a draft, we must already be inside a `createNextState` call,
+          // likely because this is being wrapped in `createReducer`, `createSlice`, or nested
+          // inside an existing draft. It's safe to just pass the draft to the mutator.
+          var draft = previousState; // We can assume this is already a draft
+
+          var result = caseReducer(draft, action);
+
+          if (typeof result === 'undefined') {
+            return previousState;
+          }
+
+          return result;
+        } else if (!r(previousState)) {
+          // If state is not draftable (ex: a primitive, such as 0), we want to directly
+          // return the caseReducer func and not wrap it with produce.
+          var _result = caseReducer(previousState, action);
+
+          if (typeof _result === 'undefined') {
+            throw Error('A case reducer on a non-draftable value must not return undefined');
+          }
+
+          return _result;
+        } else {
+          // @ts-ignore createNextState() produces an Immutable<Draft<S>> rather
+          // than an Immutable<S>, and TypeScript cannot find out how to reconcile
+          // these two types.
+          return immer_esm(previousState, function (draft) {
+            return caseReducer(draft, action);
+          });
+        }
+      }
+
+      return previousState;
+    }, state);
+  };
+}
+
+function getType$1(slice, actionKey) {
+  return slice + "/" + actionKey;
+}
+/**
+ * A function that accepts an initial state, an object full of reducer
+ * functions, and a "slice name", and automatically generates
+ * action creators and action types that correspond to the
+ * reducers and state.
+ *
+ * The `reducer` argument is passed to `createReducer()`.
+ *
+ * @public
+ */
+
+
+function createSlice(options) {
+  var name = options.name,
+      initialState = options.initialState;
+
+  if (!name) {
+    throw new Error('`name` is a required option for createSlice');
+  }
+
+  var reducers = options.reducers || {};
+
+  var _ref = typeof options.extraReducers === 'undefined' ? [] : typeof options.extraReducers === 'function' ? executeReducerBuilderCallback(options.extraReducers) : [options.extraReducers],
+      _ref$ = _ref[0],
+      extraReducers = _ref$ === void 0 ? {} : _ref$,
+      _ref$2 = _ref[1],
+      actionMatchers = _ref$2 === void 0 ? [] : _ref$2,
+      _ref$3 = _ref[2],
+      defaultCaseReducer = _ref$3 === void 0 ? undefined : _ref$3;
+
+  var reducerNames = Object.keys(reducers);
+  var sliceCaseReducersByName = {};
+  var sliceCaseReducersByType = {};
+  var actionCreators = {};
+  reducerNames.forEach(function (reducerName) {
+    var maybeReducerWithPrepare = reducers[reducerName];
+    var type = getType$1(name, reducerName);
+    var caseReducer;
+    var prepareCallback;
+
+    if ('reducer' in maybeReducerWithPrepare) {
+      caseReducer = maybeReducerWithPrepare.reducer;
+      prepareCallback = maybeReducerWithPrepare.prepare;
+    } else {
+      caseReducer = maybeReducerWithPrepare;
+    }
+
+    sliceCaseReducersByName[reducerName] = caseReducer;
+    sliceCaseReducersByType[type] = caseReducer;
+    actionCreators[reducerName] = prepareCallback ? createAction(type, prepareCallback) : createAction(type);
+  });
+
+  var finalCaseReducers = _extends({}, extraReducers, {}, sliceCaseReducersByType);
+
+  var reducer = createReducer(initialState, finalCaseReducers, actionMatchers, defaultCaseReducer);
+  return {
+    name: name,
+    reducer: reducer,
+    actions: actionCreators,
+    caseReducers: sliceCaseReducersByName
+  };
+}
+
+function getInitialEntityState() {
+  return {
+    ids: [],
+    entities: {}
+  };
+}
+
+function createInitialStateFactory() {
+  function getInitialState(additionalState) {
+    if (additionalState === void 0) {
+      additionalState = {};
+    }
+
+    return Object.assign(getInitialEntityState(), additionalState);
+  }
+
+  return {
+    getInitialState: getInitialState
+  };
+}
+
+function createSelectorsFactory() {
+  function getSelectors(selectState) {
+    var selectIds = function selectIds(state) {
+      return state.ids;
+    };
+
+    var selectEntities = function selectEntities(state) {
+      return state.entities;
+    };
+
+    var selectAll = Object(es["a" /* createSelector */])(selectIds, selectEntities, function (ids, entities) {
+      return ids.map(function (id) {
+        return entities[id];
+      });
+    });
+
+    var selectId = function selectId(_, id) {
+      return id;
+    };
+
+    var selectById = function selectById(entities, id) {
+      return entities[id];
+    };
+
+    var selectTotal = Object(es["a" /* createSelector */])(selectIds, function (ids) {
+      return ids.length;
+    });
+
+    if (!selectState) {
+      return {
+        selectIds: selectIds,
+        selectEntities: selectEntities,
+        selectAll: selectAll,
+        selectTotal: selectTotal,
+        selectById: Object(es["a" /* createSelector */])(selectEntities, selectId, selectById)
+      };
+    }
+
+    var selectGlobalizedEntities = Object(es["a" /* createSelector */])(selectState, selectEntities);
+    return {
+      selectIds: Object(es["a" /* createSelector */])(selectState, selectIds),
+      selectEntities: selectGlobalizedEntities,
+      selectAll: Object(es["a" /* createSelector */])(selectState, selectAll),
+      selectTotal: Object(es["a" /* createSelector */])(selectState, selectTotal),
+      selectById: Object(es["a" /* createSelector */])(selectGlobalizedEntities, selectId, selectById)
+    };
+  }
+
+  return {
+    getSelectors: getSelectors
+  };
+}
+
+function createSingleArgumentStateOperator(mutator) {
+  var operator = createStateOperator(function (_, state) {
+    return mutator(state);
+  });
+  return function operation(state) {
+    return operator(state, undefined);
+  };
+}
+
+function createStateOperator(mutator) {
+  return function operation(state, arg) {
+    function isPayloadActionArgument(arg) {
+      return isFSA(arg);
+    }
+
+    var runMutator = function runMutator(draft) {
+      if (isPayloadActionArgument(arg)) {
+        mutator(arg.payload, draft);
+      } else {
+        mutator(arg, draft);
+      }
+    };
+
+    if (t(state)) {
+      // we must already be inside a `createNextState` call, likely because
+      // this is being wrapped in `createReducer` or `createSlice`.
+      // It's safe to just pass the draft to the mutator.
+      runMutator(state); // since it's a draft, we'll just return it
+
+      return state;
+    } else {
+      // @ts-ignore createNextState() produces an Immutable<Draft<S>> rather
+      // than an Immutable<S>, and TypeScript cannot find out how to reconcile
+      // these two types.
+      return immer_esm(state, runMutator);
+    }
+  };
+}
+
+function selectIdValue(entity, selectId) {
+  var key = selectId(entity);
+
+  if (false) {}
+
+  return key;
+}
+
+function createUnsortedStateAdapter(selectId) {
+  function addOneMutably(entity, state) {
+    var key = selectIdValue(entity, selectId);
+
+    if (key in state.entities) {
+      return;
+    }
+
+    state.ids.push(key);
+    state.entities[key] = entity;
+  }
+
+  function addManyMutably(entities, state) {
+    if (!Array.isArray(entities)) {
+      entities = Object.values(entities);
+    }
+
+    for (var _iterator = entities, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var _ref;
+
+      if (_isArray) {
+        if (_i >= _iterator.length) break;
+        _ref = _iterator[_i++];
+      } else {
+        _i = _iterator.next();
+        if (_i.done) break;
+        _ref = _i.value;
+      }
+
+      var entity = _ref;
+      addOneMutably(entity, state);
+    }
+  }
+
+  function setAllMutably(entities, state) {
+    if (!Array.isArray(entities)) {
+      entities = Object.values(entities);
+    }
+
+    state.ids = [];
+    state.entities = {};
+    addManyMutably(entities, state);
+  }
+
+  function removeOneMutably(key, state) {
+    return removeManyMutably([key], state);
+  }
+
+  function removeManyMutably(keys, state) {
+    var didMutate = false;
+    keys.forEach(function (key) {
+      if (key in state.entities) {
+        delete state.entities[key];
+        didMutate = true;
+      }
+    });
+
+    if (didMutate) {
+      state.ids = state.ids.filter(function (id) {
+        return id in state.entities;
+      });
+    }
+  }
+
+  function removeAllMutably(state) {
+    Object.assign(state, {
+      ids: [],
+      entities: {}
+    });
+  }
+
+  function takeNewKey(keys, update, state) {
+    var original = state.entities[update.id];
+    var updated = Object.assign({}, original, update.changes);
+    var newKey = selectIdValue(updated, selectId);
+    var hasNewKey = newKey !== update.id;
+
+    if (hasNewKey) {
+      keys[update.id] = newKey;
+      delete state.entities[update.id];
+    }
+
+    state.entities[newKey] = updated;
+    return hasNewKey;
+  }
+
+  function updateOneMutably(update, state) {
+    return updateManyMutably([update], state);
+  }
+
+  function updateManyMutably(updates, state) {
+    var newKeys = {};
+    var updatesPerEntity = {};
+    updates.forEach(function (update) {
+      // Only apply updates to entities that currently exist
+      if (update.id in state.entities) {
+        // If there are multiple updates to one entity, merge them together
+        updatesPerEntity[update.id] = {
+          id: update.id,
+          // Spreads ignore falsy values, so this works even if there isn't
+          // an existing update already at this key
+          changes: _extends({}, updatesPerEntity[update.id] ? updatesPerEntity[update.id].changes : null, {}, update.changes)
+        };
+      }
+    });
+    updates = Object.values(updatesPerEntity);
+    var didMutateEntities = updates.length > 0;
+
+    if (didMutateEntities) {
+      var didMutateIds = updates.filter(function (update) {
+        return takeNewKey(newKeys, update, state);
+      }).length > 0;
+
+      if (didMutateIds) {
+        state.ids = state.ids.map(function (id) {
+          return newKeys[id] || id;
+        });
+      }
+    }
+  }
+
+  function upsertOneMutably(entity, state) {
+    return upsertManyMutably([entity], state);
+  }
+
+  function upsertManyMutably(entities, state) {
+    if (!Array.isArray(entities)) {
+      entities = Object.values(entities);
+    }
+
+    var added = [];
+    var updated = [];
+
+    for (var _iterator2 = entities, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+      var _ref2;
+
+      if (_isArray2) {
+        if (_i2 >= _iterator2.length) break;
+        _ref2 = _iterator2[_i2++];
+      } else {
+        _i2 = _iterator2.next();
+        if (_i2.done) break;
+        _ref2 = _i2.value;
+      }
+
+      var entity = _ref2;
+      var id = selectIdValue(entity, selectId);
+
+      if (id in state.entities) {
+        updated.push({
+          id: id,
+          changes: entity
+        });
+      } else {
+        added.push(entity);
+      }
+    }
+
+    updateManyMutably(updated, state);
+    addManyMutably(added, state);
+  }
+
+  return {
+    removeAll: createSingleArgumentStateOperator(removeAllMutably),
+    addOne: createStateOperator(addOneMutably),
+    addMany: createStateOperator(addManyMutably),
+    setAll: createStateOperator(setAllMutably),
+    updateOne: createStateOperator(updateOneMutably),
+    updateMany: createStateOperator(updateManyMutably),
+    upsertOne: createStateOperator(upsertOneMutably),
+    upsertMany: createStateOperator(upsertManyMutably),
+    removeOne: createStateOperator(removeOneMutably),
+    removeMany: createStateOperator(removeManyMutably)
+  };
+}
+
+function createSortedStateAdapter(selectId, sort) {
+  var _createUnsortedStateA = createUnsortedStateAdapter(selectId),
+      removeOne = _createUnsortedStateA.removeOne,
+      removeMany = _createUnsortedStateA.removeMany,
+      removeAll = _createUnsortedStateA.removeAll;
+
+  function addOneMutably(entity, state) {
+    return addManyMutably([entity], state);
+  }
+
+  function addManyMutably(newModels, state) {
+    if (!Array.isArray(newModels)) {
+      newModels = Object.values(newModels);
+    }
+
+    var models = newModels.filter(function (model) {
+      return !(selectIdValue(model, selectId) in state.entities);
+    });
+
+    if (models.length !== 0) {
+      merge(models, state);
+    }
+  }
+
+  function setAllMutably(models, state) {
+    if (!Array.isArray(models)) {
+      models = Object.values(models);
+    }
+
+    state.entities = {};
+    state.ids = [];
+    addManyMutably(models, state);
+  }
+
+  function updateOneMutably(update, state) {
+    return updateManyMutably([update], state);
+  }
+
+  function takeUpdatedModel(models, update, state) {
+    if (!(update.id in state.entities)) {
+      return false;
+    }
+
+    var original = state.entities[update.id];
+    var updated = Object.assign({}, original, update.changes);
+    var newKey = selectIdValue(updated, selectId);
+    delete state.entities[update.id];
+    models.push(updated);
+    return newKey !== update.id;
+  }
+
+  function updateManyMutably(updates, state) {
+    var models = [];
+    updates.forEach(function (update) {
+      return takeUpdatedModel(models, update, state);
+    });
+
+    if (models.length !== 0) {
+      merge(models, state);
+    }
+  }
+
+  function upsertOneMutably(entity, state) {
+    return upsertManyMutably([entity], state);
+  }
+
+  function upsertManyMutably(entities, state) {
+    if (!Array.isArray(entities)) {
+      entities = Object.values(entities);
+    }
+
+    var added = [];
+    var updated = [];
+
+    for (var _iterator = entities, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var _ref;
+
+      if (_isArray) {
+        if (_i >= _iterator.length) break;
+        _ref = _iterator[_i++];
+      } else {
+        _i = _iterator.next();
+        if (_i.done) break;
+        _ref = _i.value;
+      }
+
+      var entity = _ref;
+      var id = selectIdValue(entity, selectId);
+
+      if (id in state.entities) {
+        updated.push({
+          id: id,
+          changes: entity
+        });
+      } else {
+        added.push(entity);
+      }
+    }
+
+    updateManyMutably(updated, state);
+    addManyMutably(added, state);
+  }
+
+  function areArraysEqual(a, b) {
+    if (a.length !== b.length) {
+      return false;
+    }
+
+    for (var i = 0; i < a.length && i < b.length; i++) {
+      if (a[i] === b[i]) {
+        continue;
+      }
+
+      return false;
+    }
+
+    return true;
+  }
+
+  function merge(models, state) {
+    models.sort(sort); // Insert/overwrite all new/updated
+
+    models.forEach(function (model) {
+      state.entities[selectId(model)] = model;
+    });
+    var allEntities = Object.values(state.entities);
+    allEntities.sort(sort);
+    var newSortedIds = allEntities.map(selectId);
+    var ids = state.ids;
+
+    if (!areArraysEqual(ids, newSortedIds)) {
+      state.ids = newSortedIds;
+    }
+  }
+
+  return {
+    removeOne: removeOne,
+    removeMany: removeMany,
+    removeAll: removeAll,
+    addOne: createStateOperator(addOneMutably),
+    updateOne: createStateOperator(updateOneMutably),
+    upsertOne: createStateOperator(upsertOneMutably),
+    setAll: createStateOperator(setAllMutably),
+    addMany: createStateOperator(addManyMutably),
+    updateMany: createStateOperator(updateManyMutably),
+    upsertMany: createStateOperator(upsertManyMutably)
+  };
+}
+/**
+ *
+ * @param options
+ *
+ * @public
+ */
+
+
+function createEntityAdapter(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var _sortComparer$selectI = _extends({
+    sortComparer: false,
+    selectId: function selectId(instance) {
+      return instance.id;
+    }
+  }, options),
+      selectId = _sortComparer$selectI.selectId,
+      sortComparer = _sortComparer$selectI.sortComparer;
+
+  var stateFactory = createInitialStateFactory();
+  var selectorsFactory = createSelectorsFactory();
+  var stateAdapter = sortComparer ? createSortedStateAdapter(selectId, sortComparer) : createUnsortedStateAdapter(selectId);
+  return _extends({
+    selectId: selectId,
+    sortComparer: sortComparer
+  }, stateFactory, {}, selectorsFactory, {}, stateAdapter);
+} // A type of promise-like that resolves synchronously and supports only one observer
+
+
+var _iteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.iterator || (Symbol.iterator = Symbol("Symbol.iterator")) : "@@iterator";
+
+var _asyncIteratorSymbol = /*#__PURE__*/typeof Symbol !== "undefined" ? Symbol.asyncIterator || (Symbol.asyncIterator = Symbol("Symbol.asyncIterator")) : "@@asyncIterator"; // Asynchronously call a function and send errors to recovery continuation
+
+
+function _catch(body, recover) {
+  try {
+    var result = body();
+  } catch (e) {
+    return recover(e);
+  }
+
+  if (result && result.then) {
+    return result.then(void 0, recover);
+  }
+
+  return result;
+} // Borrowed from https://github.com/ai/nanoid/blob/3.0.2/non-secure/index.js
+// This alphabet uses `A-Za-z0-9_-` symbols. A genetic algorithm helped
+// optimize the gzip compression for this alphabet.
+
+
+var urlAlphabet = 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW';
+/**
+ *
+ * @public
+ */
+
+var nanoid = function nanoid(size) {
+  if (size === void 0) {
+    size = 21;
+  }
+
+  var id = ''; // A compact alternative for `for (var i = 0; i < step; i++)`.
+
+  var i = size;
+
+  while (i--) {
+    // `| 0` is more compact and faster than `Math.floor()`.
+    id += urlAlphabet[Math.random() * 64 | 0];
+  }
+
+  return id;
+};
+
+var commonProperties = ['name', 'message', 'stack', 'code'];
+
+var RejectWithValue = function RejectWithValue(value) {
+  this.value = value;
+}; // Reworked from https://github.com/sindresorhus/serialize-error
+
+
+var miniSerializeError = function miniSerializeError(value) {
+  if (typeof value === 'object' && value !== null) {
+    var simpleError = {};
+
+    for (var _iterator = commonProperties, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var _ref;
+
+      if (_isArray) {
+        if (_i >= _iterator.length) break;
+        _ref = _iterator[_i++];
+      } else {
+        _i = _iterator.next();
+        if (_i.done) break;
+        _ref = _i.value;
+      }
+
+      var property = _ref;
+
+      if (typeof value[property] === 'string') {
+        simpleError[property] = value[property];
+      }
+    }
+
+    return simpleError;
+  }
+
+  return {
+    message: String(value)
+  };
+};
+/**
+ *
+ * @param typePrefix
+ * @param payloadCreator
+ * @param options
+ *
+ * @public
+ */
+
+
+function createAsyncThunk(typePrefix, payloadCreator, options) {
+  var fulfilled = createAction(typePrefix + '/fulfilled', function (result, requestId, arg) {
+    return {
+      payload: result,
+      meta: {
+        arg: arg,
+        requestId: requestId
+      }
+    };
+  });
+  var pending = createAction(typePrefix + '/pending', function (requestId, arg) {
+    return {
+      payload: undefined,
+      meta: {
+        arg: arg,
+        requestId: requestId
+      }
+    };
+  });
+  var rejected = createAction(typePrefix + '/rejected', function (error, requestId, arg, payload) {
+    var aborted = !!error && error.name === 'AbortError';
+    var condition = !!error && error.name === 'ConditionError';
+    return {
+      payload: payload,
+      error: miniSerializeError(error || 'Rejected'),
+      meta: {
+        arg: arg,
+        requestId: requestId,
+        aborted: aborted,
+        condition: condition
+      }
+    };
+  });
+  var displayedWarning = false;
+  var AC = typeof AbortController !== 'undefined' ? AbortController : /*#__PURE__*/function () {
+    function _class() {
+      this.signal = {
+        aborted: false,
+        addEventListener: function addEventListener() {},
+        dispatchEvent: function dispatchEvent() {
+          return false;
+        },
+        onabort: function onabort() {},
+        removeEventListener: function removeEventListener() {}
+      };
+    }
+
+    var _proto = _class.prototype;
+
+    _proto.abort = function abort() {
+      if (false) {}
+    };
+
+    return _class;
+  }();
+
+  function actionCreator(arg) {
+    return function (dispatch, getState, extra) {
+      var requestId = nanoid();
+      var abortController = new AC();
+      var abortReason;
+      var abortedPromise = new Promise(function (_, reject) {
+        return abortController.signal.addEventListener('abort', function () {
+          return reject({
+            name: 'AbortError',
+            message: abortReason || 'Aborted'
+          });
+        });
+      });
+      var started = false;
+
+      function abort(reason) {
+        if (started) {
+          abortReason = reason;
+          abortController.abort();
+        }
+      }
+
+      var promise = function () {
+        try {
+          var _temp3 = function _temp3(_result) {
+            if (_exit2) return _result; // We dispatch the result action _after_ the catch, to avoid having any errors
+            // here get swallowed by the try/catch block,
+            // per https://twitter.com/dan_abramov/status/770914221638942720
+            // and https://redux-toolkit.js.org/tutorials/advanced-tutorial#async-error-handling-logic-in-thunks
+
+            var skipDispatch = options && !options.dispatchConditionRejection && rejected.match(finalAction) && finalAction.meta.condition;
+
+            if (!skipDispatch) {
+              dispatch(finalAction);
+            }
+
+            return finalAction;
+          };
+
+          var _exit2 = false;
+          var finalAction;
+
+          var _temp4 = _catch(function () {
+            if (options && options.condition && options.condition(arg, {
+              getState: getState,
+              extra: extra
+            }) === false) {
+              // eslint-disable-next-line no-throw-literal
+              throw {
+                name: 'ConditionError',
+                message: 'Aborted due to condition callback returning false.'
+              };
+            }
+
+            started = true;
+            dispatch(pending(requestId, arg));
+            return Promise.resolve(Promise.race([abortedPromise, Promise.resolve(payloadCreator(arg, {
+              dispatch: dispatch,
+              getState: getState,
+              extra: extra,
+              requestId: requestId,
+              signal: abortController.signal,
+              rejectWithValue: function rejectWithValue(value) {
+                return new RejectWithValue(value);
+              }
+            })).then(function (result) {
+              if (result instanceof RejectWithValue) {
+                return rejected(null, requestId, arg, result.value);
+              }
+
+              return fulfilled(result, requestId, arg);
+            })])).then(function (_Promise$race) {
+              finalAction = _Promise$race;
+            });
+          }, function (err) {
+            finalAction = rejected(err, requestId, arg);
+          });
+
+          return Promise.resolve(_temp4 && _temp4.then ? _temp4.then(_temp3) : _temp3(_temp4));
+        } catch (e) {
+          return Promise.reject(e);
+        }
+      }();
+
+      return Object.assign(promise, {
+        abort: abort
+      });
+    };
+  }
+
+  return Object.assign(actionCreator, {
+    pending: pending,
+    rejected: rejected,
+    fulfilled: fulfilled,
+    typePrefix: typePrefix
+  });
+}
+/**
+ * @public
+ */
+
+
+function unwrapResult(returned) {
+  if ('error' in returned) {
+    throw returned.error;
+  }
+
+  return returned.payload;
+} // we assume RTK will be used with React Native and other Proxy-less
+// environments.  In addition, that's how Immer 4 behaved, and since
+// we want to ship this in an RTK minor, we should keep the same behavior.
+
+
+N();
+
+
 /***/ }),
-/* 18 */
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(43);
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ store; });
+
+// UNUSED EXPORTS: storeSelector
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 5 modules
+var toConsumableArray = __webpack_require__(24);
+
+// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
+var redux_toolkit_esm = __webpack_require__(9);
+
+// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
+var redux = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/redux-logger/dist/redux-logger.js
+var redux_logger = __webpack_require__(33);
+
+// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
+var interfaceModule = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
+var downloadModule = __webpack_require__(6);
+
+// CONCATENATED MODULE: ./src/rootReducer.ts
+var rootReducer=Object(redux["c" /* combineReducers */])({download:downloadModule["a" /* default */].reducer,interface:interfaceModule["a" /* default */].reducer});/* harmony default export */ var src_rootReducer = (rootReducer);
+// CONCATENATED MODULE: ./src/store.ts
+var middleware=[].concat(Object(toConsumableArray["a" /* default */])(Object(redux_toolkit_esm["c" /* getDefaultMiddleware */])({serializableCheck:false})),[Object(redux_logger["createLogger"])({diff:true,collapsed:true})]);var composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true,traceLimit:10}):redux["d" /* compose */];var store=Object(redux_toolkit_esm["a" /* configureStore */])({reducer:src_rootReducer,middleware:middleware,devTools:"production"!=='production',enhancers:[composeEnhancers]});var storeSelector=function storeSelector(store){return store;};
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5309,9 +5277,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return log; });
 /* unused harmony export awaitElement */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addLocationChangeCallback; });
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 var formatByte=function formatByte(byte){if(byte<=1000){return"".concat(byte," B");}var KiByte=Math.round(byte/1024);return KiByte<=1000?"".concat(KiByte," KB"):"".concat(Math.round(KiByte/10.24)/100," MB");};/**
  * Wrapped console.log function.
  *
@@ -5337,7 +5305,7 @@ window.setTimeout(callback,0);// Set up a `MutationObserver` to watch for change
 var oldHref=window.location.href;var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(document.body,{childList:true,subtree:true});return observer;}
 
 /***/ }),
-/* 19 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5355,7 +5323,7 @@ function _taggedTemplateLiteral(strings, raw) {
 }
 
 /***/ }),
-/* 20 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5374,16 +5342,16 @@ function _taggedTemplateLiteral(strings, raw) {
 /* unused harmony export useTheme */
 /* unused harmony export version */
 /* unused harmony export withTheme */
-/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(21);
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
 /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_is__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(37);
+/* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36);
 /* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shallowequal__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(38);
-/* harmony import */ var _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(39);
-/* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(32);
-/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
+/* harmony import */ var _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
+/* harmony import */ var _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38);
+/* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27);
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(21);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__);
 
 
@@ -7251,7 +7219,210 @@ if (false) {}
 
 /* harmony default export */ __webpack_exports__["b"] = (styled);
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(49)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(48)))
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _objectSpread2; });
+
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _asyncToGenerator; });
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return downloadableSelector; });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+var downloadableSelector=Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__[/* createSelector */ "a"])(function(store){return store.download.downloadItems;},function(store){return store.interface.maxDownloadCount;},function(allDownloads,maxDownloadCount){return Object.values(allDownloads).filter(function(item){return item.status===_types__WEBPACK_IMPORTED_MODULE_1__[/* StatusTypes */ "b"].downloading;}).length<maxDownloadCount;});
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(49);
+} else {}
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ Modal; });
+
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js
+var taggedTemplateLiteral = __webpack_require__(13);
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(0);
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.browser.esm.js
+var styled_components_browser_esm = __webpack_require__(14);
+
+// CONCATENATED MODULE: ./src/components/Modal.tsx
+function _templateObject(){var data=Object(taggedTemplateLiteral["a" /* default */])([""]);_templateObject=function _templateObject(){return data;};return data;}var Wrapper=styled_components_browser_esm["b" /* default */].div(_templateObject());function Modal(_ref){var closeButton=_ref.closeButton,open=_ref.open,close=_ref.close,children=_ref.children,rest=_objectWithoutProperties(_ref,["closeButton","open","close","children"]);var closeModal=function closeModal(){typeof close==='function'&&close();};return/*#__PURE__*/react_default.a.createElement(Wrapper,Object.assign({className:"modal-wrapper".concat(open?' open':'')},rest),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-overlay",onClick:closeModal}),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-window"},/*#__PURE__*/react_default.a.createElement("div",{className:"modal-content"},children),closeButton&&/*#__PURE__*/react_default.a.createElement("span",{className:"modal-close",onClick:closeModal},"\xD7")));}
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
 
 /***/ }),
 /* 21 */
@@ -7260,18 +7431,7 @@ if (false) {}
 "use strict";
 
 
-if (true) {
-  module.exports = __webpack_require__(50);
-} else {}
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var reactIs = __webpack_require__(21);
+var reactIs = __webpack_require__(18);
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -7376,68 +7536,19 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 module.exports = hoistNonReactStatics;
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _objectSpread2; });
-
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _classCallCheck; });
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-
-  return obj;
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
 }
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7465,214 +7576,11 @@ if (true) {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(46);
+  module.exports = __webpack_require__(45);
 } else {}
 
 /***/ }),
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-
-
-function delayP(ms, val) {
-  if (val === void 0) {
-    val = true;
-  }
-
-  var timeoutId;
-  var promise = new Promise(function (resolve) {
-    timeoutId = setTimeout(resolve, ms, val);
-  });
-
-  promise[_redux_saga_symbols__WEBPACK_IMPORTED_MODULE_0__[/* CANCEL */ "a"]] = function () {
-    clearTimeout(timeoutId);
-  };
-
-  return promise;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (delayP);
-
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(8);
-var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
-
-// EXTERNAL MODULE: ./node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js + 1 modules
-var redux_saga_effects_npm_proxy_esm = __webpack_require__(7);
-
-// EXTERNAL MODULE: ./node_modules/typesafe-actions/dist/typesafe-actions.umd.production.js
-var typesafe_actions_umd_production = __webpack_require__(5);
-
-// EXTERNAL MODULE: ./src/store/download/actionCreator.ts
-var actionCreator = __webpack_require__(6);
-
-// EXTERNAL MODULE: ./src/types.ts
-var types = __webpack_require__(3);
-
-// EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(11);
-
-// CONCATENATED MODULE: ./src/services/api.ts
-function getDownloadUrl(path){return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
-return reject(r);}}});});}// export async function downloadItem(arr: IItem) {
-//   // Remove Item if target still in stop cluster
-//   if (InstanceForSystem.stoppedItems[arr.fs_id]) {
-//     delete InstanceForSystem.stoppedItems[arr.fs_id]
-//   }
-//
-//   if (!InstanceForSystem.downloadable) {
-//     arr.status = StatusTypes.inQueued
-//     renderOperationElement(arr)
-//     return
-//   }
-//
-//   if (arr.status === StatusTypes.error) {
-//     // re-getting url if it invalided
-//     await getDownloadUrl(arr)
-//   }
-//
-//   arr.status = StatusTypes.downloading
-//
-//   InstanceForSystem.downloadingItems[arr.fs_id] = arr
-//   const { url, server_filename } = arr
-//   let loaded = 0
-//   let currentEvent: ProgressEvent | undefined = undefined
-//   const percentOverlay = document.querySelector(`div[data-label="${arr.fs_id}"]`) as HTMLDivElement
-//   const progressRadial = percentOverlay.parentElement as HTMLDivElement
-//   const speedOverlay = percentOverlay.closest('tr')!.querySelector('td[data-label="speed"]') as HTMLTableDataCellElement
-//
-//   arr.request = GM.download({
-//     url,
-//     name: server_filename,
-//     saveAs: true,
-//     headers: {
-//       Host: 'qdall01.baidupcs.com',
-//       Accept: '*/*',
-//       'User-Agent': HeaderTypes.userAgent,
-//       'Accept-Encoding': 'identity',
-//       'Accept-Language': 'ja-JP',
-//       'Accept-Charset': '*',
-//     },
-//     onprogress: (e: ProgressEvent) => {
-//       currentEvent = e
-//
-//       const percent = Math.round((currentEvent.loaded * 100) / currentEvent.total)
-//       progressRadial.className = `progress-radial progress-${percent}`
-//       percentOverlay.innerText = `${percent}%`
-//     },
-//     onload: () => {
-//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
-//       progressRadial.className = 'progress-radial progress-100'
-//       percentOverlay.innerText = '100%'
-//       speedOverlay.innerText = ''
-//       InstanceForSystem.completedItems[arr.fs_id] = arr
-//       delete InstanceForSystem.downloadingItems[arr.fs_id]
-//
-//       GM.notification({
-//         text: '下载完成',
-//         title: server_filename,
-//         highlight: true,
-//       })
-//       arr.status = StatusTypes.completed
-//       renderOperationElement(arr)
-//
-//       addNextDownloadRequest()
-//     },
-//     onerror: (e) => {
-//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
-//       progressRadial.className = 'progress-radial progress-0'
-//       percentOverlay.innerHTML = `<span style="color: red">error</span>`
-//       speedOverlay.innerText = ''
-//       InstanceForSystem.stoppedItems[arr.fs_id] = arr
-//       delete InstanceForSystem.downloadingItems[arr.fs_id]
-//       arr.status = StatusTypes.error
-//       renderOperationElement(arr)
-//       // eslint-disable-next-line no-console
-//       console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e)
-//
-//       addNextDownloadRequest()
-//     },
-//   })
-//   window.requestAnimationFrame(() => {
-//     renderOperationElement(arr)
-//   })
-//
-//   arr.progress_loader_id = window.setInterval(() => {
-//     if (currentEvent) {
-//       const speed = currentEvent.loaded - loaded
-//       loaded = currentEvent.loaded
-//       speedOverlay.innerText = `${formatByte(speed)}/s`
-//     }
-//   }, 1000)
-// }
-function addNextDownloadRequest(){// for (const fs_id in InstanceForSystem.itemsFromQueue) {
-//   // downloadItem(InstanceForSystem.allDownloads[fs_id])
-// }
-}
-// EXTERNAL MODULE: ./src/store/index.ts + 6 modules
-var store = __webpack_require__(9);
-
-// EXTERNAL MODULE: ./src/store/Interface/index.ts
-var Interface = __webpack_require__(14);
-
-// CONCATENATED MODULE: ./src/store/download/saga.ts
-var _marked=/*#__PURE__*/regenerator_default.a.mark(requestDownloadURL),_marked2=/*#__PURE__*/regenerator_default.a.mark(requestDownloadItem),_marked3=/*#__PURE__*/regenerator_default.a.mark(requestChange),_marked4=/*#__PURE__*/regenerator_default.a.mark(onChangeEventSuccess);function requestDownloadURL(action){var item,res;return regenerator_default.a.wrap(function requestDownloadURL$(_context){while(1){switch(_context.prev=_context.next){case 0:item=action.payload;_context.prev=1;_context.next=4;return Object(redux_saga_effects_npm_proxy_esm["b" /* call */])(getDownloadUrl,item.path);case 4:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);_context.next=8;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].downloadURL.success(item));case 8:_context.next=10;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].downloadItem.request(item));case 10:_context.next=16;break;case 12:_context.prev=12;_context.t0=_context["catch"](1);_context.next=16;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].downloadURL.failure(_context.t0));case 16:case"end":return _context.stop();}}},_marked,null,[[1,12]]);}function requestDownloadItem(action){var item,progress,_storeSelector,downloadable,url,serverFilename,currentEvent,loaded;return regenerator_default.a.wrap(function requestDownloadItem$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:item=action.payload;progress=item.progress;_context2.t0=store["b" /* storeSelector */];_context2.next=5;return Object(redux_saga_effects_npm_proxy_esm["f" /* select */])();case 5:_context2.t1=_context2.sent;_storeSelector=(0,_context2.t0)(_context2.t1);downloadable=_storeSelector.interface.downloadable;_context2.prev=8;if(downloadable){_context2.next=12;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context2.abrupt("return");case 12:if(!(progress.status===types["b" /* StatusTypes */].error)){_context2.next=16;break;}_context2.next=15;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].downloadURL.request(item));case 15:return _context2.abrupt("return");case 16:progress.status=types["b" /* StatusTypes */].downloading;url=item.url,serverFilename=item.serverFilename;currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});// addNextDownloadRequest()
-},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;// eslint-disable-next-line no-console
-console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录',e);// addNextDownloadRequest()
-}});loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);_context2.next=31;break;case 26:_context2.prev=26;_context2.t2=_context2["catch"](8);console.error(_context2.t2);_context2.next=31;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].downloadItem.failure(_context2.t2));case 31:case"end":return _context2.stop();}}},_marked2,null,[[8,26]]);}function requestChange(action){return regenerator_default.a.wrap(function requestChange$(_context3){while(1){switch(_context3.prev=_context3.next){case 0:_context3.prev=0;_context3.next=3;return actionCreator["a" /* default */].change.request;case 3:_context3.next=5;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].change.success(action.payload));case 5:_context3.next=11;break;case 7:_context3.prev=7;_context3.t0=_context3["catch"](0);_context3.next=11;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(actionCreator["a" /* default */].change.failure(_context3.t0));case 11:case"end":return _context3.stop();}}},_marked3,null,[[0,7]]);}function onChangeEventSuccess(action){var _storeSelector2,download,maxDownloadCount,keys,_i,_keys,key,downloadable;return regenerator_default.a.wrap(function onChangeEventSuccess$(_context4){while(1){switch(_context4.prev=_context4.next){case 0:_context4.t0=store["b" /* storeSelector */];_context4.next=3;return Object(redux_saga_effects_npm_proxy_esm["f" /* select */])();case 3:_context4.t1=_context4.sent;_storeSelector2=(0,_context4.t0)(_context4.t1);download=_storeSelector2.download;maxDownloadCount=_storeSelector2.interface.maxDownloadCount;keys=Object.keys(action.payload);_i=0,_keys=keys;case 9:if(!(_i<_keys.length)){_context4.next=21;break;}key=_keys[_i];_context4.t2=key;_context4.next=_context4.t2==='allDownloads'?14:18;break;case 14:downloadable=Object.values(download.allDownloads).filter(function(item){return item.progress.status===types["b" /* StatusTypes */].downloading;}).length<maxDownloadCount;_context4.next=17;return Object(redux_saga_effects_npm_proxy_esm["e" /* put */])(Interface["a" /* interfaceActionCreator */].change({downloadable:downloadable}));case 17:return _context4.abrupt("break",18);case 18:_i++;_context4.next=9;break;case 21:case"end":return _context4.stop();}}},_marked4);}/* harmony default export */ var saga = __webpack_exports__["a"] = ([Object(redux_saga_effects_npm_proxy_esm["h" /* takeEvery */])(Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadURL.request),requestDownloadURL),Object(redux_saga_effects_npm_proxy_esm["h" /* takeEvery */])(Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].downloadItem.request),requestDownloadItem),Object(redux_saga_effects_npm_proxy_esm["h" /* takeEvery */])(Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].change.request),requestChange),Object(redux_saga_effects_npm_proxy_esm["h" /* takeEvery */])(Object(typesafe_actions_umd_production["getType"])(actionCreator["a" /* default */].change.success),onChangeEventSuccess)]);
-
-/***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _asyncToGenerator; });
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-/***/ }),
-/* 28 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7723,28 +7631,11 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 29 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// CONCATENATED MODULE: ./src/utils/nodeEnvIs/index.ts
-function nodeEnvIs(expectedEnv){var currentEnv="production";return!!(currentEnv&&currentEnv.toLowerCase()===expectedEnv.toLowerCase());}/* harmony default export */ var utils_nodeEnvIs = (nodeEnvIs);
-// CONCATENATED MODULE: ./src/utils/nodeEnvIs/devNodeEnv/index.ts
-var devNodeEnv=utils_nodeEnvIs('development');/* harmony default export */ var nodeEnvIs_devNodeEnv = __webpack_exports__["a"] = (devNodeEnv);
-
-/***/ }),
-/* 30 */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"a\":\"baidu-pan-downloader\"}");
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
 /* global window */
 
 var root;
@@ -7761,10 +7652,16 @@ if (typeof self !== 'undefined') {
 
 var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(54), __webpack_require__(33)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(28)(module)))
 
 /***/ }),
-/* 32 */
+/* 26 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"a\":\"baidu-pan-downloader\"}");
+
+/***/ }),
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7795,7 +7692,7 @@ var index = memoize_browser_esm(function (prop) {
 /* harmony default export */ var is_prop_valid_browser_esm = __webpack_exports__["a"] = (index);
 
 /***/ }),
-/* 33 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = function (originalModule) {
@@ -7825,7 +7722,30 @@ module.exports = function (originalModule) {
 };
 
 /***/ }),
-/* 34 */
+/* 29 */
+/***/ (function(module, exports) {
+
+var g; // This works in non-strict mode
+
+g = function () {
+  return this;
+}();
+
+try {
+  // This works if eval is allowed (see CSP)
+  g = g || new Function("return this")();
+} catch (e) {
+  // This works if the window reference is available
+  if (typeof window === "object") g = window;
+} // g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+
+module.exports = g;
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7926,7 +7846,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 35 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7937,236 +7857,747 @@ __webpack_require__.r(__webpack_exports__);
 var react = __webpack_require__(0);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
-// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 22 modules
-var es = __webpack_require__(10);
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js + 1 modules
+var objectSpread2 = __webpack_require__(15);
 
-// EXTERNAL MODULE: ./src/store/Interface/index.ts
-var Interface = __webpack_require__(14);
+// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 24 modules
+var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(13);
+var InstaceForSystem = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/types.ts
-var types = __webpack_require__(3);
+var types = __webpack_require__(1);
 
-// EXTERNAL MODULE: ./src/store/download/index.ts + 2 modules
-var store_download = __webpack_require__(15);
+// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
+var interfaceModule = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
+var downloadModule = __webpack_require__(6);
+
+// EXTERNAL MODULE: ./src/selectors.ts
+var selectors = __webpack_require__(17);
 
 // CONCATENATED MODULE: ./src/containers/FloatingButtons.tsx
-var FloatingButtons_mapStoreToProps=function mapStoreToProps(store){return{autoStart:store.interface.autoStart,downloadable:store.interface.downloadable,allDownloads:store.download.allDownloads};};var mapActionToProps={changeConfig:Interface["a" /* interfaceActionCreator */].change,updateDownloadItem:store_download["a" /* downloadActionCreator */].change.request,download:store_download["a" /* downloadActionCreator */].downloadURL.request};var FloatingButtons_FloatingButtons=function FloatingButtons(_ref){var changeConfig=_ref.changeConfig,autoStart=_ref.autoStart,downloadable=_ref.downloadable,allDownloads=_ref.allDownloads,updateDownloadItem=_ref.updateDownloadItem,download=_ref.download;return/*#__PURE__*/react_default.a.createElement("div",{id:"container-floating"},/*#__PURE__*/react_default.a.createElement("div",{id:"config-button",className:"nd1 nds","data-toggle":"tooltip","data-placement":"left",onClick:function onClick(){changeConfig({configModalOpen:true});}},/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"reminder",src:"https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png"})),/*#__PURE__*/react_default.a.createElement("div",{id:"floating-button","data-toggle":"tooltip","data-placement":"left","data-original-title":"Create",onClick:function onClick(){var selectedList=InstaceForSystem["a" /* InstanceForSystem */].selectedList;selectedList.forEach(function(item){if(typeof allDownloads[item.fsId]==='undefined'){item.progress.status=types["b" /* StatusTypes */].inQueued;allDownloads[item.fsId]=item;if(downloadable&&autoStart){download(item);}}});updateDownloadItem({allDownloads:allDownloads});changeConfig({downloadModalOpen:true});}},/*#__PURE__*/react_default.a.createElement("p",{className:"plus"},"+"),/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"edit",src:"//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"})));};/* harmony default export */ var containers_FloatingButtons = (Object(es["b" /* connect */])(FloatingButtons_mapStoreToProps,mapActionToProps)(FloatingButtons_FloatingButtons));
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
+var FloatingButtons_mapStoreToProps=function mapStoreToProps(store){return{autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store)};};var FloatingButtons_FloatingButtons=function FloatingButtons(_ref){var autoStart=_ref.autoStart,downloadable=_ref.downloadable;var dispatch=Object(es["d" /* useDispatch */])();var _useSelector=Object(es["e" /* useSelector */])(function(state){return state.download;}),downloadItems=_useSelector.downloadItems;return/*#__PURE__*/react_default.a.createElement("div",{id:"container-floating"},/*#__PURE__*/react_default.a.createElement("div",{id:"config-button",className:"nd1 nds","data-toggle":"tooltip","data-placement":"left",onClick:function onClick(){dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"reminder",src:"https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png"})),/*#__PURE__*/react_default.a.createElement("div",{id:"floating-button","data-toggle":"tooltip","data-placement":"left","data-original-title":"Create",onClick:function onClick(){var selectedList=InstaceForSystem["a" /* InstanceForSystem */].selectedList;var newItems=Object(objectSpread2["a" /* default */])({},downloadItems);var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;selectedList.forEach(function(item){if(typeof downloadItems[item.fsId]==='undefined'){item.progress.status=types["b" /* StatusTypes */].inQueued;var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;allDownloads[item.fsId]=item;newItems[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};if(downloadable&&autoStart){dispatch(Object(downloadModule["b" /* fetchItem */])(item));}}});dispatch(downloadModule["a" /* default */].actions.change({downloadItems:newItems}));dispatch(interfaceModule["a" /* default */].actions.change({downloadModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("p",{className:"plus"},"+"),/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"edit",src:"//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"})));};/* harmony default export */ var containers_FloatingButtons = (Object(es["b" /* connect */])(FloatingButtons_mapStoreToProps)(FloatingButtons_FloatingButtons));
+// EXTERNAL MODULE: ./src/components/Modal.tsx + 2 modules
+var Modal = __webpack_require__(19);
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js
-var taggedTemplateLiteral = __webpack_require__(19);
-
-// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.browser.esm.js
-var styled_components_browser_esm = __webpack_require__(20);
-
-// CONCATENATED MODULE: ./src/components/Modal.tsx
-function _templateObject(){var data=Object(taggedTemplateLiteral["a" /* default */])([""]);_templateObject=function _templateObject(){return data;};return data;}var Wrapper=styled_components_browser_esm["b" /* default */].div(_templateObject());function Modal(_ref){var closeButton=_ref.closeButton,open=_ref.open,close=_ref.close,children=_ref.children,rest=_objectWithoutProperties(_ref,["closeButton","open","close","children"]);var closeModal=function closeModal(){typeof close==='function'&&close();};return/*#__PURE__*/react_default.a.createElement(Wrapper,Object.assign({className:"modal-wrapper".concat(open?' open':'')},rest),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-overlay",onClick:closeModal}),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-window"},/*#__PURE__*/react_default.a.createElement("div",{className:"modal-content"},children),closeButton&&/*#__PURE__*/react_default.a.createElement("span",{className:"modal-close",onClick:closeModal},"\xD7")));}
 // EXTERNAL MODULE: ./src/utils/index.ts
-var utils = __webpack_require__(18);
-
-// EXTERNAL MODULE: ./src/store/index.ts + 6 modules
-var src_store = __webpack_require__(9);
+var utils = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./src/containers/DownloadList/Operation.tsx
-var Operation_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$allDo,_store$download$allDo2;return{status:(_store$download$allDo=store.download.allDownloads[props.fsId])===null||_store$download$allDo===void 0?void 0:_store$download$allDo.progress.status,request:(_store$download$allDo2=store.download.allDownloads[props.fsId])===null||_store$download$allDo2===void 0?void 0:_store$download$allDo2.progress.request};};var Operation_mapActionsToProps={download:store_download["a" /* downloadActionCreator */].downloadURL.request,updateDownloadList:store_download["a" /* downloadActionCreator */].change.request};function Operation(_ref){var fsId=_ref.fsId,status=_ref.status,request=_ref.request,download=_ref.download,updateDownloadList=_ref.updateDownloadList;var stopItem=function stopItem(){var _store$getState=src_store["a" /* store */].getState(),allDownloads=_store$getState.download.allDownloads;var targetItem=allDownloads[fsId];if(targetItem){var _targetItem$progress$;if(status===types["b" /* StatusTypes */].downloading){if(!window.confirm('停止后将需要重新下载， 确认吗？')){return false;}}targetItem.progress.status=types["b" /* StatusTypes */].stopped;((_targetItem$progress$=targetItem.progress.request)===null||_targetItem$progress$===void 0?void 0:_targetItem$progress$.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);// addNextDownloadRequest()
-return false;}};var deleteItem=function deleteItem(){(request===null||request===void 0?void 0:request.abort)&&request.abort();var _store$getState2=src_store["a" /* store */].getState(),allDownloads=_store$getState2.download.allDownloads;delete allDownloads[fsId];updateDownloadList(allDownloads);// addNextDownloadRequest()
-};return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement("svg",{id:"start-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'disabled':''),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:function onClick(){var _store$getState3=src_store["a" /* store */].getState(),allDownloads=_store$getState3.download.allDownloads;download(allDownloads[fsId]);}},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M8 5v14l11-7z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"stop-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'':'disabled'),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:stopItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M6 6h12v12H6z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"delete-item-".concat(fsId),className:"delete-item",style:{position:'absolute',right:5},xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:deleteItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"})));}/* harmony default export */ var DownloadList_Operation = (Object(es["b" /* connect */])(Operation_mapStoreToProps,Operation_mapActionsToProps)(Operation));
+var Operation_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{status:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.status};};function Operation(_ref){var fsId=_ref.fsId,status=_ref.status;var targetItem=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];var dispatch=Object(es["d" /* useDispatch */])();var stopItem=function stopItem(){if(targetItem){var _targetItem$progress$;if(status===types["b" /* StatusTypes */].downloading){if(!window.confirm('停止后将需要重新下载， 确认吗？')){return false;}}targetItem.progress.status=types["b" /* StatusTypes */].stopped;((_targetItem$progress$=targetItem.progress.request)===null||_targetItem$progress$===void 0?void 0:_targetItem$progress$.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);// addNextDownloadRequest()
+return false;}};var deleteItem=function deleteItem(){if(targetItem){var _targetItem$progress$2;((_targetItem$progress$2=targetItem.progress.request)===null||_targetItem$progress$2===void 0?void 0:_targetItem$progress$2.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);delete InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];dispatch(downloadModule["a" /* default */].actions.removeItem({fsId:fsId}));}// addNextDownloadRequest()
+};return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement("svg",{id:"start-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'disabled':''),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:function onClick(){dispatch(Object(downloadModule["b" /* fetchItem */])(targetItem));}},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M8 5v14l11-7z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"stop-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'':'disabled'),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:stopItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M6 6h12v12H6z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"delete-item-".concat(fsId),className:"delete-item",style:{position:'absolute',right:5},xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:deleteItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"})));}/* harmony default export */ var DownloadList_Operation = (Object(es["b" /* connect */])(Operation_mapStoreToProps)(Operation));
 // CONCATENATED MODULE: ./src/containers/DownloadList/ProgressStatus.tsx
-var ProgressStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$allDo;return{percentCount:(_store$download$allDo=store.download.allDownloads[props.fsId])===null||_store$download$allDo===void 0?void 0:_store$download$allDo.progress.percentCount};};function ProgressStatus(_ref){var percentCount=_ref.percentCount;return/*#__PURE__*/react_default.a.createElement("div",{className:"progress-radial progress-".concat(percentCount)},/*#__PURE__*/react_default.a.createElement("div",{className:"overlay"},percentCount,"%"));}/* harmony default export */ var DownloadList_ProgressStatus = (Object(es["b" /* connect */])(ProgressStatus_mapStoreToProps)(ProgressStatus));
+var ProgressStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{percentCount:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.percentCount};};function ProgressStatus(_ref){var percentCount=_ref.percentCount;return/*#__PURE__*/react_default.a.createElement("div",{className:"progress-radial progress-".concat(percentCount)},/*#__PURE__*/react_default.a.createElement("div",{className:"overlay"},percentCount,"%"));}/* harmony default export */ var DownloadList_ProgressStatus = (Object(es["b" /* connect */])(ProgressStatus_mapStoreToProps)(ProgressStatus));
 // CONCATENATED MODULE: ./src/containers/DownloadList/SpeedStatus.tsx
-var SpeedStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$allDo;return{speedOverlay:(_store$download$allDo=store.download.allDownloads[props.fsId])===null||_store$download$allDo===void 0?void 0:_store$download$allDo.progress.speedOverlay};};function SpeedStatus(_ref){var speedOverlay=_ref.speedOverlay;return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,Object(utils["b" /* formatByte */])(speedOverlay)," /s");}/* harmony default export */ var DownloadList_SpeedStatus = (Object(es["b" /* connect */])(SpeedStatus_mapStoreToProps)(SpeedStatus));
+var SpeedStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{speedOverlay:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.speedOverlay};};function SpeedStatus(_ref){var speedOverlay=_ref.speedOverlay;return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,Object(utils["b" /* formatByte */])(speedOverlay)," /s");}/* harmony default export */ var DownloadList_SpeedStatus = (Object(es["b" /* connect */])(SpeedStatus_mapStoreToProps)(SpeedStatus));
 // CONCATENATED MODULE: ./src/containers/DownloadList/Item.tsx
-var Item_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$allDo,_store$download$allDo2;return{serverFilename:(_store$download$allDo=store.download.allDownloads[props.fsId])===null||_store$download$allDo===void 0?void 0:_store$download$allDo.serverFilename,size:(_store$download$allDo2=store.download.allDownloads[props.fsId])===null||_store$download$allDo2===void 0?void 0:_store$download$allDo2.size};};function Item(_ref){var fsId=_ref.fsId,serverFilename=_ref.serverFilename,size=_ref.size;return/*#__PURE__*/react_default.a.createElement("tr",{id:'row-'+fsId},/*#__PURE__*/react_default.a.createElement("td",{"data-label":"filename"},serverFilename),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"download"},/*#__PURE__*/react_default.a.createElement("div",{className:"wrap"},/*#__PURE__*/react_default.a.createElement(DownloadList_ProgressStatus,{fsId:fsId}))),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"url"},Object(utils["b" /* formatByte */])(size)),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"speed"},/*#__PURE__*/react_default.a.createElement(DownloadList_SpeedStatus,{fsId:fsId})),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"operation"},/*#__PURE__*/react_default.a.createElement(DownloadList_Operation,{fsId:fsId})));}/* harmony default export */ var DownloadList_Item = (Object(es["b" /* connect */])(Item_mapStoreToProps)(Item));
-// CONCATENATED MODULE: ./node_modules/reselect/es/index.js
-function defaultEqualityCheck(a, b) {
-  return a === b;
-}
+function Item(_ref){var fsId=_ref.fsId;var _InstanceForSystem$al=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId],serverFilename=_InstanceForSystem$al.serverFilename,size=_InstanceForSystem$al.size;return/*#__PURE__*/react_default.a.createElement("tr",{id:'row-'+fsId},/*#__PURE__*/react_default.a.createElement("td",{"data-label":"filename"},serverFilename),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"download"},/*#__PURE__*/react_default.a.createElement("div",{className:"wrap"},/*#__PURE__*/react_default.a.createElement(DownloadList_ProgressStatus,{fsId:fsId}))),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"url"},Object(utils["b" /* formatByte */])(size)),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"speed"},/*#__PURE__*/react_default.a.createElement(DownloadList_SpeedStatus,{fsId:fsId})),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"operation"},/*#__PURE__*/react_default.a.createElement(DownloadList_Operation,{fsId:fsId})));}/* harmony default export */ var DownloadList_Item = (Item);
+// EXTERNAL MODULE: ./node_modules/reselect/es/index.js
+var reselect_es = __webpack_require__(5);
 
-function areArgumentsShallowlyEqual(equalityCheck, prev, next) {
-  if (prev === null || next === null || prev.length !== next.length) {
-    return false;
-  } // Do this in a for loop (and not a `forEach` or an `every`) so we can determine equality as fast as possible.
-
-
-  var length = prev.length;
-
-  for (var i = 0; i < length; i++) {
-    if (!equalityCheck(prev[i], next[i])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function defaultMemoize(func) {
-  var equalityCheck = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultEqualityCheck;
-  var lastArgs = null;
-  var lastResult = null; // we reference arguments instead of spreading them for performance reasons
-
-  return function () {
-    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) {
-      // apply arguments instead of spreading for performance.
-      lastResult = func.apply(null, arguments);
-    }
-
-    lastArgs = arguments;
-    return lastResult;
-  };
-}
-
-function getDependencies(funcs) {
-  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-
-  if (!dependencies.every(function (dep) {
-    return typeof dep === 'function';
-  })) {
-    var dependencyTypes = dependencies.map(function (dep) {
-      return typeof dep;
-    }).join(', ');
-    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
-  }
-
-  return dependencies;
-}
-
-function createSelectorCreator(memoize) {
-  for (var _len = arguments.length, memoizeOptions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    memoizeOptions[_key - 1] = arguments[_key];
-  }
-
-  return function () {
-    for (var _len2 = arguments.length, funcs = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      funcs[_key2] = arguments[_key2];
-    }
-
-    var recomputations = 0;
-    var resultFunc = funcs.pop();
-    var dependencies = getDependencies(funcs);
-    var memoizedResultFunc = memoize.apply(undefined, [function () {
-      recomputations++; // apply arguments instead of spreading for performance.
-
-      return resultFunc.apply(null, arguments);
-    }].concat(memoizeOptions)); // If a selector is called with the exact same arguments we don't need to traverse our dependencies again.
-
-    var selector = memoize(function () {
-      var params = [];
-      var length = dependencies.length;
-
-      for (var i = 0; i < length; i++) {
-        // apply arguments instead of spreading and mutate a local list of params for performance.
-        params.push(dependencies[i].apply(null, arguments));
-      } // apply arguments instead of spreading for performance.
-
-
-      return memoizedResultFunc.apply(null, params);
-    });
-    selector.resultFunc = resultFunc;
-    selector.dependencies = dependencies;
-
-    selector.recomputations = function () {
-      return recomputations;
-    };
-
-    selector.resetRecomputations = function () {
-      return recomputations = 0;
-    };
-
-    return selector;
-  };
-}
-var createSelector = createSelectorCreator(defaultMemoize);
-function createStructuredSelector(selectors) {
-  var selectorCreator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : createSelector;
-
-  if (typeof selectors !== 'object') {
-    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
-  }
-
-  var objectKeys = Object.keys(selectors);
-  return selectorCreator(objectKeys.map(function (key) {
-    return selectors[key];
-  }), function () {
-    for (var _len3 = arguments.length, values = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-      values[_key3] = arguments[_key3];
-    }
-
-    return values.reduce(function (composition, value, index) {
-      composition[objectKeys[index]] = value;
-      return composition;
-    }, {});
-  });
-}
 // CONCATENATED MODULE: ./src/containers/DownloadList/index.tsx
-var DownloadList_mapStoreToProps=function mapStoreToProps(store){return{fsIdList:createSelector(function(store){return store.download.allDownloads;},function(allDownloads){return Object.keys(allDownloads);})(store),downloadModalOpen:store.interface.downloadModalOpen};};var DownloadList_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){dispatch(Interface["a" /* interfaceActionCreator */].change({downloadModalOpen:false}));}};};function DownloadList(_ref){var fsIdList=_ref.fsIdList,downloadModalOpen=_ref.downloadModalOpen,closeModal=_ref.closeModal;console.log(fsIdList,downloadModalOpen);return/*#__PURE__*/react_default.a.createElement(Modal,{open:downloadModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement("table",null,/*#__PURE__*/react_default.a.createElement("thead",null,/*#__PURE__*/react_default.a.createElement("tr",null,/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u6587\u4EF6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u8FDB\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u5927\u5C0F"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u901F\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u64CD\u4F5C"))),/*#__PURE__*/react_default.a.createElement("tbody",{id:"popup-tbody"},fsIdList.map(function(fsId,key){return/*#__PURE__*/react_default.a.createElement(DownloadList_Item,{key:key,fsId:fsId});}))));}var DL=react_default.a.memo(DownloadList,function(prevProps,nextProps){return Object(es["c" /* shallowEqual */])(prevProps.fsIdList,nextProps.fsIdList)&&Object(es["c" /* shallowEqual */])(prevProps.downloadModalOpen,nextProps.downloadModalOpen);});/* harmony default export */ var containers_DownloadList = (Object(es["b" /* connect */])(DownloadList_mapStoreToProps,DownloadList_mapActionsToProps)(DL));
+var DownloadList_mapStoreToProps=function mapStoreToProps(store){return{fsIdList:Object(reselect_es["a" /* createSelector */])(function(store){return store.download.downloadItems;},function(allDownloads){return Object.keys(allDownloads);})(store),downloadModalOpen:store.interface.downloadModalOpen};};var DownloadList_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){dispatch(interfaceModule["a" /* default */].actions.change({downloadModalOpen:false}));}};};function DownloadList(_ref){var fsIdList=_ref.fsIdList,closeModal=_ref.closeModal,downloadModalOpen=_ref.downloadModalOpen;return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{open:downloadModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement("table",null,/*#__PURE__*/react_default.a.createElement("thead",null,/*#__PURE__*/react_default.a.createElement("tr",null,/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u6587\u4EF6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u8FDB\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u5927\u5C0F"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u901F\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u64CD\u4F5C"))),/*#__PURE__*/react_default.a.createElement("tbody",{id:"popup-tbody"},fsIdList.length>0&&fsIdList.map(function(fsId,key){return/*#__PURE__*/react_default.a.createElement(DownloadList_Item,{key:key,fsId:fsId});}))));}var DL=react_default.a.memo(DownloadList,function(prevProps,nextProps){return Object(es["c" /* shallowEqual */])(prevProps.fsIdList,nextProps.fsIdList)&&Object(es["c" /* shallowEqual */])(prevProps.downloadModalOpen,nextProps.downloadModalOpen);});/* harmony default export */ var containers_DownloadList = (Object(es["b" /* connect */])(DownloadList_mapStoreToProps,DownloadList_mapActionsToProps)(DL));
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 5 modules
-var toConsumableArray = __webpack_require__(28);
+var toConsumableArray = __webpack_require__(24);
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js
+var taggedTemplateLiteral = __webpack_require__(13);
+
+// EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.browser.esm.js
+var styled_components_browser_esm = __webpack_require__(14);
 
 // CONCATENATED MODULE: ./src/components/Form.ts
-function _templateObject2(){var data=Object(taggedTemplateLiteral["a" /* default */])(["\n  text-align: left;\n  margin: 10px;\n  border: 1px solid;\n  border-radius: 3px;\n  padding: 5px;\n  font-family: sans-serif;\n  font-size: 13px;\n  letter-spacing: 1px;\n  & * {\n    box-sizing: border-box;\n  }\n\n  input[type='text'],\n  input[type='email'],\n  input[type='url'],\n  input[type='password'],\n  textarea {\n    width: 100%;\n    border-top: 1px solid #ccc;\n    border-left: 1px solid #ccc;\n    border-right: 1px solid #eee;\n    border-bottom: 1px solid #eee;\n  }\n  input[type='text'],\n  input[type='email'],\n  input[type='url'],\n  input[type='password'] {\n    width: 50%;\n  }\n  input[type='checkbox'] {\n    transform: scale(1.2);\n  }\n  select {\n    min-width: 50px;\n  }\n  input[type='text']:focus,\n  input[type='email']:focus,\n  input[type='url']:focus,\n  input[type='password']:focus,\n  textarea:focus {\n    outline: 0;\n    border-color: #4697e4;\n  }\n"]);_templateObject2=function _templateObject2(){return data;};return data;}function Form_templateObject(){var data=Object(taggedTemplateLiteral["a" /* default */])(["\n  clear: both;\n  overflow: hidden;\n  padding: 1px;\n  margin: 0 0 10px 0;\n  border: 0;\n\n  > label,\n  legend {\n    width: 25%;\n    float: left;\n    padding-right: 10px;\n    font-size: 90%;\n    color: #000;\n  }\n  & > *:nth-child(2) {\n    width: 75%;\n    float: right;\n  }\n  @media (min-width: 1200px) {\n    & > label,\n    legend {\n      text-align: right;\n    }\n  }\n\n  @media (max-width: 600px) {\n    margin: 0 0 15px 0;\n    & > label,\n    legend {\n      width: 100%;\n      float: none;\n      margin: 0 0 5px 0;\n    }\n    & > *:nth-child(2) {\n      width: 100%;\n      float: none;\n    }\n    input[type='text'],\n    input[type='email'],\n    input[type='url'],\n    input[type='password'],\n    textarea,\n    select {\n      width: 100%;\n    }\n  }\n"]);Form_templateObject=function _templateObject(){return data;};return data;}var FormField=styled_components_browser_esm["b" /* default */].fieldset(Form_templateObject());var Form=styled_components_browser_esm["b" /* default */].form(_templateObject2());
+function _templateObject2(){var data=Object(taggedTemplateLiteral["a" /* default */])(["\n  text-align: left;\n  margin: 10px;\n  border: 1px solid;\n  border-radius: 3px;\n  padding: 5px;\n  font-family: sans-serif;\n  font-size: 13px;\n  letter-spacing: 1px;\n  & * {\n    box-sizing: border-box;\n  }\n\n  input[type='text'],\n  input[type='email'],\n  input[type='url'],\n  input[type='password'],\n  textarea {\n    width: 100%;\n    border-top: 1px solid #ccc;\n    border-left: 1px solid #ccc;\n    border-right: 1px solid #eee;\n    border-bottom: 1px solid #eee;\n  }\n  input[type='text'],\n  input[type='email'],\n  input[type='url'],\n  input[type='password'] {\n    width: 50%;\n  }\n  input[type='checkbox'] {\n    transform: scale(1.2);\n  }\n  select {\n    min-width: 50px;\n  }\n  input[type='text']:focus,\n  input[type='email']:focus,\n  input[type='url']:focus,\n  input[type='password']:focus,\n  textarea:focus {\n    outline: 0;\n    border-color: #4697e4;\n  }\n"]);_templateObject2=function _templateObject2(){return data;};return data;}function _templateObject(){var data=Object(taggedTemplateLiteral["a" /* default */])(["\n  clear: both;\n  overflow: hidden;\n  padding: 1px;\n  margin: 0 0 10px 0;\n  border: 0;\n\n  > label,\n  legend {\n    width: 25%;\n    float: left;\n    padding-right: 10px;\n    font-size: 90%;\n    color: #000;\n  }\n  & > *:nth-child(2) {\n    width: 75%;\n    float: right;\n  }\n  @media (min-width: 1200px) {\n    & > label,\n    legend {\n      text-align: right;\n    }\n  }\n\n  @media (max-width: 600px) {\n    margin: 0 0 15px 0;\n    & > label,\n    legend {\n      width: 100%;\n      float: none;\n      margin: 0 0 5px 0;\n    }\n    & > *:nth-child(2) {\n      width: 100%;\n      float: none;\n    }\n    input[type='text'],\n    input[type='email'],\n    input[type='url'],\n    input[type='password'],\n    textarea,\n    select {\n      width: 100%;\n    }\n  }\n"]);_templateObject=function _templateObject(){return data;};return data;}var FormField=styled_components_browser_esm["b" /* default */].fieldset(_templateObject());var Form=styled_components_browser_esm["b" /* default */].form(_templateObject2());
 // CONCATENATED MODULE: ./src/containers/Preferences.tsx
 // const CustomModal = styled(Modal)`
 //   .modal-window {
 //     max-width: 500px;
 //   }
 // `
-var Preferences_mapStoreToProps=function mapStoreToProps(store){return{configModalOpen:store.interface.configModalOpen,autoStart:store.interface.autoStart,downloadable:store.interface.downloadable,maxDownloadCount:store.interface.maxDownloadCount};};var Preferences_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){return dispatch(Interface["a" /* interfaceActionCreator */].change({configModalOpen:false}));},setAutoStart:function setAutoStart(e){dispatch(Interface["a" /* interfaceActionCreator */].change({autoStart:e.target.checked}));},setMaxDownloadCount:function setMaxDownloadCount(e){var count=parseInt(e.target.value);dispatch(Interface["a" /* interfaceActionCreator */].change({maxDownloadCount:count}));}};};function Preferences(_ref){var configModalOpen=_ref.configModalOpen,autoStart=_ref.autoStart,maxDownloadCount=_ref.maxDownloadCount,closeModal=_ref.closeModal,setAutoStart=_ref.setAutoStart,setMaxDownloadCount=_ref.setMaxDownloadCount;return/*#__PURE__*/react_default.a.createElement(Modal,{open:configModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement(Form,{action:"#"},/*#__PURE__*/react_default.a.createElement("header",{style:{margin:'0 0 20px 0'}},/*#__PURE__*/react_default.a.createElement("h2",{style:{margin:'0 0 5px 0'}},"\u4E0B\u8F7D\u8BBE\u7F6E"),/*#__PURE__*/react_default.a.createElement("div",{style:{fontSize:'90%',color:'#999'}},"\u5982\u679C\u4E0B\u8F7D\u7ECF\u5E38\u51FA\u9519\uFF0C\u5EFA\u8BAE\u5C06\u4E0B\u8F7D\u6570\u8BBE\u7F6E\u4E3A1")),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("label",{htmlFor:'auto-start'},"\u81EA\u52A8\u4E0B\u8F7D"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("input",{type:"checkbox",name:"checkbox",value:"true",checked:autoStart,id:"auto-start",tabIndex:1,onChange:setAutoStart}))),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("legend",null,"\u6700\u5927\u540C\u65F6\u4E0B\u8F7D\u6570"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("select",{defaultValue:maxDownloadCount,id:"max-download-count",className:"field select medium",tabIndex:2,onChange:setMaxDownloadCount},Object(toConsumableArray["a" /* default */])(Array(InstaceForSystem["a" /* InstanceForSystem */].maxDownloadCount).keys()).map(function(i){return++i;}).map(function(i,key){return/*#__PURE__*/react_default.a.createElement("option",{key:key,value:i},i);}))))));}/* harmony default export */ var containers_Preferences = (Object(es["b" /* connect */])(Preferences_mapStoreToProps,Preferences_mapActionsToProps)(Preferences));
+var Preferences_mapStoreToProps=function mapStoreToProps(store){return{configModalOpen:store.interface.configModalOpen,autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store),maxDownloadCount:store.interface.maxDownloadCount};};var Preferences_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){return dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:false}));},setAutoStart:function setAutoStart(e){dispatch(interfaceModule["a" /* default */].actions.change({autoStart:e.target.checked}));},setMaxDownloadCount:function setMaxDownloadCount(e){var count=parseInt(e.target.value);dispatch(interfaceModule["a" /* default */].actions.change({maxDownloadCount:count}));}};};function Preferences(_ref){var configModalOpen=_ref.configModalOpen,autoStart=_ref.autoStart,maxDownloadCount=_ref.maxDownloadCount,closeModal=_ref.closeModal,setAutoStart=_ref.setAutoStart,setMaxDownloadCount=_ref.setMaxDownloadCount;return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{open:configModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement(Form,{action:"#"},/*#__PURE__*/react_default.a.createElement("header",{style:{margin:'0 0 20px 0'}},/*#__PURE__*/react_default.a.createElement("h2",{style:{margin:'0 0 5px 0'}},"\u4E0B\u8F7D\u8BBE\u7F6E"),/*#__PURE__*/react_default.a.createElement("div",{style:{fontSize:'90%',color:'#999'}},"\u5982\u679C\u4E0B\u8F7D\u7ECF\u5E38\u51FA\u9519\uFF0C\u5EFA\u8BAE\u5C06\u4E0B\u8F7D\u6570\u8BBE\u7F6E\u4E3A1")),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("label",{htmlFor:'auto-start'},"\u81EA\u52A8\u4E0B\u8F7D"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("input",{type:"checkbox",name:"checkbox",value:"true",checked:autoStart,id:"auto-start",tabIndex:1,onChange:setAutoStart}))),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("legend",null,"\u6700\u5927\u540C\u65F6\u4E0B\u8F7D\u6570"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("select",{defaultValue:maxDownloadCount,id:"max-download-count",className:"field select medium",tabIndex:2,onChange:setMaxDownloadCount},Object(toConsumableArray["a" /* default */])(Array(InstaceForSystem["a" /* InstanceForSystem */].maxDownloadCount).keys()).map(function(i){return++i;}).map(function(i,key){return/*#__PURE__*/react_default.a.createElement("option",{key:key,value:i},i);}))))));}/* harmony default export */ var containers_Preferences = (Object(es["b" /* connect */])(Preferences_mapStoreToProps,Preferences_mapActionsToProps)(Preferences));
 // EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(11);
+var gmInterface = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./src/store.ts + 1 modules
+var src_store = __webpack_require__(11);
 
 // CONCATENATED MODULE: ./src/services/windowInstance.ts
-window.onunload=function(){gmInterface["a" /* GM */].setValue(types["c" /* ValueTypes */].items,src_store["a" /* store */].getState().download.allDownloads);InstaceForSystem["a" /* InstanceForSystem */].stopAll();};window.onbeforeunload=function(e){var allDownloads=src_store["a" /* store */].getState().download.allDownloads;if(Object.values(allDownloads).some(function(item){return item.progress.status===types["b" /* StatusTypes */].downloading;})){e.preventDefault();e.returnValue='有未完成的下载任务， 确认关闭吗?';}};
+window.onunload=function(){gmInterface["a" /* GM */].setValue(types["c" /* ValueTypes */].items,src_store["a" /* store */].getState().download.downloadItems);InstaceForSystem["a" /* InstanceForSystem */].stopAll();};window.onbeforeunload=function(e){var downloadItems=src_store["a" /* store */].getState().download.downloadItems;if(Object.values(downloadItems).some(function(item){return item.status===types["b" /* StatusTypes */].downloading;})){e.preventDefault();e.returnValue='有未完成的下载任务， 确认关闭吗?';}};
 // CONCATENATED MODULE: ./src/App.tsx
 var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement(containers_DownloadList,null),/*#__PURE__*/react_default.a.createElement(containers_Preferences,null),/*#__PURE__*/react_default.a.createElement(containers_FloatingButtons,null));};/* harmony default export */ var src_App = __webpack_exports__["default"] = (App_App);
 
 /***/ }),
-/* 36 */
+/* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ProgressProxy */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemProxy; });
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+var ProgressProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,null,[{key:"Parse",value:function Parse(d){return ProgressProxy.Create(d);}},{key:"Create",value:function Create(fsId){return new ProgressProxy(fsId);}}]);function ProgressProxy(fsId){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ProgressProxy);this.intervalId=void 0;this.request=void 0;this._speedOverlay=void 0;this._status=void 0;this._percentCount=void 0;this.fsId=void 0;this.fsId=fsId;this.percentCount=0;this.speedOverlay=0;this.status=_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow;}Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,[{key:"speedOverlay",set:function set(v){if(this._speedOverlay===v)return;this._speedOverlay=v;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{speedOverlay:this.speedOverlay}}));},get:function get(){return this._speedOverlay;}},{key:"percentCount",set:function set(v){if(this._percentCount===v)return;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{percentCount:this.percentCount}}));},get:function get(){return this._percentCount;}},{key:"status",set:function set(v){if(this._status===v)return;this._status=v;if(v===_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow)return;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{status:this.status}}));},get:function get(){return this._status;}}]);return ProgressProxy;}();var ItemProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ItemProxy,null,[{key:"Parse",value:function Parse(d){return ItemProxy.Create(JSON.parse(d));}},{key:"Create",value:function Create(d){return new ItemProxy(d);}}]);function ItemProxy(d){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ItemProxy);this.category=void 0;this.fsId=void 0;this.isDir=void 0;this.localCtime=void 0;this.localMtime=void 0;this.md5=void 0;this.operId=void 0;this.path=void 0;this.privacy=void 0;this.serverAtime=void 0;this.serverCtime=void 0;this.serverFilename=void 0;this.serverMtime=void 0;this.share=void 0;this.size=void 0;this.unList=void 0;this.url=void 0;this.progress=void 0;this.category=d.category;this.fsId=d.fs_id;this.isDir=d.isdir;this.localCtime=d.local_ctime;this.localMtime=d.local_mtime;this.md5=d.md5;this.operId=d.oper_id;this.path=d.path;this.privacy=d.privacy;this.serverAtime=d.server_atime;this.serverCtime=d.server_ctime;this.serverFilename=d.server_filename;this.serverMtime=d.server_mtime;this.share=d.share;this.size=d.size;this.unList=d.unlist;this.url=d.url;this.progress=ProgressProxy.Create(this.fsId);}return ItemProxy;}();
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {!function (e, t) {
+   true ? t(exports) : undefined;
+}(this, function (e) {
+  "use strict";
+
+  function t(e, t) {
+    e.super_ = t, e.prototype = Object.create(t.prototype, {
+      constructor: {
+        value: e,
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
+      }
+    });
+  }
+
+  function r(e, t) {
+    Object.defineProperty(this, "kind", {
+      value: e,
+      enumerable: !0
+    }), t && t.length && Object.defineProperty(this, "path", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function n(e, t, r) {
+    n.super_.call(this, "E", e), Object.defineProperty(this, "lhs", {
+      value: t,
+      enumerable: !0
+    }), Object.defineProperty(this, "rhs", {
+      value: r,
+      enumerable: !0
+    });
+  }
+
+  function o(e, t) {
+    o.super_.call(this, "N", e), Object.defineProperty(this, "rhs", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function i(e, t) {
+    i.super_.call(this, "D", e), Object.defineProperty(this, "lhs", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function a(e, t, r) {
+    a.super_.call(this, "A", e), Object.defineProperty(this, "index", {
+      value: t,
+      enumerable: !0
+    }), Object.defineProperty(this, "item", {
+      value: r,
+      enumerable: !0
+    });
+  }
+
+  function f(e, t, r) {
+    var n = e.slice((r || t) + 1 || e.length);
+    return e.length = t < 0 ? e.length + t : t, e.push.apply(e, n), e;
+  }
+
+  function u(e) {
+    var t = "undefined" == typeof e ? "undefined" : N(e);
+    return "object" !== t ? t : e === Math ? "math" : null === e ? "null" : Array.isArray(e) ? "array" : "[object Date]" === Object.prototype.toString.call(e) ? "date" : "function" == typeof e.toString && /^\/.*\//.test(e.toString()) ? "regexp" : "object";
+  }
+
+  function l(e, t, r, c, s, d, p) {
+    s = s || [], p = p || [];
+    var g = s.slice(0);
+
+    if ("undefined" != typeof d) {
+      if (c) {
+        if ("function" == typeof c && c(g, d)) return;
+
+        if ("object" === ("undefined" == typeof c ? "undefined" : N(c))) {
+          if (c.prefilter && c.prefilter(g, d)) return;
+
+          if (c.normalize) {
+            var h = c.normalize(g, d, e, t);
+            h && (e = h[0], t = h[1]);
+          }
+        }
+      }
+
+      g.push(d);
+    }
+
+    "regexp" === u(e) && "regexp" === u(t) && (e = e.toString(), t = t.toString());
+    var y = "undefined" == typeof e ? "undefined" : N(e),
+        v = "undefined" == typeof t ? "undefined" : N(t),
+        b = "undefined" !== y || p && p[p.length - 1].lhs && p[p.length - 1].lhs.hasOwnProperty(d),
+        m = "undefined" !== v || p && p[p.length - 1].rhs && p[p.length - 1].rhs.hasOwnProperty(d);
+    if (!b && m) r(new o(g, t));else if (!m && b) r(new i(g, e));else if (u(e) !== u(t)) r(new n(g, e, t));else if ("date" === u(e) && e - t !== 0) r(new n(g, e, t));else if ("object" === y && null !== e && null !== t) {
+      if (p.filter(function (t) {
+        return t.lhs === e;
+      }).length) e !== t && r(new n(g, e, t));else {
+        if (p.push({
+          lhs: e,
+          rhs: t
+        }), Array.isArray(e)) {
+          var w;
+          e.length;
+
+          for (w = 0; w < e.length; w++) {
+            w >= t.length ? r(new a(g, w, new i(void 0, e[w]))) : l(e[w], t[w], r, c, g, w, p);
+          }
+
+          for (; w < t.length;) {
+            r(new a(g, w, new o(void 0, t[w++])));
+          }
+        } else {
+          var x = Object.keys(e),
+              S = Object.keys(t);
+          x.forEach(function (n, o) {
+            var i = S.indexOf(n);
+            i >= 0 ? (l(e[n], t[n], r, c, g, n, p), S = f(S, i)) : l(e[n], void 0, r, c, g, n, p);
+          }), S.forEach(function (e) {
+            l(void 0, t[e], r, c, g, e, p);
+          });
+        }
+
+        p.length = p.length - 1;
+      }
+    } else e !== t && ("number" === y && isNaN(e) && isNaN(t) || r(new n(g, e, t)));
+  }
+
+  function c(e, t, r, n) {
+    return n = n || [], l(e, t, function (e) {
+      e && n.push(e);
+    }, r), n.length ? n : void 0;
+  }
+
+  function s(e, t, r) {
+    if (r.path && r.path.length) {
+      var n,
+          o = e[t],
+          i = r.path.length - 1;
+
+      for (n = 0; n < i; n++) {
+        o = o[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          s(o[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          delete o[r.path[n]];
+          break;
+
+        case "E":
+        case "N":
+          o[r.path[n]] = r.rhs;
+      }
+    } else switch (r.kind) {
+      case "A":
+        s(e[t], r.index, r.item);
+        break;
+
+      case "D":
+        e = f(e, t);
+        break;
+
+      case "E":
+      case "N":
+        e[t] = r.rhs;
+    }
+
+    return e;
+  }
+
+  function d(e, t, r) {
+    if (e && t && r && r.kind) {
+      for (var n = e, o = -1, i = r.path ? r.path.length - 1 : 0; ++o < i;) {
+        "undefined" == typeof n[r.path[o]] && (n[r.path[o]] = "number" == typeof r.path[o] ? [] : {}), n = n[r.path[o]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          s(r.path ? n[r.path[o]] : n, r.index, r.item);
+          break;
+
+        case "D":
+          delete n[r.path[o]];
+          break;
+
+        case "E":
+        case "N":
+          n[r.path[o]] = r.rhs;
+      }
+    }
+  }
+
+  function p(e, t, r) {
+    if (r.path && r.path.length) {
+      var n,
+          o = e[t],
+          i = r.path.length - 1;
+
+      for (n = 0; n < i; n++) {
+        o = o[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          p(o[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          o[r.path[n]] = r.lhs;
+          break;
+
+        case "E":
+          o[r.path[n]] = r.lhs;
+          break;
+
+        case "N":
+          delete o[r.path[n]];
+      }
+    } else switch (r.kind) {
+      case "A":
+        p(e[t], r.index, r.item);
+        break;
+
+      case "D":
+        e[t] = r.lhs;
+        break;
+
+      case "E":
+        e[t] = r.lhs;
+        break;
+
+      case "N":
+        e = f(e, t);
+    }
+
+    return e;
+  }
+
+  function g(e, t, r) {
+    if (e && t && r && r.kind) {
+      var n,
+          o,
+          i = e;
+
+      for (o = r.path.length - 1, n = 0; n < o; n++) {
+        "undefined" == typeof i[r.path[n]] && (i[r.path[n]] = {}), i = i[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          p(i[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          i[r.path[n]] = r.lhs;
+          break;
+
+        case "E":
+          i[r.path[n]] = r.lhs;
+          break;
+
+        case "N":
+          delete i[r.path[n]];
+      }
+    }
+  }
+
+  function h(e, t, r) {
+    if (e && t) {
+      var n = function n(_n) {
+        r && !r(e, t, _n) || d(e, t, _n);
+      };
+
+      l(e, t, n);
+    }
+  }
+
+  function y(e) {
+    return "color: " + F[e].color + "; font-weight: bold";
+  }
+
+  function v(e) {
+    var t = e.kind,
+        r = e.path,
+        n = e.lhs,
+        o = e.rhs,
+        i = e.index,
+        a = e.item;
+
+    switch (t) {
+      case "E":
+        return [r.join("."), n, "→", o];
+
+      case "N":
+        return [r.join("."), o];
+
+      case "D":
+        return [r.join(".")];
+
+      case "A":
+        return [r.join(".") + "[" + i + "]", a];
+
+      default:
+        return [];
+    }
+  }
+
+  function b(e, t, r, n) {
+    var o = c(e, t);
+
+    try {
+      n ? r.groupCollapsed("diff") : r.group("diff");
+    } catch (e) {
+      r.log("diff");
+    }
+
+    o ? o.forEach(function (e) {
+      var t = e.kind,
+          n = v(e);
+      r.log.apply(r, ["%c " + F[t].text, y(t)].concat(P(n)));
+    }) : r.log("—— no diff ——");
+
+    try {
+      r.groupEnd();
+    } catch (e) {
+      r.log("—— diff end —— ");
+    }
+  }
+
+  function m(e, t, r, n) {
+    switch ("undefined" == typeof e ? "undefined" : N(e)) {
+      case "object":
+        return "function" == typeof e[n] ? e[n].apply(e, P(r)) : e[n];
+
+      case "function":
+        return e(t);
+
+      default:
+        return e;
+    }
+  }
+
+  function w(e) {
+    var t = e.timestamp,
+        r = e.duration;
+    return function (e, n, o) {
+      var i = ["action"];
+      return i.push("%c" + String(e.type)), t && i.push("%c@ " + n), r && i.push("%c(in " + o.toFixed(2) + " ms)"), i.join(" ");
+    };
+  }
+
+  function x(e, t) {
+    var r = t.logger,
+        n = t.actionTransformer,
+        o = t.titleFormatter,
+        i = void 0 === o ? w(t) : o,
+        a = t.collapsed,
+        f = t.colors,
+        u = t.level,
+        l = t.diff,
+        c = "undefined" == typeof t.titleFormatter;
+    e.forEach(function (o, s) {
+      var d = o.started,
+          p = o.startedTime,
+          g = o.action,
+          h = o.prevState,
+          y = o.error,
+          v = o.took,
+          w = o.nextState,
+          x = e[s + 1];
+      x && (w = x.prevState, v = x.started - d);
+      var S = n(g),
+          k = "function" == typeof a ? a(function () {
+        return w;
+      }, g, o) : a,
+          j = D(p),
+          E = f.title ? "color: " + f.title(S) + ";" : "",
+          A = ["color: gray; font-weight: lighter;"];
+      A.push(E), t.timestamp && A.push("color: gray; font-weight: lighter;"), t.duration && A.push("color: gray; font-weight: lighter;");
+      var O = i(S, j, v);
+
+      try {
+        k ? f.title && c ? r.groupCollapsed.apply(r, ["%c " + O].concat(A)) : r.groupCollapsed(O) : f.title && c ? r.group.apply(r, ["%c " + O].concat(A)) : r.group(O);
+      } catch (e) {
+        r.log(O);
+      }
+
+      var N = m(u, S, [h], "prevState"),
+          P = m(u, S, [S], "action"),
+          C = m(u, S, [y, h], "error"),
+          F = m(u, S, [w], "nextState");
+      if (N) if (f.prevState) {
+        var L = "color: " + f.prevState(h) + "; font-weight: bold";
+        r[N]("%c prev state", L, h);
+      } else r[N]("prev state", h);
+      if (P) if (f.action) {
+        var T = "color: " + f.action(S) + "; font-weight: bold";
+        r[P]("%c action    ", T, S);
+      } else r[P]("action    ", S);
+      if (y && C) if (f.error) {
+        var M = "color: " + f.error(y, h) + "; font-weight: bold;";
+        r[C]("%c error     ", M, y);
+      } else r[C]("error     ", y);
+      if (F) if (f.nextState) {
+        var _ = "color: " + f.nextState(w) + "; font-weight: bold";
+
+        r[F]("%c next state", _, w);
+      } else r[F]("next state", w);
+      l && b(h, w, r, k);
+
+      try {
+        r.groupEnd();
+      } catch (e) {
+        r.log("—— log end ——");
+      }
+    });
+  }
+
+  function S() {
+    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
+        t = Object.assign({}, L, e),
+        r = t.logger,
+        n = t.stateTransformer,
+        o = t.errorTransformer,
+        i = t.predicate,
+        a = t.logErrors,
+        f = t.diffPredicate;
+    if ("undefined" == typeof r) return function () {
+      return function (e) {
+        return function (t) {
+          return e(t);
+        };
+      };
+    };
+    if (e.getState && e.dispatch) return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"), function () {
+      return function (e) {
+        return function (t) {
+          return e(t);
+        };
+      };
+    };
+    var u = [];
+    return function (e) {
+      var r = e.getState;
+      return function (e) {
+        return function (l) {
+          if ("function" == typeof i && !i(r, l)) return e(l);
+          var c = {};
+          u.push(c), c.started = O.now(), c.startedTime = new Date(), c.prevState = n(r()), c.action = l;
+          var s = void 0;
+          if (a) try {
+            s = e(l);
+          } catch (e) {
+            c.error = o(e);
+          } else s = e(l);
+          c.took = O.now() - c.started, c.nextState = n(r());
+          var d = t.diff && "function" == typeof f ? f(r, l) : t.diff;
+          if (x(u, Object.assign({}, t, {
+            diff: d
+          })), u.length = 0, c.error) throw c.error;
+          return s;
+        };
+      };
+    };
+  }
+
+  var k,
+      j,
+      E = function E(e, t) {
+    return new Array(t + 1).join(e);
+  },
+      A = function A(e, t) {
+    return E("0", t - e.toString().length) + e;
+  },
+      D = function D(e) {
+    return A(e.getHours(), 2) + ":" + A(e.getMinutes(), 2) + ":" + A(e.getSeconds(), 2) + "." + A(e.getMilliseconds(), 3);
+  },
+      O = "undefined" != typeof performance && null !== performance && "function" == typeof performance.now ? performance : Date,
+      N = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
+    return typeof e;
+  } : function (e) {
+    return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
+  },
+      P = function P(e) {
+    if (Array.isArray(e)) {
+      for (var t = 0, r = Array(e.length); t < e.length; t++) {
+        r[t] = e[t];
+      }
+
+      return r;
+    }
+
+    return Array.from(e);
+  },
+      C = [];
+
+  k = "object" === ("undefined" == typeof global ? "undefined" : N(global)) && global ? global : "undefined" != typeof window ? window : {}, j = k.DeepDiff, j && C.push(function () {
+    "undefined" != typeof j && k.DeepDiff === c && (k.DeepDiff = j, j = void 0);
+  }), t(n, r), t(o, r), t(i, r), t(a, r), Object.defineProperties(c, {
+    diff: {
+      value: c,
+      enumerable: !0
+    },
+    observableDiff: {
+      value: l,
+      enumerable: !0
+    },
+    applyDiff: {
+      value: h,
+      enumerable: !0
+    },
+    applyChange: {
+      value: d,
+      enumerable: !0
+    },
+    revertChange: {
+      value: g,
+      enumerable: !0
+    },
+    isConflict: {
+      value: function value() {
+        return "undefined" != typeof j;
+      },
+      enumerable: !0
+    },
+    noConflict: {
+      value: function value() {
+        return C && (C.forEach(function (e) {
+          e();
+        }), C = null), c;
+      },
+      enumerable: !0
+    }
+  });
+
+  var F = {
+    E: {
+      color: "#2196F3",
+      text: "CHANGED:"
+    },
+    N: {
+      color: "#4CAF50",
+      text: "ADDED:"
+    },
+    D: {
+      color: "#F44336",
+      text: "DELETED:"
+    },
+    A: {
+      color: "#2196F3",
+      text: "ARRAY:"
+    }
+  },
+      L = {
+    level: "log",
+    logger: console,
+    logErrors: !0,
+    collapsed: void 0,
+    predicate: void 0,
+    duration: !1,
+    timestamp: !0,
+    stateTransformer: function stateTransformer(e) {
+      return e;
+    },
+    actionTransformer: function actionTransformer(e) {
+      return e;
+    },
+    errorTransformer: function errorTransformer(e) {
+      return e;
+    },
+    colors: {
+      title: function title() {
+        return "inherit";
+      },
+      prevState: function prevState() {
+        return "#9E9E9E";
+      },
+      action: function action() {
+        return "#03A9F4";
+      },
+      nextState: function nextState() {
+        return "#4CAF50";
+      },
+      error: function error() {
+        return "#F20404";
+      }
+    },
+    diff: !1,
+    diffPredicate: void 0,
+    transformer: void 0
+  },
+      T = function T() {
+    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
+        t = e.dispatch,
+        r = e.getState;
+    return "function" == typeof t || "function" == typeof r ? S()({
+      dispatch: t,
+      getState: r
+    }) : void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n");
+  };
+
+  e.defaults = L, e.createLogger = S, e.logger = T, e.default = T, Object.defineProperty(e, "__esModule", {
+    value: !0
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
+function symbolObservablePonyfill(root) {
+  var result;
+  var Symbol = root.Symbol;
+
+  if (typeof Symbol === 'function') {
+    if (Symbol.observable) {
+      result = Symbol.observable;
+    } else {
+      result = Symbol('observable');
+      Symbol.observable = result;
+    }
+  } else {
+    result = '@@observable';
+  }
+
+  return result;
+}
+;
+
+/***/ }),
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GlobalStyle; });
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 function _templateObject(){var data=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(["\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    padding: 30px 0;\n    background-color: #2f3439;\n    font-family: \"Noto Sans\", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won't be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  /* modal */\n  .modal-wrapper {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n\n    opacity: 0;\n    visibility: hidden;\n    transition: opacity .3s, visibility .3s;\n  }\n\n  .modal-wrapper.open {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n  }\n\n  .modal-wrapper::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: \"\"\n  }\n\n  .modal-wrapper .modal-window {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 60vw;\n    /*padding: 30px 30px 15px;*/\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle;\n    align-self: center;\n  }\n\n  .modal-wrapper .modal-window .modal-content {\n    max-height: 60vh;\n    overflow-y: auto;\n  }\n\n  .modal-overlay {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n  }\n\n  .modal-wrapper .modal-close {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c!important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0;\n    cursor: pointer;\n  }\n\n  .modal-wrapper .modal-close:hover {\n    color: #2b2e38!important\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, \"Courier New\", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: 'Roboto';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  td > svg {\n    cursor: pointer;\n  }\n  td > svg:hover {\n    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n    background-color: rgba(255,255,255,0.56);\n  }\n"]);_templateObject=function _templateObject(){return data;};return data;}var GlobalStyle=Object(styled_components__WEBPACK_IMPORTED_MODULE_1__[/* createGlobalStyle */ "a"])(_templateObject());
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports) {
 
 //
@@ -8214,7 +8645,7 @@ module.exports = function shallowEqual(objA, objB, compare, compareContext) {
 };
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8834,7 +9265,7 @@ function stylis_min(W) {
 /* harmony default export */ __webpack_exports__["a"] = (stylis_min);
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8889,113 +9320,178 @@ var unitlessKeys = {
 /* harmony default export */ __webpack_exports__["a"] = (unitlessKeys);
 
 /***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(22);
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(20);
+
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/inherits.js
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/typeof.js
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
+
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createSuper.js
+
+
+
+function _createSuper(Derived) {
+  return function () {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (_isNativeReflectConstruct()) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(0);
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/components/Modal.tsx + 2 modules
+var Modal = __webpack_require__(19);
+
+// CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
+var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
+this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if(this.state.errorInfo){// Error path
+return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{style:{color:'red'},open:this.state.open,close:function close(){return _this2.setState({open:false});}},/*#__PURE__*/react_default.a.createElement("h2",null,"Something went wrong."),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},this.state.error&&this.state.error.toString(),/*#__PURE__*/react_default.a.createElement("br",null),this.state.errorInfo.componentStack));}// Normally, just render children
+return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = __webpack_exports__["a"] = (ErrorBoundary_ErrorBoundary);
+
+/***/ }),
 /* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
-function symbolObservablePonyfill(root) {
-  var result;
-  var Symbol = root.Symbol;
 
-  if (typeof Symbol === 'function') {
-    if (Symbol.observable) {
-      result = Symbol.observable;
-    } else {
-      result = Symbol('observable');
-      Symbol.observable = result;
-    }
-  } else {
-    result = '@@observable';
-  }
-
-  return result;
-}
-;
+// CONCATENATED MODULE: ./src/utils/nodeEnvIs/index.ts
+function nodeEnvIs(expectedEnv){var currentEnv="production";return!!(currentEnv&&currentEnv.toLowerCase()===expectedEnv.toLowerCase());}/* harmony default export */ var utils_nodeEnvIs = (nodeEnvIs);
+// CONCATENATED MODULE: ./src/utils/nodeEnvIs/devNodeEnv/index.ts
+var devNodeEnv=utils_nodeEnvIs('development');/* harmony default export */ var nodeEnvIs_devNodeEnv = __webpack_exports__["a"] = (devNodeEnv);
 
 /***/ }),
 /* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+module.exports = __webpack_require__(42);
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ Item_ItemProxy; });
-
-// UNUSED EXPORTS: ProgressProxy
-
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-// EXTERNAL MODULE: ./src/types.ts
-var types = __webpack_require__(3);
-
-// EXTERNAL MODULE: ./src/store/download/index.ts + 2 modules
-var download = __webpack_require__(15);
-
-// EXTERNAL MODULE: ./src/store/index.ts + 6 modules
-var store = __webpack_require__(9);
-
-// CONCATENATED MODULE: ./src/services/Item.ts
-var Item_ProgressProxy=/*#__PURE__*/function(){_createClass(ProgressProxy,null,[{key:"Parse",value:function Parse(d){return ProgressProxy.Create(d);}},{key:"Create",value:function Create(fsId){return new ProgressProxy(fsId);}}]);function ProgressProxy(fsId){_classCallCheck(this,ProgressProxy);this.intervalId=void 0;this.speedOverlay=void 0;this.request=void 0;this._status=void 0;this._percentCount=void 0;this.fsId=void 0;this.fsId=fsId;this.percentCount=0;this.speedOverlay=0;this.status=types["b" /* StatusTypes */].unknow;}_createClass(ProgressProxy,[{key:"percentCount",set:function set(v){if(this._percentCount!==v){var allDownloads=store["a" /* store */].getState().download.allDownloads;if(allDownloads[this.fsId]){this._percentCount=v;store["a" /* store */].dispatch(download["a" /* downloadActionCreator */].updateItem(allDownloads[this.fsId]));return;}}this._percentCount=v;},get:function get(){return this._percentCount;}},{key:"status",set:function set(v){if(this._status===v)return;this._status=v;if(v===types["b" /* StatusTypes */].unknow)return;var allDownloads=store["a" /* store */].getState().download.allDownloads;if(allDownloads[this.fsId]){store["a" /* store */].dispatch(download["a" /* downloadActionCreator */].updateItem(allDownloads[this.fsId]));}},get:function get(){return this._status;}}]);return ProgressProxy;}();var Item_ItemProxy=/*#__PURE__*/function(){_createClass(ItemProxy,null,[{key:"Parse",value:function Parse(d){return ItemProxy.Create(JSON.parse(d));}},{key:"Create",value:function Create(d){return new ItemProxy(d);}}]);function ItemProxy(d){_classCallCheck(this,ItemProxy);this.category=void 0;this.fsId=void 0;this.isDir=void 0;this.localCtime=void 0;this.localMtime=void 0;this.md5=void 0;this.operId=void 0;this.path=void 0;this.privacy=void 0;this.serverAtime=void 0;this.serverCtime=void 0;this.serverFilename=void 0;this.serverMtime=void 0;this.share=void 0;this.size=void 0;this.unList=void 0;this.url=void 0;this.progress=void 0;this.category=d.category;this.fsId=d.fs_id;this.isDir=d.isdir;this.localCtime=d.local_ctime;this.localMtime=d.local_mtime;this.md5=d.md5;this.operId=d.oper_id;this.path=d.path;this.privacy=d.privacy;this.serverAtime=d.server_atime;this.serverCtime=d.server_ctime;this.serverFilename=d.server_filename;this.serverMtime=d.server_mtime;this.share=d.share;this.size=d.size;this.unList=d.unlist;this.url=d.url;this.progress=Item_ProgressProxy.Create(this.fsId);}return ItemProxy;}();
 
 /***/ }),
 /* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(43);
-
-
-/***/ }),
-/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(24);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(30);
-var _package_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(30, 1);
-/* harmony import */ var _utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(29);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(18);
-/* harmony import */ var _GlobalStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(36);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(10);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9);
-/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(13);
-function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_8__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_9__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_7__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(RootComponent,null))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26);
+var _package_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(26, 1);
+/* harmony import */ var _utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(40);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12);
+/* harmony import */ var _GlobalStyle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(35);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(2);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(11);
+/* harmony import */ var _services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(39);
+function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_4___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_9__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_10__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"],null,/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_8__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(RootComponent,null)))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
 // so that elements can be re-inserted as a user navigates a page with
 // different routes.
-function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"],"\"></div>"));_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_10__[/* InstanceForSystem */ "a"].initState().then(function(){render(__webpack_require__(35).default);});case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
+function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"],"\"></div>"));_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__[/* InstanceForSystem */ "a"].initState().then(function(){render(__webpack_require__(31).default);});case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_7__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
 // so we have to catch them manually and log them
-main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(__webpack_require__(35).default);});}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33)(module)))
+main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_7__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(__webpack_require__(31).default);});}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(28)(module)))
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -9706,7 +10202,7 @@ try {
 }
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9720,7 +10216,7 @@ try {
  */
 
 
-var l = __webpack_require__(34),
+var l = __webpack_require__(30),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -10138,7 +10634,7 @@ exports.useState = function (a) {
 exports.version = "16.13.1";
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10157,8 +10653,8 @@ exports.version = "16.13.1";
 
 
 var aa = __webpack_require__(0),
-    n = __webpack_require__(34),
-    r = __webpack_require__(47);
+    n = __webpack_require__(30),
+    r = __webpack_require__(46);
 
 function u(a) {
   for (var b = "https://reactjs.org/docs/error-decoder.html?invariant=" + a, c = 1; c < arguments.length; c++) {
@@ -17532,18 +18028,18 @@ exports.unstable_renderSubtreeIntoContainer = function (a, b, c, d) {
 exports.version = "16.13.1";
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(48);
+  module.exports = __webpack_require__(47);
 } else {}
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17905,7 +18401,7 @@ exports.unstable_wrapCallback = function (a) {
 };
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -18118,7 +18614,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18263,7 +18759,7 @@ exports.isValidElementType = function (a) {
 exports.typeOf = z;
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -18275,11 +18771,11 @@ exports.typeOf = z;
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(52)();
+  module.exports = __webpack_require__(51)();
 }
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18291,7 +18787,7 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
  */
 
 
-var ReactPropTypesSecret = __webpack_require__(53);
+var ReactPropTypesSecret = __webpack_require__(52);
 
 function emptyFunction() {}
 
@@ -18348,7 +18844,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18362,29 +18858,6 @@ module.exports = function () {
 
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-var g; // This works in non-strict mode
-
-g = function () {
-  return this;
-}();
-
-try {
-  // This works if eval is allowed (see CSP)
-  g = g || new Function("return this")();
-} catch (e) {
-  // This works if the window reference is available
-  if (typeof window === "object") g = window;
-} // g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-
-module.exports = g;
 
 /***/ })
 /******/ ]);

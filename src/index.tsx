@@ -1,3 +1,4 @@
+import { InstanceForSystem } from './services/InstaceForSystem'
 import React, { ComponentType, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import { name } from '../package.json'
@@ -6,14 +7,16 @@ import { addLocationChangeCallback, log } from './utils'
 import { GlobalStyle } from './GlobalStyle'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import { InstanceForSystem } from './services/InstaceForSystem'
+import ErrorBoundary from './services/ErrorBoundary'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(
     <Provider store={store}>
       <Suspense fallback={<div>on suspensing....</div>}>
-        <GlobalStyle />
-        <RootComponent />
+        <ErrorBoundary>
+          <GlobalStyle />
+          <RootComponent />
+        </ErrorBoundary>
       </Suspense>
     </Provider>,
     document.getElementById(name)
