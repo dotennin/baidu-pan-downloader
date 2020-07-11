@@ -5,12 +5,12 @@ import { ItemProxy } from '../services/Item'
 import { AppThunk } from '../store'
 import { getDownloadUrl } from '../services/api'
 import { downloadableSelector } from '../selectors'
+import interfaceModule from './interfaceModule'
 
 const allDownloads: Record<ItemProxy['fsId'], IProgress> = {}
 const initialState = {
   downloadItems: allDownloads,
   processing: 0,
-  error: '',
 }
 
 type State = typeof initialState
@@ -55,9 +55,8 @@ const downloadModule = createSlice({
       state.processing -= 1
       return state
     },
-    failureDownload: (state, action: PayloadAction<Error>) => {
+    failureDownload: (state) => {
       state.processing -= 1
-      state.error = action.toString()
       return state
     },
   },
@@ -116,13 +115,14 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
 
         // addNextDownloadRequest()
       },
-      onerror: () => {
+      onerror: (e) => {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 0
         progress.speedOverlay = 0
         progress.status = StatusTypes.error
         // eslint-disable-next-line no-console
-        throw new Error('出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录')
+        dispatch(downloadModule.actions.failureDownload())
+        dispatch(interfaceModule.actions.setError(new Error(e.error)))
 
         // addNextDownloadRequest()
       },
@@ -137,7 +137,8 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
       }
     }, 1000)
   } catch (err) {
-    dispatch(downloadModule.actions.failureDownload(err))
+    dispatch(downloadModule.actions.failureDownload())
+    dispatch(interfaceModule.actions.setError(err))
   }
 }
 
