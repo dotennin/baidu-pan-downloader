@@ -2,14 +2,14 @@ import React from 'react'
 import { Modal } from '../../components/Modal'
 import { connect, shallowEqual } from 'react-redux'
 import { Dispatch } from 'redux'
-import { interfaceActionCreator } from '../../store/Interface'
 import { IStoreState } from '../../store'
 import Item from './Item'
 import { createSelector } from 'reselect'
+import interfaceModule from '../../modules/interfaceModule'
 
 const mapStoreToProps = (store: IStoreState) => ({
   fsIdList: createSelector(
-    (store: IStoreState) => store.download.allDownloads,
+    (store: IStoreState) => store.download.downloadItems,
     (allDownloads) => Object.keys(allDownloads)
   )(store),
   downloadModalOpen: store.interface.downloadModalOpen,
@@ -17,16 +17,15 @@ const mapStoreToProps = (store: IStoreState) => ({
 
 const mapActionsToProps = (dispatch: Dispatch) => ({
   closeModal: () => {
-    dispatch(interfaceActionCreator.change({ downloadModalOpen: false }))
+    dispatch(interfaceModule.actions.change({ downloadModalOpen: false }))
   },
 })
 
 function DownloadList({
   fsIdList,
-  downloadModalOpen,
   closeModal,
+  downloadModalOpen,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
-  console.log(fsIdList, downloadModalOpen)
   return (
     <Modal open={downloadModalOpen} close={closeModal}>
       <table>
@@ -40,9 +39,10 @@ function DownloadList({
           </tr>
         </thead>
         <tbody id="popup-tbody">
-          {fsIdList.map((fsId, key) => {
-            return <Item key={key} fsId={fsId} />
-          })}
+          {fsIdList.length > 0 &&
+            fsIdList.map((fsId, key) => {
+              return <Item key={key} fsId={fsId} />
+            })}
         </tbody>
       </table>
     </Modal>

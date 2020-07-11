@@ -1,35 +1,22 @@
 import React from 'react'
 import { StatusTypes } from '../../types'
 import { ItemProxy } from '../../services/Item'
-import { IStoreState, store } from '../../store'
-import { connect } from 'react-redux'
-import { downloadActionCreator } from '../../store/download'
+import { IStoreState } from '../../store'
+import { connect, useDispatch } from 'react-redux'
+import downloadModule, { fetchItem } from '../../modules/downloadModule'
+import { InstanceForSystem } from '../../services/InstaceForSystem'
 
 interface IProps {
   fsId: ItemProxy['fsId']
 }
 const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  status: store.download.allDownloads[props.fsId]?.progress.status,
-  request: store.download.allDownloads[props.fsId]?.progress.request,
+  status: store.download.downloadItems[props.fsId]?.status,
 })
 
-const mapActionsToProps = {
-  download: downloadActionCreator.downloadURL.request,
-  updateDownloadList: downloadActionCreator.change.request,
-}
-function Operation({
-  fsId,
-  status,
-  request,
-  download,
-  updateDownloadList,
-}: typeof mapActionsToProps & ReturnType<typeof mapStoreToProps> & IProps) {
+function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps) {
+  const targetItem = InstanceForSystem.allDownloads[fsId]
+  const dispatch = useDispatch()
   const stopItem = () => {
-    const {
-      download: { allDownloads },
-    } = store.getState()
-    const targetItem = allDownloads[fsId]
-
     if (targetItem) {
       if (status === StatusTypes.downloading) {
         if (!window.confirm('停止后将需要重新下载， 确认吗？')) {
@@ -45,12 +32,12 @@ function Operation({
     }
   }
   const deleteItem = () => {
-    request?.abort && request.abort()
-    const {
-      download: { allDownloads },
-    } = store.getState()
-    delete allDownloads[fsId]
-    updateDownloadList(allDownloads)
+    if (targetItem) {
+      targetItem.progress.request?.abort && targetItem.progress.request.abort()
+      clearInterval(targetItem.progress.intervalId!)
+      delete InstanceForSystem.allDownloads[fsId]
+      dispatch(downloadModule.actions.removeItem({ fsId }))
+    }
 
     // addNextDownloadRequest()
   }
@@ -64,10 +51,7 @@ function Operation({
         viewBox="0 0 24 24"
         width="24"
         onClick={() => {
-          const {
-            download: { allDownloads },
-          } = store.getState()
-          download(allDownloads[fsId])
+          dispatch(fetchItem(targetItem))
         }}
       >
         <path d="M0 0h24v24H0z" fill="none" />
@@ -102,4 +86,4 @@ function Operation({
   )
 }
 
-export default connect(mapStoreToProps, mapActionsToProps)(Operation)
+export default connect(mapStoreToProps)(Operation)

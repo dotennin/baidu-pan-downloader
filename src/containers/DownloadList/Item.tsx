@@ -4,18 +4,14 @@ import { ItemProxy } from '../../services/Item'
 import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
 import SpeedStatus from './SpeedStatus'
-import { IStoreState } from '../../store'
-import { connect } from 'react-redux'
+import { InstanceForSystem } from '../../services/InstaceForSystem'
 
 interface IProps {
   fsId: ItemProxy['fsId']
 }
 
-const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  serverFilename: store.download.allDownloads[props.fsId]?.serverFilename,
-  size: store.download.allDownloads[props.fsId]?.size,
-})
-function Item({ fsId, serverFilename, size }: IProps & ReturnType<typeof mapStoreToProps>) {
+function Item({ fsId }: IProps) {
+  const { serverFilename, size } = InstanceForSystem.allDownloads[fsId]
   return (
     <tr id={'row-' + fsId}>
       <td data-label="filename">{serverFilename}</td>
@@ -34,4 +30,4 @@ function Item({ fsId, serverFilename, size }: IProps & ReturnType<typeof mapStor
     </tr>
   )
 }
-export default connect(mapStoreToProps)(Item)
+export default Item

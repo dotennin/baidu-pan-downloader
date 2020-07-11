@@ -1,11 +1,12 @@
 import React from 'react'
 import { Modal } from '../components/Modal'
 import { connect } from 'react-redux'
-import { interfaceActionCreator } from '../store/Interface'
 import { Dispatch } from 'redux'
 import { Form, FormField } from '../components/Form'
 import { InstanceForSystem } from '../services/InstaceForSystem'
 import { IStoreState } from '../store'
+import interfaceModule from '../modules/interfaceModule'
+import { downloadableSelector } from '../selectors'
 
 // const CustomModal = styled(Modal)`
 //   .modal-window {
@@ -16,18 +17,18 @@ import { IStoreState } from '../store'
 const mapStoreToProps = (store: IStoreState) => ({
   configModalOpen: store.interface.configModalOpen,
   autoStart: store.interface.autoStart,
-  downloadable: store.interface.downloadable,
+  downloadable: downloadableSelector(store),
   maxDownloadCount: store.interface.maxDownloadCount,
 })
 
 const mapActionsToProps = (dispatch: Dispatch) => ({
-  closeModal: () => dispatch(interfaceActionCreator.change({ configModalOpen: false })),
+  closeModal: () => dispatch(interfaceModule.actions.change({ configModalOpen: false })),
   setAutoStart: (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(interfaceActionCreator.change({ autoStart: e.target.checked }))
+    dispatch(interfaceModule.actions.change({ autoStart: e.target.checked }))
   },
   setMaxDownloadCount: (e: React.ChangeEvent<HTMLSelectElement>) => {
     const count = parseInt(e.target.value)
-    dispatch(interfaceActionCreator.change({ maxDownloadCount: count }))
+    dispatch(interfaceModule.actions.change({ maxDownloadCount: count }))
   },
 })
 

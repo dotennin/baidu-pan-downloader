@@ -1,4 +1,3 @@
-import { GM } from './gmInterface/gmInterface'
 export enum StatusTypes {
   downloading = 'DOWNLOADING',
   stopped = 'STOPPED',
@@ -43,5 +42,4 @@ export interface IProgress {
   status: StatusTypes
   percentCount: number
   speedOverlay: number
-  request?: ReturnType<typeof GM.download>
 }

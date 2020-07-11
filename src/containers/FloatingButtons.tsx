@@ -1,30 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { interfaceActionCreator } from '../store/Interface'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { InstanceForSystem } from '../services/InstaceForSystem'
 import { StatusTypes } from '../types'
-import { downloadActionCreator } from '../store/download'
 import { IStoreState } from '../store'
+import interfaceModule from '../modules/interfaceModule'
+import downloadModule, { fetchItem } from '../modules/downloadModule'
+import { downloadableSelector } from '../selectors'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
-  downloadable: store.interface.downloadable,
-  allDownloads: store.download.allDownloads,
+  downloadable: downloadableSelector(store),
 })
-const mapActionToProps = {
-  changeConfig: interfaceActionCreator.change,
-  updateDownloadItem: downloadActionCreator.change.request,
-  download: downloadActionCreator.downloadURL.request,
-}
 
-const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapStoreToProps>> = ({
-  changeConfig,
-  autoStart,
-  downloadable,
-  allDownloads,
-  updateDownloadItem,
-  download,
-}) => {
+const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoStart, downloadable }) => {
+  const dispatch = useDispatch()
+  const { downloadItems } = useSelector((state: IStoreState) => state.download)
   return (
     <div id="container-floating">
       <div
@@ -33,7 +23,7 @@ const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapS
         data-toggle="tooltip"
         data-placement="left"
         onClick={() => {
-          changeConfig({ configModalOpen: true })
+          dispatch(interfaceModule.actions.change({ configModalOpen: true }))
         }}
       >
         <img
@@ -50,19 +40,22 @@ const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapS
         onClick={() => {
           const { selectedList } = InstanceForSystem
 
+          const newItems = { ...downloadItems }
+          const { allDownloads } = InstanceForSystem
           selectedList.forEach((item) => {
-            if (typeof allDownloads[item.fsId] === 'undefined') {
+            if (typeof downloadItems[item.fsId] === 'undefined') {
               item.progress.status = StatusTypes.inQueued
+              const { intervalId, percentCount, speedOverlay, status } = item.progress
               allDownloads[item.fsId] = item
+              newItems[item.fsId] = { intervalId, percentCount, speedOverlay, status }
 
               if (downloadable && autoStart) {
-                download(item)
+                dispatch(fetchItem(item))
               }
             }
           })
-          updateDownloadItem({ allDownloads })
-
-          changeConfig({ downloadModalOpen: true })
+          dispatch(downloadModule.actions.change({ downloadItems: newItems }))
+          dispatch(interfaceModule.actions.change({ downloadModalOpen: true }))
         }}
       >
         <p className="plus">+</p>
@@ -76,4 +69,4 @@ const FloatingButtons: React.FC<typeof mapActionToProps & ReturnType<typeof mapS
   )
 }
 
-export default connect(mapStoreToProps, mapActionToProps)(FloatingButtons)
+export default connect(mapStoreToProps)(FloatingButtons)
