@@ -1429,6 +1429,18 @@ setBatch(react_dom["unstable_batchedUpdates"]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+var initialState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false,error:undefined};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
+var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;},setError:function setError(state,action){state.error=action.payload;return state;}}}));
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GM; });
 /* eslint-disable @typescript-eslint/no-explicit-any,no-undef */ /**
  * This section describes how the Tampermonkey API can be used
@@ -1541,19 +1553,19 @@ GM_setClipboard(data,info);},/**
 info:GM_info};
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
 var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,autoStart:true,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);_this.allDownloads=objectFromValue;Object.values(objectFromValue).forEach(function(item){if(!_this.autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
 item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}});resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1682,7 +1694,7 @@ function createStructuredSelector(selectors) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1691,7 +1703,7 @@ function createStructuredSelector(selectors) {
 __webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ downloadModule_fetchItem; });
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(10);
+var regenerator = __webpack_require__(11);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
@@ -1701,13 +1713,13 @@ var asyncToGenerator = __webpack_require__(16);
 var objectSpread2 = __webpack_require__(15);
 
 // EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(3);
+var gmInterface = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/types.ts
 var types = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
-var redux_toolkit_esm = __webpack_require__(9);
+var redux_toolkit_esm = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./src/services/api.ts
 function getDownloadUrl(path){return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
@@ -1809,27 +1821,18 @@ function addNextDownloadRequest(){// for (const fs_id in InstanceForSystem.items
 // EXTERNAL MODULE: ./src/selectors.ts
 var selectors = __webpack_require__(17);
 
+// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
+var interfaceModule = __webpack_require__(3);
+
 // CONCATENATED MODULE: ./src/modules/downloadModule.ts
-var allDownloads={};var initialState={downloadItems:allDownloads,processing:0,error:''};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId].status;delete state.downloadItems[action.payload.fsId].intervalId;delete state.downloadItems[action.payload.fsId].speedOverlay;delete state.downloadItems[action.payload.fsId].percentCount;delete state.downloadItems[action.payload.fsId];// state.downloadItems[action.payload.fsId].status = StatusTypes.unknow
+var allDownloads={};var initialState={downloadItems:allDownloads,processing:0};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId].status;delete state.downloadItems[action.payload.fsId].intervalId;delete state.downloadItems[action.payload.fsId].speedOverlay;delete state.downloadItems[action.payload.fsId].percentCount;delete state.downloadItems[action.payload.fsId];// state.downloadItems[action.payload.fsId].status = StatusTypes.unknow
 // state.downloadItems[action.payload.fsId].percentCount = 0
 // state.downloadItems[action.payload.fsId].intervalId = 0
 // state.downloadItems[action.payload.fsId].speedOverlay = 0
-return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state,action){state.processing-=1;state.error=action.toString();return state;}}});var downloadModule_fetchItem=function fetchItem(item){return/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(dispatch,getState){var progress,res,downloadable,url,serverFilename,currentEvent,loaded;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:dispatch(downloadModule.actions.requestDownload());_context.prev=1;progress=item.progress;_context.next=5;return getDownloadUrl(item.path);case 5:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);downloadable=Object(selectors["a" /* downloadableSelector */])(getState());if(downloadable){_context.next=11;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context.abrupt("return");case 11:progress.status=types["b" /* StatusTypes */].downloading;url=item.url,serverFilename=item.serverFilename;currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});dispatch(downloadModule.actions.successDownload());// addNextDownloadRequest()
-},onerror:function onerror(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;// eslint-disable-next-line no-console
-throw new Error('出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录');// addNextDownloadRequest()
-}});loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);_context.next=24;break;case 21:_context.prev=21;_context.t0=_context["catch"](1);dispatch(downloadModule.actions.failureDownload(_context.t0));case 24:case"end":return _context.stop();}}},_callee,null,[[1,21]]);}));return function(_x,_x2){return _ref.apply(this,arguments);};}();};/* harmony default export */ var modules_downloadModule = __webpack_exports__["a"] = (downloadModule);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-var initialState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
-var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;}}}));
+return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state){state.processing-=1;return state;}}});var downloadModule_fetchItem=function fetchItem(item){return/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(dispatch,getState){var progress,res,downloadable,url,serverFilename,currentEvent,loaded;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:dispatch(downloadModule.actions.requestDownload());_context.prev=1;progress=item.progress;_context.next=5;return getDownloadUrl(item.path);case 5:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);downloadable=Object(selectors["a" /* downloadableSelector */])(getState());if(downloadable){_context.next=11;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context.abrupt("return");case 11:progress.status=types["b" /* StatusTypes */].downloading;url=item.url,serverFilename=item.serverFilename;currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});dispatch(downloadModule.actions.successDownload());// addNextDownloadRequest()
+},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;// eslint-disable-next-line no-console
+dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" /* default */].actions.setError(new Error(e.error)));// addNextDownloadRequest()
+}});loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);_context.next=25;break;case 21:_context.prev=21;_context.t0=_context["catch"](1);dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" /* default */].actions.setError(_context.t0));case 25:case"end":return _context.stop();}}},_callee,null,[[1,21]]);}));return function(_x,_x2){return _ref.apply(this,arguments);};}();};/* harmony default export */ var modules_downloadModule = __webpack_exports__["a"] = (downloadModule);
 
 /***/ }),
 /* 8 */
@@ -2497,6 +2500,40 @@ if (false) {}
 
 /***/ }),
 /* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ store; });
+
+// UNUSED EXPORTS: storeSelector
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 5 modules
+var toConsumableArray = __webpack_require__(24);
+
+// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
+var redux_toolkit_esm = __webpack_require__(10);
+
+// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
+var redux = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/redux-logger/dist/redux-logger.js
+var redux_logger = __webpack_require__(33);
+
+// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
+var interfaceModule = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
+var downloadModule = __webpack_require__(7);
+
+// CONCATENATED MODULE: ./src/rootReducer.ts
+var rootReducer=Object(redux["c" /* combineReducers */])({download:downloadModule["a" /* default */].reducer,interface:interfaceModule["a" /* default */].reducer});/* harmony default export */ var src_rootReducer = (rootReducer);
+// CONCATENATED MODULE: ./src/store.ts
+var middleware=[].concat(Object(toConsumableArray["a" /* default */])(Object(redux_toolkit_esm["c" /* getDefaultMiddleware */])({serializableCheck:false})),[Object(redux_logger["createLogger"])({diff:true,collapsed:true})]);var composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true,traceLimit:10}):redux["d" /* compose */];var store=Object(redux_toolkit_esm["a" /* configureStore */])({reducer:src_rootReducer,middleware:middleware,devTools:"production"!=='production',enhancers:[composeEnhancers]});var storeSelector=function storeSelector(store){return store;};
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3546,7 +3583,7 @@ var en = function () {
 var redux = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/reselect/es/index.js
-var es = __webpack_require__(5);
+var es = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./node_modules/redux-thunk/es/index.js
 function createThunkMiddleware(extraArgument) {
@@ -5228,45 +5265,11 @@ N();
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(43);
 
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ store; });
-
-// UNUSED EXPORTS: storeSelector
-
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 5 modules
-var toConsumableArray = __webpack_require__(24);
-
-// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
-var redux_toolkit_esm = __webpack_require__(9);
-
-// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
-var redux = __webpack_require__(8);
-
-// EXTERNAL MODULE: ./node_modules/redux-logger/dist/redux-logger.js
-var redux_logger = __webpack_require__(33);
-
-// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(7);
-
-// EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
-var downloadModule = __webpack_require__(6);
-
-// CONCATENATED MODULE: ./src/rootReducer.ts
-var rootReducer=Object(redux["c" /* combineReducers */])({download:downloadModule["a" /* default */].reducer,interface:interfaceModule["a" /* default */].reducer});/* harmony default export */ var src_rootReducer = (rootReducer);
-// CONCATENATED MODULE: ./src/store.ts
-var middleware=[].concat(Object(toConsumableArray["a" /* default */])(Object(redux_toolkit_esm["c" /* getDefaultMiddleware */])({serializableCheck:false})),[Object(redux_logger["createLogger"])({diff:true,collapsed:true})]);var composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true,traceLimit:10}):redux["d" /* compose */];var store=Object(redux_toolkit_esm["a" /* configureStore */])({reducer:src_rootReducer,middleware:middleware,devTools:"production"!=='production',enhancers:[composeEnhancers]});var storeSelector=function storeSelector(store){return store;};
 
 /***/ }),
 /* 12 */
@@ -5277,7 +5280,7 @@ var middleware=[].concat(Object(toConsumableArray["a" /* default */])(Object(red
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return log; });
 /* unused harmony export awaitElement */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addLocationChangeCallback; });
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 var formatByte=function formatByte(byte){if(byte<=1000){return"".concat(byte," B");}var KiByte=Math.round(byte/1024);return KiByte<=1000?"".concat(KiByte," KB"):"".concat(Math.round(KiByte/10.24)/100," MB");};/**
@@ -7330,7 +7333,7 @@ function _asyncToGenerator(fn) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return downloadableSelector; });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 var downloadableSelector=Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__[/* createSelector */ "a"])(function(store){return store.download.downloadItems;},function(store){return store.interface.maxDownloadCount;},function(allDownloads,maxDownloadCount){return Object.values(allDownloads).filter(function(item){return item.status===_types__WEBPACK_IMPORTED_MODULE_1__[/* StatusTypes */ "b"].downloading;}).length<maxDownloadCount;});
 
@@ -7864,16 +7867,16 @@ var objectSpread2 = __webpack_require__(15);
 var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(4);
+var InstaceForSystem = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/types.ts
 var types = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(7);
+var interfaceModule = __webpack_require__(3);
 
 // EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
-var downloadModule = __webpack_require__(6);
+var downloadModule = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./src/selectors.ts
 var selectors = __webpack_require__(17);
@@ -7897,7 +7900,7 @@ var SpeedStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store
 // CONCATENATED MODULE: ./src/containers/DownloadList/Item.tsx
 function Item(_ref){var fsId=_ref.fsId;var _InstanceForSystem$al=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId],serverFilename=_InstanceForSystem$al.serverFilename,size=_InstanceForSystem$al.size;return/*#__PURE__*/react_default.a.createElement("tr",{id:'row-'+fsId},/*#__PURE__*/react_default.a.createElement("td",{"data-label":"filename"},serverFilename),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"download"},/*#__PURE__*/react_default.a.createElement("div",{className:"wrap"},/*#__PURE__*/react_default.a.createElement(DownloadList_ProgressStatus,{fsId:fsId}))),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"url"},Object(utils["b" /* formatByte */])(size)),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"speed"},/*#__PURE__*/react_default.a.createElement(DownloadList_SpeedStatus,{fsId:fsId})),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"operation"},/*#__PURE__*/react_default.a.createElement(DownloadList_Operation,{fsId:fsId})));}/* harmony default export */ var DownloadList_Item = (Item);
 // EXTERNAL MODULE: ./node_modules/reselect/es/index.js
-var reselect_es = __webpack_require__(5);
+var reselect_es = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./src/containers/DownloadList/index.tsx
 var DownloadList_mapStoreToProps=function mapStoreToProps(store){return{fsIdList:Object(reselect_es["a" /* createSelector */])(function(store){return store.download.downloadItems;},function(allDownloads){return Object.keys(allDownloads);})(store),downloadModalOpen:store.interface.downloadModalOpen};};var DownloadList_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){dispatch(interfaceModule["a" /* default */].actions.change({downloadModalOpen:false}));}};};function DownloadList(_ref){var fsIdList=_ref.fsIdList,closeModal=_ref.closeModal,downloadModalOpen=_ref.downloadModalOpen;return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{open:downloadModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement("table",null,/*#__PURE__*/react_default.a.createElement("thead",null,/*#__PURE__*/react_default.a.createElement("tr",null,/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u6587\u4EF6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u8FDB\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u5927\u5C0F"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u901F\u5EA6"),/*#__PURE__*/react_default.a.createElement("th",{scope:"col"},"\u64CD\u4F5C"))),/*#__PURE__*/react_default.a.createElement("tbody",{id:"popup-tbody"},fsIdList.length>0&&fsIdList.map(function(fsId,key){return/*#__PURE__*/react_default.a.createElement(DownloadList_Item,{key:key,fsId:fsId});}))));}var DL=react_default.a.memo(DownloadList,function(prevProps,nextProps){return Object(es["c" /* shallowEqual */])(prevProps.fsIdList,nextProps.fsIdList)&&Object(es["c" /* shallowEqual */])(prevProps.downloadModalOpen,nextProps.downloadModalOpen);});/* harmony default export */ var containers_DownloadList = (Object(es["b" /* connect */])(DownloadList_mapStoreToProps,DownloadList_mapActionsToProps)(DL));
@@ -7920,10 +7923,10 @@ function _templateObject2(){var data=Object(taggedTemplateLiteral["a" /* default
 // `
 var Preferences_mapStoreToProps=function mapStoreToProps(store){return{configModalOpen:store.interface.configModalOpen,autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store),maxDownloadCount:store.interface.maxDownloadCount};};var Preferences_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){return dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:false}));},setAutoStart:function setAutoStart(e){dispatch(interfaceModule["a" /* default */].actions.change({autoStart:e.target.checked}));},setMaxDownloadCount:function setMaxDownloadCount(e){var count=parseInt(e.target.value);dispatch(interfaceModule["a" /* default */].actions.change({maxDownloadCount:count}));}};};function Preferences(_ref){var configModalOpen=_ref.configModalOpen,autoStart=_ref.autoStart,maxDownloadCount=_ref.maxDownloadCount,closeModal=_ref.closeModal,setAutoStart=_ref.setAutoStart,setMaxDownloadCount=_ref.setMaxDownloadCount;return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{open:configModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement(Form,{action:"#"},/*#__PURE__*/react_default.a.createElement("header",{style:{margin:'0 0 20px 0'}},/*#__PURE__*/react_default.a.createElement("h2",{style:{margin:'0 0 5px 0'}},"\u4E0B\u8F7D\u8BBE\u7F6E"),/*#__PURE__*/react_default.a.createElement("div",{style:{fontSize:'90%',color:'#999'}},"\u5982\u679C\u4E0B\u8F7D\u7ECF\u5E38\u51FA\u9519\uFF0C\u5EFA\u8BAE\u5C06\u4E0B\u8F7D\u6570\u8BBE\u7F6E\u4E3A1")),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("label",{htmlFor:'auto-start'},"\u81EA\u52A8\u4E0B\u8F7D"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("input",{type:"checkbox",name:"checkbox",value:"true",checked:autoStart,id:"auto-start",tabIndex:1,onChange:setAutoStart}))),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("legend",null,"\u6700\u5927\u540C\u65F6\u4E0B\u8F7D\u6570"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("select",{defaultValue:maxDownloadCount,id:"max-download-count",className:"field select medium",tabIndex:2,onChange:setMaxDownloadCount},Object(toConsumableArray["a" /* default */])(Array(InstaceForSystem["a" /* InstanceForSystem */].maxDownloadCount).keys()).map(function(i){return++i;}).map(function(i,key){return/*#__PURE__*/react_default.a.createElement("option",{key:key,value:i},i);}))))));}/* harmony default export */ var containers_Preferences = (Object(es["b" /* connect */])(Preferences_mapStoreToProps,Preferences_mapActionsToProps)(Preferences));
 // EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(3);
+var gmInterface = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/store.ts + 1 modules
-var src_store = __webpack_require__(11);
+var src_store = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./src/services/windowInstance.ts
 window.onunload=function(){gmInterface["a" /* GM */].setValue(types["c" /* ValueTypes */].items,src_store["a" /* store */].getState().download.downloadItems);InstaceForSystem["a" /* InstanceForSystem */].stopAll();};window.onbeforeunload=function(e){var downloadItems=src_store["a" /* store */].getState().download.downloadItems;if(Object.values(downloadItems).some(function(item){return item.status===types["b" /* StatusTypes */].downloading;})){e.preventDefault();e.returnValue='有未完成的下载任务， 确认关闭吗?';}};
@@ -7940,8 +7943,8 @@ var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(reac
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
-/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
 var ProgressProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,null,[{key:"Parse",value:function Parse(d){return ProgressProxy.Create(d);}},{key:"Create",value:function Create(fsId){return new ProgressProxy(fsId);}}]);function ProgressProxy(fsId){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ProgressProxy);this.intervalId=void 0;this.request=void 0;this._speedOverlay=void 0;this._status=void 0;this._percentCount=void 0;this.fsId=void 0;this.fsId=fsId;this.percentCount=0;this.speedOverlay=0;this.status=_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow;}Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,[{key:"speedOverlay",set:function set(v){if(this._speedOverlay===v)return;this._speedOverlay=v;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{speedOverlay:this.speedOverlay}}));},get:function get(){return this._speedOverlay;}},{key:"percentCount",set:function set(v){if(this._percentCount===v)return;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{percentCount:this.percentCount}}));},get:function get(){return this._percentCount;}},{key:"status",set:function set(v){if(this._status===v)return;this._status=v;if(v===_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow)return;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{status:this.status}}));},get:function get(){return this._status;}}]);return ProgressProxy;}();var ItemProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ItemProxy,null,[{key:"Parse",value:function Parse(d){return ItemProxy.Create(JSON.parse(d));}},{key:"Create",value:function Create(d){return new ItemProxy(d);}}]);function ItemProxy(d){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ItemProxy);this.category=void 0;this.fsId=void 0;this.isDir=void 0;this.localCtime=void 0;this.localMtime=void 0;this.md5=void 0;this.operId=void 0;this.path=void 0;this.privacy=void 0;this.serverAtime=void 0;this.serverCtime=void 0;this.serverFilename=void 0;this.serverMtime=void 0;this.share=void 0;this.size=void 0;this.unList=void 0;this.url=void 0;this.progress=void 0;this.category=d.category;this.fsId=d.fs_id;this.isDir=d.isdir;this.localCtime=d.local_ctime;this.localMtime=d.local_mtime;this.md5=d.md5;this.operId=d.oper_id;this.path=d.path;this.privacy=d.privacy;this.serverAtime=d.server_atime;this.serverCtime=d.server_ctime;this.serverFilename=d.server_filename;this.serverMtime=d.server_mtime;this.share=d.share;this.size=d.size;this.unList=d.unlist;this.url=d.url;this.progress=ProgressProxy.Create(this.fsId);}return ItemProxy;}();
 
 /***/ }),
@@ -9436,11 +9439,20 @@ var react_default = /*#__PURE__*/__webpack_require__.n(react);
 // EXTERNAL MODULE: ./src/components/Modal.tsx + 2 modules
 var Modal = __webpack_require__(19);
 
+// EXTERNAL MODULE: ./src/store.ts + 1 modules
+var store = __webpack_require__(9);
+
+// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 24 modules
+var es = __webpack_require__(2);
+
+// EXTERNAL MODULE: ./src/modules/interfaceModule.ts
+var interfaceModule = __webpack_require__(3);
+
 // CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
-var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
-this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if(this.state.errorInfo){// Error path
-return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{style:{color:'red'},open:this.state.open,close:function close(){return _this2.setState({open:false});}},/*#__PURE__*/react_default.a.createElement("h2",null,"Something went wrong."),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},this.state.error&&this.state.error.toString(),/*#__PURE__*/react_default.a.createElement("br",null),this.state.errorInfo.componentStack));}// Normally, just render children
-return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = __webpack_exports__["a"] = (ErrorBoundary_ErrorBoundary);
+var mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
+this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if((this.state.errorInfo||this.props.error)&&this.state.open){var _this$state$error,_this$props$error,_this$props$error2,_this$state$errorInfo;// Error path
+return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{style:{color:'red'},open:true,close:function close(){_this2.setState({error:null,errorInfo:null});store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},/*#__PURE__*/react_default.a.createElement("h2",null,(_this$state$error=this.state.error)===null||_this$state$error===void 0?void 0:_this$state$error.toString(),(_this$props$error=this.props.error)===null||_this$props$error===void 0?void 0:_this$props$error.toString()),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},(_this$props$error2=this.props.error)===null||_this$props$error2===void 0?void 0:_this$props$error2.stack,(_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack));}// Normally, just render children
+return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = __webpack_exports__["a"] = (Object(es["b" /* connect */])(mapStoreToProps)(ErrorBoundary_ErrorBoundary));
 
 /***/ }),
 /* 40 */
@@ -9466,10 +9478,10 @@ module.exports = __webpack_require__(42);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
-/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
@@ -9480,9 +9492,9 @@ var _package_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpac
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12);
 /* harmony import */ var _GlobalStyle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(35);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(2);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(11);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9);
 /* harmony import */ var _services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(39);
-function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_4___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_9__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_10__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"],null,/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_8__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(RootComponent,null)))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
+function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_4___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_9__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_10__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_8__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"],null,/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(RootComponent,null)))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
 // so that elements can be re-inserted as a user navigates a page with
 // different routes.
 function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"],"\"></div>"));_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__[/* InstanceForSystem */ "a"].initState().then(function(){render(__webpack_require__(31).default);});case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_7__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,

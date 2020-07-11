@@ -13,8 +13,8 @@ function render(RootComponent: ComponentType) {
   ReactDOM.render(
     <Provider store={store}>
       <Suspense fallback={<div>on suspensing....</div>}>
+        <GlobalStyle />
         <ErrorBoundary>
-          <GlobalStyle />
           <RootComponent />
         </ErrorBoundary>
       </Suspense>

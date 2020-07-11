@@ -1,14 +1,22 @@
 import { GM } from '../gmInterface/gmInterface'
 import { ValueTypes } from '../types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-const initialState = {
+
+interface IState {
+  maxDownloadCount: number
+  autoStart: boolean
+  downloadModalOpen: boolean
+  configModalOpen: boolean
+  error: undefined | Error
+}
+const initialState: IState = {
   maxDownloadCount: GM.getValue(ValueTypes.maxDownloadCount, 2),
   autoStart: GM.getValue(ValueTypes.autoStart, true),
   downloadModalOpen: false,
   configModalOpen: false,
+  error: undefined,
 }
 
-type State = typeof initialState
 export default createSlice({
   name: 'interface',
   initialState,
@@ -17,11 +25,11 @@ export default createSlice({
       state = { ...initialState }
       return state
     },
-    change: (state, action: PayloadAction<Partial<State>>) => {
+    change: (state, action: PayloadAction<Partial<IState>>) => {
       const { payload } = action
       Object.keys(payload).forEach((k) => {
         // Set key event
-        const key = k as keyof State
+        const key = k as keyof IState
         switch (key) {
           case 'autoStart':
             GM.setValue(ValueTypes.autoStart, payload.autoStart)
@@ -31,6 +39,10 @@ export default createSlice({
         }
       })
       state = Object.assign({ ...state }, action.payload)
+      return state
+    },
+    setError: (state, action: PayloadAction<IState['error']>) => {
+      state.error = action.payload
       return state
     },
   },

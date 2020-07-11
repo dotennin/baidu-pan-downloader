@@ -1,11 +1,17 @@
 import React, { ErrorInfo } from 'react'
 import { Modal } from '../components/Modal'
+import { IStoreState, store } from '../store'
+import { connect } from 'react-redux'
+import interfaceModule from '../modules/interfaceModule'
 
 interface IState {
   error: Error | null
   errorInfo: ErrorInfo | null
   open: boolean
 }
+const mapStoreToProps = (store: IStoreState) => ({
+  error: store.interface.error,
+})
 class ErrorBoundary extends React.Component<any, IState> {
   constructor(props: any) {
     super(props)
@@ -21,15 +27,24 @@ class ErrorBoundary extends React.Component<any, IState> {
   }
 
   render() {
-    if (this.state.errorInfo) {
+    if ((this.state.errorInfo || this.props.error) && this.state.open) {
       // Error path
       return (
-        <Modal style={{ color: 'red' }} open={this.state.open} close={() => this.setState({ open: false })}>
-          <h2>Something went wrong.</h2>
+        <Modal
+          style={{ color: 'red' }}
+          open={true}
+          close={() => {
+            this.setState({ error: null, errorInfo: null })
+            store.dispatch(interfaceModule.actions.setError(undefined))
+          }}
+        >
+          <h2>
+            {this.state.error?.toString()}
+            {this.props.error?.toString()}
+          </h2>
           <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo.componentStack}
+            {this.props.error?.stack}
+            {this.state.errorInfo?.componentStack}
           </details>
         </Modal>
       )
@@ -39,4 +54,4 @@ class ErrorBoundary extends React.Component<any, IState> {
   }
 }
 
-export default ErrorBoundary
+export default connect(mapStoreToProps)(ErrorBoundary)
