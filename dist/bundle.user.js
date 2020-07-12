@@ -1460,10 +1460,10 @@ return reject(r);}}});});}function download(item){var url=item.url,serverFilenam
 var selectors = __webpack_require__(18);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(5);
+var interfaceModule = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(4);
+var InstaceForSystem = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./src/modules/downloadModule.ts
 var downloadModule_allDownloads={};var initialState={downloadItems:downloadModule_allDownloads,processing:0};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId];return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state){state.processing-=1;return state;}}});var downloadModule_addNextDownloadRequest=function addNextDownloadRequest(){return function(dispatch){var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;Object.values(allDownloads).filter(function(item){return item.progress.status===types["b" /* StatusTypes */].inQueued;}).forEach(function(item){// eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -1474,27 +1474,29 @@ dispatch(downloadModule_fetchItem(item));});};};var downloadModule_fetchItem=fun
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
-var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);var state=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState();var dispatch=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch;var autoStart=state.interface.autoStart;var downloadItemsForStore={};objectFromValue.forEach(function(item){if(!autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
-item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;downloadItemsForStore[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};_this.allDownloads[item.fsId]=item;if(autoStart&&[_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].inQueued,_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading].includes(status)){dispatch(Object(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* fetchItem */ "c"])(item));}});_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.change({downloadItems:downloadItemsForStore}));resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};// Resolve store initiation
-setTimeout(function(){InstanceForSystem.initState();});
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
 /* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
 var initialState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false,error:undefined};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
 var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;},setError:function setError(state,action){state.error=action.payload;return state;}}}));
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
+/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4);
+var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);var state=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState();var dispatch=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch;var autoStart=state.interface.autoStart;var downloadItemsForStore={};objectFromValue.forEach(function(item){if(!autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
+item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;downloadItemsForStore[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};_this.allDownloads[item.fsId]=item;if(autoStart&&[_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].inQueued,_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading].includes(status)){dispatch(Object(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* fetchItem */ "c"])(item));}});_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.change({downloadItems:downloadItemsForStore}));resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};// Resolve store initiation
+setTimeout(function(){InstanceForSystem.initState().then(function(){setTimeout(function(){var _store$getState=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState(),processing=_store$getState.download.processing;if(processing>0){// if there is a task that automatically starts downloading then open download-modal directly after initialization
+_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].actions.change({downloadModalOpen:true}));}},1500);});});
 
 /***/ }),
 /* 6 */
@@ -1520,7 +1522,7 @@ var redux = __webpack_require__(9);
 var redux_logger = __webpack_require__(38);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(5);
+var interfaceModule = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
 var downloadModule = __webpack_require__(3);
@@ -7790,13 +7792,13 @@ var objectSpread2 = __webpack_require__(15);
 var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(4);
+var InstaceForSystem = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/types.ts
 var types = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(5);
+var interfaceModule = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
 var downloadModule = __webpack_require__(3);
@@ -9349,7 +9351,7 @@ var store = __webpack_require__(6);
 var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(5);
+var interfaceModule = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
 var mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
