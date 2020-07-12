@@ -1,7 +1,11 @@
 const webpack = require('webpack')
 const UserScript = require('./user-script')
+const rewireStyledComponents = require('react-app-rewire-styled-components')
 
 module.exports = function override(config, env) {
+  // Generate a corresponding element class name for each Component to facilitate understanding and development
+  config = rewireStyledComponents(config, env, { ssr: false })
+
   // prevent chunking for all files
   Object.assign(config.optimization, {
     runtimeChunk: false,
