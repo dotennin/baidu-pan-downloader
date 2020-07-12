@@ -1,7 +1,15 @@
-import { IItem, StatusTypes } from '../types'
+import { IItem, IProgress, StatusTypes } from '../types'
 import { GM } from '../gmInterface/gmInterface'
 import { store } from '../store'
 import downloadModule from '../modules/downloadModule'
+
+/**
+ * Check the arg whether IItem interface or not
+ * @param arg
+ */
+function implementsItem(arg: any): arg is IItem {
+  return arg !== null && typeof arg === 'object' && typeof arg.fs_id !== 'undefined'
+}
 
 export class ProgressProxy {
   public intervalId: number | undefined
@@ -14,19 +22,22 @@ export class ProgressProxy {
   public static Parse(d: any): ProgressProxy {
     return ProgressProxy.Create(d)
   }
-  public static Create(fsId: string | number): ProgressProxy {
-    return new ProgressProxy(fsId)
+  public static Create(fsId: string | number, defaultState?: IProgress): ProgressProxy {
+    return new ProgressProxy(fsId, defaultState)
   }
-  private constructor(fsId: string | number) {
+  private constructor(fsId: string | number, defaultState?: IProgress) {
     this.fsId = fsId
-    this.percentCount = 0
-    this.speedOverlay = 0
-    this.status = StatusTypes.unknow
+    if (defaultState) {
+      Object.assign(this, defaultState)
+    } else {
+      this.percentCount = 0
+      this.speedOverlay = 0
+      this.status = StatusTypes.unknow
+    }
   }
   set speedOverlay(v: number) {
     if (this._speedOverlay === v) return
     this._speedOverlay = v
-    this._percentCount = v
     store.dispatch(
       downloadModule.actions.updateProgress({
         fsId: this.fsId,
@@ -75,48 +86,53 @@ export class ProgressProxy {
 }
 
 export class ItemProxy {
-  public category: number
-  public fsId: string | number
-  public isDir: number
-  public localCtime: number
-  public localMtime: number
-  public md5: string
-  public operId: number
-  public path: string
-  public privacy: number
-  public serverAtime: number
-  public serverCtime: number
-  public serverFilename: string
-  public serverMtime: number
-  public share: number
-  public size: number
-  public unList: number
-  public url: string
-  public progress: ProgressProxy
+  public category!: number
+  public fsId!: string | number
+  public isDir!: number
+  public localCtime!: number
+  public localMtime!: number
+  public md5!: string
+  public operId!: number
+  public path!: string
+  public privacy!: number
+  public serverAtime!: number
+  public serverCtime!: number
+  public serverFilename!: string
+  public serverMtime!: number
+  public share!: number
+  public size!: number
+  public unList!: number
+  public url!: string
+  public progress!: ProgressProxy
   public static Parse(d: string): ItemProxy {
     return ItemProxy.Create(JSON.parse(d))
   }
-  public static Create(d: IItem): ItemProxy {
+  public static Create(d: IItem | ItemProxy): ItemProxy {
     return new ItemProxy(d)
   }
-  private constructor(d: IItem) {
-    this.category = d.category
-    this.fsId = d.fs_id
-    this.isDir = d.isdir
-    this.localCtime = d.local_ctime
-    this.localMtime = d.local_mtime
-    this.md5 = d.md5
-    this.operId = d.oper_id
-    this.path = d.path
-    this.privacy = d.privacy
-    this.serverAtime = d.server_atime
-    this.serverCtime = d.server_ctime
-    this.serverFilename = d.server_filename
-    this.serverMtime = d.server_mtime
-    this.share = d.share
-    this.size = d.size
-    this.unList = d.unlist
-    this.url = d.url
-    this.progress = ProgressProxy.Create(this.fsId)
+  private constructor(d: IItem | ItemProxy) {
+    if (implementsItem(d)) {
+      this.category = d.category
+      this.fsId = d.fs_id
+      this.isDir = d.isdir
+      this.localCtime = d.local_ctime
+      this.localMtime = d.local_mtime
+      this.md5 = d.md5
+      this.operId = d.oper_id
+      this.path = d.path
+      this.privacy = d.privacy
+      this.serverAtime = d.server_atime
+      this.serverCtime = d.server_ctime
+      this.serverFilename = d.server_filename
+      this.serverMtime = d.server_mtime
+      this.share = d.share
+      this.size = d.size
+      this.unList = d.unlist
+      this.url = d.url
+      this.progress = ProgressProxy.Create(this.fsId)
+    } else {
+      Object.assign(this, d)
+      this.progress = ProgressProxy.Create(this.fsId, this.progress)
+    }
   }
 }

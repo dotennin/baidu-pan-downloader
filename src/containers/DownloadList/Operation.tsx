@@ -25,7 +25,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
       }
       targetItem.progress.status = StatusTypes.stopped
       targetItem.progress.request?.abort && targetItem.progress.request.abort()
-      clearInterval(targetItem.progress.intervalId!)
+      clearInterval(targetItem.progress.intervalId)
 
       dispatch(addNextDownloadRequest())
       return false
@@ -34,7 +34,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
   const deleteItem = () => {
     if (targetItem) {
       targetItem.progress.request?.abort && targetItem.progress.request.abort()
-      clearInterval(targetItem.progress.intervalId!)
+      clearInterval(targetItem.progress.intervalId)
       delete InstanceForSystem.allDownloads[fsId]
       dispatch(downloadModule.actions.removeItem({ fsId }))
     }
@@ -51,6 +51,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         viewBox="0 0 24 24"
         width="24"
         onClick={() => {
+          console.log(targetItem)
           dispatch(fetchItem(targetItem))
         }}
       >
