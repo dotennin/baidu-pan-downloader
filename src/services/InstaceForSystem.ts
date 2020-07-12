@@ -1,27 +1,43 @@
-import { IItem, StatusTypes, ValueTypes } from '../types'
+import { IItem, IProgress, StatusTypes, ValueTypes } from '../types'
 import { GM } from '../gmInterface/gmInterface'
 import { ItemProxy } from './Item'
+import { store } from '../store'
+import downloadModule from '../modules/downloadModule'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
   list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
   maxDownloadCount: 2,
-  autoStart: true,
   allDownloads: {} as ItemObject,
 
   initState: function() {
     return new Promise((resolve) => {
-      const objectFromValue: ItemObject = GM.getValue(ValueTypes.items, {})
+      const objectFromValue = (GM.getValue(ValueTypes.items, {}) as IItem[]).map((arr) => ItemProxy.Create(arr))
       GM.deleteValue(ValueTypes.items)
 
-      this.allDownloads = objectFromValue
+      const state = store.getState()
+      const {
+        interface: { autoStart },
+      } = state
 
-      Object.values(objectFromValue).forEach((item) => {
-        if (!this.autoStart && item.progress.status === StatusTypes.downloading) {
+      const downloadItemsForStore: Record<ItemProxy['fsId'], IProgress> = {}
+      objectFromValue.forEach((item) => {
+        if (!autoStart && item.progress.status === StatusTypes.downloading) {
           // stop downloading item if user set autoStart as false
           item.progress.status = StatusTypes.stopped
         }
+
+        const { intervalId, percentCount, speedOverlay, status } = item.progress
+        downloadItemsForStore[item.fsId] = { intervalId, percentCount, speedOverlay, status }
+        this.allDownloads[item.fsId] = item
       })
+
+      store.dispatch(downloadModule.actions.change({ downloadItems: downloadItemsForStore }))
+
+      // if (autoStart) {
+      //   store.dispatch(fetchItem(item))
+      // }
+
       resolve(this)
     })
   },
@@ -48,6 +64,10 @@ const InstanceForSystem = {
       })
   },
 }
-InstanceForSystem.initState()
+
+// Resolve store initiation
+setTimeout(() => {
+  InstanceForSystem.initState()
+})
 
 export { InstanceForSystem }

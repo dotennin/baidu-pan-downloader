@@ -57,7 +57,9 @@ const downloadModule = createSlice({
 export const addNextDownloadRequest = (): AppThunk => (dispatch) => {
   const { allDownloads } = InstanceForSystem
   Object.values(allDownloads)
-    .filter((item) => item.progress.status === StatusTypes.inQueued)
+    .filter((item) => {
+      return item.progress.status === StatusTypes.inQueued
+    })
     .forEach((item) => {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
       dispatch(fetchItem(item))

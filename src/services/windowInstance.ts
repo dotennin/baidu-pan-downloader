@@ -4,7 +4,7 @@ import { store } from '../store'
 import { InstanceForSystem } from './InstaceForSystem'
 
 window.onunload = () => {
-  GM.setValue(ValueTypes.items, store.getState().download.downloadItems)
+  GM.setValue(ValueTypes.items, Object.values(InstanceForSystem.allDownloads))
 
   InstanceForSystem.stopAll()
 }

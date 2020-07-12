@@ -42,10 +42,9 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
 
           const newItems = { ...downloadItems }
           const { allDownloads } = InstanceForSystem
-          console.log(allDownloads)
           selectedList.forEach((item) => {
             if (typeof downloadItems[item.fsId] === 'undefined') {
-              item.progress.status = StatusTypes.inQueued
+              item.progress.status = StatusTypes.stopped
               const { intervalId, percentCount, speedOverlay, status } = item.progress
               allDownloads[item.fsId] = item
               newItems[item.fsId] = { intervalId, percentCount, speedOverlay, status }
