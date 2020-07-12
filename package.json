@@ -40,6 +40,7 @@
     "@types/redux-logger": "^3.0.8",
     "@types/styled-components": "^5.1.1",
     "react": "^16.13.1",
+    "react-app-rewire-styled-components": "^3.0.2",
     "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
