@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component<any, IState> {
       // Error path
       return (
         <Modal
-          style={{ color: 'red' }}
+          style={{ color: 'red', wordBreak: 'break-all' }}
           open={true}
           close={() => {
             this.setState({ error: null, errorInfo: null })

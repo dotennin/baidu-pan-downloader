@@ -1,4 +1,3 @@
-import { InstanceForSystem } from './services/InstaceForSystem'
 import React, { ComponentType, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import { name } from '../package.json'
@@ -28,9 +27,7 @@ function render(RootComponent: ComponentType) {
 // different routes.
 async function main() {
   document.body.insertAdjacentHTML('beforeend', `<div id="${name}"></div>`)
-  InstanceForSystem.initState().then(() => {
-    render(require('./App').default)
-  })
+  render(require('./App').default)
 }
 
 addLocationChangeCallback(() => {

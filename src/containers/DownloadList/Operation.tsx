@@ -3,7 +3,7 @@ import { StatusTypes } from '../../types'
 import { ItemProxy } from '../../services/Item'
 import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
-import downloadModule, { fetchItem } from '../../modules/downloadModule'
+import downloadModule, { fetchItem, addNextDownloadRequest } from '../../modules/downloadModule'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
 
 interface IProps {
@@ -27,7 +27,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
       targetItem.progress.request?.abort && targetItem.progress.request.abort()
       clearInterval(targetItem.progress.intervalId!)
 
-      // addNextDownloadRequest()
+      dispatch(addNextDownloadRequest())
       return false
     }
   }
@@ -39,7 +39,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
       dispatch(downloadModule.actions.removeItem({ fsId }))
     }
 
-    // addNextDownloadRequest()
+    dispatch(addNextDownloadRequest())
   }
   return (
     <>

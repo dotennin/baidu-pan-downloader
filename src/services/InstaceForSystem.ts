@@ -48,5 +48,6 @@ const InstanceForSystem = {
       })
   },
 }
+InstanceForSystem.initState()
 
 export { InstanceForSystem }

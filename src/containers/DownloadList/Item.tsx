@@ -11,10 +11,16 @@ interface IProps {
 }
 
 function Item({ fsId }: IProps) {
+  const item = InstanceForSystem.allDownloads[fsId]
+  if (!item) {
+    return null
+  }
   const { serverFilename, size } = InstanceForSystem.allDownloads[fsId]
   return (
     <tr id={'row-' + fsId}>
-      <td data-label="filename">{serverFilename}</td>
+      <td data-label="filename" style={{ wordBreak: 'break-all' }}>
+        {serverFilename}
+      </td>
       <td data-label="download">
         <div className="wrap">
           <ProgressStatus fsId={fsId} />
