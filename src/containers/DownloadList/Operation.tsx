@@ -3,7 +3,7 @@ import { StatusTypes } from '../../types'
 import { ItemProxy } from '../../services/Item'
 import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
-import downloadModule, { fetchItem, addNextDownloadRequest } from '../../modules/downloadModule'
+import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules/downloadModule'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
 
 interface IProps {
@@ -22,6 +22,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         if (!window.confirm('停止后将需要重新下载， 确认吗？')) {
           return false
         }
+        dispatch(downloadModule.actions.failureDownload())
       }
       targetItem.progress.status = StatusTypes.stopped
       targetItem.progress.request?.abort && targetItem.progress.request.abort()
@@ -35,7 +36,12 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
     if (targetItem) {
       targetItem.progress.request?.abort && targetItem.progress.request.abort()
       clearInterval(targetItem.progress.intervalId)
+      if (targetItem.progress.status === StatusTypes.downloading) {
+        dispatch(downloadModule.actions.failureDownload())
+      }
       delete InstanceForSystem.allDownloads[fsId]
+
+      // Todo this operation will occur Type error on development mode
       dispatch(downloadModule.actions.removeItem({ fsId }))
     }
 
@@ -51,7 +57,6 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         viewBox="0 0 24 24"
         width="24"
         onClick={() => {
-          console.log(targetItem)
           dispatch(fetchItem(targetItem))
         }}
       >
