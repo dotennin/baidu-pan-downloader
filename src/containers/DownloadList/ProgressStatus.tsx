@@ -7,7 +7,7 @@ interface IProps {
   fsId: ItemProxy['fsId']
 }
 const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  percentCount: store.download.downloadItems[props.fsId]?.percentCount,
+  percentCount: store.download.downloadItems[props.fsId]!.percentCount,
 })
 function ProgressStatus({ percentCount }: ReturnType<typeof mapStoreToProps & IProps>) {
   return (

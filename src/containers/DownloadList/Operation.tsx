@@ -10,7 +10,7 @@ interface IProps {
   fsId: ItemProxy['fsId']
 }
 const mapStoreToProps = (store: IStoreState, props: IProps) => ({
-  status: store.download.downloadItems[props.fsId]?.status,
+  status: store.download.downloadItems[props.fsId]!.status,
 })
 
 function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps) {
@@ -25,7 +25,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         dispatch(downloadModule.actions.failureDownload())
       }
       targetItem.progress.status = StatusTypes.stopped
-      targetItem.progress.request?.abort && targetItem.progress.request.abort()
+      targetItem.progress.request!.abort && targetItem.progress.request!.abort()
       clearInterval(targetItem.progress.intervalId)
 
       dispatch(addNextDownloadRequest())
@@ -34,7 +34,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
   }
   const deleteItem = () => {
     if (targetItem) {
-      targetItem.progress.request?.abort && targetItem.progress.request.abort()
+      targetItem.progress.request!.abort && targetItem.progress.request!.abort()
       clearInterval(targetItem.progress.intervalId)
       if (targetItem.progress.status === StatusTypes.downloading) {
         dispatch(downloadModule.actions.failureDownload())
