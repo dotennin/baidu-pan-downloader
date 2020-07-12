@@ -67,7 +67,6 @@ export const addNextDownloadRequest = (): AppThunk => (dispatch) => {
 }
 
 export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getState) => {
-  dispatch(downloadModule.actions.requestDownload())
   try {
     const { progress } = item
     const res: any = await getDownloadUrl(item.path)
@@ -79,7 +78,7 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
       progress.status = StatusTypes.inQueued
       return
     }
-
+    dispatch(downloadModule.actions.requestDownload())
     progress.status = StatusTypes.downloading
 
     await download(item)
