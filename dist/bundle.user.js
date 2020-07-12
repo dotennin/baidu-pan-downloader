@@ -376,11 +376,11 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 // EXTERNAL MODULE: ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(21);
+var hoist_non_react_statics_cjs = __webpack_require__(20);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
 // EXTERNAL MODULE: ./node_modules/react-is/index.js
-var react_is = __webpack_require__(18);
+var react_is = __webpack_require__(17);
 
 // CONCATENATED MODULE: ./node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js
  // React currently throws a warning when using useLayoutEffect on the server.
@@ -1430,7 +1430,7 @@ setBatch(react_dom["unstable_batchedUpdates"]);
 
 "use strict";
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
 var initialState={maxDownloadCount:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false,error:undefined};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
@@ -1438,6 +1438,18 @@ var key=k;switch(key){case'autoStart':_gmInterface_gmInterface__WEBPACK_IMPORTED
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(38);
+var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,autoStart:true,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);_this.allDownloads=objectFromValue;Object.values(objectFromValue).forEach(function(item){if(!_this.autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
+item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}});resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};InstanceForSystem.initState();
+
+/***/ }),
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1551,18 +1563,6 @@ GM_setClipboard(data,info);},/**
    */ // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/camelcase
 info:GM_info};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
-var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,autoStart:true,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);_this.allDownloads=objectFromValue;Object.values(objectFromValue).forEach(function(item){if(!_this.autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
-item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}});resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _Item__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};
 
 /***/ }),
 /* 6 */
@@ -1700,7 +1700,8 @@ function createStructuredSelector(selectors) {
 "use strict";
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ downloadModule_fetchItem; });
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ downloadModule_addNextDownloadRequest; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ downloadModule_fetchItem; });
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__(11);
@@ -1712,127 +1713,30 @@ var asyncToGenerator = __webpack_require__(16);
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js + 1 modules
 var objectSpread2 = __webpack_require__(15);
 
-// EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(4);
-
 // EXTERNAL MODULE: ./src/types.ts
 var types = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 2 modules
 var redux_toolkit_esm = __webpack_require__(10);
 
+// EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
+var gmInterface = __webpack_require__(5);
+
 // CONCATENATED MODULE: ./src/services/api.ts
 function getDownloadUrl(path){return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
-return reject(r);}}});});}// export async function downloadItem(arr: IItem) {
-//   // Remove Item if target still in stop cluster
-//   if (InstanceForSystem.stoppedItems[arr.fs_id]) {
-//     delete InstanceForSystem.stoppedItems[arr.fs_id]
-//   }
-//
-//   if (!InstanceForSystem.downloadable) {
-//     arr.status = StatusTypes.inQueued
-//     renderOperationElement(arr)
-//     return
-//   }
-//
-//   if (arr.status === StatusTypes.error) {
-//     // re-getting url if it invalided
-//     await getDownloadUrl(arr)
-//   }
-//
-//   arr.status = StatusTypes.downloading
-//
-//   InstanceForSystem.downloadingItems[arr.fs_id] = arr
-//   const { url, server_filename } = arr
-//   let loaded = 0
-//   let currentEvent: ProgressEvent | undefined = undefined
-//   const percentOverlay = document.querySelector(`div[data-label="${arr.fs_id}"]`) as HTMLDivElement
-//   const progressRadial = percentOverlay.parentElement as HTMLDivElement
-//   const speedOverlay = percentOverlay.closest('tr')!.querySelector('td[data-label="speed"]') as HTMLTableDataCellElement
-//
-//   arr.request = GM.download({
-//     url,
-//     name: server_filename,
-//     saveAs: true,
-//     headers: {
-//       Host: 'qdall01.baidupcs.com',
-//       Accept: '*/*',
-//       'User-Agent': HeaderTypes.userAgent,
-//       'Accept-Encoding': 'identity',
-//       'Accept-Language': 'ja-JP',
-//       'Accept-Charset': '*',
-//     },
-//     onprogress: (e: ProgressEvent) => {
-//       currentEvent = e
-//
-//       const percent = Math.round((currentEvent.loaded * 100) / currentEvent.total)
-//       progressRadial.className = `progress-radial progress-${percent}`
-//       percentOverlay.innerText = `${percent}%`
-//     },
-//     onload: () => {
-//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
-//       progressRadial.className = 'progress-radial progress-100'
-//       percentOverlay.innerText = '100%'
-//       speedOverlay.innerText = ''
-//       InstanceForSystem.completedItems[arr.fs_id] = arr
-//       delete InstanceForSystem.downloadingItems[arr.fs_id]
-//
-//       GM.notification({
-//         text: '下载完成',
-//         title: server_filename,
-//         highlight: true,
-//       })
-//       arr.status = StatusTypes.completed
-//       renderOperationElement(arr)
-//
-//       addNextDownloadRequest()
-//     },
-//     onerror: (e) => {
-//       arr.progress_loader_id && clearInterval(arr.progress_loader_id)
-//       progressRadial.className = 'progress-radial progress-0'
-//       percentOverlay.innerHTML = `<span style="color: red">error</span>`
-//       speedOverlay.innerText = ''
-//       InstanceForSystem.stoppedItems[arr.fs_id] = arr
-//       delete InstanceForSystem.downloadingItems[arr.fs_id]
-//       arr.status = StatusTypes.error
-//       renderOperationElement(arr)
-//       // eslint-disable-next-line no-console
-//       console.error('（´皿｀；）出错了， 可能是URL有效期到了，需要重新点击下载按扭。如果重试还不行就重新登录', e)
-//
-//       addNextDownloadRequest()
-//     },
-//   })
-//   window.requestAnimationFrame(() => {
-//     renderOperationElement(arr)
-//   })
-//
-//   arr.progress_loader_id = window.setInterval(() => {
-//     if (currentEvent) {
-//       const speed = currentEvent.loaded - loaded
-//       loaded = currentEvent.loaded
-//       speedOverlay.innerText = `${formatByte(speed)}/s`
-//     }
-//   }, 1000)
-// }
-function addNextDownloadRequest(){// for (const fs_id in InstanceForSystem.itemsFromQueue) {
-//   // downloadItem(InstanceForSystem.allDownloads[fs_id])
-// }
-}
+return reject(r);}}});});}function download(item){var url=item.url,serverFilename=item.serverFilename,progress=item.progress;var currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;return new Promise(function(resolve,reject){progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});resolve();},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;reject(new Error(e.error));}});var loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);});}
 // EXTERNAL MODULE: ./src/selectors.ts
-var selectors = __webpack_require__(17);
+var selectors = __webpack_require__(18);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
 var interfaceModule = __webpack_require__(3);
 
+// EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
+var InstaceForSystem = __webpack_require__(4);
+
 // CONCATENATED MODULE: ./src/modules/downloadModule.ts
-var allDownloads={};var initialState={downloadItems:allDownloads,processing:0};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId].status;delete state.downloadItems[action.payload.fsId].intervalId;delete state.downloadItems[action.payload.fsId].speedOverlay;delete state.downloadItems[action.payload.fsId].percentCount;delete state.downloadItems[action.payload.fsId];// state.downloadItems[action.payload.fsId].status = StatusTypes.unknow
-// state.downloadItems[action.payload.fsId].percentCount = 0
-// state.downloadItems[action.payload.fsId].intervalId = 0
-// state.downloadItems[action.payload.fsId].speedOverlay = 0
-return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state){state.processing-=1;return state;}}});var downloadModule_fetchItem=function fetchItem(item){return/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(dispatch,getState){var progress,res,downloadable,url,serverFilename,currentEvent,loaded;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:dispatch(downloadModule.actions.requestDownload());_context.prev=1;progress=item.progress;_context.next=5;return getDownloadUrl(item.path);case 5:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);downloadable=Object(selectors["a" /* downloadableSelector */])(getState());if(downloadable){_context.next=11;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context.abrupt("return");case 11:progress.status=types["b" /* StatusTypes */].downloading;url=item.url,serverFilename=item.serverFilename;currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});dispatch(downloadModule.actions.successDownload());// addNextDownloadRequest()
-},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;// eslint-disable-next-line no-console
-dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" /* default */].actions.setError(new Error(e.error)));// addNextDownloadRequest()
-}});loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);_context.next=25;break;case 21:_context.prev=21;_context.t0=_context["catch"](1);dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" /* default */].actions.setError(_context.t0));case 25:case"end":return _context.stop();}}},_callee,null,[[1,21]]);}));return function(_x,_x2){return _ref.apply(this,arguments);};}();};/* harmony default export */ var modules_downloadModule = __webpack_exports__["a"] = (downloadModule);
+var downloadModule_allDownloads={};var initialState={downloadItems:downloadModule_allDownloads,processing:0};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId];return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state){state.processing-=1;return state;}}});var downloadModule_addNextDownloadRequest=function addNextDownloadRequest(){return function(dispatch){var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;Object.values(allDownloads).filter(function(item){return item.progress.status===types["b" /* StatusTypes */].inQueued;}).forEach(function(item){// eslint-disable-next-line @typescript-eslint/no-use-before-define
+dispatch(downloadModule_fetchItem(item));});};};var downloadModule_fetchItem=function fetchItem(item){return/*#__PURE__*/function(){var _ref=Object(asyncToGenerator["a" /* default */])(/*#__PURE__*/regenerator_default.a.mark(function _callee(dispatch,getState){var progress,res,downloadable;return regenerator_default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:dispatch(downloadModule.actions.requestDownload());_context.prev=1;progress=item.progress;_context.next=5;return getDownloadUrl(item.path);case 5:res=_context.sent;item.url=res.response.urls[0].url+'&filename='+encodeURIComponent(item.serverFilename);downloadable=Object(selectors["a" /* downloadableSelector */])(getState());if(downloadable){_context.next=11;break;}progress.status=types["b" /* StatusTypes */].inQueued;return _context.abrupt("return");case 11:progress.status=types["b" /* StatusTypes */].downloading;_context.next=14;return download(item);case 14:dispatch(downloadModule.actions.successDownload());dispatch(downloadModule_addNextDownloadRequest());_context.next=23;break;case 18:_context.prev=18;_context.t0=_context["catch"](1);dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" /* default */].actions.setError(_context.t0));dispatch(downloadModule_addNextDownloadRequest());case 23:case"end":return _context.stop();}}},_callee,null,[[1,18]]);}));return function(_x,_x2){return _ref.apply(this,arguments);};}();};/* harmony default export */ var modules_downloadModule = __webpack_exports__["b"] = (downloadModule);
 
 /***/ }),
 /* 8 */
@@ -1845,7 +1749,7 @@ dispatch(downloadModule.actions.failureDownload());dispatch(interfaceModule["a" 
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return combineReducers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return compose; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return createStore; });
-/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
+/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
 
 /**
  * These are private action types reserved by Redux.
@@ -2519,7 +2423,7 @@ var redux_toolkit_esm = __webpack_require__(10);
 var redux = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/redux-logger/dist/redux-logger.js
-var redux_logger = __webpack_require__(33);
+var redux_logger = __webpack_require__(37);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
 var interfaceModule = __webpack_require__(3);
@@ -2528,7 +2432,7 @@ var interfaceModule = __webpack_require__(3);
 var downloadModule = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./src/rootReducer.ts
-var rootReducer=Object(redux["c" /* combineReducers */])({download:downloadModule["a" /* default */].reducer,interface:interfaceModule["a" /* default */].reducer});/* harmony default export */ var src_rootReducer = (rootReducer);
+var rootReducer=Object(redux["c" /* combineReducers */])({download:downloadModule["b" /* default */].reducer,interface:interfaceModule["a" /* default */].reducer});/* harmony default export */ var src_rootReducer = (rootReducer);
 // CONCATENATED MODULE: ./src/store.ts
 var middleware=[].concat(Object(toConsumableArray["a" /* default */])(Object(redux_toolkit_esm["c" /* getDefaultMiddleware */])({serializableCheck:false})),[Object(redux_logger["createLogger"])({diff:true,collapsed:true})]);var composeEnhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true,traceLimit:10}):redux["d" /* compose */];var store=Object(redux_toolkit_esm["a" /* configureStore */])({reducer:src_rootReducer,middleware:middleware,devTools:"production"!=='production',enhancers:[composeEnhancers]});var storeSelector=function storeSelector(store){return store;};
 
@@ -5345,16 +5249,16 @@ function _taggedTemplateLiteral(strings, raw) {
 /* unused harmony export useTheme */
 /* unused harmony export version */
 /* unused harmony export withTheme */
-/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
 /* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_is__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36);
+/* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
 /* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shallowequal__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
-/* harmony import */ var _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(38);
+/* harmony import */ var _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(34);
+/* harmony import */ var _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(35);
 /* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27);
-/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(21);
+/* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__);
 
 
@@ -7329,16 +7233,6 @@ function _asyncToGenerator(fn) {
 
 /***/ }),
 /* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return downloadableSelector; });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
-var downloadableSelector=Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__[/* createSelector */ "a"])(function(store){return store.download.downloadItems;},function(store){return store.interface.maxDownloadCount;},function(allDownloads,maxDownloadCount){return Object.values(allDownloads).filter(function(item){return item.status===_types__WEBPACK_IMPORTED_MODULE_1__[/* StatusTypes */ "b"].downloading;}).length<maxDownloadCount;});
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7347,6 +7241,16 @@ var downloadableSelector=Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__[/*
 if (true) {
   module.exports = __webpack_require__(49);
 } else {}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return downloadableSelector; });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+var downloadableSelector=Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__[/* createSelector */ "a"])(function(store){return store.download.downloadItems;},function(store){return store.interface.maxDownloadCount;},function(allDownloads,maxDownloadCount){return Object.values(allDownloads).filter(function(item){return item.status===_types__WEBPACK_IMPORTED_MODULE_1__[/* StatusTypes */ "b"].downloading;}).length<maxDownloadCount;});
 
 /***/ }),
 /* 19 */
@@ -7407,34 +7311,12 @@ function _templateObject(){var data=Object(taggedTemplateLiteral["a" /* default 
 
 /***/ }),
 /* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var reactIs = __webpack_require__(18);
+var reactIs = __webpack_require__(17);
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -7539,6 +7421,28 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 module.exports = hoistNonReactStatics;
 
 /***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+/***/ }),
 /* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7635,10 +7539,16 @@ function _toConsumableArray(arr) {
 
 /***/ }),
 /* 25 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"a\":\"baidu-pan-downloader\"}");
+
+/***/ }),
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36);
 /* global window */
 
 var root;
@@ -7655,13 +7565,7 @@ if (typeof self !== 'undefined') {
 
 var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29), __webpack_require__(28)(module)))
-
-/***/ }),
-/* 26 */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"a\":\"baidu-pan-downloader\"}");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(30), __webpack_require__(28)(module)))
 
 /***/ }),
 /* 27 */
@@ -7726,29 +7630,6 @@ module.exports = function (originalModule) {
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports) {
-
-var g; // This works in non-strict mode
-
-g = function () {
-  return this;
-}();
-
-try {
-  // This works if eval is allowed (see CSP)
-  g = g || new Function("return this")();
-} catch (e) {
-  // This works if the window reference is available
-  if (typeof window === "object") g = window;
-} // g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-
-module.exports = g;
-
-/***/ }),
-/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7849,6 +7730,29 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+var g; // This works in non-strict mode
+
+g = function () {
+  return this;
+}();
+
+try {
+  // This works if eval is allowed (see CSP)
+  g = g || new Function("return this")();
+} catch (e) {
+  // This works if the window reference is available
+  if (typeof window === "object") g = window;
+} // g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+
+module.exports = g;
+
+/***/ }),
 /* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7867,7 +7771,7 @@ var objectSpread2 = __webpack_require__(15);
 var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(5);
+var InstaceForSystem = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/types.ts
 var types = __webpack_require__(1);
@@ -7879,10 +7783,10 @@ var interfaceModule = __webpack_require__(3);
 var downloadModule = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./src/selectors.ts
-var selectors = __webpack_require__(17);
+var selectors = __webpack_require__(18);
 
 // CONCATENATED MODULE: ./src/containers/FloatingButtons.tsx
-var FloatingButtons_mapStoreToProps=function mapStoreToProps(store){return{autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store)};};var FloatingButtons_FloatingButtons=function FloatingButtons(_ref){var autoStart=_ref.autoStart,downloadable=_ref.downloadable;var dispatch=Object(es["d" /* useDispatch */])();var _useSelector=Object(es["e" /* useSelector */])(function(state){return state.download;}),downloadItems=_useSelector.downloadItems;return/*#__PURE__*/react_default.a.createElement("div",{id:"container-floating"},/*#__PURE__*/react_default.a.createElement("div",{id:"config-button",className:"nd1 nds","data-toggle":"tooltip","data-placement":"left",onClick:function onClick(){dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"reminder",src:"https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png"})),/*#__PURE__*/react_default.a.createElement("div",{id:"floating-button","data-toggle":"tooltip","data-placement":"left","data-original-title":"Create",onClick:function onClick(){var selectedList=InstaceForSystem["a" /* InstanceForSystem */].selectedList;var newItems=Object(objectSpread2["a" /* default */])({},downloadItems);var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;selectedList.forEach(function(item){if(typeof downloadItems[item.fsId]==='undefined'){item.progress.status=types["b" /* StatusTypes */].inQueued;var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;allDownloads[item.fsId]=item;newItems[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};if(downloadable&&autoStart){dispatch(Object(downloadModule["b" /* fetchItem */])(item));}}});dispatch(downloadModule["a" /* default */].actions.change({downloadItems:newItems}));dispatch(interfaceModule["a" /* default */].actions.change({downloadModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("p",{className:"plus"},"+"),/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"edit",src:"//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"})));};/* harmony default export */ var containers_FloatingButtons = (Object(es["b" /* connect */])(FloatingButtons_mapStoreToProps)(FloatingButtons_FloatingButtons));
+var FloatingButtons_mapStoreToProps=function mapStoreToProps(store){return{autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store)};};var FloatingButtons_FloatingButtons=function FloatingButtons(_ref){var autoStart=_ref.autoStart,downloadable=_ref.downloadable;var dispatch=Object(es["d" /* useDispatch */])();var _useSelector=Object(es["e" /* useSelector */])(function(state){return state.download;}),downloadItems=_useSelector.downloadItems;return/*#__PURE__*/react_default.a.createElement("div",{id:"container-floating"},/*#__PURE__*/react_default.a.createElement("div",{id:"config-button",className:"nd1 nds","data-toggle":"tooltip","data-placement":"left",onClick:function onClick(){dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"reminder",src:"https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png"})),/*#__PURE__*/react_default.a.createElement("div",{id:"floating-button","data-toggle":"tooltip","data-placement":"left","data-original-title":"Create",onClick:function onClick(){var selectedList=InstaceForSystem["a" /* InstanceForSystem */].selectedList;var newItems=Object(objectSpread2["a" /* default */])({},downloadItems);var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;console.log(allDownloads);selectedList.forEach(function(item){if(typeof downloadItems[item.fsId]==='undefined'){item.progress.status=types["b" /* StatusTypes */].inQueued;var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;allDownloads[item.fsId]=item;newItems[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};if(downloadable&&autoStart){dispatch(Object(downloadModule["c" /* fetchItem */])(item));}}});dispatch(downloadModule["b" /* default */].actions.change({downloadItems:newItems}));dispatch(interfaceModule["a" /* default */].actions.change({downloadModalOpen:true}));}},/*#__PURE__*/react_default.a.createElement("p",{className:"plus"},"+"),/*#__PURE__*/react_default.a.createElement("img",{alt:'bt_compose2_1x',className:"edit",src:"//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"})));};/* harmony default export */ var containers_FloatingButtons = (Object(es["b" /* connect */])(FloatingButtons_mapStoreToProps)(FloatingButtons_FloatingButtons));
 // EXTERNAL MODULE: ./src/components/Modal.tsx + 2 modules
 var Modal = __webpack_require__(19);
 
@@ -7890,15 +7794,13 @@ var Modal = __webpack_require__(19);
 var utils = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./src/containers/DownloadList/Operation.tsx
-var Operation_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{status:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.status};};function Operation(_ref){var fsId=_ref.fsId,status=_ref.status;var targetItem=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];var dispatch=Object(es["d" /* useDispatch */])();var stopItem=function stopItem(){if(targetItem){var _targetItem$progress$;if(status===types["b" /* StatusTypes */].downloading){if(!window.confirm('停止后将需要重新下载， 确认吗？')){return false;}}targetItem.progress.status=types["b" /* StatusTypes */].stopped;((_targetItem$progress$=targetItem.progress.request)===null||_targetItem$progress$===void 0?void 0:_targetItem$progress$.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);// addNextDownloadRequest()
-return false;}};var deleteItem=function deleteItem(){if(targetItem){var _targetItem$progress$2;((_targetItem$progress$2=targetItem.progress.request)===null||_targetItem$progress$2===void 0?void 0:_targetItem$progress$2.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);delete InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];dispatch(downloadModule["a" /* default */].actions.removeItem({fsId:fsId}));}// addNextDownloadRequest()
-};return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement("svg",{id:"start-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'disabled':''),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:function onClick(){dispatch(Object(downloadModule["b" /* fetchItem */])(targetItem));}},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M8 5v14l11-7z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"stop-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'':'disabled'),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:stopItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M6 6h12v12H6z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"delete-item-".concat(fsId),className:"delete-item",style:{position:'absolute',right:5},xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:deleteItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"})));}/* harmony default export */ var DownloadList_Operation = (Object(es["b" /* connect */])(Operation_mapStoreToProps)(Operation));
+var Operation_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{status:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.status};};function Operation(_ref){var fsId=_ref.fsId,status=_ref.status;var targetItem=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];var dispatch=Object(es["d" /* useDispatch */])();var stopItem=function stopItem(){if(targetItem){var _targetItem$progress$;if(status===types["b" /* StatusTypes */].downloading){if(!window.confirm('停止后将需要重新下载， 确认吗？')){return false;}}targetItem.progress.status=types["b" /* StatusTypes */].stopped;((_targetItem$progress$=targetItem.progress.request)===null||_targetItem$progress$===void 0?void 0:_targetItem$progress$.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);dispatch(Object(downloadModule["a" /* addNextDownloadRequest */])());return false;}};var deleteItem=function deleteItem(){if(targetItem){var _targetItem$progress$2;((_targetItem$progress$2=targetItem.progress.request)===null||_targetItem$progress$2===void 0?void 0:_targetItem$progress$2.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);delete InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];dispatch(downloadModule["b" /* default */].actions.removeItem({fsId:fsId}));}dispatch(Object(downloadModule["a" /* addNextDownloadRequest */])());};return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement("svg",{id:"start-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'disabled':''),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:function onClick(){dispatch(Object(downloadModule["c" /* fetchItem */])(targetItem));}},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M8 5v14l11-7z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"stop-item-".concat(fsId),className:"".concat([types["b" /* StatusTypes */].downloading,types["b" /* StatusTypes */].inQueued].includes(status)?'':'disabled'),xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:stopItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M6 6h12v12H6z"})),/*#__PURE__*/react_default.a.createElement("svg",{id:"delete-item-".concat(fsId),className:"delete-item",style:{position:'absolute',right:5},xmlns:"http://www.w3.org/2000/svg",height:"24",viewBox:"0 0 24 24",width:"24",onClick:deleteItem},/*#__PURE__*/react_default.a.createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),/*#__PURE__*/react_default.a.createElement("path",{d:"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"})));}/* harmony default export */ var DownloadList_Operation = (Object(es["b" /* connect */])(Operation_mapStoreToProps)(Operation));
 // CONCATENATED MODULE: ./src/containers/DownloadList/ProgressStatus.tsx
 var ProgressStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{percentCount:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.percentCount};};function ProgressStatus(_ref){var percentCount=_ref.percentCount;return/*#__PURE__*/react_default.a.createElement("div",{className:"progress-radial progress-".concat(percentCount)},/*#__PURE__*/react_default.a.createElement("div",{className:"overlay"},percentCount,"%"));}/* harmony default export */ var DownloadList_ProgressStatus = (Object(es["b" /* connect */])(ProgressStatus_mapStoreToProps)(ProgressStatus));
 // CONCATENATED MODULE: ./src/containers/DownloadList/SpeedStatus.tsx
 var SpeedStatus_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{speedOverlay:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.speedOverlay};};function SpeedStatus(_ref){var speedOverlay=_ref.speedOverlay;return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,Object(utils["b" /* formatByte */])(speedOverlay)," /s");}/* harmony default export */ var DownloadList_SpeedStatus = (Object(es["b" /* connect */])(SpeedStatus_mapStoreToProps)(SpeedStatus));
 // CONCATENATED MODULE: ./src/containers/DownloadList/Item.tsx
-function Item(_ref){var fsId=_ref.fsId;var _InstanceForSystem$al=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId],serverFilename=_InstanceForSystem$al.serverFilename,size=_InstanceForSystem$al.size;return/*#__PURE__*/react_default.a.createElement("tr",{id:'row-'+fsId},/*#__PURE__*/react_default.a.createElement("td",{"data-label":"filename"},serverFilename),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"download"},/*#__PURE__*/react_default.a.createElement("div",{className:"wrap"},/*#__PURE__*/react_default.a.createElement(DownloadList_ProgressStatus,{fsId:fsId}))),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"url"},Object(utils["b" /* formatByte */])(size)),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"speed"},/*#__PURE__*/react_default.a.createElement(DownloadList_SpeedStatus,{fsId:fsId})),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"operation"},/*#__PURE__*/react_default.a.createElement(DownloadList_Operation,{fsId:fsId})));}/* harmony default export */ var DownloadList_Item = (Item);
+function Item(_ref){var fsId=_ref.fsId;var item=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];if(!item){return null;}var _InstanceForSystem$al=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId],serverFilename=_InstanceForSystem$al.serverFilename,size=_InstanceForSystem$al.size;return/*#__PURE__*/react_default.a.createElement("tr",{id:'row-'+fsId},/*#__PURE__*/react_default.a.createElement("td",{"data-label":"filename",style:{wordBreak:'break-all'}},serverFilename),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"download"},/*#__PURE__*/react_default.a.createElement("div",{className:"wrap"},/*#__PURE__*/react_default.a.createElement(DownloadList_ProgressStatus,{fsId:fsId}))),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"url"},Object(utils["b" /* formatByte */])(size)),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"speed"},/*#__PURE__*/react_default.a.createElement(DownloadList_SpeedStatus,{fsId:fsId})),/*#__PURE__*/react_default.a.createElement("td",{"data-label":"operation"},/*#__PURE__*/react_default.a.createElement(DownloadList_Operation,{fsId:fsId})));}/* harmony default export */ var DownloadList_Item = (Item);
 // EXTERNAL MODULE: ./node_modules/reselect/es/index.js
 var reselect_es = __webpack_require__(6);
 
@@ -7923,7 +7825,7 @@ function _templateObject2(){var data=Object(taggedTemplateLiteral["a" /* default
 // `
 var Preferences_mapStoreToProps=function mapStoreToProps(store){return{configModalOpen:store.interface.configModalOpen,autoStart:store.interface.autoStart,downloadable:Object(selectors["a" /* downloadableSelector */])(store),maxDownloadCount:store.interface.maxDownloadCount};};var Preferences_mapActionsToProps=function mapActionsToProps(dispatch){return{closeModal:function closeModal(){return dispatch(interfaceModule["a" /* default */].actions.change({configModalOpen:false}));},setAutoStart:function setAutoStart(e){dispatch(interfaceModule["a" /* default */].actions.change({autoStart:e.target.checked}));},setMaxDownloadCount:function setMaxDownloadCount(e){var count=parseInt(e.target.value);dispatch(interfaceModule["a" /* default */].actions.change({maxDownloadCount:count}));}};};function Preferences(_ref){var configModalOpen=_ref.configModalOpen,autoStart=_ref.autoStart,maxDownloadCount=_ref.maxDownloadCount,closeModal=_ref.closeModal,setAutoStart=_ref.setAutoStart,setMaxDownloadCount=_ref.setMaxDownloadCount;return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{open:configModalOpen,close:closeModal},/*#__PURE__*/react_default.a.createElement(Form,{action:"#"},/*#__PURE__*/react_default.a.createElement("header",{style:{margin:'0 0 20px 0'}},/*#__PURE__*/react_default.a.createElement("h2",{style:{margin:'0 0 5px 0'}},"\u4E0B\u8F7D\u8BBE\u7F6E"),/*#__PURE__*/react_default.a.createElement("div",{style:{fontSize:'90%',color:'#999'}},"\u5982\u679C\u4E0B\u8F7D\u7ECF\u5E38\u51FA\u9519\uFF0C\u5EFA\u8BAE\u5C06\u4E0B\u8F7D\u6570\u8BBE\u7F6E\u4E3A1")),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("label",{htmlFor:'auto-start'},"\u81EA\u52A8\u4E0B\u8F7D"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("input",{type:"checkbox",name:"checkbox",value:"true",checked:autoStart,id:"auto-start",tabIndex:1,onChange:setAutoStart}))),/*#__PURE__*/react_default.a.createElement(FormField,null,/*#__PURE__*/react_default.a.createElement("legend",null,"\u6700\u5927\u540C\u65F6\u4E0B\u8F7D\u6570"),/*#__PURE__*/react_default.a.createElement("div",null,/*#__PURE__*/react_default.a.createElement("select",{defaultValue:maxDownloadCount,id:"max-download-count",className:"field select medium",tabIndex:2,onChange:setMaxDownloadCount},Object(toConsumableArray["a" /* default */])(Array(InstaceForSystem["a" /* InstanceForSystem */].maxDownloadCount).keys()).map(function(i){return++i;}).map(function(i,key){return/*#__PURE__*/react_default.a.createElement("option",{key:key,value:i},i);}))))));}/* harmony default export */ var containers_Preferences = (Object(es["b" /* connect */])(Preferences_mapStoreToProps,Preferences_mapActionsToProps)(Preferences));
 // EXTERNAL MODULE: ./src/gmInterface/gmInterface.ts
-var gmInterface = __webpack_require__(4);
+var gmInterface = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/store.ts + 1 modules
 var src_store = __webpack_require__(9);
@@ -7938,669 +7840,13 @@ var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export ProgressProxy */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemProxy; });
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
-var ProgressProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,null,[{key:"Parse",value:function Parse(d){return ProgressProxy.Create(d);}},{key:"Create",value:function Create(fsId){return new ProgressProxy(fsId);}}]);function ProgressProxy(fsId){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ProgressProxy);this.intervalId=void 0;this.request=void 0;this._speedOverlay=void 0;this._status=void 0;this._percentCount=void 0;this.fsId=void 0;this.fsId=fsId;this.percentCount=0;this.speedOverlay=0;this.status=_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow;}Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,[{key:"speedOverlay",set:function set(v){if(this._speedOverlay===v)return;this._speedOverlay=v;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{speedOverlay:this.speedOverlay}}));},get:function get(){return this._speedOverlay;}},{key:"percentCount",set:function set(v){if(this._percentCount===v)return;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{percentCount:this.percentCount}}));},get:function get(){return this._percentCount;}},{key:"status",set:function set(v){if(this._status===v)return;this._status=v;if(v===_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow)return;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].actions.updateProgress({fsId:this.fsId,progress:{status:this.status}}));},get:function get(){return this._status;}}]);return ProgressProxy;}();var ItemProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ItemProxy,null,[{key:"Parse",value:function Parse(d){return ItemProxy.Create(JSON.parse(d));}},{key:"Create",value:function Create(d){return new ItemProxy(d);}}]);function ItemProxy(d){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ItemProxy);this.category=void 0;this.fsId=void 0;this.isDir=void 0;this.localCtime=void 0;this.localMtime=void 0;this.md5=void 0;this.operId=void 0;this.path=void 0;this.privacy=void 0;this.serverAtime=void 0;this.serverCtime=void 0;this.serverFilename=void 0;this.serverMtime=void 0;this.share=void 0;this.size=void 0;this.unList=void 0;this.url=void 0;this.progress=void 0;this.category=d.category;this.fsId=d.fs_id;this.isDir=d.isdir;this.localCtime=d.local_ctime;this.localMtime=d.local_mtime;this.md5=d.md5;this.operId=d.oper_id;this.path=d.path;this.privacy=d.privacy;this.serverAtime=d.server_atime;this.serverCtime=d.server_ctime;this.serverFilename=d.server_filename;this.serverMtime=d.server_mtime;this.share=d.share;this.size=d.size;this.unList=d.unlist;this.url=d.url;this.progress=ProgressProxy.Create(this.fsId);}return ItemProxy;}();
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {!function (e, t) {
-   true ? t(exports) : undefined;
-}(this, function (e) {
-  "use strict";
-
-  function t(e, t) {
-    e.super_ = t, e.prototype = Object.create(t.prototype, {
-      constructor: {
-        value: e,
-        enumerable: !1,
-        writable: !0,
-        configurable: !0
-      }
-    });
-  }
-
-  function r(e, t) {
-    Object.defineProperty(this, "kind", {
-      value: e,
-      enumerable: !0
-    }), t && t.length && Object.defineProperty(this, "path", {
-      value: t,
-      enumerable: !0
-    });
-  }
-
-  function n(e, t, r) {
-    n.super_.call(this, "E", e), Object.defineProperty(this, "lhs", {
-      value: t,
-      enumerable: !0
-    }), Object.defineProperty(this, "rhs", {
-      value: r,
-      enumerable: !0
-    });
-  }
-
-  function o(e, t) {
-    o.super_.call(this, "N", e), Object.defineProperty(this, "rhs", {
-      value: t,
-      enumerable: !0
-    });
-  }
-
-  function i(e, t) {
-    i.super_.call(this, "D", e), Object.defineProperty(this, "lhs", {
-      value: t,
-      enumerable: !0
-    });
-  }
-
-  function a(e, t, r) {
-    a.super_.call(this, "A", e), Object.defineProperty(this, "index", {
-      value: t,
-      enumerable: !0
-    }), Object.defineProperty(this, "item", {
-      value: r,
-      enumerable: !0
-    });
-  }
-
-  function f(e, t, r) {
-    var n = e.slice((r || t) + 1 || e.length);
-    return e.length = t < 0 ? e.length + t : t, e.push.apply(e, n), e;
-  }
-
-  function u(e) {
-    var t = "undefined" == typeof e ? "undefined" : N(e);
-    return "object" !== t ? t : e === Math ? "math" : null === e ? "null" : Array.isArray(e) ? "array" : "[object Date]" === Object.prototype.toString.call(e) ? "date" : "function" == typeof e.toString && /^\/.*\//.test(e.toString()) ? "regexp" : "object";
-  }
-
-  function l(e, t, r, c, s, d, p) {
-    s = s || [], p = p || [];
-    var g = s.slice(0);
-
-    if ("undefined" != typeof d) {
-      if (c) {
-        if ("function" == typeof c && c(g, d)) return;
-
-        if ("object" === ("undefined" == typeof c ? "undefined" : N(c))) {
-          if (c.prefilter && c.prefilter(g, d)) return;
-
-          if (c.normalize) {
-            var h = c.normalize(g, d, e, t);
-            h && (e = h[0], t = h[1]);
-          }
-        }
-      }
-
-      g.push(d);
-    }
-
-    "regexp" === u(e) && "regexp" === u(t) && (e = e.toString(), t = t.toString());
-    var y = "undefined" == typeof e ? "undefined" : N(e),
-        v = "undefined" == typeof t ? "undefined" : N(t),
-        b = "undefined" !== y || p && p[p.length - 1].lhs && p[p.length - 1].lhs.hasOwnProperty(d),
-        m = "undefined" !== v || p && p[p.length - 1].rhs && p[p.length - 1].rhs.hasOwnProperty(d);
-    if (!b && m) r(new o(g, t));else if (!m && b) r(new i(g, e));else if (u(e) !== u(t)) r(new n(g, e, t));else if ("date" === u(e) && e - t !== 0) r(new n(g, e, t));else if ("object" === y && null !== e && null !== t) {
-      if (p.filter(function (t) {
-        return t.lhs === e;
-      }).length) e !== t && r(new n(g, e, t));else {
-        if (p.push({
-          lhs: e,
-          rhs: t
-        }), Array.isArray(e)) {
-          var w;
-          e.length;
-
-          for (w = 0; w < e.length; w++) {
-            w >= t.length ? r(new a(g, w, new i(void 0, e[w]))) : l(e[w], t[w], r, c, g, w, p);
-          }
-
-          for (; w < t.length;) {
-            r(new a(g, w, new o(void 0, t[w++])));
-          }
-        } else {
-          var x = Object.keys(e),
-              S = Object.keys(t);
-          x.forEach(function (n, o) {
-            var i = S.indexOf(n);
-            i >= 0 ? (l(e[n], t[n], r, c, g, n, p), S = f(S, i)) : l(e[n], void 0, r, c, g, n, p);
-          }), S.forEach(function (e) {
-            l(void 0, t[e], r, c, g, e, p);
-          });
-        }
-
-        p.length = p.length - 1;
-      }
-    } else e !== t && ("number" === y && isNaN(e) && isNaN(t) || r(new n(g, e, t)));
-  }
-
-  function c(e, t, r, n) {
-    return n = n || [], l(e, t, function (e) {
-      e && n.push(e);
-    }, r), n.length ? n : void 0;
-  }
-
-  function s(e, t, r) {
-    if (r.path && r.path.length) {
-      var n,
-          o = e[t],
-          i = r.path.length - 1;
-
-      for (n = 0; n < i; n++) {
-        o = o[r.path[n]];
-      }
-
-      switch (r.kind) {
-        case "A":
-          s(o[r.path[n]], r.index, r.item);
-          break;
-
-        case "D":
-          delete o[r.path[n]];
-          break;
-
-        case "E":
-        case "N":
-          o[r.path[n]] = r.rhs;
-      }
-    } else switch (r.kind) {
-      case "A":
-        s(e[t], r.index, r.item);
-        break;
-
-      case "D":
-        e = f(e, t);
-        break;
-
-      case "E":
-      case "N":
-        e[t] = r.rhs;
-    }
-
-    return e;
-  }
-
-  function d(e, t, r) {
-    if (e && t && r && r.kind) {
-      for (var n = e, o = -1, i = r.path ? r.path.length - 1 : 0; ++o < i;) {
-        "undefined" == typeof n[r.path[o]] && (n[r.path[o]] = "number" == typeof r.path[o] ? [] : {}), n = n[r.path[o]];
-      }
-
-      switch (r.kind) {
-        case "A":
-          s(r.path ? n[r.path[o]] : n, r.index, r.item);
-          break;
-
-        case "D":
-          delete n[r.path[o]];
-          break;
-
-        case "E":
-        case "N":
-          n[r.path[o]] = r.rhs;
-      }
-    }
-  }
-
-  function p(e, t, r) {
-    if (r.path && r.path.length) {
-      var n,
-          o = e[t],
-          i = r.path.length - 1;
-
-      for (n = 0; n < i; n++) {
-        o = o[r.path[n]];
-      }
-
-      switch (r.kind) {
-        case "A":
-          p(o[r.path[n]], r.index, r.item);
-          break;
-
-        case "D":
-          o[r.path[n]] = r.lhs;
-          break;
-
-        case "E":
-          o[r.path[n]] = r.lhs;
-          break;
-
-        case "N":
-          delete o[r.path[n]];
-      }
-    } else switch (r.kind) {
-      case "A":
-        p(e[t], r.index, r.item);
-        break;
-
-      case "D":
-        e[t] = r.lhs;
-        break;
-
-      case "E":
-        e[t] = r.lhs;
-        break;
-
-      case "N":
-        e = f(e, t);
-    }
-
-    return e;
-  }
-
-  function g(e, t, r) {
-    if (e && t && r && r.kind) {
-      var n,
-          o,
-          i = e;
-
-      for (o = r.path.length - 1, n = 0; n < o; n++) {
-        "undefined" == typeof i[r.path[n]] && (i[r.path[n]] = {}), i = i[r.path[n]];
-      }
-
-      switch (r.kind) {
-        case "A":
-          p(i[r.path[n]], r.index, r.item);
-          break;
-
-        case "D":
-          i[r.path[n]] = r.lhs;
-          break;
-
-        case "E":
-          i[r.path[n]] = r.lhs;
-          break;
-
-        case "N":
-          delete i[r.path[n]];
-      }
-    }
-  }
-
-  function h(e, t, r) {
-    if (e && t) {
-      var n = function n(_n) {
-        r && !r(e, t, _n) || d(e, t, _n);
-      };
-
-      l(e, t, n);
-    }
-  }
-
-  function y(e) {
-    return "color: " + F[e].color + "; font-weight: bold";
-  }
-
-  function v(e) {
-    var t = e.kind,
-        r = e.path,
-        n = e.lhs,
-        o = e.rhs,
-        i = e.index,
-        a = e.item;
-
-    switch (t) {
-      case "E":
-        return [r.join("."), n, "→", o];
-
-      case "N":
-        return [r.join("."), o];
-
-      case "D":
-        return [r.join(".")];
-
-      case "A":
-        return [r.join(".") + "[" + i + "]", a];
-
-      default:
-        return [];
-    }
-  }
-
-  function b(e, t, r, n) {
-    var o = c(e, t);
-
-    try {
-      n ? r.groupCollapsed("diff") : r.group("diff");
-    } catch (e) {
-      r.log("diff");
-    }
-
-    o ? o.forEach(function (e) {
-      var t = e.kind,
-          n = v(e);
-      r.log.apply(r, ["%c " + F[t].text, y(t)].concat(P(n)));
-    }) : r.log("—— no diff ——");
-
-    try {
-      r.groupEnd();
-    } catch (e) {
-      r.log("—— diff end —— ");
-    }
-  }
-
-  function m(e, t, r, n) {
-    switch ("undefined" == typeof e ? "undefined" : N(e)) {
-      case "object":
-        return "function" == typeof e[n] ? e[n].apply(e, P(r)) : e[n];
-
-      case "function":
-        return e(t);
-
-      default:
-        return e;
-    }
-  }
-
-  function w(e) {
-    var t = e.timestamp,
-        r = e.duration;
-    return function (e, n, o) {
-      var i = ["action"];
-      return i.push("%c" + String(e.type)), t && i.push("%c@ " + n), r && i.push("%c(in " + o.toFixed(2) + " ms)"), i.join(" ");
-    };
-  }
-
-  function x(e, t) {
-    var r = t.logger,
-        n = t.actionTransformer,
-        o = t.titleFormatter,
-        i = void 0 === o ? w(t) : o,
-        a = t.collapsed,
-        f = t.colors,
-        u = t.level,
-        l = t.diff,
-        c = "undefined" == typeof t.titleFormatter;
-    e.forEach(function (o, s) {
-      var d = o.started,
-          p = o.startedTime,
-          g = o.action,
-          h = o.prevState,
-          y = o.error,
-          v = o.took,
-          w = o.nextState,
-          x = e[s + 1];
-      x && (w = x.prevState, v = x.started - d);
-      var S = n(g),
-          k = "function" == typeof a ? a(function () {
-        return w;
-      }, g, o) : a,
-          j = D(p),
-          E = f.title ? "color: " + f.title(S) + ";" : "",
-          A = ["color: gray; font-weight: lighter;"];
-      A.push(E), t.timestamp && A.push("color: gray; font-weight: lighter;"), t.duration && A.push("color: gray; font-weight: lighter;");
-      var O = i(S, j, v);
-
-      try {
-        k ? f.title && c ? r.groupCollapsed.apply(r, ["%c " + O].concat(A)) : r.groupCollapsed(O) : f.title && c ? r.group.apply(r, ["%c " + O].concat(A)) : r.group(O);
-      } catch (e) {
-        r.log(O);
-      }
-
-      var N = m(u, S, [h], "prevState"),
-          P = m(u, S, [S], "action"),
-          C = m(u, S, [y, h], "error"),
-          F = m(u, S, [w], "nextState");
-      if (N) if (f.prevState) {
-        var L = "color: " + f.prevState(h) + "; font-weight: bold";
-        r[N]("%c prev state", L, h);
-      } else r[N]("prev state", h);
-      if (P) if (f.action) {
-        var T = "color: " + f.action(S) + "; font-weight: bold";
-        r[P]("%c action    ", T, S);
-      } else r[P]("action    ", S);
-      if (y && C) if (f.error) {
-        var M = "color: " + f.error(y, h) + "; font-weight: bold;";
-        r[C]("%c error     ", M, y);
-      } else r[C]("error     ", y);
-      if (F) if (f.nextState) {
-        var _ = "color: " + f.nextState(w) + "; font-weight: bold";
-
-        r[F]("%c next state", _, w);
-      } else r[F]("next state", w);
-      l && b(h, w, r, k);
-
-      try {
-        r.groupEnd();
-      } catch (e) {
-        r.log("—— log end ——");
-      }
-    });
-  }
-
-  function S() {
-    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
-        t = Object.assign({}, L, e),
-        r = t.logger,
-        n = t.stateTransformer,
-        o = t.errorTransformer,
-        i = t.predicate,
-        a = t.logErrors,
-        f = t.diffPredicate;
-    if ("undefined" == typeof r) return function () {
-      return function (e) {
-        return function (t) {
-          return e(t);
-        };
-      };
-    };
-    if (e.getState && e.dispatch) return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"), function () {
-      return function (e) {
-        return function (t) {
-          return e(t);
-        };
-      };
-    };
-    var u = [];
-    return function (e) {
-      var r = e.getState;
-      return function (e) {
-        return function (l) {
-          if ("function" == typeof i && !i(r, l)) return e(l);
-          var c = {};
-          u.push(c), c.started = O.now(), c.startedTime = new Date(), c.prevState = n(r()), c.action = l;
-          var s = void 0;
-          if (a) try {
-            s = e(l);
-          } catch (e) {
-            c.error = o(e);
-          } else s = e(l);
-          c.took = O.now() - c.started, c.nextState = n(r());
-          var d = t.diff && "function" == typeof f ? f(r, l) : t.diff;
-          if (x(u, Object.assign({}, t, {
-            diff: d
-          })), u.length = 0, c.error) throw c.error;
-          return s;
-        };
-      };
-    };
-  }
-
-  var k,
-      j,
-      E = function E(e, t) {
-    return new Array(t + 1).join(e);
-  },
-      A = function A(e, t) {
-    return E("0", t - e.toString().length) + e;
-  },
-      D = function D(e) {
-    return A(e.getHours(), 2) + ":" + A(e.getMinutes(), 2) + ":" + A(e.getSeconds(), 2) + "." + A(e.getMilliseconds(), 3);
-  },
-      O = "undefined" != typeof performance && null !== performance && "function" == typeof performance.now ? performance : Date,
-      N = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
-    return typeof e;
-  } : function (e) {
-    return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  },
-      P = function P(e) {
-    if (Array.isArray(e)) {
-      for (var t = 0, r = Array(e.length); t < e.length; t++) {
-        r[t] = e[t];
-      }
-
-      return r;
-    }
-
-    return Array.from(e);
-  },
-      C = [];
-
-  k = "object" === ("undefined" == typeof global ? "undefined" : N(global)) && global ? global : "undefined" != typeof window ? window : {}, j = k.DeepDiff, j && C.push(function () {
-    "undefined" != typeof j && k.DeepDiff === c && (k.DeepDiff = j, j = void 0);
-  }), t(n, r), t(o, r), t(i, r), t(a, r), Object.defineProperties(c, {
-    diff: {
-      value: c,
-      enumerable: !0
-    },
-    observableDiff: {
-      value: l,
-      enumerable: !0
-    },
-    applyDiff: {
-      value: h,
-      enumerable: !0
-    },
-    applyChange: {
-      value: d,
-      enumerable: !0
-    },
-    revertChange: {
-      value: g,
-      enumerable: !0
-    },
-    isConflict: {
-      value: function value() {
-        return "undefined" != typeof j;
-      },
-      enumerable: !0
-    },
-    noConflict: {
-      value: function value() {
-        return C && (C.forEach(function (e) {
-          e();
-        }), C = null), c;
-      },
-      enumerable: !0
-    }
-  });
-
-  var F = {
-    E: {
-      color: "#2196F3",
-      text: "CHANGED:"
-    },
-    N: {
-      color: "#4CAF50",
-      text: "ADDED:"
-    },
-    D: {
-      color: "#F44336",
-      text: "DELETED:"
-    },
-    A: {
-      color: "#2196F3",
-      text: "ARRAY:"
-    }
-  },
-      L = {
-    level: "log",
-    logger: console,
-    logErrors: !0,
-    collapsed: void 0,
-    predicate: void 0,
-    duration: !1,
-    timestamp: !0,
-    stateTransformer: function stateTransformer(e) {
-      return e;
-    },
-    actionTransformer: function actionTransformer(e) {
-      return e;
-    },
-    errorTransformer: function errorTransformer(e) {
-      return e;
-    },
-    colors: {
-      title: function title() {
-        return "inherit";
-      },
-      prevState: function prevState() {
-        return "#9E9E9E";
-      },
-      action: function action() {
-        return "#03A9F4";
-      },
-      nextState: function nextState() {
-        return "#4CAF50";
-      },
-      error: function error() {
-        return "#F20404";
-      }
-    },
-    diff: !1,
-    diffPredicate: void 0,
-    transformer: void 0
-  },
-      T = function T() {
-    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
-        t = e.dispatch,
-        r = e.getState;
-    return "function" == typeof t || "function" == typeof r ? S()({
-      dispatch: t,
-      getState: r
-    }) : void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n");
-  };
-
-  e.defaults = L, e.createLogger = S, e.logger = T, e.default = T, Object.defineProperty(e, "__esModule", {
-    value: !0
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)))
-
-/***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
-function symbolObservablePonyfill(root) {
-  var result;
-  var Symbol = root.Symbol;
-
-  if (typeof Symbol === 'function') {
-    if (Symbol.observable) {
-      result = Symbol.observable;
-    } else {
-      result = Symbol('observable');
-      Symbol.observable = result;
-    }
-  } else {
-    result = '@@observable';
-  }
-
-  return result;
-}
-;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GlobalStyle; });
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 function _templateObject(){var data=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(["\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    padding: 30px 0;\n    background-color: #2f3439;\n    font-family: \"Noto Sans\", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won't be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  /* modal */\n  .modal-wrapper {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n\n    opacity: 0;\n    visibility: hidden;\n    transition: opacity .3s, visibility .3s;\n  }\n\n  .modal-wrapper.open {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n  }\n\n  .modal-wrapper::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: \"\"\n  }\n\n  .modal-wrapper .modal-window {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 60vw;\n    /*padding: 30px 30px 15px;*/\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle;\n    align-self: center;\n  }\n\n  .modal-wrapper .modal-window .modal-content {\n    max-height: 60vh;\n    overflow-y: auto;\n  }\n\n  .modal-overlay {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n  }\n\n  .modal-wrapper .modal-close {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c!important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0;\n    cursor: pointer;\n  }\n\n  .modal-wrapper .modal-close:hover {\n    color: #2b2e38!important\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, \"Courier New\", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: 'Roboto';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  td > svg {\n    cursor: pointer;\n  }\n  td > svg:hover {\n    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n    background-color: rgba(255,255,255,0.56);\n  }\n"]);_templateObject=function _templateObject(){return data;};return data;}var GlobalStyle=Object(styled_components__WEBPACK_IMPORTED_MODULE_1__[/* createGlobalStyle */ "a"])(_templateObject());
 
 /***/ }),
-/* 36 */
+/* 33 */
 /***/ (function(module, exports) {
 
 //
@@ -8648,7 +7894,7 @@ module.exports = function shallowEqual(objA, objB, compare, compareContext) {
 };
 
 /***/ }),
-/* 37 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9268,7 +8514,7 @@ function stylis_min(W) {
 /* harmony default export */ __webpack_exports__["a"] = (stylis_min);
 
 /***/ }),
-/* 38 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9323,6 +8569,662 @@ var unitlessKeys = {
 /* harmony default export */ __webpack_exports__["a"] = (unitlessKeys);
 
 /***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
+function symbolObservablePonyfill(root) {
+  var result;
+  var Symbol = root.Symbol;
+
+  if (typeof Symbol === 'function') {
+    if (Symbol.observable) {
+      result = Symbol.observable;
+    } else {
+      result = Symbol('observable');
+      Symbol.observable = result;
+    }
+  } else {
+    result = '@@observable';
+  }
+
+  return result;
+}
+;
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {!function (e, t) {
+   true ? t(exports) : undefined;
+}(this, function (e) {
+  "use strict";
+
+  function t(e, t) {
+    e.super_ = t, e.prototype = Object.create(t.prototype, {
+      constructor: {
+        value: e,
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
+      }
+    });
+  }
+
+  function r(e, t) {
+    Object.defineProperty(this, "kind", {
+      value: e,
+      enumerable: !0
+    }), t && t.length && Object.defineProperty(this, "path", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function n(e, t, r) {
+    n.super_.call(this, "E", e), Object.defineProperty(this, "lhs", {
+      value: t,
+      enumerable: !0
+    }), Object.defineProperty(this, "rhs", {
+      value: r,
+      enumerable: !0
+    });
+  }
+
+  function o(e, t) {
+    o.super_.call(this, "N", e), Object.defineProperty(this, "rhs", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function i(e, t) {
+    i.super_.call(this, "D", e), Object.defineProperty(this, "lhs", {
+      value: t,
+      enumerable: !0
+    });
+  }
+
+  function a(e, t, r) {
+    a.super_.call(this, "A", e), Object.defineProperty(this, "index", {
+      value: t,
+      enumerable: !0
+    }), Object.defineProperty(this, "item", {
+      value: r,
+      enumerable: !0
+    });
+  }
+
+  function f(e, t, r) {
+    var n = e.slice((r || t) + 1 || e.length);
+    return e.length = t < 0 ? e.length + t : t, e.push.apply(e, n), e;
+  }
+
+  function u(e) {
+    var t = "undefined" == typeof e ? "undefined" : N(e);
+    return "object" !== t ? t : e === Math ? "math" : null === e ? "null" : Array.isArray(e) ? "array" : "[object Date]" === Object.prototype.toString.call(e) ? "date" : "function" == typeof e.toString && /^\/.*\//.test(e.toString()) ? "regexp" : "object";
+  }
+
+  function l(e, t, r, c, s, d, p) {
+    s = s || [], p = p || [];
+    var g = s.slice(0);
+
+    if ("undefined" != typeof d) {
+      if (c) {
+        if ("function" == typeof c && c(g, d)) return;
+
+        if ("object" === ("undefined" == typeof c ? "undefined" : N(c))) {
+          if (c.prefilter && c.prefilter(g, d)) return;
+
+          if (c.normalize) {
+            var h = c.normalize(g, d, e, t);
+            h && (e = h[0], t = h[1]);
+          }
+        }
+      }
+
+      g.push(d);
+    }
+
+    "regexp" === u(e) && "regexp" === u(t) && (e = e.toString(), t = t.toString());
+    var y = "undefined" == typeof e ? "undefined" : N(e),
+        v = "undefined" == typeof t ? "undefined" : N(t),
+        b = "undefined" !== y || p && p[p.length - 1].lhs && p[p.length - 1].lhs.hasOwnProperty(d),
+        m = "undefined" !== v || p && p[p.length - 1].rhs && p[p.length - 1].rhs.hasOwnProperty(d);
+    if (!b && m) r(new o(g, t));else if (!m && b) r(new i(g, e));else if (u(e) !== u(t)) r(new n(g, e, t));else if ("date" === u(e) && e - t !== 0) r(new n(g, e, t));else if ("object" === y && null !== e && null !== t) {
+      if (p.filter(function (t) {
+        return t.lhs === e;
+      }).length) e !== t && r(new n(g, e, t));else {
+        if (p.push({
+          lhs: e,
+          rhs: t
+        }), Array.isArray(e)) {
+          var w;
+          e.length;
+
+          for (w = 0; w < e.length; w++) {
+            w >= t.length ? r(new a(g, w, new i(void 0, e[w]))) : l(e[w], t[w], r, c, g, w, p);
+          }
+
+          for (; w < t.length;) {
+            r(new a(g, w, new o(void 0, t[w++])));
+          }
+        } else {
+          var x = Object.keys(e),
+              S = Object.keys(t);
+          x.forEach(function (n, o) {
+            var i = S.indexOf(n);
+            i >= 0 ? (l(e[n], t[n], r, c, g, n, p), S = f(S, i)) : l(e[n], void 0, r, c, g, n, p);
+          }), S.forEach(function (e) {
+            l(void 0, t[e], r, c, g, e, p);
+          });
+        }
+
+        p.length = p.length - 1;
+      }
+    } else e !== t && ("number" === y && isNaN(e) && isNaN(t) || r(new n(g, e, t)));
+  }
+
+  function c(e, t, r, n) {
+    return n = n || [], l(e, t, function (e) {
+      e && n.push(e);
+    }, r), n.length ? n : void 0;
+  }
+
+  function s(e, t, r) {
+    if (r.path && r.path.length) {
+      var n,
+          o = e[t],
+          i = r.path.length - 1;
+
+      for (n = 0; n < i; n++) {
+        o = o[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          s(o[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          delete o[r.path[n]];
+          break;
+
+        case "E":
+        case "N":
+          o[r.path[n]] = r.rhs;
+      }
+    } else switch (r.kind) {
+      case "A":
+        s(e[t], r.index, r.item);
+        break;
+
+      case "D":
+        e = f(e, t);
+        break;
+
+      case "E":
+      case "N":
+        e[t] = r.rhs;
+    }
+
+    return e;
+  }
+
+  function d(e, t, r) {
+    if (e && t && r && r.kind) {
+      for (var n = e, o = -1, i = r.path ? r.path.length - 1 : 0; ++o < i;) {
+        "undefined" == typeof n[r.path[o]] && (n[r.path[o]] = "number" == typeof r.path[o] ? [] : {}), n = n[r.path[o]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          s(r.path ? n[r.path[o]] : n, r.index, r.item);
+          break;
+
+        case "D":
+          delete n[r.path[o]];
+          break;
+
+        case "E":
+        case "N":
+          n[r.path[o]] = r.rhs;
+      }
+    }
+  }
+
+  function p(e, t, r) {
+    if (r.path && r.path.length) {
+      var n,
+          o = e[t],
+          i = r.path.length - 1;
+
+      for (n = 0; n < i; n++) {
+        o = o[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          p(o[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          o[r.path[n]] = r.lhs;
+          break;
+
+        case "E":
+          o[r.path[n]] = r.lhs;
+          break;
+
+        case "N":
+          delete o[r.path[n]];
+      }
+    } else switch (r.kind) {
+      case "A":
+        p(e[t], r.index, r.item);
+        break;
+
+      case "D":
+        e[t] = r.lhs;
+        break;
+
+      case "E":
+        e[t] = r.lhs;
+        break;
+
+      case "N":
+        e = f(e, t);
+    }
+
+    return e;
+  }
+
+  function g(e, t, r) {
+    if (e && t && r && r.kind) {
+      var n,
+          o,
+          i = e;
+
+      for (o = r.path.length - 1, n = 0; n < o; n++) {
+        "undefined" == typeof i[r.path[n]] && (i[r.path[n]] = {}), i = i[r.path[n]];
+      }
+
+      switch (r.kind) {
+        case "A":
+          p(i[r.path[n]], r.index, r.item);
+          break;
+
+        case "D":
+          i[r.path[n]] = r.lhs;
+          break;
+
+        case "E":
+          i[r.path[n]] = r.lhs;
+          break;
+
+        case "N":
+          delete i[r.path[n]];
+      }
+    }
+  }
+
+  function h(e, t, r) {
+    if (e && t) {
+      var n = function n(_n) {
+        r && !r(e, t, _n) || d(e, t, _n);
+      };
+
+      l(e, t, n);
+    }
+  }
+
+  function y(e) {
+    return "color: " + F[e].color + "; font-weight: bold";
+  }
+
+  function v(e) {
+    var t = e.kind,
+        r = e.path,
+        n = e.lhs,
+        o = e.rhs,
+        i = e.index,
+        a = e.item;
+
+    switch (t) {
+      case "E":
+        return [r.join("."), n, "→", o];
+
+      case "N":
+        return [r.join("."), o];
+
+      case "D":
+        return [r.join(".")];
+
+      case "A":
+        return [r.join(".") + "[" + i + "]", a];
+
+      default:
+        return [];
+    }
+  }
+
+  function b(e, t, r, n) {
+    var o = c(e, t);
+
+    try {
+      n ? r.groupCollapsed("diff") : r.group("diff");
+    } catch (e) {
+      r.log("diff");
+    }
+
+    o ? o.forEach(function (e) {
+      var t = e.kind,
+          n = v(e);
+      r.log.apply(r, ["%c " + F[t].text, y(t)].concat(P(n)));
+    }) : r.log("—— no diff ——");
+
+    try {
+      r.groupEnd();
+    } catch (e) {
+      r.log("—— diff end —— ");
+    }
+  }
+
+  function m(e, t, r, n) {
+    switch ("undefined" == typeof e ? "undefined" : N(e)) {
+      case "object":
+        return "function" == typeof e[n] ? e[n].apply(e, P(r)) : e[n];
+
+      case "function":
+        return e(t);
+
+      default:
+        return e;
+    }
+  }
+
+  function w(e) {
+    var t = e.timestamp,
+        r = e.duration;
+    return function (e, n, o) {
+      var i = ["action"];
+      return i.push("%c" + String(e.type)), t && i.push("%c@ " + n), r && i.push("%c(in " + o.toFixed(2) + " ms)"), i.join(" ");
+    };
+  }
+
+  function x(e, t) {
+    var r = t.logger,
+        n = t.actionTransformer,
+        o = t.titleFormatter,
+        i = void 0 === o ? w(t) : o,
+        a = t.collapsed,
+        f = t.colors,
+        u = t.level,
+        l = t.diff,
+        c = "undefined" == typeof t.titleFormatter;
+    e.forEach(function (o, s) {
+      var d = o.started,
+          p = o.startedTime,
+          g = o.action,
+          h = o.prevState,
+          y = o.error,
+          v = o.took,
+          w = o.nextState,
+          x = e[s + 1];
+      x && (w = x.prevState, v = x.started - d);
+      var S = n(g),
+          k = "function" == typeof a ? a(function () {
+        return w;
+      }, g, o) : a,
+          j = D(p),
+          E = f.title ? "color: " + f.title(S) + ";" : "",
+          A = ["color: gray; font-weight: lighter;"];
+      A.push(E), t.timestamp && A.push("color: gray; font-weight: lighter;"), t.duration && A.push("color: gray; font-weight: lighter;");
+      var O = i(S, j, v);
+
+      try {
+        k ? f.title && c ? r.groupCollapsed.apply(r, ["%c " + O].concat(A)) : r.groupCollapsed(O) : f.title && c ? r.group.apply(r, ["%c " + O].concat(A)) : r.group(O);
+      } catch (e) {
+        r.log(O);
+      }
+
+      var N = m(u, S, [h], "prevState"),
+          P = m(u, S, [S], "action"),
+          C = m(u, S, [y, h], "error"),
+          F = m(u, S, [w], "nextState");
+      if (N) if (f.prevState) {
+        var L = "color: " + f.prevState(h) + "; font-weight: bold";
+        r[N]("%c prev state", L, h);
+      } else r[N]("prev state", h);
+      if (P) if (f.action) {
+        var T = "color: " + f.action(S) + "; font-weight: bold";
+        r[P]("%c action    ", T, S);
+      } else r[P]("action    ", S);
+      if (y && C) if (f.error) {
+        var M = "color: " + f.error(y, h) + "; font-weight: bold;";
+        r[C]("%c error     ", M, y);
+      } else r[C]("error     ", y);
+      if (F) if (f.nextState) {
+        var _ = "color: " + f.nextState(w) + "; font-weight: bold";
+
+        r[F]("%c next state", _, w);
+      } else r[F]("next state", w);
+      l && b(h, w, r, k);
+
+      try {
+        r.groupEnd();
+      } catch (e) {
+        r.log("—— log end ——");
+      }
+    });
+  }
+
+  function S() {
+    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
+        t = Object.assign({}, L, e),
+        r = t.logger,
+        n = t.stateTransformer,
+        o = t.errorTransformer,
+        i = t.predicate,
+        a = t.logErrors,
+        f = t.diffPredicate;
+    if ("undefined" == typeof r) return function () {
+      return function (e) {
+        return function (t) {
+          return e(t);
+        };
+      };
+    };
+    if (e.getState && e.dispatch) return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"), function () {
+      return function (e) {
+        return function (t) {
+          return e(t);
+        };
+      };
+    };
+    var u = [];
+    return function (e) {
+      var r = e.getState;
+      return function (e) {
+        return function (l) {
+          if ("function" == typeof i && !i(r, l)) return e(l);
+          var c = {};
+          u.push(c), c.started = O.now(), c.startedTime = new Date(), c.prevState = n(r()), c.action = l;
+          var s = void 0;
+          if (a) try {
+            s = e(l);
+          } catch (e) {
+            c.error = o(e);
+          } else s = e(l);
+          c.took = O.now() - c.started, c.nextState = n(r());
+          var d = t.diff && "function" == typeof f ? f(r, l) : t.diff;
+          if (x(u, Object.assign({}, t, {
+            diff: d
+          })), u.length = 0, c.error) throw c.error;
+          return s;
+        };
+      };
+    };
+  }
+
+  var k,
+      j,
+      E = function E(e, t) {
+    return new Array(t + 1).join(e);
+  },
+      A = function A(e, t) {
+    return E("0", t - e.toString().length) + e;
+  },
+      D = function D(e) {
+    return A(e.getHours(), 2) + ":" + A(e.getMinutes(), 2) + ":" + A(e.getSeconds(), 2) + "." + A(e.getMilliseconds(), 3);
+  },
+      O = "undefined" != typeof performance && null !== performance && "function" == typeof performance.now ? performance : Date,
+      N = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
+    return typeof e;
+  } : function (e) {
+    return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
+  },
+      P = function P(e) {
+    if (Array.isArray(e)) {
+      for (var t = 0, r = Array(e.length); t < e.length; t++) {
+        r[t] = e[t];
+      }
+
+      return r;
+    }
+
+    return Array.from(e);
+  },
+      C = [];
+
+  k = "object" === ("undefined" == typeof global ? "undefined" : N(global)) && global ? global : "undefined" != typeof window ? window : {}, j = k.DeepDiff, j && C.push(function () {
+    "undefined" != typeof j && k.DeepDiff === c && (k.DeepDiff = j, j = void 0);
+  }), t(n, r), t(o, r), t(i, r), t(a, r), Object.defineProperties(c, {
+    diff: {
+      value: c,
+      enumerable: !0
+    },
+    observableDiff: {
+      value: l,
+      enumerable: !0
+    },
+    applyDiff: {
+      value: h,
+      enumerable: !0
+    },
+    applyChange: {
+      value: d,
+      enumerable: !0
+    },
+    revertChange: {
+      value: g,
+      enumerable: !0
+    },
+    isConflict: {
+      value: function value() {
+        return "undefined" != typeof j;
+      },
+      enumerable: !0
+    },
+    noConflict: {
+      value: function value() {
+        return C && (C.forEach(function (e) {
+          e();
+        }), C = null), c;
+      },
+      enumerable: !0
+    }
+  });
+
+  var F = {
+    E: {
+      color: "#2196F3",
+      text: "CHANGED:"
+    },
+    N: {
+      color: "#4CAF50",
+      text: "ADDED:"
+    },
+    D: {
+      color: "#F44336",
+      text: "DELETED:"
+    },
+    A: {
+      color: "#2196F3",
+      text: "ARRAY:"
+    }
+  },
+      L = {
+    level: "log",
+    logger: console,
+    logErrors: !0,
+    collapsed: void 0,
+    predicate: void 0,
+    duration: !1,
+    timestamp: !0,
+    stateTransformer: function stateTransformer(e) {
+      return e;
+    },
+    actionTransformer: function actionTransformer(e) {
+      return e;
+    },
+    errorTransformer: function errorTransformer(e) {
+      return e;
+    },
+    colors: {
+      title: function title() {
+        return "inherit";
+      },
+      prevState: function prevState() {
+        return "#9E9E9E";
+      },
+      action: function action() {
+        return "#03A9F4";
+      },
+      nextState: function nextState() {
+        return "#4CAF50";
+      },
+      error: function error() {
+        return "#F20404";
+      }
+    },
+    diff: !1,
+    diffPredicate: void 0,
+    transformer: void 0
+  },
+      T = function T() {
+    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
+        t = e.dispatch,
+        r = e.getState;
+    return "function" == typeof t || "function" == typeof r ? S()({
+      dispatch: t,
+      getState: r
+    }) : void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n");
+  };
+
+  e.defaults = L, e.createLogger = S, e.logger = T, e.default = T, Object.defineProperty(e, "__esModule", {
+    value: !0
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(30)))
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ProgressProxy */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemProxy; });
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
+var ProgressProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,null,[{key:"Parse",value:function Parse(d){return ProgressProxy.Create(d);}},{key:"Create",value:function Create(fsId){return new ProgressProxy(fsId);}}]);function ProgressProxy(fsId){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ProgressProxy);this.intervalId=void 0;this.request=void 0;this._speedOverlay=void 0;this._status=void 0;this._percentCount=void 0;this.fsId=void 0;this.fsId=fsId;this.percentCount=0;this.speedOverlay=0;this.status=_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow;}Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ProgressProxy,[{key:"speedOverlay",set:function set(v){if(this._speedOverlay===v)return;this._speedOverlay=v;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.updateProgress({fsId:this.fsId,progress:{speedOverlay:this.speedOverlay}}));},get:function get(){return this._speedOverlay;}},{key:"percentCount",set:function set(v){if(this._percentCount===v)return;this._percentCount=v;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.updateProgress({fsId:this.fsId,progress:{percentCount:this.percentCount}}));},get:function get(){return this._percentCount;}},{key:"status",set:function set(v){if(this._status===v)return;this._status=v;if(v===_types__WEBPACK_IMPORTED_MODULE_2__[/* StatusTypes */ "b"].unknow)return;_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.updateProgress({fsId:this.fsId,progress:{status:this.status}}));},get:function get(){return this._status;}}]);return ProgressProxy;}();var ItemProxy=/*#__PURE__*/function(){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(ItemProxy,null,[{key:"Parse",value:function Parse(d){return ItemProxy.Create(JSON.parse(d));}},{key:"Create",value:function Create(d){return new ItemProxy(d);}}]);function ItemProxy(d){Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this,ItemProxy);this.category=void 0;this.fsId=void 0;this.isDir=void 0;this.localCtime=void 0;this.localMtime=void 0;this.md5=void 0;this.operId=void 0;this.path=void 0;this.privacy=void 0;this.serverAtime=void 0;this.serverCtime=void 0;this.serverFilename=void 0;this.serverMtime=void 0;this.share=void 0;this.size=void 0;this.unList=void 0;this.url=void 0;this.progress=void 0;this.category=d.category;this.fsId=d.fs_id;this.isDir=d.isdir;this.localCtime=d.local_ctime;this.localMtime=d.local_mtime;this.md5=d.md5;this.operId=d.oper_id;this.path=d.path;this.privacy=d.privacy;this.serverAtime=d.server_atime;this.serverCtime=d.server_ctime;this.serverFilename=d.server_filename;this.serverMtime=d.server_mtime;this.share=d.share;this.size=d.size;this.unList=d.unlist;this.url=d.url;this.progress=ProgressProxy.Create(this.fsId);}return ItemProxy;}();
+
+/***/ }),
 /* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9332,7 +9234,7 @@ var unitlessKeys = {
 var classCallCheck = __webpack_require__(22);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(20);
+var createClass = __webpack_require__(21);
 
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 function _setPrototypeOf(o, p) {
@@ -9451,7 +9353,7 @@ var interfaceModule = __webpack_require__(3);
 // CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
 var mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
 this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if((this.state.errorInfo||this.props.error)&&this.state.open){var _this$state$error,_this$props$error,_this$props$error2,_this$state$errorInfo;// Error path
-return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{style:{color:'red'},open:true,close:function close(){_this2.setState({error:null,errorInfo:null});store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},/*#__PURE__*/react_default.a.createElement("h2",null,(_this$state$error=this.state.error)===null||_this$state$error===void 0?void 0:_this$state$error.toString(),(_this$props$error=this.props.error)===null||_this$props$error===void 0?void 0:_this$props$error.toString()),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},(_this$props$error2=this.props.error)===null||_this$props$error2===void 0?void 0:_this$props$error2.stack,(_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack));}// Normally, just render children
+return/*#__PURE__*/react_default.a.createElement(Modal["a" /* Modal */],{style:{color:'red',wordBreak:'break-all'},open:true,close:function close(){_this2.setState({error:null,errorInfo:null});store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},/*#__PURE__*/react_default.a.createElement("h2",null,(_this$state$error=this.state.error)===null||_this$state$error===void 0?void 0:_this$state$error.toString(),(_this$props$error=this.props.error)===null||_this$props$error===void 0?void 0:_this$props$error.toString()),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},(_this$props$error2=this.props.error)===null||_this$props$error2===void 0?void 0:_this$props$error2.stack,(_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack));}// Normally, just render children
 return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = __webpack_exports__["a"] = (Object(es["b" /* connect */])(mapStoreToProps)(ErrorBoundary_ErrorBoundary));
 
 /***/ }),
@@ -9481,25 +9383,24 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
-/* harmony import */ var _services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26);
-var _package_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(26, 1);
-/* harmony import */ var _utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(40);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(12);
-/* harmony import */ var _GlobalStyle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(35);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(2);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9);
-/* harmony import */ var _services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(39);
-function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_4___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_9__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_10__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_8__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"],null,/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(RootComponent,null)))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(25);
+var _package_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(25, 1);
+/* harmony import */ var _utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(40);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
+/* harmony import */ var _GlobalStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(32);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9);
+/* harmony import */ var _services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(39);
+function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_8__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_9__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_GlobalStyle__WEBPACK_IMPORTED_MODULE_7__[/* GlobalStyle */ "a"],null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_services_ErrorBoundary__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"],null,/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(RootComponent,null)))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
 // so that elements can be re-inserted as a user navigates a page with
 // different routes.
-function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_5__[/* name */ "a"],"\"></div>"));_services_InstaceForSystem__WEBPACK_IMPORTED_MODULE_2__[/* InstanceForSystem */ "a"].initState().then(function(){render(__webpack_require__(31).default);});case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_7__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
+function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"],"\"></div>"));render(__webpack_require__(31).default);case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
 // so we have to catch them manually and log them
-main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_7__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(__webpack_require__(31).default);});}
+main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(__webpack_require__(31).default);});}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(28)(module)))
 
 /***/ }),
@@ -10228,7 +10129,7 @@ try {
  */
 
 
-var l = __webpack_require__(30),
+var l = __webpack_require__(29),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -10665,7 +10566,7 @@ exports.version = "16.13.1";
 
 
 var aa = __webpack_require__(0),
-    n = __webpack_require__(30),
+    n = __webpack_require__(29),
     r = __webpack_require__(46);
 
 function u(a) {
