@@ -2,7 +2,8 @@ import { IItem, IProgress, StatusTypes, ValueTypes } from '../types'
 import { GM } from '../gmInterface/gmInterface'
 import { ItemProxy } from './Item'
 import { store } from '../store'
-import downloadModule from '../modules/downloadModule'
+import downloadModule, { fetchItem } from '../modules/downloadModule'
+import { Dispatch } from 'redux'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -16,6 +17,7 @@ const InstanceForSystem = {
       GM.deleteValue(ValueTypes.items)
 
       const state = store.getState()
+      const dispatch: Dispatch<any> = store.dispatch
       const {
         interface: { autoStart },
       } = state
@@ -30,13 +32,13 @@ const InstanceForSystem = {
         const { intervalId, percentCount, speedOverlay, status } = item.progress
         downloadItemsForStore[item.fsId] = { intervalId, percentCount, speedOverlay, status }
         this.allDownloads[item.fsId] = item
+
+        if (autoStart) {
+          dispatch(fetchItem(item))
+        }
       })
 
       store.dispatch(downloadModule.actions.change({ downloadItems: downloadItemsForStore }))
-
-      // if (autoStart) {
-      //   store.dispatch(fetchItem(item))
-      // }
 
       resolve(this)
     })
