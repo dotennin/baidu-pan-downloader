@@ -4,6 +4,7 @@ import { ItemProxy } from './Item'
 import { store } from '../store'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { Dispatch } from 'redux'
+import interfaceModule from '../modules/interfaceModule'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -69,7 +70,17 @@ const InstanceForSystem = {
 
 // Resolve store initiation
 setTimeout(() => {
-  InstanceForSystem.initState()
+  InstanceForSystem.initState().then(() => {
+    setTimeout(() => {
+      const {
+        download: { processing },
+      } = store.getState()
+      if (processing > 0) {
+        // if there is a task that automatically starts downloading then open download-modal directly after initialization
+        store.dispatch(interfaceModule.actions.change({ downloadModalOpen: true }))
+      }
+    }, 1500)
+  })
 })
 
 export { InstanceForSystem }
