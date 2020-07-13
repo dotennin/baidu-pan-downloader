@@ -9,9 +9,12 @@ interface IState {
   errorInfo: ErrorInfo | null
   open: boolean
 }
-const mapStoreToProps = (store: IStoreState) => ({
-  error: store.interface.error,
-})
+const mapStoreToProps = (store: IStoreState) => {
+  console.log(store)
+  return {
+    error: store.interface.error,
+  }
+}
 class ErrorBoundary extends React.Component<any, IState> {
   constructor(props: any) {
     super(props)
@@ -39,12 +42,12 @@ class ErrorBoundary extends React.Component<any, IState> {
           }}
         >
           <h2>
-            {this.state.error!.toString()}
-            {this.props.error!.toString()}
+            {this.state.error?.toString()}
+            {this.props.error?.toString()}
           </h2>
           <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.props.error!.stack}
-            {this.state.errorInfo!.componentStack}
+            {this.props.error?.stack}
+            {this.state.errorInfo?.componentStack}
           </details>
         </Modal>
       )

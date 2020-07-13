@@ -5,15 +5,12 @@ import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 import { addLocationChangeCallback, log } from './utils'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import ErrorBoundary from './services/ErrorBoundary'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(
     <Provider store={store}>
       <Suspense fallback={<div>on suspensing....</div>}>
-        <ErrorBoundary>
-          <RootComponent />
-        </ErrorBoundary>
+        <RootComponent />
       </Suspense>
     </Provider>,
     document.getElementById(name)

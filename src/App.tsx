@@ -4,10 +4,11 @@ import DownloadList from './containers/DownloadList'
 import Preferences from './containers/Preferences'
 import './services/windowInstance'
 import { GlobalStyle } from './GlobalStyle'
+import ErrorBoundary from './services/ErrorBoundary'
 
 const App: FunctionComponent = () => {
   return (
-    <React.Fragment>
+    <ErrorBoundary>
       <div
         css={`
           display: none;
@@ -19,7 +20,7 @@ const App: FunctionComponent = () => {
       <DownloadList />
       <Preferences />
       <FloatingButtons />
-    </React.Fragment>
+    </ErrorBoundary>
   )
 }
 
