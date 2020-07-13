@@ -1,7 +1,6 @@
 import React from 'react'
 import { Modal } from '../../components/Modal'
-import { connect, shallowEqual } from 'react-redux'
-import { Dispatch } from 'redux'
+import { connect, shallowEqual, useDispatch } from 'react-redux'
 import { IStoreState } from '../../store'
 import Item from './Item'
 import { createSelector } from 'reselect'
@@ -15,19 +14,15 @@ const mapStoreToProps = (store: IStoreState) => ({
   downloadModalOpen: store.interface.downloadModalOpen,
 })
 
-const mapActionsToProps = (dispatch: Dispatch) => ({
-  closeModal: () => {
-    dispatch(interfaceModule.actions.change({ downloadModalOpen: false }))
-  },
-})
-
-function DownloadList({
-  fsIdList,
-  closeModal,
-  downloadModalOpen,
-}: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
+function DownloadList({ fsIdList, downloadModalOpen }: ReturnType<typeof mapStoreToProps>) {
+  const dispatch = useDispatch()
   return (
-    <Modal open={downloadModalOpen} close={closeModal}>
+    <Modal
+      open={downloadModalOpen}
+      close={() => {
+        dispatch(interfaceModule.actions.change({ downloadModalOpen: false }))
+      }}
+    >
       <table>
         <thead>
           <tr>
@@ -55,4 +50,4 @@ const DL = React.memo(DownloadList, (prevProps, nextProps) => {
   )
 })
 
-export default connect(mapStoreToProps, mapActionsToProps)(DL)
+export default connect(mapStoreToProps)(DL)

@@ -34,7 +34,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
   }
   const deleteItem = () => {
     if (targetItem) {
-      targetItem.progress.request!.abort && targetItem.progress.request!.abort()
+      targetItem.progress.request?.abort && targetItem.progress.request.abort()
       clearInterval(targetItem.progress.intervalId)
       if (targetItem.progress.status === StatusTypes.downloading) {
         dispatch(downloadModule.actions.failureDownload())
@@ -78,7 +78,7 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
       <svg
         id={`delete-item-${fsId}`}
         className="delete-item"
-        style={{ position: 'absolute', right: 5 }}
+        style={{ position: 'relative', right: -20 }}
         xmlns="http://www.w3.org/2000/svg"
         height="24"
         viewBox="0 0 24 24"
