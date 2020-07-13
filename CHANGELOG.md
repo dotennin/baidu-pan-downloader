@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/dotennin/baidu-pan-downloader/compare/v1.4.3...v2.0.0) (2020-07-13)
+
+
+### Features
+
+* add react-app-rewire-styled-components ([21aea30](https://github.com/dotennin/baidu-pan-downloader/commit/21aea3068be00ec428f2faf42e8a58eb0fcb89c4))
+* added browser support list ([c037e96](https://github.com/dotennin/baidu-pan-downloader/commit/c037e963e5a38c1ff24b664a019911e21ce7d58b))
+* automatically open modal ([e08923c](https://github.com/dotennin/baidu-pan-downloader/commit/e08923cbdddaba9f3d6710f78414a454b9c0e221))
+* disabled logger on production env ([eeb8651](https://github.com/dotennin/baidu-pan-downloader/commit/eeb8651cb0527e234c7c879616da2924e8331c87))
+* ErrorBoundary ([e2edf10](https://github.com/dotennin/baidu-pan-downloader/commit/e2edf106e09635d3a6838062c917a801a9ae446d))
+* update readme ([3ccfc3d](https://github.com/dotennin/baidu-pan-downloader/commit/3ccfc3d9e1f12b06b86844ebe7c403abee8a3dd1))
+* update typescript ([29037bc](https://github.com/dotennin/baidu-pan-downloader/commit/29037bc64dba910124279605a9ed5185ba918937))
+
+
+### Bug Fixes
+
+* auto start download ([8fa3887](https://github.com/dotennin/baidu-pan-downloader/commit/8fa388708bd6a316b1314b86d8c8325fb97a6143))
+* avoid blacklist extended format with apk exe pdf ([bad8210](https://github.com/dotennin/baidu-pan-downloader/commit/bad8210392b6782de98f7eb688834a5c2b116ad2))
+* avoid blacklist extended format with apk exe pdf ([5100342](https://github.com/dotennin/baidu-pan-downloader/commit/5100342e8c9f1d3be0c65b07c549fd4cb5014268))
+* ErroBoundary ([e3cd80a](https://github.com/dotennin/baidu-pan-downloader/commit/e3cd80af9c6bd2613e48f57834d5034552cb2cde))
+* error handle for maximum download number ([615fa58](https://github.com/dotennin/baidu-pan-downloader/commit/615fa580bea253d646f49eb8b219f1992fbf1422))
+* Instance multiple invoke ([4c68565](https://github.com/dotennin/baidu-pan-downloader/commit/4c68565bdd1af47369ce26c71ce7a544b4aab75f))
+* missing style from styled-components ([c71d119](https://github.com/dotennin/baidu-pan-downloader/commit/c71d1198a90a9a45d92b6ed2d61b7e1edda5d9c7))
+* only auto re-start status with downloading ([3678e13](https://github.com/dotennin/baidu-pan-downloader/commit/3678e1361003065c3ed3614b7538efc81016347a))
+* operation style ([9c10c68](https://github.com/dotennin/baidu-pan-downloader/commit/9c10c68b839d46c5e6fffcd07798a31b6c97c474))
+* recovery object from page reload ([b0c3dd2](https://github.com/dotennin/baidu-pan-downloader/commit/b0c3dd242acd10ec9a49503028a3e54cd589b4ce))
+* reset processing count in stop&delete action ([d605f82](https://github.com/dotennin/baidu-pan-downloader/commit/d605f8258e9e019ad0f5c56a27719eab326da384))
+* type check ([54977fa](https://github.com/dotennin/baidu-pan-downloader/commit/54977fa967c46ff6c3884f927973c84f56ffd7d7))
+
 ### [1.4.3](https://github.com/dotennin/baidu-pan-downloader/compare/v1.4.2...v1.4.3) (2020-07-02)
 
 ### [1.4.2](https://github.com/dotennin/baidu-pan-downloader/compare/v1.4.1...v1.4.2) (2020-07-01)
