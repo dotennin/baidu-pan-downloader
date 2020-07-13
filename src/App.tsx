@@ -8,19 +8,21 @@ import ErrorBoundary from './services/ErrorBoundary'
 
 const App: FunctionComponent = () => {
   return (
-    <ErrorBoundary>
+    <>
       <div
         css={`
           display: none;
         `}
       >
-        Don’t know the reason. Once delete this element, Styled-components will not load properly.
+        Todo Don’t know the reason. Once delete this element, Styled-components will not load properly.
       </div>
       <GlobalStyle />
-      <DownloadList />
-      <Preferences />
-      <FloatingButtons />
-    </ErrorBoundary>
+      <ErrorBoundary>
+        <DownloadList />
+        <Preferences />
+        <FloatingButtons />
+      </ErrorBoundary>
+    </>
   )
 }
 

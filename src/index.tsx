@@ -5,6 +5,7 @@ import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 import { addLocationChangeCallback, log } from './utils'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import APP from './App'
 
 function render(RootComponent: ComponentType) {
   ReactDOM.render(
@@ -22,7 +23,7 @@ function render(RootComponent: ComponentType) {
 // different routes.
 async function main() {
   document.body.insertAdjacentHTML('beforeend', `<div id="${name}"></div>`)
-  render(require('./App').default)
+  render(APP)
 }
 
 addLocationChangeCallback(() => {
@@ -33,6 +34,6 @@ addLocationChangeCallback(() => {
 
 if (devNodeEnv && module.hot) {
   module.hot.accept('./App.tsx', () => {
-    render(require('./App').default)
+    render(APP)
   })
 }

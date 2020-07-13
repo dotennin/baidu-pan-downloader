@@ -7,10 +7,8 @@ import interfaceModule from '../modules/interfaceModule'
 interface IState {
   error: Error | null
   errorInfo: ErrorInfo | null
-  open: boolean
 }
 const mapStoreToProps = (store: IStoreState) => {
-  console.log(store)
   return {
     error: store.interface.error,
   }
@@ -18,7 +16,7 @@ const mapStoreToProps = (store: IStoreState) => {
 class ErrorBoundary extends React.Component<any, IState> {
   constructor(props: any) {
     super(props)
-    this.state = { error: null, errorInfo: null, open: true }
+    this.state = { error: null, errorInfo: null }
   }
 
   componentDidCatch(error: IState['error'], errorInfo: IState['errorInfo']) {
@@ -30,7 +28,7 @@ class ErrorBoundary extends React.Component<any, IState> {
   }
 
   render() {
-    if ((this.state.errorInfo || this.props.error) && this.state.open) {
+    if (this.state.errorInfo || this.props.error) {
       // Error path
       return (
         <Modal

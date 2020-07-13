@@ -1808,7 +1808,7 @@ function createStructuredSelector(selectors) {
 /* harmony import */ var shallowequal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shallowequal__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(35);
 /* harmony import */ var _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(36);
-/* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(27);
+/* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(28);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(18);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__);
 
@@ -7508,7 +7508,7 @@ if (typeof self !== 'undefined') {
 
 var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
 /* harmony default export */ __webpack_exports__["a"] = (result);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(30), __webpack_require__(28)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(31), __webpack_require__(29)(module)))
 
 /***/ }),
 /* 26 */
@@ -7532,193 +7532,6 @@ var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// CONCATENATED MODULE: ./node_modules/@emotion/memoize/dist/memoize.browser.esm.js
-function memoize(fn) {
-  var cache = {};
-  return function (arg) {
-    if (cache[arg] === undefined) cache[arg] = fn(arg);
-    return cache[arg];
-  };
-}
-
-/* harmony default export */ var memoize_browser_esm = (memoize);
-// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js
-
-var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|inert|itemProp|itemScope|itemType|itemID|itemRef|on|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
-
-var index = memoize_browser_esm(function (prop) {
-  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
-  /* o */
-  && prop.charCodeAt(1) === 110
-  /* n */
-  && prop.charCodeAt(2) < 91;
-}
-/* Z+1 */
-);
-/* harmony default export */ var is_prop_valid_browser_esm = __webpack_exports__["a"] = (index);
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports) {
-
-module.exports = function (originalModule) {
-  if (!originalModule.webpackPolyfill) {
-    var module = Object.create(originalModule); // module.parent = undefined by default
-
-    if (!module.children) module.children = [];
-    Object.defineProperty(module, "loaded", {
-      enumerable: true,
-      get: function get() {
-        return module.l;
-      }
-    });
-    Object.defineProperty(module, "id", {
-      enumerable: true,
-      get: function get() {
-        return module.i;
-      }
-    });
-    Object.defineProperty(module, "exports", {
-      enumerable: true
-    });
-    module.webpackPolyfill = 1;
-  }
-
-  return module;
-};
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-/* eslint-disable no-unused-vars */
-
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-  if (val === null || val === undefined) {
-    throw new TypeError('Object.assign cannot be called with null or undefined');
-  }
-
-  return Object(val);
-}
-
-function shouldUseNative() {
-  try {
-    if (!Object.assign) {
-      return false;
-    } // Detect buggy property enumeration order in older V8 versions.
-    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
-
-
-    var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
-
-    test1[5] = 'de';
-
-    if (Object.getOwnPropertyNames(test1)[0] === '5') {
-      return false;
-    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-    var test2 = {};
-
-    for (var i = 0; i < 10; i++) {
-      test2['_' + String.fromCharCode(i)] = i;
-    }
-
-    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-      return test2[n];
-    });
-
-    if (order2.join('') !== '0123456789') {
-      return false;
-    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-
-
-    var test3 = {};
-    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-      test3[letter] = letter;
-    });
-
-    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
-      return false;
-    }
-
-    return true;
-  } catch (err) {
-    // We don't expect any of the above to throw, but better to be safe.
-    return false;
-  }
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-  var from;
-  var to = toObject(target);
-  var symbols;
-
-  for (var s = 1; s < arguments.length; s++) {
-    from = Object(arguments[s]);
-
-    for (var key in from) {
-      if (hasOwnProperty.call(from, key)) {
-        to[key] = from[key];
-      }
-    }
-
-    if (getOwnPropertySymbols) {
-      symbols = getOwnPropertySymbols(from);
-
-      for (var i = 0; i < symbols.length; i++) {
-        if (propIsEnumerable.call(from, symbols[i])) {
-          to[symbols[i]] = from[symbols[i]];
-        }
-      }
-    }
-  }
-
-  return to;
-};
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-var g; // This works in non-strict mode
-
-g = function () {
-  return this;
-}();
-
-try {
-  // This works if eval is allowed (see CSP)
-  g = g || new Function("return this")();
-} catch (e) {
-  // This works if the window reference is available
-  if (typeof window === "object") g = window;
-} // g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-
-module.exports = g;
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/styled-components/dist/styled-components.browser.esm.js
 var styled_components_browser_esm = __webpack_require__(9);
@@ -7938,12 +7751,197 @@ function _createSuper(Derived) {
   };
 }
 // CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
-var ErrorBoundary_mapStoreToProps=function mapStoreToProps(store){console.log(store);return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null,open:true};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
-this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if((this.state.errorInfo||this.props.error)&&this.state.open){var _this$state$error,_this$props$error,_this$props$error2,_this$state$errorInfo;// Error path
+var ErrorBoundary_mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
+this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if(this.state.errorInfo||this.props.error){var _this$state$error,_this$props$error,_this$props$error2,_this$state$errorInfo;// Error path
 return/*#__PURE__*/react_default.a.createElement(Modal,{style:{color:'red',wordBreak:'break-all'},open:true,close:function close(){_this2.setState({error:null,errorInfo:null});src_store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},/*#__PURE__*/react_default.a.createElement("h2",null,(_this$state$error=this.state.error)===null||_this$state$error===void 0?void 0:_this$state$error.toString(),(_this$props$error=this.props.error)===null||_this$props$error===void 0?void 0:_this$props$error.toString()),/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},(_this$props$error2=this.props.error)===null||_this$props$error2===void 0?void 0:_this$props$error2.stack,(_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack));}// Normally, just render children
 return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = (Object(es["b" /* connect */])(ErrorBoundary_mapStoreToProps)(ErrorBoundary_ErrorBoundary));
 // CONCATENATED MODULE: ./src/App.tsx
-var App_StyledDiv=/*#__PURE__*/Object(styled_components_browser_esm["b" /* default */])("div").withConfig({displayName:"_StyledDiv"})(["display:none;"]);var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(services_ErrorBoundary,null,/*#__PURE__*/react_default.a.createElement(App_StyledDiv,null,"Don\u2019t know the reason. Once delete this element, Styled-components will not load properly."),/*#__PURE__*/react_default.a.createElement(GlobalStyle,null),/*#__PURE__*/react_default.a.createElement(containers_DownloadList,null),/*#__PURE__*/react_default.a.createElement(containers_Preferences,null),/*#__PURE__*/react_default.a.createElement(containers_FloatingButtons,null));};/* harmony default export */ var src_App = __webpack_exports__["default"] = (App_App);
+var App_StyledDiv=/*#__PURE__*/Object(styled_components_browser_esm["b" /* default */])("div").withConfig({displayName:"_StyledDiv"})(["display:none;"]);var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement(App_StyledDiv,null,"Todo Don\u2019t know the reason. Once delete this element, Styled-components will not load properly."),/*#__PURE__*/react_default.a.createElement(GlobalStyle,null),/*#__PURE__*/react_default.a.createElement(services_ErrorBoundary,null,/*#__PURE__*/react_default.a.createElement(containers_DownloadList,null),/*#__PURE__*/react_default.a.createElement(containers_Preferences,null),/*#__PURE__*/react_default.a.createElement(containers_FloatingButtons,null)));};/* harmony default export */ var src_App = __webpack_exports__["a"] = (App_App);
+
+/***/ }),
+/* 28 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./node_modules/@emotion/memoize/dist/memoize.browser.esm.js
+function memoize(fn) {
+  var cache = {};
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
+
+/* harmony default export */ var memoize_browser_esm = (memoize);
+// CONCATENATED MODULE: ./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js
+
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|inert|itemProp|itemScope|itemType|itemID|itemRef|on|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
+
+var index = memoize_browser_esm(function (prop) {
+  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
+  /* o */
+  && prop.charCodeAt(1) === 110
+  /* n */
+  && prop.charCodeAt(2) < 91;
+}
+/* Z+1 */
+);
+/* harmony default export */ var is_prop_valid_browser_esm = __webpack_exports__["a"] = (index);
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+module.exports = function (originalModule) {
+  if (!originalModule.webpackPolyfill) {
+    var module = Object.create(originalModule); // module.parent = undefined by default
+
+    if (!module.children) module.children = [];
+    Object.defineProperty(module, "loaded", {
+      enumerable: true,
+      get: function get() {
+        return module.l;
+      }
+    });
+    Object.defineProperty(module, "id", {
+      enumerable: true,
+      get: function get() {
+        return module.i;
+      }
+    });
+    Object.defineProperty(module, "exports", {
+      enumerable: true
+    });
+    module.webpackPolyfill = 1;
+  }
+
+  return module;
+};
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/* eslint-disable no-unused-vars */
+
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+  if (val === null || val === undefined) {
+    throw new TypeError('Object.assign cannot be called with null or undefined');
+  }
+
+  return Object(val);
+}
+
+function shouldUseNative() {
+  try {
+    if (!Object.assign) {
+      return false;
+    } // Detect buggy property enumeration order in older V8 versions.
+    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+
+
+    var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+
+    test1[5] = 'de';
+
+    if (Object.getOwnPropertyNames(test1)[0] === '5') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test2 = {};
+
+    for (var i = 0; i < 10; i++) {
+      test2['_' + String.fromCharCode(i)] = i;
+    }
+
+    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+      return test2[n];
+    });
+
+    if (order2.join('') !== '0123456789') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test3 = {};
+    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+      test3[letter] = letter;
+    });
+
+    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    // We don't expect any of the above to throw, but better to be safe.
+    return false;
+  }
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+  var from;
+  var to = toObject(target);
+  var symbols;
+
+  for (var s = 1; s < arguments.length; s++) {
+    from = Object(arguments[s]);
+
+    for (var key in from) {
+      if (hasOwnProperty.call(from, key)) {
+        to[key] = from[key];
+      }
+    }
+
+    if (getOwnPropertySymbols) {
+      symbols = getOwnPropertySymbols(from);
+
+      for (var i = 0; i < symbols.length; i++) {
+        if (propIsEnumerable.call(from, symbols[i])) {
+          to[symbols[i]] = from[symbols[i]];
+        }
+      }
+    }
+  }
+
+  return to;
+};
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports) {
+
+var g; // This works in non-strict mode
+
+g = function () {
+  return this;
+}();
+
+try {
+  // This works if eval is allowed (see CSP)
+  g = g || new Function("return this")();
+} catch (e) {
+  // This works if the window reference is available
+  if (typeof window === "object") g = window;
+} // g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+
+module.exports = g;
 
 /***/ }),
 /* 32 */
@@ -8585,7 +8583,7 @@ function symbolObservablePonyfill(root) {
     value: !0
   });
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(30)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(31)))
 
 /***/ }),
 /* 34 */
@@ -9336,13 +9334,14 @@ var _package_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpac
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(6);
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(27);
 function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_7__[/* Provider */ "a"],{store:_store__WEBPACK_IMPORTED_MODULE_8__[/* store */ "a"]},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2__["Suspense"],{fallback:/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div",null,"on suspensing....")},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(RootComponent,null))),document.getElementById(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"]));}// Do required initial work. Gets called every time the URL changes,
 // so that elements can be re-inserted as a user navigates a page with
 // different routes.
-function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"],"\"></div>"));render(__webpack_require__(31).default);case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
+function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"],"\"></div>"));render(_App__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
 // so we have to catch them manually and log them
-main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(__webpack_require__(31).default);});}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(28)(module)))
+main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(_App__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);});}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)(module)))
 
 /***/ }),
 /* 39 */
@@ -10070,7 +10069,7 @@ try {
  */
 
 
-var l = __webpack_require__(29),
+var l = __webpack_require__(30),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -10507,7 +10506,7 @@ exports.version = "16.13.1";
 
 
 var aa = __webpack_require__(0),
-    n = __webpack_require__(29),
+    n = __webpack_require__(30),
     r = __webpack_require__(42);
 
 function u(a) {
