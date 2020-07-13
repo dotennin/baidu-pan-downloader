@@ -1,16 +1,17 @@
 import { Action, ThunkAction, getDefaultMiddleware, configureStore, compose } from '@reduxjs/toolkit'
 import { createLogger } from 'redux-logger'
 import rootReducer from './rootReducer'
+import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 
 interface ExtendedWindow extends Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: Function
 }
 declare let window: ExtendedWindow
 
-const middleware = [
-  ...getDefaultMiddleware({ serializableCheck: false }),
-  createLogger({ diff: true, collapsed: true }),
-]
+const middleware = [...getDefaultMiddleware({ serializableCheck: false })]
+if (devNodeEnv) {
+  middleware.push(createLogger({ diff: true, collapsed: true }))
+}
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 10 })
