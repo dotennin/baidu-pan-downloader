@@ -1,6 +1,7 @@
 import { HeaderTypes, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
+import { getFileExtension } from '../utils'
 
 export function getDownloadUrl(path: string) {
   return new Promise((resolve, reject) => {
@@ -25,6 +26,10 @@ export function getDownloadUrl(path: string) {
   })
 }
 
+const blackListedFileExtension = ['apk', 'exe', 'pdf']
+const formatServerFilename = (fileName: string) =>
+  fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
+
 export function download(item: ItemProxy) {
   const { url, serverFilename, progress } = item
   let currentEvent: ProgressEvent | undefined = undefined
@@ -34,7 +39,7 @@ export function download(item: ItemProxy) {
   return new Promise((resolve, reject) => {
     progress.request = GM.download({
       url,
-      name: serverFilename,
+      name: formatServerFilename(serverFilename),
       saveAs: true,
       headers: {
         Host: 'qdall01.baidupcs.com',

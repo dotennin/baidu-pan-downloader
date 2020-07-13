@@ -77,3 +77,7 @@ export function addLocationChangeCallback(callback: Function) {
   observer.observe(document.body, { childList: true, subtree: true })
   return observer
 }
+
+export const getFileExtension = (fileName: string) => {
+  return fileName.substring(fileName.lastIndexOf('.') + 1).toLocaleLowerCase()
+}
