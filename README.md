@@ -3,10 +3,16 @@
 ### 通过右下脚的下载图标<img src="https://greasyfork.org/system/screenshots/screenshots/000/021/778/thumb/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89.png?1592725597" width="5%">可以将已经勾选的文件加入下载列表
 <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/779/original/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89_%281%29.png?1592725597" width="50%">
 
-##1.4版追加了自定义设置功能
+##1.4 追加了自定义设置功能
 # <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/888/original/config-modal.png?1593252766" width="70%">
 - ###默认自动下载
 - ###最大支持同时下载文件数2
+
+# 2.0 追加内容
+## 1. 修复一些UI错误问题
+## 2. 全局错误异常处理
+## 3. `exe` `apk` `pdf` 等格式的下载支持
+# <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/152/original/WeChat_Image_20200714003946.png?1594654806" width="70%">
 
 -----------------------------------
 ## 浏览器支持情况：
