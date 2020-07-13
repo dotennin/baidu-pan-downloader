@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components/macro'
 
 const GlobalStyle = createGlobalStyle`
   @import url(https://fonts.googleapis.com/css?family=Noto+Sans);

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const FormField = styled.fieldset`
   clear: both;
