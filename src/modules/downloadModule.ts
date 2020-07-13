@@ -69,21 +69,21 @@ export const addNextDownloadRequest = (): AppThunk => (dispatch) => {
 export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getState) => {
   try {
     const { progress } = item
-    const res: any = await getDownloadUrl(item.path)
-    item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
-
     const downloadable = downloadableSelector(getState())
 
     if (!downloadable) {
       progress.status = StatusTypes.inQueued
       return
     }
+
     dispatch(downloadModule.actions.requestDownload())
+    const res: any = await getDownloadUrl(item.path)
+    item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
+
     progress.status = StatusTypes.downloading
-
     await download(item)
-    dispatch(downloadModule.actions.successDownload())
 
+    dispatch(downloadModule.actions.successDownload())
     dispatch(addNextDownloadRequest())
   } catch (err) {
     dispatch(downloadModule.actions.failureDownload())
