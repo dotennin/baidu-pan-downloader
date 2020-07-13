@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { InstanceForSystem } from '../services/InstaceForSystem'
-import { StatusTypes } from '../types'
+import { StatusTypes } from '../services/types'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'

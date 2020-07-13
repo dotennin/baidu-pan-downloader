@@ -1,5 +1,5 @@
-import { GM } from '../gmInterface/gmInterface'
-import { StatusTypes, ValueTypes } from '../types'
+import { GM } from './gmInterface/gmInterface'
+import { StatusTypes, ValueTypes } from './types'
 import { store } from '../store'
 import { InstanceForSystem } from './InstaceForSystem'
 

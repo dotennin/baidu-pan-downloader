@@ -1,5 +1,5 @@
-import { GM } from '../gmInterface/gmInterface'
-import { ValueTypes } from '../types'
+import { GM } from '../services/gmInterface/gmInterface'
+import { ValueTypes } from '../services/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IState {

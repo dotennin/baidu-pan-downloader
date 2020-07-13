@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { IStoreState } from '../../store'
-import { ItemProxy } from '../../services/Item'
+import { ItemProxy } from '../../services/ItemProxy'
 import { formatByte } from '../../utils'
 
 interface IProps {

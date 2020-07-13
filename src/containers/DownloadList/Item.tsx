@@ -1,6 +1,6 @@
 import React from 'react'
 import { formatByte } from '../../utils'
-import { ItemProxy } from '../../services/Item'
+import { ItemProxy } from '../../services/ItemProxy'
 import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
 import SpeedStatus from './SpeedStatus'

@@ -1,6 +1,6 @@
 import React from 'react'
-import { StatusTypes } from '../../types'
-import { ItemProxy } from '../../services/Item'
+import { StatusTypes } from '../../services/types'
+import { ItemProxy } from '../../services/ItemProxy'
 import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
 import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules/downloadModule'
