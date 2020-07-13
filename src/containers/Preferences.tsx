@@ -7,13 +7,6 @@ import { InstanceForSystem } from '../services/InstaceForSystem'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import { downloadableSelector } from '../selectors'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  .modal-window {
-    max-width: 500px;
-  }
-`
 
 const mapStoreToProps = (store: IStoreState) => ({
   configModalOpen: store.interface.configModalOpen,
@@ -42,16 +35,22 @@ function Preferences({
   setMaxDownloadCount,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
   return (
-    <Wrapper>
+    <div
+      css={`
+        .modal-window {
+          max-width: 500px;
+        }
+      `}
+    >
       <Modal open={configModalOpen} close={closeModal}>
         <Form action="#">
           <header style={{ margin: '0 0 20px 0' }}>
             <h2 style={{ margin: '0 0 5px 0' }}>下载设置</h2>
             <div
-              style={{
-                fontSize: '90%',
-                color: '#999',
-              }}
+              css={`
+                font-size: 90%;
+                color: #999;
+              `}
             >
               如果下载经常出错，建议将下载数设置为1
             </div>
@@ -95,7 +94,7 @@ function Preferences({
           </FormField>
         </Form>
       </Modal>
-    </Wrapper>
+    </div>
   )
 }
 

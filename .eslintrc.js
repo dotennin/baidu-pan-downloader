@@ -46,7 +46,19 @@ module.exports = {
     'prefer-const': 2,
     'react/no-find-dom-node': 'off',
     'no-debugger': 'error',
-    'no-case-declarations': 'off'
+    'no-case-declarations': 'off',
+    "no-restricted-imports": [
+  "error",
+  {
+    "paths": [{
+      "name": "styled-components",
+      "message": "Please import from styled-components/macro."
+    }],
+    "patterns": [
+      "!styled-components/macro"
+    ]
+  }
+]
   },
   overrides: [
     {

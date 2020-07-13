@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { name } from '../package.json'
 import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 import { addLocationChangeCallback, log } from './utils'
-import { GlobalStyle } from './GlobalStyle'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import ErrorBoundary from './services/ErrorBoundary'
@@ -12,7 +11,6 @@ function render(RootComponent: ComponentType) {
   ReactDOM.render(
     <Provider store={store}>
       <Suspense fallback={<div>on suspensing....</div>}>
-        <GlobalStyle />
         <ErrorBoundary>
           <RootComponent />
         </ErrorBoundary>

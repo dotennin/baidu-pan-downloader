@@ -1,6 +1,6 @@
 import React from 'react'
 import { IStandardProps } from './types'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 interface IProps extends IStandardProps {
   open: boolean
