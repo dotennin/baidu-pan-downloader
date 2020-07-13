@@ -67,7 +67,11 @@ export function download(item: ItemProxy) {
         progress.percentCount = 0
         progress.speedOverlay = 0
         progress.status = StatusTypes.error
-        reject(new Error(e.error))
+        if (Object.keys(e).length === 0) {
+          reject(new Error('user is not authorized, hitcode:122'))
+        } else {
+          reject(new Error(e.error))
+        }
       },
     })
 
