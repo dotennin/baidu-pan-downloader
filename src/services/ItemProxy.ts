@@ -1,5 +1,5 @@
-import { IItem, IProgress, StatusTypes } from '../types'
-import { GM } from '../gmInterface/gmInterface'
+import { IItem, IProgress, StatusTypes } from './types'
+import { GM } from './gmInterface/gmInterface'
 import { store } from '../store'
 import downloadModule from '../modules/downloadModule'
 

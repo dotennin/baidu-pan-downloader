@@ -1,6 +1,6 @@
-import { HeaderTypes, StatusTypes } from '../types'
-import { GM } from '../gmInterface/gmInterface'
-import { ItemProxy } from './Item'
+import { HeaderTypes, StatusTypes } from './types'
+import { GM } from './gmInterface/gmInterface'
+import { ItemProxy } from './ItemProxy'
 
 export function getDownloadUrl(path: string) {
   return new Promise((resolve, reject) => {

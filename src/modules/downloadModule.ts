@@ -1,6 +1,6 @@
-import { IProgress, StatusTypes } from '../types'
+import { IProgress, StatusTypes } from '../services/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ItemProxy } from '../services/Item'
+import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
 import { download, getDownloadUrl } from '../services/api'
 import { downloadableSelector } from '../selectors'
