@@ -8,6 +8,12 @@
 - ###默认自动下载
 - ###最大支持同时下载文件数2
 
+# 2.0版追加内容
+## 1. 修复一些UI错误问题
+## 2. 全局错误异常处理
+## 3. `exe` `apk` `pdf` 等格式的下载支持
+# <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/152/original/WeChat_Image_20200714003946.png?1594654806" width="70%">
+
 -----------------------------------
 ## 浏览器支持情况：
 ```
