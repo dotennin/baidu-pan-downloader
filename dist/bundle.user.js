@@ -1435,7 +1435,7 @@ __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding *
 __webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ downloadModule_fetchItem; });
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(12);
+var regenerator = __webpack_require__(13);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
@@ -1453,9 +1453,12 @@ var redux_toolkit_esm = __webpack_require__(11);
 // EXTERNAL MODULE: ./src/services/gmInterface/gmInterface.ts
 var gmInterface = __webpack_require__(7);
 
+// EXTERNAL MODULE: ./src/utils/index.ts
+var utils = __webpack_require__(12);
+
 // CONCATENATED MODULE: ./src/services/api.ts
 function getDownloadUrl(path){return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
-return reject(r);}}});});}function download(item){var url=item.url,serverFilename=item.serverFilename,progress=item.progress;var currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;return new Promise(function(resolve,reject){progress.request=gmInterface["a" /* GM */].download({url:url,name:serverFilename,saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});resolve();},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;if(Object.keys(e).length===0){reject(new Error('user is not authorized, hitcode:122'));}else{reject(new Error(e.error));}}});var loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);});}
+return reject(r);}}});});}var blackListedFileExtension=['apk','exe','pdf'];var api_formatServerFilename=function formatServerFilename(fileName){return fileName+(blackListedFileExtension.includes(Object(utils["c" /* getFileExtension */])(fileName))?'.__________重命名我.zip':'');};function download(item){var url=item.url,serverFilename=item.serverFilename,progress=item.progress;var currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;return new Promise(function(resolve,reject){progress.request=gmInterface["a" /* GM */].download({url:url,name:api_formatServerFilename(serverFilename),saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});resolve();},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;if(Object.keys(e).length===0){reject(new Error('user is not authorized, hitcode:122'));}else{reject(new Error(e.error));}}});var loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);});}
 // EXTERNAL MODULE: ./src/selectors.ts
 var selectors = __webpack_require__(17);
 
@@ -7077,21 +7080,15 @@ N();
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(39);
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return formatByte; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return log; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return log; });
 /* unused harmony export awaitElement */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addLocationChangeCallback; });
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFileExtension; });
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
 var formatByte=function formatByte(byte){if(byte<=1000){return"".concat(byte," B");}var KiByte=Math.round(byte/1024);return KiByte<=1000?"".concat(KiByte," KB"):"".concat(Math.round(KiByte/10.24)/100," MB");};/**
@@ -7116,7 +7113,14 @@ var formatByte=function formatByte(byte){if(byte<=1000){return"".concat(byte," B
  * @returns {MutationObserver} - MutationObserver that watches the URL
  */function _awaitElement(){_awaitElement=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(selector){var MAX_TRIES,tries;return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:MAX_TRIES=60;tries=0;return _context.abrupt("return",new Promise(function(resolve,reject){function probe(){tries++;return document.querySelector(selector);}function delayedProbe(){if(tries>=MAX_TRIES){log("Can't find element with selector",selector);reject();return;}var elm=probe();if(elm){resolve(elm);return;}window.setTimeout(delayedProbe,250);}delayedProbe();}));case 3:case"end":return _context.stop();}}},_callee);}));return _awaitElement.apply(this,arguments);}function addLocationChangeCallback(callback){// Run the callback once right at the start
 window.setTimeout(callback,0);// Set up a `MutationObserver` to watch for changes in the URL
-var oldHref=window.location.href;var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(document.body,{childList:true,subtree:true});return observer;}
+var oldHref=window.location.href;var observer=new MutationObserver(function(mutations){if(mutations.some(function(){return oldHref!==document.location.href;})){oldHref=document.location.href;callback();}});observer.observe(document.body,{childList:true,subtree:true});return observer;}var getFileExtension=function getFileExtension(fileName){return fileName.substring(fileName.lastIndexOf('.')+1).toLocaleLowerCase();};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(39);
+
 
 /***/ }),
 /* 14 */
@@ -7601,7 +7605,7 @@ function _objectWithoutProperties(source, excluded) {
 // CONCATENATED MODULE: ./src/components/Modal.tsx
 var Wrapper=/*#__PURE__*/styled_components_browser_esm["b" /* default */].div.withConfig({displayName:"Modal__Wrapper",componentId:"ufr2n-0"})([""]);function Modal(_ref){var closeButton=_ref.closeButton,open=_ref.open,close=_ref.close,children=_ref.children,rest=_objectWithoutProperties(_ref,["closeButton","open","close","children"]);var closeModal=function closeModal(){typeof close==='function'&&close();};return/*#__PURE__*/react_default.a.createElement(Wrapper,Object.assign({className:"modal-wrapper".concat(open?' open':'')},rest),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-overlay",onClick:closeModal}),/*#__PURE__*/react_default.a.createElement("div",{className:"modal-window"},/*#__PURE__*/react_default.a.createElement("div",{className:"modal-content"},children),closeButton&&/*#__PURE__*/react_default.a.createElement("span",{className:"modal-close",onClick:closeModal},"\xD7")));}
 // EXTERNAL MODULE: ./src/utils/index.ts
-var utils = __webpack_require__(13);
+var utils = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./src/containers/DownloadList/Operation.tsx
 var Operation_mapStoreToProps=function mapStoreToProps(store,props){var _store$download$downl;return{status:(_store$download$downl=store.download.downloadItems[props.fsId])===null||_store$download$downl===void 0?void 0:_store$download$downl.status};};function Operation(_ref){var fsId=_ref.fsId,status=_ref.status;var targetItem=InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];var dispatch=Object(es["d" /* useDispatch */])();var stopItem=function stopItem(){if(targetItem){var _targetItem$progress$,_targetItem$progress$2;if(status===types["b" /* StatusTypes */].downloading){if(!window.confirm('停止后将需要重新下载， 确认吗？')){return false;}dispatch(downloadModule["b" /* default */].actions.failureDownload());}targetItem.progress.status=types["b" /* StatusTypes */].stopped;((_targetItem$progress$=targetItem.progress.request)===null||_targetItem$progress$===void 0?void 0:_targetItem$progress$.abort)&&((_targetItem$progress$2=targetItem.progress.request)===null||_targetItem$progress$2===void 0?void 0:_targetItem$progress$2.abort());clearInterval(targetItem.progress.intervalId);dispatch(Object(downloadModule["a" /* addNextDownloadRequest */])());return false;}};var deleteItem=function deleteItem(){if(targetItem){var _targetItem$progress$3;((_targetItem$progress$3=targetItem.progress.request)===null||_targetItem$progress$3===void 0?void 0:_targetItem$progress$3.abort)&&targetItem.progress.request.abort();clearInterval(targetItem.progress.intervalId);if(targetItem.progress.status===types["b" /* StatusTypes */].downloading){dispatch(downloadModule["b" /* default */].actions.failureDownload());}delete InstaceForSystem["a" /* InstanceForSystem */].allDownloads[fsId];// Todo this operation will occur Type error on development mode
@@ -9321,7 +9325,7 @@ module.exports = __webpack_require__(38);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
@@ -9331,7 +9335,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(24);
 var _package_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(24, 1);
 /* harmony import */ var _utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(6);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(27);
@@ -9340,7 +9344,7 @@ function render(RootComponent){react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.
 // different routes.
 function main(){return _main.apply(this,arguments);}function _main(){_main=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(/*#__PURE__*/C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(){return C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:document.body.insertAdjacentHTML('beforeend',"<div id=\"".concat(_package_json__WEBPACK_IMPORTED_MODULE_4__[/* name */ "a"],"\"></div>"));render(_App__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);case 2:case"end":return _context.stop();}}},_callee);}));return _main.apply(this,arguments);}Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* addLocationChangeCallback */ "a"])(function(){// Tampermonkey doesn't bubble errors up to the main console,
 // so we have to catch them manually and log them
-main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "c"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(_App__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);});}
+main().catch(function(e){return Object(_utils__WEBPACK_IMPORTED_MODULE_6__[/* log */ "d"])(e);});});if(_utils_nodeEnvIs_devNodeEnv__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]&&module.hot){module.hot.accept('./App.tsx',function(){render(_App__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);});}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(29)(module)))
 
 /***/ }),
