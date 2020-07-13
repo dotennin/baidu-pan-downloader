@@ -34,7 +34,7 @@ const InstanceForSystem = {
         downloadItemsForStore[item.fsId] = { intervalId, percentCount, speedOverlay, status }
         this.allDownloads[item.fsId] = item
 
-        if (autoStart && [StatusTypes.inQueued, StatusTypes.downloading].includes(status)) {
+        if (autoStart && [StatusTypes.downloading].includes(status)) {
           dispatch(fetchItem(item))
         }
       })
