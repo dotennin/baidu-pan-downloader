@@ -4,6 +4,9 @@ import { ItemProxy } from './ItemProxy'
 import { getFileExtension } from '../utils'
 
 export function getDownloadUrl(path: string) {
+  if (path.match(/^\/sharelink\d+/) !== null) {
+    throw new Error('「保存到我的百度网盘」后才能下载')
+  }
   return new Promise((resolve, reject) => {
     GM.xmlHttpRequest({
       url:
