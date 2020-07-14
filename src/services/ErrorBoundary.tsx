@@ -40,16 +40,18 @@ class ErrorBoundary extends React.Component<any, IState> {
             store.dispatch(interfaceModule.actions.setError(undefined))
           }}
         >
-          <h2>
-            {this.state.error?.toString()}
-            {this.props.error?.toString()}
-          </h2>
-          {devNodeEnv && (
-            <details style={{ whiteSpace: 'pre-wrap' }}>
-              {this.props.error?.stack}
-              {this.state.errorInfo?.componentStack}
-            </details>
-          )}
+          <div style={{ border: '1px solid #000', margin: 4 }}>
+            <h2 style={{ whiteSpace: 'pre-wrap' }}>
+              {this.state.error?.toString()}
+              {this.props.error?.toString()}
+            </h2>
+            {devNodeEnv && (
+              <details style={{ whiteSpace: 'pre-wrap' }}>
+                {this.props.error?.stack}
+                {this.state.errorInfo?.componentStack}
+              </details>
+            )}
+          </div>
         </Modal>
       )
     }
