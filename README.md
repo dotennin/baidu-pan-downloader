@@ -19,7 +19,7 @@
 ```
 Chrome:  通过
 Edge:    通过
-Firefox: 未通过(下载进度一直为0）
+Firefox: 通过(需要TampermonkeyBETA v4.11.6115 或以上版本）
 Opera:   未测试
 Safari:  未测试
 ```
