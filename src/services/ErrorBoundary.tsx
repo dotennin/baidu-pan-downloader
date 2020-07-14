@@ -3,6 +3,7 @@ import { Modal } from '../components/Modal'
 import { IStoreState, store } from '../store'
 import { connect } from 'react-redux'
 import interfaceModule from '../modules/interfaceModule'
+import devNodeEnv from '../utils/nodeEnvIs/devNodeEnv'
 
 interface IState {
   error: Error | null
@@ -43,10 +44,12 @@ class ErrorBoundary extends React.Component<any, IState> {
             {this.state.error?.toString()}
             {this.props.error?.toString()}
           </h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.props.error?.stack}
-            {this.state.errorInfo?.componentStack}
-          </details>
+          {devNodeEnv && (
+            <details style={{ whiteSpace: 'pre-wrap' }}>
+              {this.props.error?.stack}
+              {this.state.errorInfo?.componentStack}
+            </details>
+          )}
         </Modal>
       )
     }
