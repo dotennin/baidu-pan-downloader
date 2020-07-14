@@ -7,8 +7,10 @@
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
 // @compatible        edge/83.0.478.54 passed
+// @compatible        firefox TM version BETA v4.11.6115
 // @compatible        opera untested
 // @compatible        safari untested
+
 // @include https://pan.baidu.com/disk/*
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
