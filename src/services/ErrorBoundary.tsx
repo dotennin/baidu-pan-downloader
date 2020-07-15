@@ -1,9 +1,9 @@
 import React, { ErrorInfo } from 'react'
-import { Modal } from '../components/Modal'
 import { IStoreState, store } from '../store'
 import { connect } from 'react-redux'
 import interfaceModule from '../modules/interfaceModule'
 import devNodeEnv from '../utils/nodeEnvIs/devNodeEnv'
+import { InstanceForSystem } from './InstaceForSystem'
 
 interface IState {
   error: Error | null
@@ -18,6 +18,7 @@ class ErrorBoundary extends React.Component<any, IState> {
   constructor(props: any) {
     super(props)
     this.state = { error: null, errorInfo: null }
+    this.reRenderApp = this.reRenderApp.bind(this)
   }
 
   componentDidCatch(error: IState['error'], errorInfo: IState['errorInfo']) {
@@ -28,35 +29,29 @@ class ErrorBoundary extends React.Component<any, IState> {
     })
   }
 
+  private reRenderApp() {
+    this.setState({ error: null, errorInfo: null })
+    store.dispatch(interfaceModule.actions.setError(undefined))
+  }
+
   render() {
-    if (this.state.errorInfo || this.props.error) {
-      // Error path
-      return (
-        <Modal
-          style={{ color: 'red', wordBreak: 'break-all' }}
-          open={true}
-          close={() => {
-            this.setState({ error: null, errorInfo: null })
-            store.dispatch(interfaceModule.actions.setError(undefined))
-          }}
-        >
-          <div style={{ border: '1px solid #000', margin: 4 }}>
-            <h2 style={{ whiteSpace: 'pre-wrap' }}>
-              {this.state.error?.toString()}
-              {this.props.error?.toString()}
-            </h2>
-            {devNodeEnv && (
-              <details style={{ whiteSpace: 'pre-wrap' }}>
-                {this.props.error?.stack}
-                {this.state.errorInfo?.componentStack}
-              </details>
-            )}
-          </div>
-        </Modal>
-      )
+    const error: Error = this.props.error || this.state.error
+    if (error) {
+      const errorMessage =
+        error.toString() +
+        (this.state.errorInfo && devNodeEnv
+          ? `<details style="white-space: pre-wrap">${this.state.errorInfo?.componentStack}</details>`
+          : '')
+      InstanceForSystem.dialog.alert({
+        body: errorMessage,
+        onSure: this.reRenderApp,
+        onClose: this.reRenderApp,
+      })
+      return null
+    } else {
+      // Normally, just render children
+      return this.props.children
     }
-    // Normally, just render children
-    return this.props.children
   }
 }
 

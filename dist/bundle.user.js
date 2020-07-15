@@ -1459,16 +1459,16 @@ var gmInterface = __webpack_require__(7);
 var utils = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./src/services/api.ts
-function getDownloadUrl(path){if(path.match(/^\/sharelink\d+/)!==null){throw new Error('需要先「保存到我的百度网盘」后\n在网盘列表(https://pan.baidu.com/disk/home)中下载');}return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
+function getDownloadUrl(path){if(path.match(/^\/sharelink\d+/)!==null){throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');}return new Promise(function(resolve,reject){gmInterface["a" /* GM */].xmlHttpRequest({url:'http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path='+encodeURIComponent(path),method:'GET',responseType:'json',headers:{'User-Agent':types["a" /* HeaderTypes */].userAgent},onload:function onload(r){if(r.response.client_ip){return resolve(r);}else{// Todo return error message
 return reject(r);}}});});}var blackListedFileExtension=['apk','exe','pdf'];var api_formatServerFilename=function formatServerFilename(fileName){return fileName+(blackListedFileExtension.includes(Object(utils["c" /* getFileExtension */])(fileName))?'.__________重命名我.zip':'');};function download(item){var url=item.url,serverFilename=item.serverFilename,progress=item.progress;var currentEvent=undefined;progress.percentCount=0;progress.speedOverlay=0;return new Promise(function(resolve,reject){progress.request=gmInterface["a" /* GM */].download({url:url,name:api_formatServerFilename(serverFilename),saveAs:true,headers:{Host:'qdall01.baidupcs.com',Accept:'*/*','User-Agent':types["a" /* HeaderTypes */].userAgent,'Accept-Encoding':'identity','Accept-Language':'ja-JP','Accept-Charset':'*'},onprogress:function onprogress(e){currentEvent=e;progress.percentCount=Math.round(currentEvent.loaded*100/currentEvent.total);},onload:function onload(){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=100;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].completed;gmInterface["a" /* GM */].notification({text:'下载完成',title:serverFilename,highlight:true});resolve();},onerror:function onerror(e){progress.intervalId&&clearInterval(progress.intervalId);progress.percentCount=0;progress.speedOverlay=0;progress.status=types["b" /* StatusTypes */].error;if(Object.keys(e).length===0){reject(new Error('user is not authorized, hitcode:122'));}else{reject(new Error(e.error));}}});var loaded=0;progress.intervalId=window.setInterval(function(){if(currentEvent){var speed=currentEvent.loaded-loaded;loaded=currentEvent.loaded;progress.speedOverlay=speed;}},1000);});}
 // EXTERNAL MODULE: ./src/selectors.ts
 var selectors = __webpack_require__(17);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(4);
+var interfaceModule = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(5);
+var InstaceForSystem = __webpack_require__(4);
 
 // CONCATENATED MODULE: ./src/modules/downloadModule.ts
 var downloadModule_allDownloads={};var initialState={downloadItems:downloadModule_allDownloads,processing:0};var downloadModule=Object(redux_toolkit_esm["b" /* createSlice */])({name:'download',initialState:initialState,reducers:{reset:function reset(state){state=Object(objectSpread2["a" /* default */])({},initialState);return state;},updateProgress:function updateProgress(state,action){var _action$payload=action.payload,fsId=_action$payload.fsId,progress=_action$payload.progress;var item=state.downloadItems[fsId];if(item){state.downloadItems[fsId]=Object.assign(item,progress);}return state;},change:function change(state,action){var payload=action.payload;state=Object.assign(state,payload);return state;},removeItem:function removeItem(state,action){delete state.downloadItems[action.payload.fsId];return state;},requestDownload:function requestDownload(state){state.processing+=1;return state;},successDownload:function successDownload(state){state.processing-=1;return state;},failureDownload:function failureDownload(state){state.processing-=1;return state;}}});var downloadModule_addNextDownloadRequest=function addNextDownloadRequest(){return function(dispatch){var allDownloads=InstaceForSystem["a" /* InstanceForSystem */].allDownloads;Object.values(allDownloads).filter(function(item){return item.progress.status===types["b" /* StatusTypes */].inQueued;}).forEach(function(item){// eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -1479,29 +1479,29 @@ dispatch(downloadModule_fetchItem(item));});};};var downloadModule_fetchItem=fun
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
-/* harmony import */ var _services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var _services_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
-var initialState={maxDownloadCount:_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false,error:undefined};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
-var key=k;switch(key){case'autoStart':_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;},setError:function setError(state,action){state.error=action.payload;return state;}}}));
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstanceForSystem; });
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
 /* harmony import */ var _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
-/* harmony import */ var _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4);
-var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,maxDownloadCount:2,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{}).map(function(arr){return _ItemProxy__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);var state=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState();var dispatch=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch;var autoStart=state.interface.autoStart;var downloadItemsForStore={};objectFromValue.forEach(function(item){if(!autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
+/* harmony import */ var _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5);
+var InstanceForSystem={list:eval("require('system-core:context/context.js')").instanceForSystem.list,dialog:eval("require(\"system-core:system/uiService/dialog/dialog.js\")"),maxDownloadCount:2,allDownloads:{},initState:function initState(){var _this=this;return new Promise(function(resolve){var objectFromValue=_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items,{}).map(function(arr){return _ItemProxy__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].deleteValue(_types__WEBPACK_IMPORTED_MODULE_0__[/* ValueTypes */ "c"].items);var state=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState();var dispatch=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch;var autoStart=state.interface.autoStart;var downloadItemsForStore={};objectFromValue.forEach(function(item){if(!autoStart&&item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading){// stop downloading item if user set autoStart as false
 item.progress.status=_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].stopped;}var _item$progress=item.progress,intervalId=_item$progress.intervalId,percentCount=_item$progress.percentCount,speedOverlay=_item$progress.speedOverlay,status=_item$progress.status;downloadItemsForStore[item.fsId]={intervalId:intervalId,percentCount:percentCount,speedOverlay:speedOverlay,status:status};_this.allDownloads[item.fsId]=item;if(autoStart&&[_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading].includes(status)){dispatch(Object(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* fetchItem */ "c"])(item));}});_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__[/* default */ "b"].actions.change({downloadItems:downloadItemsForStore}));resolve(_this);});},get selectedList(){var selected=this.list.getSelected();return selected.filter(function(arr){return arr.isdir!==1;}).map(function(arr){return _ItemProxy__WEBPACK_IMPORTED_MODULE_2__[/* ItemProxy */ "a"].Create(arr);});},get currentList(){return this.list.getCurrentList();},stopAll:function stopAll(){Object.values(this.allDownloads).filter(function(item){return item.progress.status===_types__WEBPACK_IMPORTED_MODULE_0__[/* StatusTypes */ "b"].downloading;}).forEach(function(item){item.progress.request&&item.progress.request.abort&&item.progress.request.abort();});}};// Resolve store initiation
 setTimeout(function(){InstanceForSystem.initState().then(function(){setTimeout(function(){var _store$getState=_store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].getState(),processing=_store$getState.download.processing;if(processing>0){// if there is a task that automatically starts downloading then open download-modal directly after initialization
 _store__WEBPACK_IMPORTED_MODULE_3__[/* store */ "a"].dispatch(_modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].actions.change({downloadModalOpen:true}));}},1500);});});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _services_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+var initialState={maxDownloadCount:_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,2),autoStart:_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].getValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,true),downloadModalOpen:false,configModalOpen:false,error:undefined};/* harmony default export */ __webpack_exports__["a"] = (Object(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__[/* createSlice */ "b"])({name:'interface',initialState:initialState,reducers:{reset:function reset(state){state=Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},initialState);return state;},change:function change(state,action){var payload=action.payload;Object.keys(payload).forEach(function(k){// Set key event
+var key=k;switch(key){case'autoStart':_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].autoStart,payload.autoStart);break;case'maxDownloadCount':_services_gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__[/* GM */ "a"].setValue(_services_types__WEBPACK_IMPORTED_MODULE_2__[/* ValueTypes */ "c"].maxDownloadCount,payload.maxDownloadCount);}});state=Object.assign(Object(C_Users_Dotennin_project_baiduPanDownloader_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({},state),action.payload);return state;},setError:function setError(state,action){state.error=action.payload;return state;}}}));
 
 /***/ }),
 /* 6 */
@@ -1527,7 +1527,7 @@ var redux = __webpack_require__(10);
 var redux_logger = __webpack_require__(33);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(4);
+var interfaceModule = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
 var downloadModule = __webpack_require__(3);
@@ -7553,13 +7553,13 @@ var objectSpread2 = __webpack_require__(14);
 var es = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./src/services/InstaceForSystem.ts
-var InstaceForSystem = __webpack_require__(5);
+var InstaceForSystem = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./src/services/types.ts
 var types = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./src/modules/interfaceModule.ts
-var interfaceModule = __webpack_require__(4);
+var interfaceModule = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/modules/downloadModule.ts + 1 modules
 var downloadModule = __webpack_require__(3);
@@ -7658,6 +7658,14 @@ var classCallCheck = __webpack_require__(21);
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(20);
 
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
@@ -7719,14 +7727,6 @@ function _typeof(obj) {
 
   return _typeof(obj);
 }
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
 
 
@@ -7760,10 +7760,9 @@ function _createSuper(Derived) {
 var devNodeEnv = __webpack_require__(18);
 
 // CONCATENATED MODULE: ./src/services/ErrorBoundary.tsx
-var ErrorBoundary_mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null};return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
-this.setState({error:error,errorInfo:errorInfo});}},{key:"render",value:function render(){var _this2=this;if(this.state.errorInfo||this.props.error){var _this$state$error,_this$props$error,_this$props$error2,_this$state$errorInfo;// Error path
-return/*#__PURE__*/react_default.a.createElement(Modal,{style:{color:'red',wordBreak:'break-all'},open:true,close:function close(){_this2.setState({error:null,errorInfo:null});src_store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},/*#__PURE__*/react_default.a.createElement("div",{style:{border:'1px solid #000',margin:4}},/*#__PURE__*/react_default.a.createElement("h2",{style:{whiteSpace:'pre-wrap'}},(_this$state$error=this.state.error)===null||_this$state$error===void 0?void 0:_this$state$error.toString(),(_this$props$error=this.props.error)===null||_this$props$error===void 0?void 0:_this$props$error.toString()),devNodeEnv["a" /* default */]&&/*#__PURE__*/react_default.a.createElement("details",{style:{whiteSpace:'pre-wrap'}},(_this$props$error2=this.props.error)===null||_this$props$error2===void 0?void 0:_this$props$error2.stack,(_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack)));}// Normally, just render children
-return this.props.children;}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = (Object(es["b" /* connect */])(ErrorBoundary_mapStoreToProps)(ErrorBoundary_ErrorBoundary));
+var ErrorBoundary_mapStoreToProps=function mapStoreToProps(store){return{error:store.interface.error};};var ErrorBoundary_ErrorBoundary=/*#__PURE__*/function(_React$Component){_inherits(ErrorBoundary,_React$Component);var _super=_createSuper(ErrorBoundary);function ErrorBoundary(props){var _this;Object(classCallCheck["a" /* default */])(this,ErrorBoundary);_this=_super.call(this,props);_this.state={error:null,errorInfo:null};_this.reRenderApp=_this.reRenderApp.bind(_assertThisInitialized(_this));return _this;}Object(createClass["a" /* default */])(ErrorBoundary,[{key:"componentDidCatch",value:function componentDidCatch(error,errorInfo){// You can also log the error to an error reporting service
+this.setState({error:error,errorInfo:errorInfo});}},{key:"reRenderApp",value:function reRenderApp(){this.setState({error:null,errorInfo:null});src_store["a" /* store */].dispatch(interfaceModule["a" /* default */].actions.setError(undefined));}},{key:"render",value:function render(){var error=this.props.error||this.state.error;if(error){var _this$state$errorInfo;var errorMessage=error.toString()+(this.state.errorInfo&&devNodeEnv["a" /* default */]?"<details style=\"white-space: pre-wrap\">".concat((_this$state$errorInfo=this.state.errorInfo)===null||_this$state$errorInfo===void 0?void 0:_this$state$errorInfo.componentStack,"</details>"):'');InstaceForSystem["a" /* InstanceForSystem */].dialog.alert({body:errorMessage,onSure:this.reRenderApp,onClose:this.reRenderApp});return null;}else{// Normally, just render children
+return this.props.children;}}}]);return ErrorBoundary;}(react_default.a.Component);/* harmony default export */ var services_ErrorBoundary = (Object(es["b" /* connect */])(ErrorBoundary_mapStoreToProps)(ErrorBoundary_ErrorBoundary));
 // CONCATENATED MODULE: ./src/App.tsx
 var App_StyledDiv=/*#__PURE__*/Object(styled_components_browser_esm["b" /* default */])("div").withConfig({displayName:"_StyledDiv"})(["display:none;"]);var App_App=function App(){return/*#__PURE__*/react_default.a.createElement(react_default.a.Fragment,null,/*#__PURE__*/react_default.a.createElement(App_StyledDiv,null,"Todo Don\u2019t know the reason. Once delete this element, Styled-components will not load properly."),/*#__PURE__*/react_default.a.createElement(GlobalStyle,null),/*#__PURE__*/react_default.a.createElement(services_ErrorBoundary,null,/*#__PURE__*/react_default.a.createElement(containers_DownloadList,null),/*#__PURE__*/react_default.a.createElement(containers_Preferences,null),/*#__PURE__*/react_default.a.createElement(containers_FloatingButtons,null)));};/* harmony default export */ var src_App = __webpack_exports__["a"] = (App_App);
 
