@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/dotennin/baidu-pan-downloader/compare/v2.0.0...v2.2.0) (2020-07-15)
+
+
+### Features
+
+* dialog instance ([173595e](https://github.com/dotennin/baidu-pan-downloader/commit/173595eb5f5aa991f7ba2b5a15929db0c89da031))
+* Guide user to save to selfs disk before downloading ([a46eaf3](https://github.com/dotennin/baidu-pan-downloader/commit/a46eaf3e5c8d5771009480e7bd363e08c2175295))
+
 ## [2.1.0](https://github.com/dotennin/baidu-pan-downloader/compare/v2.0.0...v2.1.0) (2020-07-14)
 
 
