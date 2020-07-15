@@ -5,7 +5,9 @@ import { getFileExtension } from '../utils'
 
 export function getDownloadUrl(path: string) {
   if (path.match(/^\/sharelink\d+/) !== null) {
-    throw new Error('需要先「保存到我的百度网盘」后\n在网盘列表(https://pan.baidu.com/disk/home)中下载')
+    throw new Error(
+      '需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载'
+    )
   }
   return new Promise((resolve, reject) => {
     GM.xmlHttpRequest({

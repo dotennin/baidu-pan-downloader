@@ -43,3 +43,23 @@ export interface IProgress {
   percentCount: number
   speedOverlay: number
 }
+
+interface IDialogAlertConfig {
+  body: string
+  title?: string
+  width?: string
+  sureText?: string
+  cancelText?: string
+  onSure?: Function
+  onClose?: Function
+}
+
+interface IDialogConfirmConfig extends IDialogAlertConfig {
+  title: string
+  onCancel?: Function
+  extra?: Function
+}
+export interface IDialog {
+  alert: (configOrBody: string | IDialogAlertConfig) => void
+  confirm: <T extends string | IDialogConfirmConfig>(title: T, message: T extends string ? string : never) => void
+}

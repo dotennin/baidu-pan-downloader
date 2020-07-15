@@ -1,4 +1,4 @@
-import { IItem, IProgress, StatusTypes, ValueTypes } from './types'
+import { IDialog, IItem, IProgress, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { store } from '../store'
@@ -9,6 +9,7 @@ import interfaceModule from '../modules/interfaceModule'
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
   list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
+  dialog: eval(`require("system-core:system/uiService/dialog/dialog.js")`) as IDialog,
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
 
