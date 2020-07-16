@@ -1,4 +1,4 @@
-# :octocat: baidu-pan-downloader
+# :octocat: baidu-pan-downloader :octocat:
 -----------------------------------
 ## A Baidu-yun storage downloader script using Greasemonkey/Tampermonkey
 #### This repository contains a stub project for developing usercript extensions with React+Redux+[toolkit]+Typescript.
@@ -46,6 +46,6 @@ Safari:  ⁉
 See👉 [here](https://dotennin.github.io/baidu-pan-downloader/CHANGELOG) to confirm Changelog
 ------------------------------------------
 -----------------------------------
-# 📚 中文说明
+# 🀄 中文说明
 点👉 [here](https://dotennin.github.io/baidu-pan-downloader/README.zh_cn) 查看中文版本说明
 ------------------------------------------
