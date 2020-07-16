@@ -35,9 +35,9 @@ npm start
 -----------------------------------
 ## ❄ Browser support：
 ```
-Chrome:  ✔
-Edge:    ✔
-Firefox: ✔⚠(Required TampermonkeyBETA v4.11.6115 or higher）
+Chrome:  ✅
+Edge:    ✅
+Firefox: ✅⚠(Required TampermonkeyBETA v4.11.6115 or higher）
 Opera:   ⁉
 Safari:  ⁉
 ```

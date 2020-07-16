@@ -17,8 +17,8 @@
 -----------------------------------
 ## ❄ 浏览器支持情况：
 ```
-Chrome:  ✔
-Edge:    ✔
+Chrome:  ✅
+Edge:    ✅
 Firefox: ✔⚠(需要TampermonkeyBETA v4.11.6115 或以上版本）
 Opera:   ⁉
 Safari:  ⁉
