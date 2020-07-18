@@ -1,5 +1,4 @@
 import React from 'react'
-import { formatByte } from '../../utils'
 import { ItemProxy } from '../../services/ItemProxy'
 import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
@@ -26,7 +25,7 @@ function Item({ fsId }: IProps) {
           <ProgressStatus fsId={fsId} />
         </div>
       </td>
-      <td data-label="url">{formatByte(size)}</td>
+      <td data-label="url">{InstanceForSystem.friendlyFileSize(size)}</td>
       <td data-label="speed">
         <SpeedStatus fsId={fsId} />
       </td>

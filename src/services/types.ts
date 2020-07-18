@@ -59,7 +59,34 @@ interface IDialogConfirmConfig extends IDialogAlertConfig {
   onCancel?: Function
   extra?: Function
 }
-export interface IDialog {
-  alert: (configOrBody: string | IDialogAlertConfig) => void
-  confirm: <T extends string | IDialogConfirmConfig>(title: T, message: T extends string ? string : never) => void
+
+export interface IInstance {
+  dialog: {
+    alert: (configOrBody: string | IDialogAlertConfig) => void
+    confirm: <T extends string | IDialogConfirmConfig>(title: T, message: T extends string ? string : never) => void
+  }
+  hash: {
+    set: (key: string, value: string) => void
+    get: (key: string) => string
+    listen: (key: string, callback: Function) => void
+    del: (key: string) => void
+  }
+  fileManagerApi: {
+    createNewDir: (path: string, callback: (e: number) => void, resolveFileName: string) => void // 0 successful ?
+    deleteFiles: (path: string[], callback: (e: number) => void) => void // 0 successful ?
+    reName: (source: string, callback: (e: number) => void, targetName: string) => void
+  }
+  list: {
+    getHistoryPath: () => string
+    goHistory: (path: string) => void
+    getSelected: () => IItem[]
+    getCurrentList: () => IItem[]
+  }
+  listInit: {
+    getCheckedIndexs: () => number[]
+    getCheckedItems: () => IItem[]
+  }
+  listInstance: {
+    cancelFilesSelect: () => void
+  }
 }
