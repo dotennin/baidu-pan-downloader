@@ -1,4 +1,4 @@
-import { IDialog, IItem, IProgress, StatusTypes, ValueTypes } from './types'
+import { IInstance, IItem, IProgress, StatusTypes, ValueTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { store } from '../store'
@@ -8,10 +8,20 @@ import interfaceModule from '../modules/interfaceModule'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
-  list: eval(`require('system-core:context/context.js')`).instanceForSystem.list,
-  dialog: eval(`require("system-core:system/uiService/dialog/dialog.js")`) as IDialog,
+  list: eval(`require('system-core:context/context.js')`).instanceForSystem.list as IInstance['list'],
+  dialog: eval(`require("system-core:system/uiService/dialog/dialog.js")`) as IInstance['dialog'],
+  hash: eval(`require('base:widget/hash/hash.js')`) as IInstance['hash'],
+  friendlyFileSize: (size: number): string =>
+    eval(`require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(${size})`),
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
+  fileManagerApi: eval(
+    `require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")`
+  ) as IInstance['fileManagerApi'],
+  listInit: eval(`require("disk-system:widget/pageModule/list/listInit.js")`) as IInstance['listInit'],
+  listInstance: eval(
+    `require("system-core:context/context.js").instanceForSystem.listInstance`
+  ) as IInstance['listInstance'],
 
   initState: function() {
     return new Promise((resolve) => {
@@ -47,7 +57,7 @@ const InstanceForSystem = {
   },
 
   get selectedList() {
-    const selected: IItem[] = this.list.getSelected()
+    const selected = this.list.getSelected()
 
     return selected
       .filter((arr) => {
@@ -57,7 +67,7 @@ const InstanceForSystem = {
   },
 
   get currentList() {
-    return this.list.getCurrentList() as IItem[]
+    return this.list.getCurrentList()
   },
 
   stopAll: function() {
