@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/dotennin/baidu-pan-downloader/compare/v2.2.0...v2.3.0) (2020-07-19)
+
+
+### Features
+
+* download tabs ([63ba5b3](https://github.com/dotennin/baidu-pan-downloader/commit/63ba5b3c77baa2e0bcad945aaea32152ab1dd41a))
+* Instance interface from Baidu ([cde9032](https://github.com/dotennin/baidu-pan-downloader/commit/cde90322e16d3523dbdd43c880384b47eb0b09de))
+* update document ([a23792e](https://github.com/dotennin/baidu-pan-downloader/commit/a23792e70b552685c249071f8b3d13c6ed960f15))
+* update document ([4c753bc](https://github.com/dotennin/baidu-pan-downloader/commit/4c753bc6057bcf3938fa5ccf98adaed0e0e4bf78))
+
 ## [2.2.0](https://github.com/dotennin/baidu-pan-downloader/compare/v2.0.0...v2.2.0) (2020-07-15)
 
 
