@@ -49,15 +49,15 @@ module.exports = {
     'no-case-declarations': 'off',
     "no-restricted-imports": [
   "error",
-  {
-    "paths": [{
-      "name": "styled-components",
-      "message": "Please import from styled-components/macro."
-    }],
-    "patterns": [
-      "!styled-components/macro"
-    ]
-  }
+  // {
+  //   "paths": [{
+  //     "name": "styled-components",
+  //     "message": "Please import from styled-components/macro."
+  //   }],
+  //   "patterns": [
+  //     "!styled-components/macro"
+  //   ]
+  // }
 ]
   },
   overrides: [
