@@ -12,7 +12,10 @@ import TabTableHeader from '../../components/TabTableHeader'
 const mapStoreToProps = (store: IStoreState) => ({
   fsIdList: createSelector(
     (store: IStoreState) => store.download.downloadItems,
-    (allDownloads) => Object.keys(allDownloads).filter((fsId) => allDownloads[fsId].status === StatusTypes.downloading)
+    (allDownloads) =>
+      Object.keys(allDownloads)
+        .sort((a) => (allDownloads[a].status === StatusTypes.downloading ? -1 : 1))
+        .filter((fsId) => [StatusTypes.downloading, StatusTypes.inQueued].includes(allDownloads[fsId].status))
   )(store),
 })
 

@@ -36,7 +36,7 @@ const InstanceForSystem = {
 
       const downloadItemsForStore: Record<ItemProxy['fsId'], IProgress> = {}
       objectFromValue.forEach((item) => {
-        if (!autoStart && item.progress.status === StatusTypes.downloading) {
+        if (!autoStart && [StatusTypes.downloading, StatusTypes.inQueued].includes(item.progress.status)) {
           // stop downloading item if user set autoStart as false
           item.progress.status = StatusTypes.stopped
         }

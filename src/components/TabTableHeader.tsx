@@ -6,7 +6,7 @@ const TabTableHeader: React.FC<{ name: string }> = ({ children, name, ...rest })
     <Tab
       name={name}
       css={`
-        height: calc(60vh - 58px);
+        max-height: calc(60vh - 58px);
         overflow: auto;
       `}
       {...rest}
