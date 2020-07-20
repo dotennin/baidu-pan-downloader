@@ -8,7 +8,9 @@ interface IProps extends IStandardProps {
   close: Function
   header?: React.ReactNode
 }
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  background: transparent;
+`
 function Modal({ closeButton, open, close, children, header, ...rest }: IProps) {
   const closeModal = () => {
     typeof close === 'function' && close()
