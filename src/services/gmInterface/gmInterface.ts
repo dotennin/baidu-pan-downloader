@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,no-undef */
 import { Char, IDownloadDetail, INotification, IOpenInTabOption, IXMLHttpRequestDetail } from './types'
 
+if (window.location.href.includes('localhost')) {
+  window.location.replace('https://pan.baidu.com/disk/home')
+}
+
 /**
  * This section describes how the Tampermonkey API can be used
  * Application Programming Interface
