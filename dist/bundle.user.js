@@ -3573,7 +3573,7 @@ var middleware=Object(toConsumableArray["a" /* default */])(Object(redux_toolkit
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GM; });
-/* eslint-disable @typescript-eslint/no-explicit-any,no-undef */ /**
+/* eslint-disable @typescript-eslint/no-explicit-any,no-undef */if(window.location.href.includes('localhost')){window.location.replace('https://pan.baidu.com/disk/home');}/**
  * This section describes how the Tampermonkey API can be used
  * Application Programming Interface
  * @link https://www.tampermonkey.net/documentation.php
