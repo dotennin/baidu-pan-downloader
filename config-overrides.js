@@ -17,7 +17,6 @@ module.exports = override(
   ]),
   (config) => {
     // prevent chunking for all files
-    process.env.NODE_ENV = 'production'
     Object.assign(config.optimization, {
       runtimeChunk: false,
       splitChunks: {

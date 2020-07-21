@@ -10,7 +10,6 @@ import StoppedTab from './StoppedTab'
 import CompletedTab from './CompletedTab'
 
 const mapStoreToProps = (store: IStoreState) => ({
-  downloadItems: store.download.downloadItems,
   downloadModalOpen: store.interface.downloadModalOpen,
 })
 
