@@ -11,7 +11,6 @@ module.exports = `// ==UserScript==
 // @compatible        firefox TM version BETA v4.11.6115
 // @compatible        opera untested
 // @compatible        safari untested
-
 // @include https://pan.baidu.com/disk/*
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
