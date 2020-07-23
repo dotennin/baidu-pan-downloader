@@ -38,7 +38,7 @@ const TabNavItem = styled.div.attrs((props: { active: boolean }) => ({
   align-items: flex-end;
   flex: 1;
   text-align: center;
-  min-height: 56px;
+  height: 45px;
   cursor: pointer;
   font-size: 13px;
   font-weight: bold;
