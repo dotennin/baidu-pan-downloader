@@ -2895,7 +2895,7 @@
         };
     })).withConfig({
         displayName: "TabNavItem"
-    })([ "box-sizing:border-box;transition:border-color 0.3s;display:flex;justify-content:center;align-items:flex-end;flex:1;text-align:center;min-height:56px;cursor:pointer;font-size:13px;font-weight:bold;letter-spacing:0.5px;color:", ";padding-bottom:", ";padding-top:8px;border:0 solid transparent;border-bottom-width:", ";border-bottom-color:", ";:hover{background-color:#f5f7fb;}&.error{border-bottom-color:", ";}&.error span{color:#b00020 !important;}" ], (function(e) {
+    })([ "box-sizing:border-box;transition:border-color 0.3s;display:flex;justify-content:center;align-items:flex-end;flex:1;text-align:center;height:45px;cursor:pointer;font-size:13px;font-weight:bold;letter-spacing:0.5px;color:", ";padding-bottom:", ";padding-top:8px;border:0 solid transparent;border-bottom-width:", ";border-bottom-color:", ";:hover{background-color:#f5f7fb;}&.error{border-bottom-color:", ";}&.error span{color:#b00020 !important;}" ], (function(e) {
         return e.active ? "#003380" : "rgba(0,0,0,0.6)";
     }), (function(e) {
         return e.active ? "8px" : "9px";
