@@ -20,7 +20,7 @@ After the build is complete, you should have a new version of userscript located
 ## Development and Dynamic loading
 It's able to get the newest version of your script upon a page refresh when developing.
 To do this, copy the source from `dist/react-userscripts-dev.user.js` or click [here](https://github.com/dotennin/baidu-pan-downloader/blob/master/dist/react-userscripts-dev.user.js).
-The dev script will dynamically load the extension from port `8124`, so you can take advantage of
+The dev script will dynamically load the extension from port `5000`, so you can take advantage of
 `create-react-app`'s ability to auto-recompile an app when the source changes.
 
 and run
