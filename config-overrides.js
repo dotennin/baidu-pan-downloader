@@ -1,80 +1,56 @@
-const { addBabelPlugin, override, overrideDevServer, useBabelRc, watchAll } = require('customize-cra')
+const { addBabelPlugin, override, overrideDevServer, useBabelRc, watchAll, disableChunk } = require('customize-cra')
 const webpack = require('webpack')
 const UserScript = require('./user-script')
 const TerserPlugin = require('terser-webpack-plugin')
 
-const dropConsole = () => {
-  return (config) => {
-    if (config.optimization.minimizer) {
-      config.optimization.minimizer.forEach((minimizer) => {
-        if (minimizer.constructor.name === 'TerserPlugin') {
-          minimizer.options.terserOptions.compress.drop_console = true
-        }
-      })
-    }
-    return config
-  }
-}
-
-// prevent chunking for all files
-const preventChunking = () => (config) => {
-  Object.assign(config.optimization, {
-    runtimeChunk: false,
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-      },
-    },
-  })
-  return config
-}
-
 const minimizer = (minJsOnly = false) => (config) => {
-  Object.assign(config.optimization, {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: {
-          condition: /eslint-disable/i,
-          banner: () => {
-            return UserScript
+  if (process.env.NODE_ENV === 'production') {
+    Object.assign(config.optimization, {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          extractComments: {
+            condition: /eslint-disable/i,
+            banner: () => {
+              return UserScript
+            },
           },
-        },
-        terserOptions: {
-          ecma: 6,
-          compress: true,
-          output: {
-            comments: false,
-            beautify: true,
+          terserOptions: {
+            ecma: 6,
+            compress: true,
+            output: {
+              comments: false,
+              beautify: true,
+            },
           },
-        },
-      }),
-    ],
-  })
+        }),
+      ],
+    })
 
-  // minimize only the .min.js files
-  if (minJsOnly) {
-    for (const plugin of config.optimization.minimizer) {
-      if (!plugin || !plugin.constructor) {
-        // do nothing if the plugin is null
-        continue
+    // minimize only the .min.js files
+    if (minJsOnly) {
+      for (const plugin of config.optimization.minimizer) {
+        if (!plugin || !plugin.constructor) {
+          // do nothing if the plugin is null
+          continue
+        }
+        if (plugin.constructor.name === 'TerserPlugin') {
+          Object.assign(plugin.options, { include: /\.min\.js$/ })
+        }
+        if (plugin.constructor.name === 'OptimizeCssAssetsWebpackPlugin') {
+          Object.assign(plugin.options, { assetNameRegExp: /\.min\.css$/ })
+        }
       }
-      if (plugin.constructor.name === 'TerserPlugin') {
-        Object.assign(plugin.options, { include: /\.min\.js$/ })
-      }
-      if (plugin.constructor.name === 'OptimizeCssAssetsWebpackPlugin') {
-        Object.assign(plugin.options, { assetNameRegExp: /\.min\.css$/ })
-      }
+
+      // add user-script banner for Tampermonkey
+      config.plugins.push(
+        new webpack.BannerPlugin({
+          banner: UserScript,
+          raw: true,
+          entryOnly: true,
+        })
+      )
     }
-
-    // add user-script banner for Tampermonkey
-    config.plugins.push(
-      new webpack.BannerPlugin({
-        banner: UserScript,
-        raw: true,
-        entryOnly: true,
-      })
-    )
   }
   return config
 }
@@ -144,9 +120,8 @@ module.exports = {
         // any extra config from babel-plugin-styled-components
       },
     ]),
-    dropConsole(),
     useBabelRc(),
-    preventChunking(),
+    disableChunk(),
     preventJsHash(),
     preventCssHash(),
     minimizer(false),
