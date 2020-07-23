@@ -22,6 +22,7 @@ const InstanceForSystem = {
   listInstance: eval(
     `require("system-core:context/context.js").instanceForSystem.listInstance`
   ) as IInstance['listInstance'],
+  jquery: eval(`require("base:widget/libs/jquery-1.12.4.js")`),
 
   initState: function() {
     return new Promise((resolve) => {

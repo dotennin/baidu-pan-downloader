@@ -16,6 +16,7 @@
 // @connect baidu.com
 // @connect localhost
 // @connect qdall01.baidupcs.com
+// @connect pan.naifei.cc
 // @grant GM_xmlhttpRequest
 // @grant GM_download
 // @grant GM_notification
