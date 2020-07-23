@@ -2,6 +2,7 @@ import { HeaderTypes, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { getFileExtension } from '../utils'
+import { InstanceForSystem } from './InstaceForSystem'
 
 export function getDownloadUrl(path: string) {
   if (path.match(/^\/sharelink\d+/) !== null) {
@@ -93,5 +94,58 @@ export function download(item: ItemProxy) {
         progress.speedOverlay = speed
       }
     }, 1000)
+  })
+}
+
+export function createPrivateShareLink() {
+  const { list, jquery } = InstanceForSystem
+  return new Promise((resolve, reject) => {
+    jquery
+      .post(
+        '/share/set?channel=chunlei&clienttype=0&web=1',
+        {
+          schannel: 4,
+          channel_list: '[]',
+          period: 7,
+          pwd: 'qqqq',
+          fid_list: jquery.stringify(list.getSelected().map((l) => l.fs_id)),
+        },
+        function(r: {
+          createsharetips_ldlj: string
+          ctime: number
+          errno: number
+          expiredType: number
+          link: string
+          premis: boolean
+          request_id: number
+          shareid: number
+          shorturl: number
+        }) {
+          resolve(r)
+        }
+      )
+      .error(function(e: Error) {
+        reject(e)
+      })
+  })
+}
+
+export function getDirectLink() {
+  return new Promise((resolve, reject) => {
+    GM.xmlHttpRequest({
+      url: 'http://pan.naifei.cc/?share=15ylzuok4BZMUqA8hY5Ektg&pwd=qqqq',
+      method: 'GET',
+      onload: (response) => {
+        const urls = []
+        const matches = response.responseText.matchAll(/<a.+?href="(.+?)"/g)
+        for (const match of matches) {
+          urls.push(match[1])
+        }
+        resolve(urls)
+      },
+      onerror: (e) => {
+        reject(e)
+      },
+    })
   })
 }
