@@ -38,6 +38,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",
+    "@types/streamsaver": "^2.0.0",
     "@types/styled-components": "^5.1.1",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
@@ -46,6 +47,7 @@
     "react-scripts": "^3.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "streamsaver": "^2.0.4",
     "styled-components": "^5.1.1",
     "typesafe-actions": "^4.4.2",
     "typescript": "^3.5.3"
