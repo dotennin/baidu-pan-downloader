@@ -130,7 +130,7 @@ export function createPrivateShareLink() {
   })
 }
 
-export function getDirectLink() {
+export function getDirectLink(): Promise<string[]> {
   return new Promise((resolve, reject) => {
     GM.xmlHttpRequest({
       url: 'http://pan.naifei.cc/?share=15ylzuok4BZMUqA8hY5Ektg&pwd=qqqq',
