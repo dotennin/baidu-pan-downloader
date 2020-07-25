@@ -73,3 +73,11 @@ export function addLocationChangeCallback(callback: Function) {
 export const getFileExtension = (fileName: string) => {
   return fileName.substring(fileName.lastIndexOf('.') + 1).toLocaleLowerCase()
 }
+
+export const getLocation = () => {
+  return {
+    inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
+    inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
+    inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href),
+  }
+}

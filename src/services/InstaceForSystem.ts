@@ -5,6 +5,7 @@ import { store } from '../store'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { Dispatch } from 'redux'
 import interfaceModule from '../modules/interfaceModule'
+import { getLocation } from '../utils'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -16,12 +17,12 @@ const InstanceForSystem = {
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
   fileManagerApi:
-    /pan.baidu.com\/disk/.test(window.location.href) &&
+    getLocation().inDiskScreen &&
     (eval(
       `require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")`
     ) as IInstance['fileManagerApi']),
   listInit:
-    /pan.baidu.com\/disk/.test(window.location.href) &&
+    getLocation().inDiskScreen &&
     (eval(`require("disk-system:widget/pageModule/list/listInit.js")`) as IInstance['listInit']),
   listInstance: eval(
     `require("system-core:context/context.js").instanceForSystem.listInstance`
