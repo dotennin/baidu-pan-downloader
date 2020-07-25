@@ -6,6 +6,7 @@ import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { downloadableSelector } from '../selectors'
+import { getLocation } from '../utils'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
@@ -15,7 +16,7 @@ const mapStoreToProps = (store: IStoreState) => ({
 const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoStart, downloadable }) => {
   const dispatch = useDispatch()
   const { downloadItems } = useSelector((state: IStoreState) => state.download)
-  if (/pan.baidu.com\/share/.test(window.location.href)) {
+  if (getLocation().inSharePwdScreen) {
     return null
   }
   return (

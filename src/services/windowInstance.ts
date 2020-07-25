@@ -15,3 +15,9 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
     e.returnValue = '有未完成的下载任务， 确认关闭吗?'
   }
 }
+
+// share password user input listen, use as a cache when real download link is obtained
+window.document.querySelector('#ts8E18')?.addEventListener('input', (e) => {
+  const target = e.target as HTMLInputElement
+  localStorage.setItem('SPWD', target.value)
+})
