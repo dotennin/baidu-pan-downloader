@@ -17,7 +17,6 @@ module.exports = `// ==UserScript==
 // @include https://yun.baidu.com/s/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @connect pan.naifei.cc
 // @grant GM_xmlhttpRequest
 // @grant GM_download
 // @grant GM_notification

@@ -97,7 +97,19 @@ export function download(item: ItemProxy) {
   })
 }
 
-export function createPrivateShareLink() {
+export function createPrivateShareLink<
+  R extends {
+    createsharetips_ldlj: string
+    ctime: number
+    errno: number
+    expiredType: number
+    link: string
+    premis: boolean
+    request_id: number
+    shareid: number
+    shorturl: string
+  }
+>(): Promise<R> {
   const { list, jquery } = InstanceForSystem
   return new Promise((resolve, reject) => {
     jquery
@@ -110,17 +122,7 @@ export function createPrivateShareLink() {
           pwd: 'qqqq',
           fid_list: jquery.stringify(list.getSelected().map((l) => l.fs_id)),
         },
-        function(r: {
-          createsharetips_ldlj: string
-          ctime: number
-          errno: number
-          expiredType: number
-          link: string
-          premis: boolean
-          request_id: number
-          shareid: number
-          shorturl: number
-        }) {
+        function(r: R) {
           resolve(r)
         }
       )
@@ -130,22 +132,11 @@ export function createPrivateShareLink() {
   })
 }
 
-export function getDirectLink(): Promise<string[]> {
-  return new Promise((resolve, reject) => {
-    GM.xmlHttpRequest({
-      url: 'http://pan.naifei.cc/?share=15ylzuok4BZMUqA8hY5Ektg&pwd=qqqq',
-      method: 'GET',
-      onload: (response) => {
-        const urls = []
-        const matches = response.responseText.matchAll(/<a.+?href="(.+?)"/g)
-        for (const match of matches) {
-          urls.push(match[1])
-        }
-        resolve(urls)
-      },
-      onerror: (e) => {
-        reject(e)
-      },
-    })
-  })
+export async function getDirectLink() {
+  const shareLinkRes = await createPrivateShareLink()
+  return await (
+    await fetch(
+      `https://pan.dotennin.net/?link=${encodeURI(shareLinkRes.shorturl)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20qqqq`
+    )
+  ).json()
 }
