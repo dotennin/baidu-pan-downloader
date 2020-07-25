@@ -15,10 +15,14 @@ const InstanceForSystem = {
     eval(`require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(${size})`),
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
-  fileManagerApi: eval(
-    `require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")`
-  ) as IInstance['fileManagerApi'],
-  listInit: eval(`require("disk-system:widget/pageModule/list/listInit.js")`) as IInstance['listInit'],
+  fileManagerApi:
+    /pan.baidu.com\/disk/.test(window.location.href) &&
+    (eval(
+      `require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")`
+    ) as IInstance['fileManagerApi']),
+  listInit:
+    /pan.baidu.com\/disk/.test(window.location.href) &&
+    (eval(`require("disk-system:widget/pageModule/list/listInit.js")`) as IInstance['listInit']),
   listInstance: eval(
     `require("system-core:context/context.js").instanceForSystem.listInstance`
   ) as IInstance['listInstance'],

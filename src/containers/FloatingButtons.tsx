@@ -15,6 +15,9 @@ const mapStoreToProps = (store: IStoreState) => ({
 const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoStart, downloadable }) => {
   const dispatch = useDispatch()
   const { downloadItems } = useSelector((state: IStoreState) => state.download)
+  if (/pan.baidu.com\/share/.test(window.location.href)) {
+    return null
+  }
   return (
     <div id="container-floating">
       <div

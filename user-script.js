@@ -15,6 +15,7 @@ module.exports = `// ==UserScript==
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
 // @include https://yun.baidu.com/s/*
+// @include https://pan.baidu.com/share/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
 // @grant GM_xmlhttpRequest

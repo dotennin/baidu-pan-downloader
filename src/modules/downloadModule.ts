@@ -87,7 +87,7 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
     dispatch(addNextDownloadRequest())
   } catch (err) {
     dispatch(downloadModule.actions.failureDownload())
-    dispatch(interfaceModule.actions.setError(err))
+    dispatch(interfaceModule.actions.setError(err instanceof Error ? err : new Error(JSON.stringify(err))))
     dispatch(addNextDownloadRequest())
   }
 }

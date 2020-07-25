@@ -14,6 +14,7 @@
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
 // @include https://yun.baidu.com/s/*
+// @include https://pan.baidu.com/share/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
 // @grant GM_xmlhttpRequest
@@ -103,8 +104,8 @@
         },
         maxDownloadCount: 2,
         allDownloads: {},
-        fileManagerApi: eval('require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")'),
-        listInit: eval('require("disk-system:widget/pageModule/list/listInit.js")'),
+        fileManagerApi: /pan.baidu.com\/disk/.test(window.location.href) && eval('require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")'),
+        listInit: /pan.baidu.com\/disk/.test(window.location.href) && eval('require("disk-system:widget/pageModule/list/listInit.js")'),
         listInstance: eval('require("system-core:context/context.js").instanceForSystem.listInstance'),
         jquery: eval('require("base:widget/libs/jquery-1.12.4.js")'),
         initState: function() {
@@ -1292,7 +1293,7 @@
                         break;
 
                       case 18:
-                        t.prev = 18, t.t0 = t.catch(0), n(v.actions.failureDownload()), n(m.a.actions.setError(t.t0)), 
+                        t.prev = 18, t.t0 = t.catch(0), n(v.actions.failureDownload()), n(m.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
                         n(y());
 
                       case 23:
@@ -2681,7 +2682,7 @@
         var t = e.autoStart, n = e.downloadable, r = Object(l.c)(), a = Object(l.d)((function(e) {
             return e.download;
         })).downloadItems;
-        return o.a.createElement("div", {
+        return /pan.baidu.com\/share/.test(window.location.href) ? null : o.a.createElement("div", {
             id: "container-floating"
         }, o.a.createElement("div", {
             id: "config-button",
