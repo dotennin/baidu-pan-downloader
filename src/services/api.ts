@@ -109,8 +109,9 @@ export function createPrivateShareLink<
     shareid: number
     shorturl: string
   }
->(): Promise<R> {
-  const { list, jquery } = InstanceForSystem
+>(fidList: ItemProxy['fsId'][]): Promise<R> {
+  const { jquery } = InstanceForSystem
+  // fidList = InstanceForSystem.list.getSelected().map((l) => l.fs_id)
   return new Promise((resolve, reject) => {
     jquery
       .post(
@@ -120,7 +121,7 @@ export function createPrivateShareLink<
           channel_list: '[]',
           period: 7,
           pwd: 'qqqq',
-          fid_list: jquery.stringify(list.getSelected().map((l) => l.fs_id)),
+          fid_list: jquery.stringify(fidList),
         },
         function(r: R) {
           resolve(r)
@@ -133,7 +134,7 @@ export function createPrivateShareLink<
 }
 
 export async function getDirectLink() {
-  const shareLinkRes = await createPrivateShareLink()
+  const shareLinkRes = await createPrivateShareLink([])
   return await (
     await fetch(
       `https://pan.dotennin.net/?link=${encodeURI(shareLinkRes.shorturl)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20qqqq`
