@@ -16,7 +16,6 @@
 // @include https://yun.baidu.com/s/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
-// @connect pan.naifei.cc
 // @grant GM_xmlhttpRequest
 // @grant GM_download
 // @grant GM_notification
@@ -259,7 +258,7 @@
         for (r = 0; r < o.length; r++) n = o[r], t.indexOf(n) >= 0 || (a[n] = e[n]);
         return a;
     }
-    var p = n(21), g = n.n(p), h = n(17), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
+    var p = n(20), g = n.n(p), h = n(17), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
     function y(e, t) {
         var n = e[1];
         return [ t.payload, n + 1 ];
@@ -380,7 +379,7 @@
         for (var a = 0; a < n.length; a++) if (!Object.prototype.hasOwnProperty.call(t, n[a]) || !S(e[n[a]], t[n[a]])) return !1;
         return !0;
     }
-    var T = n(10);
+    var T = n(11);
     function C(e) {
         return function(t, n) {
             var r = e(t, n);
@@ -567,7 +566,7 @@
             }(e, n, a.store, a.subscription);
         };
     }
-    var G, Y = Q(), X = n(24);
+    var G, Y = Q(), X = n(23);
     G = X.unstable_batchedUpdates, i = G;
 }, function(e, t, n) {
     "use strict";
@@ -575,7 +574,7 @@
         n.d(t, "a", (function() {
             return Ce;
         }));
-        var r = n(17), a = n(0), o = n.n(a), i = (n(36), n(37)), l = n(38), u = n(30), c = n(21), s = n.n(c);
+        var r = n(17), a = n(0), o = n.n(a), i = (n(36), n(37)), l = n(38), u = n(30), c = n(20), s = n.n(c);
         function f() {
             return (f = Object.assign || function(e) {
                 for (var t = 1; t < arguments.length; t++) {
@@ -1169,9 +1168,7 @@
     })), n.d(t, "c", (function() {
         return w;
     }));
-    var r = n(14), a = n.n(r), o = n(16), i = n(15), l = n(1), u = n(12);
-    n(18);
-    var c = n(9), s = n(22), f = n(2);
+    var r = n(10), a = n.n(r), o = n(15), i = n(16), l = n(1), u = n(13), c = n(9), s = n(21), f = n(2);
     function d(e) {
         if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
         return new Promise((function(t, n) {
@@ -1230,7 +1227,7 @@
             }), 1e3);
         }));
     }
-    var h = n(19), m = n(7), b = {
+    var h = n(18), m = n(7), b = {
         downloadItems: {},
         processing: 0
     }, v = Object(u.b)({
@@ -1312,7 +1309,7 @@
     t.b = v;
 }, function(e, t, n) {
     "use strict";
-    var r = n(15), a = n(9), o = n(1), i = n(12), l = {
+    var r = n(16), a = n(9), o = n(1), i = n(13), l = {
         maxDownloadCount: a.a.getValue(o.c.maxDownloadCount, 2),
         autoStart: a.a.getValue(o.c.autoStart, !0),
         downloadModalOpen: !1,
@@ -1349,10 +1346,10 @@
     n.d(t, "a", (function() {
         return p;
     }));
-    var r = n(25), a = n(12), o = n(10), i = n(35), l = n(7), u = n(6), c = Object(o.c)({
+    var r = n(25), a = n(13), o = n(11), i = n(35), l = n(7), u = n(6), c = Object(o.c)({
         download: u.b.reducer,
         interface: l.a.reducer
-    }), s = n(20), f = Object(r.a)(Object(a.c)({
+    }), s = n(19), f = Object(r.a)(Object(a.c)({
         serializableCheck: !1
     }));
     s.a && f.push(Object(i.createLogger)({
@@ -1440,6 +1437,8 @@
         },
         info: GM_info
     };
+}, function(e, t, n) {
+    e.exports = n(41);
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2123,7 +2122,7 @@
         }, e;
     }()), J = Z.produce, ee = (Z.produceWithPatches.bind(Z), Z.setAutoFreeze.bind(Z), 
     Z.setUseProxies.bind(Z), Z.applyPatches.bind(Z), Z.createDraft.bind(Z), Z.finishDraft.bind(Z), 
-    J), te = n(10);
+    J), te = n(11);
     n(5);
     function ne(e) {
         return function(t) {
@@ -2349,7 +2348,33 @@
         return r;
     }));
 }, function(e, t, n) {
-    e.exports = n(41);
+    "use strict";
+    function r(e, t, n, r, a, o, i) {
+        try {
+            var l = e[o](i), u = l.value;
+        } catch (e) {
+            return void n(e);
+        }
+        l.done ? t(u) : Promise.resolve(u).then(r, a);
+    }
+    function a(e) {
+        return function() {
+            var t = this, n = arguments;
+            return new Promise((function(a, o) {
+                var i = e.apply(t, n);
+                function l(e) {
+                    r(i, a, o, l, u, "next", e);
+                }
+                function u(e) {
+                    r(i, a, o, l, u, "throw", e);
+                }
+                l(void 0);
+            }));
+        };
+    }
+    n.d(t, "a", (function() {
+        return a;
+    }));
 }, function(e, t, n) {
     "use strict";
     function r(e, t, n) {
@@ -2386,48 +2411,7 @@
     }));
 }, function(e, t, n) {
     "use strict";
-    function r(e, t, n, r, a, o, i) {
-        try {
-            var l = e[o](i), u = l.value;
-        } catch (e) {
-            return void n(e);
-        }
-        l.done ? t(u) : Promise.resolve(u).then(r, a);
-    }
-    function a(e) {
-        return function() {
-            var t = this, n = arguments;
-            return new Promise((function(a, o) {
-                var i = e.apply(t, n);
-                function l(e) {
-                    r(i, a, o, l, u, "next", e);
-                }
-                function u(e) {
-                    r(i, a, o, l, u, "throw", e);
-                }
-                l(void 0);
-            }));
-        };
-    }
-    n.d(t, "a", (function() {
-        return a;
-    }));
-}, function(e, t, n) {
-    "use strict";
     e.exports = n(49);
-}, function(e, t, n) {
-    "use strict";
-    n.d(t, "a", (function() {
-        return a;
-    }));
-    var r = n(23);
-    function a(e, t) {
-        if (e) {
-            if ("string" == typeof e) return Object(r.a)(e, t);
-            var n = Object.prototype.toString.call(e).slice(8, -1);
-            return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(n) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? Object(r.a)(e, t) : void 0;
-        }
-    }
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2516,7 +2500,7 @@
     })), n.d(t, "b", (function() {
         return o;
     }));
-    n(14), n(16);
+    n(10), n(15);
     function r() {
         for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
         (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
@@ -2561,10 +2545,23 @@
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
+        return a;
+    }));
+    var r = n(22);
+    function a(e, t) {
+        if (e) {
+            if ("string" == typeof e) return Object(r.a)(e, t);
+            var n = Object.prototype.toString.call(e).slice(8, -1);
+            return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(n) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? Object(r.a)(e, t) : void 0;
+        }
+    }
+}, function(e, t, n) {
+    "use strict";
+    n.d(t, "a", (function() {
         return o;
     }));
-    var r = n(23);
-    var a = n(18);
+    var r = n(22);
+    var a = n(24);
     function o(e) {
         return function(e) {
             if (Array.isArray(e)) return Object(r.a)(e);
@@ -2589,7 +2586,7 @@
     n.d(t, "a", (function() {
         return c;
     }));
-    var r = n(13), a = n(11), o = n(1), i = n(8), l = n(6);
+    var r = n(14), a = n(12), o = n(1), i = n(8), l = n(6);
     var u = function() {
         function e(t, n) {
             Object(r.a)(this, e), this.intervalId = void 0, this.request = void 0, this._speedOverlay = void 0, 
@@ -2675,7 +2672,7 @@
     }();
 }, function(e, t, n) {
     "use strict";
-    var r = n(4), a = n(0), o = n.n(a), i = n(15), l = n(3), u = n(2), c = n(1), s = n(7), f = n(6), d = n(19), p = Object(l.b)((function(e) {
+    var r = n(4), a = n(0), o = n.n(a), i = n(16), l = n(3), u = n(2), c = n(1), s = n(7), f = n(6), d = n(18), p = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -2732,7 +2729,7 @@
             src: "//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
         })));
     }));
-    var g = n(18);
+    var g = n(24);
     function h(e, t) {
         return function(e) {
             if (Array.isArray(e)) return e;
@@ -2801,7 +2798,7 @@
             className: "modal-content"
         }, a)));
     }
-    var y = n(13), w = n(11);
+    var y = n(14), w = n(12);
     function k(e, t) {
         return (k = Object.setPrototypeOf || function(e, t) {
             return e.__proto__ = t, e;
@@ -3376,7 +3373,7 @@
             return e.status === c.b.downloading;
         })) && (e.preventDefault(), e.returnValue = "有未完成的下载任务， 确认关闭吗?");
     };
-    var oe = Object(r.a)(ae()), ie = n(20), le = function(e) {
+    var oe = Object(r.a)(ae()), ie = n(19), le = function(e) {
         x(n, e);
         var t = C(n);
         function n(e) {
@@ -4525,7 +4522,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(14), r = n.n(t), a = n(16), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(26), s = n(20), f = n(22), d = n(3), p = n(8), g = n(29);
+        var t = n(10), r = n.n(t), a = n(15), o = n(0), i = n.n(o), l = n(23), u = n.n(l), c = n(26), s = n(19), f = n(21), d = n(3), p = n(8), g = n(29);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a
