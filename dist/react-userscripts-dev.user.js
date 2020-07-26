@@ -39,7 +39,7 @@ log("Dev mode started")
 async function main() {
   const resp = await new Promise((resolve, reject) => {
     GM_xmlhttpRequest({
-      url: 'http://localhost:8124/static/js/main.js',
+      url: 'http://localhost:5000/static/js/main.js',
       method: 'GET',
       onload: (r) => {
         resolve(r.response);
