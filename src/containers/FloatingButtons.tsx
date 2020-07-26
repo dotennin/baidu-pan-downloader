@@ -6,7 +6,8 @@ import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { downloadableSelector } from '../selectors'
-import { getLocation } from '../utils'
+import { getLocation, downloadURI } from '../utils'
+import { getDirectLink } from '../services/api'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
@@ -42,6 +43,19 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         data-placement="left"
         data-original-title="Create"
         onClick={() => {
+          if (getLocation().inShareScreen) {
+            const ui = InstanceForSystem.ui
+            ui.tip({ mode: 'loading', autoClose: false, msg: '正在获取链接地址' })
+            const sharePwd = window.localStorage.getItem('SPWD') as string
+            if (!sharePwd) {
+              // Todo: create share link
+            }
+            getDirectLink(window.location.href, sharePwd).then((res) => {
+              ui.hideTip()
+              downloadURI(res[0].link, res[0].server_filename)
+            })
+            return
+          }
           const { selectedList } = InstanceForSystem
 
           const newItems = { ...downloadItems }

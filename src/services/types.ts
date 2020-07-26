@@ -89,4 +89,8 @@ export interface IInstance {
   listInstance: {
     cancelFilesSelect: () => void
   }
+  ui: {
+    tip: (option: { mode: 'loading'; msg: string; autoClose: boolean }) => void
+    hideTip: () => void
+  }
 }

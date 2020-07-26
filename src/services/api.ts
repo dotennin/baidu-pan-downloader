@@ -132,11 +132,26 @@ export function createPrivateShareLink<
   })
 }
 
-export async function getDirectLink() {
-  const shareLinkRes = await createPrivateShareLink()
+export async function getDirectLink(
+  link: string,
+  pwd: string
+): Promise<
+  {
+    category: string
+    fs_id: string
+    isdir: '0' | '1'
+    link: string
+    local_ctime: string
+    local_mtime: string
+    md5: string
+    path: string
+    server_ctime: string
+    server_filename: string
+    server_mtime: string
+    size: string
+  }[]
+> {
   return await (
-    await fetch(
-      `https://pan.dotennin.net/?link=${encodeURI(shareLinkRes.shorturl)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20qqqq`
-    )
+    await fetch(`https://pan.dotennin.net/?link=${encodeURI(link)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20${pwd}`)
   ).json()
 }

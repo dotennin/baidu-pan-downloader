@@ -69,10 +69,10 @@
         return n.d(t, "a", t), t;
     }, n.o = function(e, t) {
         return Object.prototype.hasOwnProperty.call(e, t);
-    }, n.p = "/", n(n.s = 39);
+    }, n.p = "/", n(n.s = 40);
 }([ function(e, t, n) {
     "use strict";
-    e.exports = n(42);
+    e.exports = n(43);
 }, function(e, t, n) {
     "use strict";
     var r, a, o;
@@ -95,7 +95,7 @@
     __webpack_require__.d(__webpack_exports__, "a", (function() {
         return InstanceForSystem;
     }));
-    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12), InstanceForSystem = {
+    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(29), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(11), InstanceForSystem = {
         list: eval("require('system-core:context/context.js')").instanceForSystem.list,
         dialog: eval('require("system-core:system/uiService/dialog/dialog.js")'),
         hash: eval("require('base:widget/hash/hash.js')"),
@@ -104,10 +104,11 @@
         },
         maxDownloadCount: 2,
         allDownloads: {},
-        fileManagerApi: Object(_utils__WEBPACK_IMPORTED_MODULE_6__.c)().inDiskScreen && eval('require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")'),
-        listInit: Object(_utils__WEBPACK_IMPORTED_MODULE_6__.c)().inDiskScreen && eval('require("disk-system:widget/pageModule/list/listInit.js")'),
+        fileManagerApi: Object(_utils__WEBPACK_IMPORTED_MODULE_6__.d)().inDiskScreen && eval('require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")'),
+        listInit: Object(_utils__WEBPACK_IMPORTED_MODULE_6__.d)().inDiskScreen && eval('require("disk-system:widget/pageModule/list/listInit.js")'),
         listInstance: eval('require("system-core:context/context.js").instanceForSystem.listInstance'),
         jquery: eval('require("base:widget/libs/jquery-1.12.4.js")'),
+        ui: eval("require('system-core:context/context.js')").instanceForSystem.ui,
         initState: function() {
             var e = this;
             return new Promise((function(t) {
@@ -168,7 +169,7 @@
     })), n.d(t, "d", (function() {
         return Y;
     }));
-    var r = n(0), a = n.n(r), o = (n(46), a.a.createContext(null));
+    var r = n(0), a = n.n(r), o = (n(47), a.a.createContext(null));
     var i = function(e) {
         e();
     }, l = {
@@ -380,7 +381,7 @@
         for (var a = 0; a < n.length; a++) if (!Object.prototype.hasOwnProperty.call(t, n[a]) || !S(e[n[a]], t[n[a]])) return !1;
         return !0;
     }
-    var T = n(11);
+    var T = n(12);
     function C(e) {
         return function(t, n) {
             var r = e(t, n);
@@ -567,7 +568,7 @@
             }(e, n, a.store, a.subscription);
         };
     }
-    var G, Y = Q(), X = n(23);
+    var G, Y = Q(), X = n(24);
     G = X.unstable_batchedUpdates, i = G;
 }, function(e, t, n) {
     "use strict";
@@ -575,7 +576,7 @@
         n.d(t, "a", (function() {
             return Ce;
         }));
-        var r = n(18), a = n(0), o = n.n(a), i = (n(36), n(37)), l = n(38), u = n(30), c = n(21), s = n.n(c);
+        var r = n(18), a = n(0), o = n.n(a), i = (n(37), n(38)), l = n(39), u = n(31), c = n(21), s = n.n(c);
         function f() {
             return (f = Object.assign || function(e) {
                 for (var t = 1; t < arguments.length; t++) {
@@ -1114,7 +1115,7 @@
             return o.a.memo(c);
         }
         t.b = Oe;
-    }).call(this, n(50));
+    }).call(this, n(51));
 }, function(e, t, n) {
     "use strict";
     function r(e, t) {
@@ -1165,78 +1166,19 @@
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
-        return y;
+        return h;
     })), n.d(t, "c", (function() {
-        return w;
+        return m;
     }));
-    var r = n(10), a = n.n(r), o = n(16), i = n(17), l = n(1), u = n(14), c = n(9), s = n(12), f = n(2);
-    function d(e) {
-        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
-        return new Promise((function(t, n) {
-            c.a.xmlHttpRequest({
-                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
-                method: "GET",
-                responseType: "json",
-                headers: {
-                    "User-Agent": l.a.userAgent
-                },
-                onload: function(e) {
-                    return e.response.client_ip ? t(e) : n(e);
-                }
-            });
-        }));
-    }
-    var p = [ "apk", "exe", "pdf" ];
-    function g(e) {
-        var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
-        return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
-            var i;
-            r.request = c.a.download({
-                url: t,
-                name: (i = n, i + (p.includes(Object(s.b)(i)) ? ".__________重命名我.zip" : "")),
-                saveAs: !0,
-                headers: {
-                    Host: "qdall01.baidupcs.com",
-                    Accept: "*/*",
-                    "User-Agent": l.a.userAgent,
-                    "Accept-Encoding": "identity",
-                    "Accept-Language": "ja-JP",
-                    "Accept-Charset": "*"
-                },
-                onprogress: function(e) {
-                    a = e, r.percentCount = Math.round(100 * a.loaded / a.total);
-                },
-                onload: function() {
-                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 100, r.speedOverlay = 0, 
-                    r.status = l.b.completed, c.a.notification({
-                        text: "下载完成",
-                        title: n,
-                        highlight: !0
-                    }), e();
-                },
-                onerror: function(e) {
-                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 0, r.speedOverlay = 0, 
-                    r.status = l.b.error, 0 === Object.keys(e).length ? o(new Error("user is not authorized, hitcode:122")) : o(new Error(e.error));
-                }
-            });
-            var u = 0;
-            r.intervalId = window.setInterval((function() {
-                if (a) {
-                    var e = a.loaded - u;
-                    u = a.loaded, r.speedOverlay = e;
-                }
-            }), 1e3);
-        }));
-    }
-    var h = n(19), m = n(7), b = {
+    var r = n(10), a = n.n(r), o = n(16), i = n(17), l = n(1), u = n(14), c = n(23), s = n(19), f = n(7), d = n(2), p = {
         downloadItems: {},
         processing: 0
-    }, v = Object(u.b)({
+    }, g = Object(u.b)({
         name: "download",
-        initialState: b,
+        initialState: p,
         reducers: {
             reset: function(e) {
-                return Object(i.a)({}, b);
+                return Object(i.a)({}, p);
             },
             updateProgress: function(e, t) {
                 var n = t.payload, r = n.fsId, a = n.progress, o = e.downloadItems[r];
@@ -1259,42 +1201,42 @@
                 return e.processing -= 1, e;
             }
         }
-    }), y = function() {
+    }), h = function() {
         return function(e) {
-            var t = f.a.allDownloads;
+            var t = d.a.allDownloads;
             Object.values(t).filter((function(e) {
                 return e.progress.status === l.b.inQueued;
             })).forEach((function(t) {
-                e(w(t));
+                e(m(t));
             }));
         };
-    }, w = function(e) {
+    }, m = function(e) {
         return function() {
             var t = Object(o.a)(a.a.mark((function t(n, r) {
                 var o, i;
                 return a.a.wrap((function(t) {
                     for (;;) switch (t.prev = t.next) {
                       case 0:
-                        if (t.prev = 0, o = e.progress, Object(h.a)(r())) {
+                        if (t.prev = 0, o = e.progress, Object(s.a)(r())) {
                             t.next = 6;
                             break;
                         }
                         return o.status = l.b.inQueued, t.abrupt("return");
 
                       case 6:
-                        return n(v.actions.requestDownload()), t.next = 9, d(e.path);
+                        return n(g.actions.requestDownload()), t.next = 9, Object(c.c)(e.path);
 
                       case 9:
                         return i = t.sent, e.url = i.response.urls[0].url + "&filename=" + encodeURIComponent(e.serverFilename), 
-                        o.status = l.b.downloading, t.next = 14, g(e);
+                        o.status = l.b.downloading, t.next = 14, Object(c.a)(e);
 
                       case 14:
-                        n(v.actions.successDownload()), n(y()), t.next = 23;
+                        n(g.actions.successDownload()), n(h()), t.next = 23;
                         break;
 
                       case 18:
-                        t.prev = 18, t.t0 = t.catch(0), n(v.actions.failureDownload()), n(m.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
-                        n(y());
+                        t.prev = 18, t.t0 = t.catch(0), n(g.actions.failureDownload()), n(f.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
+                        n(h());
 
                       case 23:
                       case "end":
@@ -1307,7 +1249,7 @@
             };
         }();
     };
-    t.b = v;
+    t.b = g;
 }, function(e, t, n) {
     "use strict";
     var r = n(17), a = n(9), o = n(1), i = n(14), l = {
@@ -1347,7 +1289,7 @@
     n.d(t, "a", (function() {
         return p;
     }));
-    var r = n(25), a = n(14), o = n(11), i = n(35), l = n(7), u = n(6), c = Object(o.c)({
+    var r = n(26), a = n(14), o = n(12), i = n(36), l = n(7), u = n(6), c = Object(o.c)({
         download: u.b.reducer,
         interface: l.a.reducer
     }), s = n(20), f = Object(r.a)(Object(a.c)({
@@ -1439,7 +1381,50 @@
         info: GM_info
     };
 }, function(e, t, n) {
-    e.exports = n(41);
+    e.exports = n(42);
+}, function(e, t, n) {
+    "use strict";
+    n.d(t, "e", (function() {
+        return r;
+    })), n.d(t, "a", (function() {
+        return a;
+    })), n.d(t, "c", (function() {
+        return o;
+    })), n.d(t, "d", (function() {
+        return i;
+    })), n.d(t, "b", (function() {
+        return l;
+    }));
+    n(10), n(16);
+    function r() {
+        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
+        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
+    }
+    function a(e) {
+        window.setTimeout(e, 0);
+        var t = window.location.href, n = new MutationObserver((function(n) {
+            n.some((function() {
+                return t !== document.location.href;
+            })) && (t = document.location.href, e());
+        }));
+        return n.observe(document.body, {
+            childList: !0,
+            subtree: !0
+        }), n;
+    }
+    var o = function(e) {
+        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
+    }, i = function() {
+        return {
+            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
+            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
+            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
+        };
+    };
+    function l(e, t) {
+        var n = document.createElement("a");
+        n.download = t, n.href = e, document.body.appendChild(n), n.click(), document.body.removeChild(n);
+    }
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -1453,7 +1438,7 @@
     })), n.d(t, "e", (function() {
         return l;
     }));
-    var r = n(27), a = function() {
+    var r = n(28), a = function() {
         return Math.random().toString(36).substring(7).split("").join(".");
     }, o = {
         INIT: "@@redux/INIT" + a(),
@@ -1650,43 +1635,6 @@
             };
         };
     }
-}, function(e, t, n) {
-    "use strict";
-    n.d(t, "d", (function() {
-        return r;
-    })), n.d(t, "a", (function() {
-        return a;
-    })), n.d(t, "b", (function() {
-        return o;
-    })), n.d(t, "c", (function() {
-        return i;
-    }));
-    n(10), n(16);
-    function r() {
-        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
-        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
-    }
-    function a(e) {
-        window.setTimeout(e, 0);
-        var t = window.location.href, n = new MutationObserver((function(n) {
-            n.some((function() {
-                return t !== document.location.href;
-            })) && (t = document.location.href, e());
-        }));
-        return n.observe(document.body, {
-            childList: !0,
-            subtree: !0
-        }), n;
-    }
-    var o = function(e) {
-        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
-    }, i = function() {
-        return {
-            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
-            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
-            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
-        };
-    };
 }, function(e, t, n) {
     "use strict";
     function r(e, t) {
@@ -2160,7 +2108,7 @@
         }, e;
     }()), J = Z.produce, ee = (Z.produceWithPatches.bind(Z), Z.setAutoFreeze.bind(Z), 
     Z.setUseProxies.bind(Z), Z.applyPatches.bind(Z), Z.createDraft.bind(Z), Z.finishDraft.bind(Z), 
-    J), te = n(11);
+    J), te = n(12);
     n(5);
     function ne(e) {
         return function(t) {
@@ -2449,7 +2397,7 @@
     }));
 }, function(e, t, n) {
     "use strict";
-    e.exports = n(49);
+    e.exports = n(50);
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2541,6 +2489,98 @@
     }));
 }, function(e, t, n) {
     "use strict";
+    n.d(t, "c", (function() {
+        return c;
+    })), n.d(t, "a", (function() {
+        return f;
+    })), n.d(t, "b", (function() {
+        return d;
+    }));
+    var r = n(10), a = n.n(r), o = n(16), i = n(1), l = n(9), u = n(11);
+    n(2);
+    function c(e) {
+        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
+        return new Promise((function(t, n) {
+            l.a.xmlHttpRequest({
+                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
+                method: "GET",
+                responseType: "json",
+                headers: {
+                    "User-Agent": i.a.userAgent
+                },
+                onload: function(e) {
+                    return e.response.client_ip ? t(e) : n(e);
+                }
+            });
+        }));
+    }
+    var s = [ "apk", "exe", "pdf" ];
+    function f(e) {
+        var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
+        return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
+            var c;
+            r.request = l.a.download({
+                url: t,
+                name: (c = n, c + (s.includes(Object(u.c)(c)) ? ".__________重命名我.zip" : "")),
+                saveAs: !0,
+                headers: {
+                    Host: "qdall01.baidupcs.com",
+                    Accept: "*/*",
+                    "User-Agent": i.a.userAgent,
+                    "Accept-Encoding": "identity",
+                    "Accept-Language": "ja-JP",
+                    "Accept-Charset": "*"
+                },
+                onprogress: function(e) {
+                    a = e, r.percentCount = Math.round(100 * a.loaded / a.total);
+                },
+                onload: function() {
+                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 100, r.speedOverlay = 0, 
+                    r.status = i.b.completed, l.a.notification({
+                        text: "下载完成",
+                        title: n,
+                        highlight: !0
+                    }), e();
+                },
+                onerror: function(e) {
+                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 0, r.speedOverlay = 0, 
+                    r.status = i.b.error, 0 === Object.keys(e).length ? o(new Error("user is not authorized, hitcode:122")) : o(new Error(e.error));
+                }
+            });
+            var f = 0;
+            r.intervalId = window.setInterval((function() {
+                if (a) {
+                    var e = a.loaded - f;
+                    f = a.loaded, r.speedOverlay = e;
+                }
+            }), 1e3);
+        }));
+    }
+    function d(e, t) {
+        return p.apply(this, arguments);
+    }
+    function p() {
+        return (p = Object(o.a)(a.a.mark((function e(t, n) {
+            return a.a.wrap((function(e) {
+                for (;;) switch (e.prev = e.next) {
+                  case 0:
+                    return e.next = 2, fetch("https://pan.dotennin.net/?link=".concat(encodeURI(t), "%20%E6%8F%90%E5%8F%96%E7%A0%81:%20").concat(n));
+
+                  case 2:
+                    return e.next = 4, e.sent.json();
+
+                  case 4:
+                    return e.abrupt("return", e.sent);
+
+                  case 5:
+                  case "end":
+                    return e.stop();
+                }
+            }), e);
+        })))).apply(this, arguments);
+    }
+}, function(e, t, n) {
+    "use strict";
     !function e() {
         if ("undefined" != typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" == typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE) {
             0;
@@ -2550,7 +2590,7 @@
                 console.error(e);
             }
         }
-    }(), e.exports = n(43);
+    }(), e.exports = n(44);
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2570,7 +2610,7 @@
         return o;
     }));
     var r = n(22);
-    var a = n(24);
+    var a = n(25);
     function o(e) {
         return function(e) {
             if (Array.isArray(e)) return Object(r.a)(e);
@@ -2585,11 +2625,11 @@
 }, function(e, t, n) {
     "use strict";
     (function(e, r) {
-        var a, o = n(34);
+        var a, o = n(35);
         a = "undefined" != typeof self ? self : "undefined" != typeof window ? window : void 0 !== e ? e : r;
         var i = Object(o.a)(a);
         t.a = i;
-    }).call(this, n(33), n(31)(e));
+    }).call(this, n(34), n(32)(e));
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2681,7 +2721,7 @@
     }();
 }, function(e, t, n) {
     "use strict";
-    var r = n(4), a = n(0), o = n.n(a), i = n(17), l = n(3), u = n(2), c = n(1), s = n(7), f = n(6), d = n(19), p = n(12), g = Object(l.b)((function(e) {
+    var r = n(4), a = n(0), o = n.n(a), i = n(17), l = n(3), u = n(2), c = n(1), s = n(7), f = n(6), d = n(19), p = n(11), g = n(23), h = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -2690,7 +2730,7 @@
         var t = e.autoStart, n = e.downloadable, r = Object(l.c)(), a = Object(l.d)((function(e) {
             return e.download;
         })).downloadItems;
-        return Object(p.c)().inSharePwdScreen ? null : o.a.createElement("div", {
+        return Object(p.d)().inSharePwdScreen ? null : o.a.createElement("div", {
             id: "container-floating"
         }, o.a.createElement("div", {
             id: "config-button",
@@ -2712,23 +2752,36 @@
             "data-placement": "left",
             "data-original-title": "Create",
             onClick: function() {
-                var e = u.a.selectedList, o = Object(i.a)({}, a), l = u.a.allDownloads;
-                e.forEach((function(e) {
-                    if (void 0 === a[e.fsId]) {
-                        e.progress.status = t ? c.b.inQueued : c.b.stopped;
-                        var i = e.progress, u = i.intervalId, s = i.percentCount, d = i.speedOverlay, p = i.status;
-                        l[e.fsId] = e, o[e.fsId] = {
-                            intervalId: u,
-                            percentCount: s,
-                            speedOverlay: d,
-                            status: p
-                        }, n && t && r(Object(f.c)(e));
-                    }
-                })), r(f.b.actions.change({
-                    downloadItems: o
-                })), r(s.a.actions.change({
-                    downloadModalOpen: !0
-                }));
+                if (Object(p.d)().inShareScreen) {
+                    var e = u.a.ui;
+                    e.tip({
+                        mode: "loading",
+                        autoClose: !1,
+                        msg: "正在获取链接地址"
+                    });
+                    var o = window.localStorage.getItem("SPWD");
+                    Object(g.b)(window.location.href, o).then((function(t) {
+                        e.hideTip(), Object(p.b)(t[0].link, t[0].server_filename);
+                    }));
+                } else {
+                    var l = u.a.selectedList, d = Object(i.a)({}, a), h = u.a.allDownloads;
+                    l.forEach((function(e) {
+                        if (void 0 === a[e.fsId]) {
+                            e.progress.status = t ? c.b.inQueued : c.b.stopped;
+                            var o = e.progress, i = o.intervalId, l = o.percentCount, u = o.speedOverlay, s = o.status;
+                            h[e.fsId] = e, d[e.fsId] = {
+                                intervalId: i,
+                                percentCount: l,
+                                speedOverlay: u,
+                                status: s
+                            }, n && t && r(Object(f.c)(e));
+                        }
+                    })), r(f.b.actions.change({
+                        downloadItems: d
+                    })), r(s.a.actions.change({
+                        downloadModalOpen: !0
+                    }));
+                }
             }
         }, o.a.createElement("p", {
             className: "plus"
@@ -2738,8 +2791,8 @@
             src: "//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
         })));
     }));
-    var h = n(24);
-    function m(e, t) {
+    var m = n(25);
+    function b(e, t) {
         return function(e) {
             if (Array.isArray(e)) return e;
         }(e) || function(e, t) {
@@ -2759,11 +2812,11 @@
                 }
                 return n;
             }
-        }(e, t) || Object(h.a)(e, t) || function() {
+        }(e, t) || Object(m.a)(e, t) || function() {
             throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
         }();
     }
-    function b(e, t) {
+    function v(e, t) {
         if (null == e) return {};
         var n, r, a = function(e, t) {
             if (null == e) return {};
@@ -2777,15 +2830,15 @@
         }
         return a;
     }
-    var v = r.b.div.withConfig({
+    var y = r.b.div.withConfig({
         displayName: "Modal__Wrapper",
         componentId: "ufr2n-0"
     })([ "background:transparent;" ]);
-    function y(e) {
-        var t = e.closeButton, n = e.open, r = e.close, a = e.children, i = e.header, l = b(e, [ "closeButton", "open", "close", "children", "header" ]), u = function() {
+    function w(e) {
+        var t = e.closeButton, n = e.open, r = e.close, a = e.children, i = e.header, l = v(e, [ "closeButton", "open", "close", "children", "header" ]), u = function() {
             "function" == typeof r && r();
         };
-        return o.a.createElement(v, Object.assign({
+        return o.a.createElement(y, Object.assign({
             className: "dialog modal-wrapper".concat(n ? " open" : "")
         }, l), o.a.createElement("div", {
             className: "modal-overlay",
@@ -2807,13 +2860,13 @@
             className: "modal-content"
         }, a)));
     }
-    var w = n(15), k = n(13);
-    function x(e, t) {
-        return (x = Object.setPrototypeOf || function(e, t) {
+    var k = n(15), x = n(13);
+    function E(e, t) {
+        return (E = Object.setPrototypeOf || function(e, t) {
             return e.__proto__ = t, e;
         })(e, t);
     }
-    function E(e, t) {
+    function _(e, t) {
         if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");
         e.prototype = Object.create(t && t.prototype, {
             constructor: {
@@ -2821,14 +2874,14 @@
                 writable: !0,
                 configurable: !0
             }
-        }), t && x(e, t);
+        }), t && E(e, t);
     }
-    function _(e) {
-        return (_ = Object.setPrototypeOf ? Object.getPrototypeOf : function(e) {
+    function S(e) {
+        return (S = Object.setPrototypeOf ? Object.getPrototypeOf : function(e) {
             return e.__proto__ || Object.getPrototypeOf(e);
         })(e);
     }
-    function S() {
+    function O() {
         if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
         if (Reflect.construct.sham) return !1;
         if ("function" == typeof Proxy) return !0;
@@ -2839,67 +2892,67 @@
             return !1;
         }
     }
-    function O(e) {
-        return (O = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+    function T(e) {
+        return (T = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
             return typeof e;
         } : function(e) {
             return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
         })(e);
     }
-    function T(e) {
+    function C(e) {
         if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
         return e;
     }
-    function C(e, t) {
-        return !t || "object" !== O(t) && "function" != typeof t ? T(e) : t;
+    function P(e, t) {
+        return !t || "object" !== T(t) && "function" != typeof t ? C(e) : t;
     }
-    function P(e) {
+    function j(e) {
         return function() {
-            var t, n = _(e);
-            if (S()) {
-                var r = _(this).constructor;
+            var t, n = S(e);
+            if (O()) {
+                var r = S(this).constructor;
                 t = Reflect.construct(n, arguments, r);
             } else t = n.apply(this, arguments);
-            return C(this, t);
+            return P(this, t);
         };
     }
-    var j = r.b.div.attrs((function(e) {
+    var I = r.b.div.attrs((function(e) {
         return {
             placeholder: e.placeholder
         };
     })).withConfig({
         displayName: "TabElement"
-    })([ "" ]), I = function(e) {
-        E(n, e);
-        var t = P(n);
+    })([ "" ]), N = function(e) {
+        _(n, e);
+        var t = j(n);
         function n() {
-            return Object(w.a)(this, n), t.apply(this, arguments);
+            return Object(k.a)(this, n), t.apply(this, arguments);
         }
-        return Object(k.a)(n, [ {
+        return Object(x.a)(n, [ {
             key: "render",
             value: function() {
-                return o.a.createElement(j, this.props);
+                return o.a.createElement(I, this.props);
             }
         } ]), n;
-    }(a.Component), N = r.b.div.attrs((function(e) {
+    }(a.Component), A = r.b.div.attrs((function(e) {
         return {
             placeholder: e.placeholder
         };
     })).withConfig({
         displayName: "TabContainer"
-    })([ "box-sizing:border-box;border:1px solid #e0e0e0;border-radius:8px 0 8px 0;overflow-x:hidden;" ]), A = r.b.span.withConfig({
+    })([ "box-sizing:border-box;border:1px solid #e0e0e0;border-radius:8px 0 8px 0;overflow-x:hidden;" ]), D = r.b.span.withConfig({
         displayName: "ButtonText"
-    })([ "font-size:14px;font-weight:normal;font-style:normal;font-stretch:normal;line-height:1.43;letter-spacing:0.5px;max-width:100%;" ]), D = Object(r.b)(A).withConfig({
+    })([ "font-size:14px;font-weight:normal;font-style:normal;font-stretch:normal;line-height:1.43;letter-spacing:0.5px;max-width:100%;" ]), M = Object(r.b)(D).withConfig({
         displayName: "_StyledButtonText"
     })([ "color:", ";" ], (function(e) {
         return e._css;
-    })), M = r.b.div.attrs((function(e) {
+    })), R = r.b.div.attrs((function(e) {
         return {
             placeholder: e.placeholder
         };
     })).withConfig({
         displayName: "TabNavigation"
-    })([ "display:flex;flex-direction:row;" ]), R = r.b.div.attrs((function(e) {
+    })([ "display:flex;flex-direction:row;" ]), z = r.b.div.attrs((function(e) {
         return {
             active: e.active
         };
@@ -2915,7 +2968,7 @@
         return e.active ? "#2f67bc" : "#e0e0e0";
     }), (function(e) {
         return e.active ? "#b00020 !important" : "";
-    })), z = r.b.div.attrs((function(e) {
+    })), L = r.b.div.attrs((function(e) {
         return {
             tabs: e.tabs,
             activeTab: e.activeTab
@@ -2926,52 +2979,52 @@
         return 100 * e.activeTab;
     }), (function(e) {
         return 100 * e.tabs;
-    })), L = r.b.div.withConfig({
+    })), F = r.b.div.withConfig({
         displayName: "TabWrapper"
-    })([ "overflow-y:auto;flex:1;" ]), F = function(e) {
-        E(n, e);
-        var t = P(n);
+    })([ "overflow-y:auto;flex:1;" ]), U = function(e) {
+        _(n, e);
+        var t = j(n);
         function n() {
-            return Object(w.a)(this, n), t.apply(this, arguments);
+            return Object(k.a)(this, n), t.apply(this, arguments);
         }
-        return Object(k.a)(n, [ {
+        return Object(x.a)(n, [ {
             key: "render",
             value: function() {
-                var e = this.props, t = e.children, n = e.onChange, r = e.activeTab, a = b(e, [ "children", "onChange", "activeTab" ]);
-                return o.a.createElement(N, Object.assign({
+                var e = this.props, t = e.children, n = e.onChange, r = e.activeTab, a = v(e, [ "children", "onChange", "activeTab" ]);
+                return o.a.createElement(A, Object.assign({
                     className: "tabContainer"
-                }, a), o.a.createElement(M, {
+                }, a), o.a.createElement(R, {
                     className: "tabNav"
                 }, t.map((function(e, t) {
-                    return e ? o.a.createElement(R, {
+                    return e ? o.a.createElement(z, {
                         className: e.props.error ? " tab error " : " tab ",
                         key: t,
                         onClick: function() {
                             "function" == typeof n && n(e, t);
                         },
                         active: t === r
-                    }, o.a.createElement(D, {
+                    }, o.a.createElement(M, {
                         style: {
                             padding: "0 13px"
                         },
                         color: t === r ? "primary" : "default",
                         _css: t === r ? "#2F67BC" : "#666"
                     }, e.props && e.props.name ? e.props.name : "Tab " + t)) : null;
-                }))), o.a.createElement(z, {
+                }))), o.a.createElement(L, {
                     activeTab: r,
                     tabs: t.length
                 }, t.map((function(e, t) {
-                    return o.a.createElement(L, {
+                    return o.a.createElement(F, {
                         key: t
                     }, e);
                 }))));
             }
         } ]), n;
     }(a.Component);
-    F.defaultProps = {
+    U.defaultProps = {
         activeTab: 0
     };
-    var U = Object(l.b)((function(e, t) {
+    var W = Object(l.b)((function(e, t) {
         var n;
         return {
             status: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.status
@@ -3043,7 +3096,7 @@
             d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
         })));
     }));
-    var W = Object(l.b)((function(e, t) {
+    var B = Object(l.b)((function(e, t) {
         var n;
         return {
             percentCount: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.percentCount
@@ -3056,7 +3109,7 @@
             className: "overlay"
         }, t, "%"));
     }));
-    var B = Object(l.b)((function(e, t) {
+    var $ = Object(l.b)((function(e, t) {
         var n;
         return {
             speedOverlay: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.speedOverlay
@@ -3064,11 +3117,11 @@
     }))((function(e) {
         var t = e.speedOverlay;
         return o.a.createElement(o.a.Fragment, null, u.a.friendlyFileSize(t), " /s");
-    })), $ = n(5), V = Object(r.b)(I).withConfig({
+    })), V = n(5), q = Object(r.b)(N).withConfig({
         displayName: "_StyledTab"
-    })([ "max-height:calc(60vh - 58px);overflow:auto;" ]), q = function(e) {
-        var t = e.children, n = e.name, r = b(e, [ "children", "name" ]);
-        return o.a.createElement(V, Object.assign({
+    })([ "max-height:calc(60vh - 58px);overflow:auto;" ]), H = function(e) {
+        var t = e.children, n = e.name, r = v(e, [ "children", "name" ]);
+        return o.a.createElement(q, Object.assign({
             name: n
         }, r), o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
@@ -3082,9 +3135,9 @@
             scope: "col"
         }, "操作"))), o.a.createElement("tbody", null, t)));
     };
-    var H = Object(l.b)((function(e) {
+    var K = Object(l.b)((function(e) {
         return {
-            fsIdList: Object($.a)((function(e) {
+            fsIdList: Object(V.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e);
@@ -3092,7 +3145,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(q, {
+        return o.a.createElement(H, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3109,24 +3162,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(W, {
+            }, o.a.createElement(B, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(B, {
+            }, o.a.createElement($, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(U, {
+            }, o.a.createElement(W, {
                 fsId: e
             })));
         })));
     }));
-    var K = Object(l.b)((function(e) {
+    var Q = Object(l.b)((function(e) {
         return {
-            fsIdList: Object($.a)((function(e) {
+            fsIdList: Object(V.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).sort((function(t) {
@@ -3138,7 +3191,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(q, {
+        return o.a.createElement(H, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3155,24 +3208,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(W, {
+            }, o.a.createElement(B, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(B, {
+            }, o.a.createElement($, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(U, {
+            }, o.a.createElement(W, {
                 fsId: e
             })));
         })));
     }));
-    var Q = Object(l.b)((function(e) {
+    var G = Object(l.b)((function(e) {
         return {
-            fsIdList: Object($.a)((function(e) {
+            fsIdList: Object(V.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).filter((function(t) {
@@ -3182,7 +3235,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(q, {
+        return o.a.createElement(H, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3199,24 +3252,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(W, {
+            }, o.a.createElement(B, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(B, {
+            }, o.a.createElement($, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(U, {
+            }, o.a.createElement(W, {
                 fsId: e
             })));
         })));
     }));
-    var G = Object(l.b)((function(e) {
+    var Y = Object(l.b)((function(e) {
         return {
-            fsIdList: Object($.a)((function(e) {
+            fsIdList: Object(V.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).filter((function(t) {
@@ -3226,7 +3279,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(q, {
+        return o.a.createElement(H, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3243,61 +3296,61 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(W, {
+            }, o.a.createElement(B, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(B, {
+            }, o.a.createElement($, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(U, {
+            }, o.a.createElement(W, {
                 fsId: e
             })));
         })));
     }));
-    var Y = Object(l.b)((function(e) {
+    var X = Object(l.b)((function(e) {
         return {
             downloadModalOpen: e.interface.downloadModalOpen
         };
     }))((function(e) {
-        var t = e.downloadModalOpen, n = Object(l.c)(), r = m(Object(a.useState)(0), 2), i = r[0], u = r[1];
-        return o.a.createElement(y, {
+        var t = e.downloadModalOpen, n = Object(l.c)(), r = b(Object(a.useState)(0), 2), i = r[0], u = r[1];
+        return o.a.createElement(w, {
             open: t,
             close: function() {
                 n(s.a.actions.change({
                     downloadModalOpen: !1
                 }));
             }
-        }, o.a.createElement(F, {
+        }, o.a.createElement(U, {
             activeTab: i,
             key: "tabs",
             onChange: function(e, t) {
                 u(t);
             }
-        }, o.a.createElement(H, {
+        }, o.a.createElement(K, {
             name: "所有任务"
-        }), o.a.createElement(K, {
-            name: "下载中"
         }), o.a.createElement(Q, {
-            name: "已停止"
+            name: "下载中"
         }), o.a.createElement(G, {
+            name: "已停止"
+        }), o.a.createElement(Y, {
             name: "已完成"
         })));
-    })), X = n(25), Z = r.b.fieldset.withConfig({
+    })), Z = n(26), J = r.b.fieldset.withConfig({
         displayName: "Form__FormField",
         componentId: "sc-1csqrgf-0"
-    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), J = r.b.form.withConfig({
+    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), ee = r.b.form.withConfig({
         displayName: "Form",
         componentId: "sc-1csqrgf-1"
-    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), ee = Object(r.b)("div").withConfig({
+    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), te = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
-    })([ ".modal-window{max-width:500px;}" ]), te = Object(r.b)("div").withConfig({
+    })([ ".modal-window{max-width:500px;}" ]), ne = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv2"
     })([ "font-size:90%;color:#999;" ]);
-    var ne, re = Object(l.b)((function(e) {
+    var re, ae = Object(l.b)((function(e) {
         return {
             configModalOpen: e.interface.configModalOpen,
             autoStart: e.interface.autoStart,
@@ -3325,10 +3378,10 @@
         };
     }))((function(e) {
         var t = e.configModalOpen, n = e.autoStart, r = e.maxDownloadCount, a = e.closeModal, i = e.setAutoStart, l = e.setMaxDownloadCount;
-        return o.a.createElement(ee, null, o.a.createElement(y, {
+        return o.a.createElement(te, null, o.a.createElement(w, {
             open: t,
             close: a
-        }, o.a.createElement(J, {
+        }, o.a.createElement(ee, {
             action: "#"
         }, o.a.createElement("header", {
             style: {
@@ -3338,7 +3391,7 @@
             style: {
                 margin: "0 0 5px 0"
             }
-        }, "下载设置"), o.a.createElement(te, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(Z, null, o.a.createElement("label", {
+        }, "下载设置"), o.a.createElement(ne, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(J, null, o.a.createElement("label", {
             htmlFor: "auto-start"
         }, "自动下载"), o.a.createElement("div", null, o.a.createElement("input", {
             type: "checkbox",
@@ -3348,13 +3401,13 @@
             id: "auto-start",
             tabIndex: 1,
             onChange: i
-        }))), o.a.createElement(Z, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
+        }))), o.a.createElement(J, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
             defaultValue: r,
             id: "max-download-count",
             className: "field select medium",
             tabIndex: 2,
             onChange: l
-        }, Object(X.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
+        }, Object(Z.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
             return ++e;
         })).map((function(e, t) {
             return o.a.createElement("option", {
@@ -3362,40 +3415,40 @@
                 value: e
             }, e);
         }))))))));
-    })), ae = n(9), oe = n(8);
-    function ie() {
+    })), oe = n(9), ie = n(8);
+    function le() {
         var e, t, n = (e = [ '\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    padding: 30px 0;\n    background-color: #2f3439;\n    font-family: "Noto Sans", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won\'t be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  /* modal */\n  .modal-wrapper {\n    z-index: 999;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n\n    opacity: 0;\n    visibility: hidden;\n    transition: opacity .3s, visibility .3s;\n  }\n\n  .modal-wrapper.open {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n  }\n\n  .modal-wrapper::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: ""\n  }\n\n  .modal-wrapper .modal-window {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 60vw;\n    /*padding: 30px 30px 15px;*/\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle;\n    align-self: center;\n  }\n\n  .modal-wrapper .modal-window .modal-content {\n    max-height: 60vh;\n    overflow-y: auto;\n  }\n\n  .modal-overlay {\n    z-index: 10;\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background: rgba(0, 0, 0, .8)\n  }\n\n  .modal-wrapper .modal-close {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c!important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0;\n    cursor: pointer;\n  }\n\n  .modal-wrapper .modal-close:hover {\n    color: #2b2e38!important\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, "Courier New", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: \'Roboto\';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  td > svg {\n    cursor: pointer;\n  }\n  td > svg:hover {\n    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n    background-color: rgba(255,255,255,0.56);\n  }\n' ], 
         t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, {
             raw: {
                 value: Object.freeze(t)
             }
         })));
-        return ie = function() {
+        return le = function() {
             return n;
         }, n;
     }
     window.onunload = function() {
-        ae.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
+        oe.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
     }, window.onbeforeunload = function(e) {
-        var t = oe.a.getState().download.downloadItems;
+        var t = ie.a.getState().download.downloadItems;
         Object.values(t).some((function(e) {
             return e.status === c.b.downloading;
         })) && (e.preventDefault(), e.returnValue = "有未完成的下载任务， 确认关闭吗?");
-    }, null === (ne = window.document.querySelector("#ts8E18")) || void 0 === ne || ne.addEventListener("input", (function(e) {
+    }, null === (re = window.document.querySelector("#ts8E18")) || void 0 === re || re.addEventListener("input", (function(e) {
         var t = e.target;
         localStorage.setItem("SPWD", t.value);
     }));
-    var le = Object(r.a)(ie()), ue = n(20), ce = function(e) {
-        E(n, e);
-        var t = P(n);
+    var ue = Object(r.a)(le()), ce = n(20), se = function(e) {
+        _(n, e);
+        var t = j(n);
         function n(e) {
             var r;
-            return Object(w.a)(this, n), (r = t.call(this, e)).state = {
+            return Object(k.a)(this, n), (r = t.call(this, e)).state = {
                 error: null,
                 errorInfo: null
-            }, r.reRenderApp = r.reRenderApp.bind(T(r)), r;
+            }, r.reRenderApp = r.reRenderApp.bind(C(r)), r;
         }
-        return Object(k.a)(n, [ {
+        return Object(x.a)(n, [ {
             key: "componentDidCatch",
             value: function(e, t) {
                 this.setState({
@@ -3409,14 +3462,14 @@
                 this.setState({
                     error: null,
                     errorInfo: null
-                }), oe.a.dispatch(s.a.actions.setError(void 0));
+                }), ie.a.dispatch(s.a.actions.setError(void 0));
             }
         }, {
             key: "render",
             value: function() {
                 var e = this.props.error || this.state.error;
                 if (e) {
-                    var t, n = e.toString() + (this.state.errorInfo && ue.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
+                    var t, n = e.toString() + (this.state.errorInfo && ce.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
                     return u.a.dialog.alert({
                         body: n,
                         onSure: this.reRenderApp,
@@ -3426,15 +3479,15 @@
                 return this.props.children;
             }
         } ]), n;
-    }(o.a.Component), se = Object(l.b)((function(e) {
+    }(o.a.Component), fe = Object(l.b)((function(e) {
         return {
             error: e.interface.error
         };
-    }))(ce), fe = Object(r.b)("div").withConfig({
+    }))(se), de = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:none;" ]);
     t.a = function() {
-        return o.a.createElement(o.a.Fragment, null, o.a.createElement(fe, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(le, null), o.a.createElement(se, null, o.a.createElement(Y, null), o.a.createElement(re, null), o.a.createElement(g, null)));
+        return o.a.createElement(o.a.Fragment, null, o.a.createElement(de, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(ue, null), o.a.createElement(fe, null, o.a.createElement(X, null), o.a.createElement(ae, null), o.a.createElement(h, null)));
     };
 }, function(e, t, n) {
     "use strict";
@@ -3991,7 +4044,7 @@
                 value: !0
             });
         }(t);
-    }).call(this, n(33));
+    }).call(this, n(34));
 }, function(e, t) {
     e.exports = function(e, t, n, r) {
         var a = n ? n.call(r, e, t) : void 0;
@@ -4530,11 +4583,11 @@
         strokeWidth: 1
     };
 }, function(e, t, n) {
-    e.exports = n(40);
+    e.exports = n(41);
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(10), r = n.n(t), a = n(16), o = n(0), i = n.n(o), l = n(23), u = n.n(l), c = n(26), s = n(20), f = n(12), d = n(3), p = n(8), g = n(29);
+        var t = n(10), r = n.n(t), a = n(16), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(11), d = n(3), p = n(8), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a
@@ -4561,12 +4614,12 @@
             (function() {
                 return m.apply(this, arguments);
             })().catch((function(e) {
-                return Object(f.d)(e);
+                return Object(f.e)(e);
             }));
         })), s.a && e.hot && e.hot.accept("./App.tsx", (function() {
             h(g.a);
         }));
-    }.call(this, n(31)(e));
+    }.call(this, n(32)(e));
 }, function(e, t, n) {
     var r = function(e) {
         "use strict";
@@ -4847,7 +4900,7 @@
     }
 }, function(e, t, n) {
     "use strict";
-    var r = n(32), a = "function" == typeof Symbol && Symbol.for, o = a ? Symbol.for("react.element") : 60103, i = a ? Symbol.for("react.portal") : 60106, l = a ? Symbol.for("react.fragment") : 60107, u = a ? Symbol.for("react.strict_mode") : 60108, c = a ? Symbol.for("react.profiler") : 60114, s = a ? Symbol.for("react.provider") : 60109, f = a ? Symbol.for("react.context") : 60110, d = a ? Symbol.for("react.forward_ref") : 60112, p = a ? Symbol.for("react.suspense") : 60113, g = a ? Symbol.for("react.memo") : 60115, h = a ? Symbol.for("react.lazy") : 60116, m = "function" == typeof Symbol && Symbol.iterator;
+    var r = n(33), a = "function" == typeof Symbol && Symbol.for, o = a ? Symbol.for("react.element") : 60103, i = a ? Symbol.for("react.portal") : 60106, l = a ? Symbol.for("react.fragment") : 60107, u = a ? Symbol.for("react.strict_mode") : 60108, c = a ? Symbol.for("react.profiler") : 60114, s = a ? Symbol.for("react.provider") : 60109, f = a ? Symbol.for("react.context") : 60110, d = a ? Symbol.for("react.forward_ref") : 60112, p = a ? Symbol.for("react.suspense") : 60113, g = a ? Symbol.for("react.memo") : 60115, h = a ? Symbol.for("react.lazy") : 60116, m = "function" == typeof Symbol && Symbol.iterator;
     function b(e) {
         for (var t = "https://reactjs.org/docs/error-decoder.html?invariant=" + e, n = 1; n < arguments.length; n++) t += "&args[]=" + encodeURIComponent(arguments[n]);
         return "Minified React error #" + e + "; visit " + t + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
@@ -5112,7 +5165,7 @@
     }, t.version = "16.13.1";
 }, function(e, t, n) {
     "use strict";
-    var r = n(0), a = n(32), o = n(44);
+    var r = n(0), a = n(33), o = n(45);
     function i(e) {
         for (var t = "https://reactjs.org/docs/error-decoder.html?invariant=" + e, n = 1; n < arguments.length; n++) t += "&args[]=" + encodeURIComponent(arguments[n]);
         return "Minified React error #" + e + "; visit " + t + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
@@ -10161,7 +10214,7 @@
     }, t.version = "16.13.1";
 }, function(e, t, n) {
     "use strict";
-    e.exports = n(45);
+    e.exports = n(46);
 }, function(e, t, n) {
     "use strict";
     var r, a, o, i, l;
@@ -10400,10 +10453,10 @@
         };
     };
 }, function(e, t, n) {
-    e.exports = n(47)();
+    e.exports = n(48)();
 }, function(e, t, n) {
     "use strict";
-    var r = n(48);
+    var r = n(49);
     function a() {}
     function o() {}
     o.resetWarningCache = a, e.exports = function() {
