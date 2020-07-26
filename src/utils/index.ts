@@ -81,3 +81,12 @@ export const getLocation = () => {
     inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href),
   }
 }
+
+export function downloadURI(uri: string, name: string) {
+  const link = document.createElement('a')
+  link.download = name
+  link.href = uri
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
