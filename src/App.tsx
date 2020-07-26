@@ -5,6 +5,7 @@ import Preferences from './containers/Preferences'
 import './services/windowInstance'
 import { GlobalStyle } from './GlobalStyle'
 import ErrorBoundary from './services/ErrorBoundary'
+import NaifeiPortal from './containers/NaifeiPortal'
 
 const App: FunctionComponent = () => {
   return (
@@ -21,6 +22,7 @@ const App: FunctionComponent = () => {
         <DownloadList />
         <Preferences />
         <FloatingButtons />
+        <NaifeiPortal />
       </ErrorBoundary>
     </>
   )

@@ -1,4 +1,4 @@
-import { ComponentType, CSSProperties, Ref, RefObject, ReactNode } from 'react'
+import { ComponentType, Ref, RefObject, ReactNode, CSSProperties } from 'react'
 
 /**
  * All standard components exposed by `uap-ui-component` are `StyledComponents` with

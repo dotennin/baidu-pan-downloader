@@ -5,6 +5,9 @@ import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
 import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules/downloadModule'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
+import { Icon } from '../../components/Icon'
+import interfaceModule from '../../modules/interfaceModule'
+import { createPrivateShareLink } from '../../services/api'
 
 interface IProps {
   fsId: ItemProxy['fsId']
@@ -47,47 +50,37 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
 
     dispatch(addNextDownloadRequest())
   }
+
+  const openNaifeiModal = () => {
+    InstanceForSystem.dialog.confirm({
+      title: '生成共享链接确认',
+      body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
+      onSure: async () => {
+        InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
+        try {
+          const res = await createPrivateShareLink(targetItem.fsId)
+          const shareLink = `share=${res.shorturl.replace(/.+s\//, '')}&pwd=qqqq`
+          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
+        } catch (e) {
+          throw new Error('生成共享链接失败')
+        }
+      },
+    })
+  }
   return (
     <>
-      <svg
-        id={`start-item-${fsId}`}
+      <Icon
+        name={'play_arrow'}
+        onClick={() => dispatch(fetchItem(targetItem))}
         className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? 'disabled' : ''}`}
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        onClick={() => {
-          dispatch(fetchItem(targetItem))
-        }}
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M8 5v14l11-7z" />
-      </svg>
-      <svg
-        id={`stop-item-${fsId}`}
-        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? '' : 'disabled'}`}
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
+      />
+      <Icon
+        name={'stop'}
         onClick={stopItem}
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M6 6h12v12H6z" />
-      </svg>
-      <svg
-        id={`delete-item-${fsId}`}
-        className="delete-item"
-        style={{ position: 'relative', right: -20 }}
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        onClick={deleteItem}
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-      </svg>
+        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? '' : 'disabled'}`}
+      />
+      <Icon name={'open_in_new'} onClick={openNaifeiModal} />
+      <Icon name={'clear'} style={{ position: 'relative', right: -20 }} onClick={deleteItem} />
     </>
   )
 }

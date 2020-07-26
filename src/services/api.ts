@@ -109,7 +109,7 @@ export function createPrivateShareLink<
     shareid: number
     shorturl: string
   }
->(): Promise<R> {
+>(fs_id?: ItemProxy['fsId']): Promise<R> {
   const { list, jquery } = InstanceForSystem
   return new Promise((resolve, reject) => {
     jquery
@@ -120,7 +120,7 @@ export function createPrivateShareLink<
           channel_list: '[]',
           period: 7,
           pwd: 'qqqq',
-          fid_list: jquery.stringify(list.getSelected().map((l) => l.fs_id)),
+          fid_list: jquery.stringify(fs_id ? [fs_id] : list.getSelected().map((l) => l.fs_id)),
         },
         function(r: R) {
           resolve(r)

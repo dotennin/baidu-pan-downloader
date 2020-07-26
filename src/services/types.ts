@@ -63,7 +63,7 @@ interface IDialogConfirmConfig extends IDialogAlertConfig {
 export interface IInstance {
   dialog: {
     alert: (configOrBody: string | IDialogAlertConfig) => void
-    confirm: <T extends string | IDialogConfirmConfig>(title: T, message: T extends string ? string : never) => void
+    confirm: <T extends string | IDialogConfirmConfig>(title: T, message?: T extends string ? string : never) => void
   }
   hash: {
     set: (key: string, value: string) => void
