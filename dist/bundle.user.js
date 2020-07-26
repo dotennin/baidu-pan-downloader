@@ -2514,7 +2514,7 @@
             });
         }));
     }
-    var s = [ "apk", "exe", "pdf" ];
+    var s = [ "apk", "exe", "pdf", "7z" ];
     function f(e) {
         var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
         return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
@@ -2760,8 +2760,11 @@
                         msg: "正在获取链接地址"
                     });
                     var o = window.localStorage.getItem("SPWD");
-                    Object(g.b)(window.location.href, o).then((function(t) {
-                        e.hideTip(), Object(p.b)(t[0].link, t[0].server_filename);
+                    Object(g.b)(window.location.href.replace(window.location.hash, ""), o).then((function(t) {
+                        e.hideTip(), t.forEach((function(e) {
+                            var t = e.link, n = e.server_filename;
+                            return Object(p.b)(t, n);
+                        }));
                     }));
                 } else {
                     var l = u.a.selectedList, d = Object(i.a)({}, a), h = u.a.allDownloads;

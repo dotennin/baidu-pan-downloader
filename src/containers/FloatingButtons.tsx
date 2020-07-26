@@ -7,7 +7,7 @@ import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { downloadableSelector } from '../selectors'
 import { getLocation, downloadURI } from '../utils'
-import { getDirectLink } from '../services/api'
+import { getDirectLinks } from '../services/api'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
@@ -50,9 +50,9 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
             if (!sharePwd) {
               // Todo: create share link
             }
-            getDirectLink(window.location.href, sharePwd).then((res) => {
+            getDirectLinks(window.location.href.replace(window.location.hash, ''), sharePwd).then((links) => {
               ui.hideTip()
-              downloadURI(res[0].link, res[0].server_filename)
+              links.forEach(({ link, server_filename }) => downloadURI(link, server_filename))
             })
             return
           }
