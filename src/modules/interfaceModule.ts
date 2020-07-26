@@ -7,6 +7,8 @@ interface IState {
   autoStart: boolean
   downloadModalOpen: boolean
   configModalOpen: boolean
+  naifeiPortalOpen: boolean
+  shareLink: string
   error: undefined | Error
 }
 const initialState: IState = {
@@ -14,6 +16,8 @@ const initialState: IState = {
   autoStart: GM.getValue(ValueTypes.autoStart, true),
   downloadModalOpen: false,
   configModalOpen: false,
+  naifeiPortalOpen: false,
+  shareLink: '',
   error: undefined,
 }
 

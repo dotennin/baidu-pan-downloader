@@ -7,17 +7,27 @@ interface IProps extends IStandardProps {
   closeButton?: boolean
   close: Function
   header?: React.ReactNode
+  noOverlayColor?: boolean
 }
 const Wrapper = styled.div`
   background: transparent;
 `
-function Modal({ closeButton, open, close, children, header, ...rest }: IProps) {
+const ModalOverlay = styled.div.attrs({ className: 'modal-overlay' })<{ noOverlayColor: boolean }>`
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: ${({ noOverlayColor }) => (noOverlayColor ? 'transparent' : 'rgba(0, 0, 0, 0.8)')};
+`
+function Modal({ closeButton, open, close, children, header, noOverlayColor, ...rest }: IProps) {
   const closeModal = () => {
     typeof close === 'function' && close()
   }
   return (
     <Wrapper className={`dialog modal-wrapper${open ? ' open' : ''}`} {...rest}>
-      <div className="modal-overlay" onClick={closeModal} />
+      <ModalOverlay noOverlayColor={Boolean(noOverlayColor)} onClick={closeModal} />
       <div className="modal-window">
         {header && (
           <div className="dialog-header">

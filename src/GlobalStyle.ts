@@ -538,7 +538,7 @@ const GlobalStyle = createGlobalStyle`
   }
   /* modal */
   .modal-wrapper {
-    z-index: 999;
+    z-index: 52;
     position: fixed;
     top: 0;
     right: 0;
@@ -572,7 +572,7 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     z-index: 20;
     position: relative;
-    width: 60vw;
+    width: 65vw;
     /*padding: 30px 30px 15px;*/
     border-radius: 2px;
     background: #fff;
@@ -584,16 +584,6 @@ const GlobalStyle = createGlobalStyle`
   .modal-wrapper .modal-window .modal-content {
     max-height: 60vh;
     overflow-y: auto;
-  }
-
-  .modal-overlay {
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, .8)
   }
 
   .modal-wrapper .modal-close {
@@ -774,6 +764,10 @@ const GlobalStyle = createGlobalStyle`
   td > svg:hover {
     box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
     background-color: rgba(255,255,255,0.56);
+  }
+
+  .module-yun-tip {
+    z-index: 999 !important;
   }
 `
 
