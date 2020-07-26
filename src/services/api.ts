@@ -32,7 +32,7 @@ export function getDownloadUrl(path: string) {
   })
 }
 
-const blackListedFileExtension = ['apk', 'exe', 'pdf']
+const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z']
 const formatServerFilename = (fileName: string) =>
   fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
 
@@ -132,7 +132,7 @@ export function createPrivateShareLink<
   })
 }
 
-export async function getDirectLink(
+export async function getDirectLinks(
   link: string,
   pwd: string
 ): Promise<
