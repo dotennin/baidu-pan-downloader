@@ -29,6 +29,9 @@ const InstanceForSystem = {
   ) as IInstance['listInstance'],
   jquery: eval(`require("base:widget/libs/jquery-1.12.4.js")`),
   ui: eval(`require('system-core:context/context.js')`).instanceForSystem.ui as IInstance['ui'],
+  getList: function() {
+    return this.list.getList()
+  },
 
   initState: function() {
     return new Promise((resolve) => {
@@ -66,11 +69,7 @@ const InstanceForSystem = {
   get selectedList() {
     const selected = this.list.getSelected()
 
-    return selected
-      .filter((arr) => {
-        return arr.isdir !== 1
-      })
-      .map((arr) => ItemProxy.Create(arr))
+    return selected.map((arr) => ItemProxy.Create(arr))
   },
 
   get currentList() {

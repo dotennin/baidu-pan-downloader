@@ -88,7 +88,7 @@ export class ProgressProxy {
 export class ItemProxy {
   public category!: number
   public fsId!: string | number
-  public isDir!: number
+  public isDir!: boolean
   public localCtime!: number
   public localMtime!: number
   public md5!: string
@@ -114,7 +114,7 @@ export class ItemProxy {
     if (implementsItem(d)) {
       this.category = d.category
       this.fsId = d.fs_id
-      this.isDir = d.isdir
+      this.isDir = d.isdir === 1
       this.localCtime = d.local_ctime
       this.localMtime = d.local_mtime
       this.md5 = d.md5
