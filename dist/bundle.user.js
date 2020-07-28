@@ -2,7 +2,7 @@
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
-// @version 3.0.1
+// @version 3.0.2
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
@@ -1252,36 +1252,43 @@
     }, m = function(e) {
         return function() {
             var t = Object(o.a)(a.a.mark((function t(n, r) {
-                var o, i;
+                var o, i, u;
                 return a.a.wrap((function(t) {
                     for (;;) switch (t.prev = t.next) {
                       case 0:
-                        if (t.prev = 0, o = e.progress, Object(s.a)(r())) {
+                        if (t.prev = 0, o = e.progress, i = Object(s.a)(r()), !e.isDir) {
                             t.next = 6;
+                            break;
+                        }
+                        return n(h()), t.abrupt("return");
+
+                      case 6:
+                        if (i) {
+                            t.next = 9;
                             break;
                         }
                         return o.status = l.b.inQueued, t.abrupt("return");
 
-                      case 6:
-                        return n(g.actions.requestDownload()), t.next = 9, Object(c.d)(e.path);
-
                       case 9:
-                        return i = t.sent, e.url = i.response.urls[0].url + "&filename=" + encodeURIComponent(e.serverFilename), 
-                        o.status = l.b.downloading, t.next = 14, Object(c.b)(e);
+                        return n(g.actions.requestDownload()), t.next = 12, Object(c.d)(e.path);
 
-                      case 14:
-                        n(g.actions.successDownload()), n(h()), t.next = 23;
+                      case 12:
+                        return u = t.sent, e.url = u.response.urls[0].url + "&filename=" + encodeURIComponent(e.serverFilename), 
+                        o.status = l.b.downloading, t.next = 17, Object(c.b)(e);
+
+                      case 17:
+                        n(g.actions.successDownload()), n(h()), t.next = 26;
                         break;
 
-                      case 18:
-                        t.prev = 18, t.t0 = t.catch(0), n(g.actions.failureDownload()), n(f.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
+                      case 21:
+                        t.prev = 21, t.t0 = t.catch(0), n(g.actions.failureDownload()), n(f.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
                         n(h());
 
-                      case 23:
+                      case 26:
                       case "end":
                         return t.stop();
                     }
-                }), t, null, [ [ 0, 18 ] ]);
+                }), t, null, [ [ 0, 21 ] ]);
             })));
             return function(e, n) {
                 return t.apply(this, arguments);
@@ -2780,7 +2787,7 @@
                             percentCount: s,
                             speedOverlay: d,
                             status: g
-                        }, n && t && Object(p.c)().inDiskScreen && !e.isDir && r(Object(f.c)(e));
+                        }, n && t && Object(p.c)().inDiskScreen && r(Object(f.c)(e));
                     }
                 })), r(f.b.actions.change({
                     downloadItems: o
