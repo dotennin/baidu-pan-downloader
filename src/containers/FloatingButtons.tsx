@@ -42,22 +42,6 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         data-placement="left"
         data-original-title="Create"
         onClick={() => {
-          // if (getLocation().inShareScreen) {
-          //   const ui = InstanceForSystem.ui
-          //
-          //   const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
-          //   if (!sharePwd) {
-          //     // Todo: create share link
-          //     InstanceForSystem.dialog.alert('请输入提取码')
-          //     return
-          //   }
-          //   ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-          //   const shareLink = `链接：${encodeURI(
-          //     window.location.href.replace(window.location.hash, '')
-          //   )}提取码：${sharePwd}`
-          //   dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
-          //   return
-          // }
           const { selectedList } = InstanceForSystem
 
           const newItems = { ...downloadItems }
@@ -70,7 +54,7 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
               allDownloads[item.fsId] = item
               newItems[item.fsId] = { intervalId, percentCount, speedOverlay, status }
 
-              if (downloadable && autoStart && getLocation().inDiskScreen) {
+              if (downloadable && autoStart && getLocation().inDiskScreen && !item.isDir) {
                 dispatch(fetchItem(item))
               }
             }
