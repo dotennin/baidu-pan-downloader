@@ -54,7 +54,7 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
               allDownloads[item.fsId] = item
               newItems[item.fsId] = { intervalId, percentCount, speedOverlay, status }
 
-              if (downloadable && autoStart && getLocation().inDiskScreen && !item.isDir) {
+              if (downloadable && autoStart && getLocation().inDiskScreen) {
                 dispatch(fetchItem(item))
               }
             }

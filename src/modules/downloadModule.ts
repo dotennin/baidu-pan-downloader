@@ -70,6 +70,10 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
   try {
     const { progress } = item
     const downloadable = downloadableSelector(getState())
+    if (item.isDir) {
+      dispatch(addNextDownloadRequest())
+      return
+    }
 
     if (!downloadable) {
       progress.status = StatusTypes.inQueued
