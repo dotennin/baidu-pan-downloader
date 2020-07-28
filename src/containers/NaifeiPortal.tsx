@@ -3,13 +3,12 @@ import { connect, useDispatch } from 'react-redux'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import { Modal } from '../components/Modal'
-import { InstanceForSystem } from '../services/InstaceForSystem'
 
 const mapStoreToProps = (store: IStoreState) => ({
   open: store.interface.naifeiPortalOpen,
-  shareLink: store.interface.shareLink,
+  shareLinks: store.interface.shareLinks,
 })
-function NaifeiPortal({ open, shareLink }: ReturnType<typeof mapStoreToProps>) {
+function NaifeiPortal({ open, shareLinks }: ReturnType<typeof mapStoreToProps>) {
   const dispatch = useDispatch()
   if (!open) {
     return null
@@ -26,12 +25,30 @@ function NaifeiPortal({ open, shareLink }: ReturnType<typeof mapStoreToProps>) {
           overflow: hidden;
         `}
       >
-        <iframe
-          src={`https://pan.naifei.cc/?${encodeURI(shareLink)}`}
-          width={'100%'}
-          height={'100%'}
-          onLoad={() => InstanceForSystem.ui.hideTip()}
-        />
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">文件</th>
+              <th scope="col">大小</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shareLinks.map((shareLink, index) => {
+              return (
+                <tr key={index}>
+                  <td data-label="filename" style={{ wordBreak: 'break-all' }}>
+                    {shareLink.server_filename}
+                  </td>
+                  <td>{shareLink.size}</td>
+                  <td>
+                    <div dangerouslySetInnerHTML={{ __html: shareLink.dlink }} />
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     </Modal>
   )

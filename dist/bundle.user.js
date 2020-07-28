@@ -167,7 +167,7 @@
         n.d(t, "a", (function() {
             return Ce;
         }));
-        var r = n(18), a = n(0), o = n.n(a), i = (n(37), n(38)), l = n(39), u = n(31), c = n(21), s = n.n(c);
+        var r = n(19), a = n(0), o = n.n(a), i = (n(37), n(38)), l = n(39), u = n(31), c = n(22), s = n.n(c);
         function f() {
             return (f = Object.assign || function(e) {
                 for (var t = 1; t < arguments.length; t++) {
@@ -809,7 +809,7 @@
         for (r = 0; r < o.length; r++) n = o[r], t.indexOf(n) >= 0 || (a[n] = e[n]);
         return a;
     }
-    var p = n(21), g = n.n(p), h = n(18), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
+    var p = n(22), g = n.n(p), h = n(19), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
     function y(e, t) {
         var n = e[1];
         return [ t.payload, n + 1 ];
@@ -1127,7 +1127,7 @@
         downloadModalOpen: !1,
         configModalOpen: !1,
         naifeiPortalOpen: !1,
-        shareLink: "",
+        shareLinks: [],
         error: void 0
     };
     t.a = Object(i.b)({
@@ -1209,7 +1209,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(8), a = n.n(r), o = n(12), i = n(17), l = n(1), u = n(15), c = n(23), s = n(19), f = n(5), d = n(2), p = {
+    var r = n(8), a = n.n(r), o = n(12), i = n(17), l = n(1), u = n(15), c = n(18), s = n(20), f = n(5), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1263,7 +1263,7 @@
                         return o.status = l.b.inQueued, t.abrupt("return");
 
                       case 6:
-                        return n(g.actions.requestDownload()), t.next = 9, Object(c.c)(e.path);
+                        return n(g.actions.requestDownload()), t.next = 9, Object(c.d)(e.path);
 
                       case 9:
                         return i = t.sent, e.url = i.response.urls[0].url + "&filename=" + encodeURIComponent(e.serverFilename), 
@@ -1299,7 +1299,7 @@
     var r = n(26), a = n(15), o = n(13), i = n(36), l = n(5), u = n(7), c = Object(o.c)({
         download: u.b.reducer,
         interface: l.a.reducer
-    }), s = n(20), f = Object(r.a)(Object(a.c)({
+    }), s = n(21), f = Object(r.a)(Object(a.c)({
         serializableCheck: !1
     }));
     s.a && f.push(Object(i.createLogger)({
@@ -2396,6 +2396,117 @@
     }));
 }, function(e, t, n) {
     "use strict";
+    n.d(t, "d", (function() {
+        return s;
+    })), n.d(t, "b", (function() {
+        return d;
+    })), n.d(t, "a", (function() {
+        return p;
+    })), n.d(t, "c", (function() {
+        return g;
+    }));
+    var r = n(8), a = n.n(r), o = n(12), i = n(1), l = n(11), u = n(10), c = n(2);
+    function s(e) {
+        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
+        return new Promise((function(t, n) {
+            l.a.xmlHttpRequest({
+                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
+                method: "GET",
+                responseType: "json",
+                headers: {
+                    "User-Agent": i.a.userAgent
+                },
+                onload: function(e) {
+                    return e.response.client_ip ? t(e) : n(e);
+                }
+            });
+        }));
+    }
+    var f = [ "apk", "exe", "pdf", "7z" ];
+    function d(e) {
+        var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
+        return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
+            var c;
+            r.request = l.a.download({
+                url: t,
+                name: (c = n, c + (f.includes(Object(u.b)(c)) ? ".__________重命名我.zip" : "")),
+                saveAs: !0,
+                headers: {
+                    Host: "qdall01.baidupcs.com",
+                    Accept: "*/*",
+                    "User-Agent": i.a.userAgent,
+                    "Accept-Encoding": "identity",
+                    "Accept-Language": "ja-JP",
+                    "Accept-Charset": "*"
+                },
+                onprogress: function(e) {
+                    a = e, r.percentCount = Math.round(100 * a.loaded / a.total);
+                },
+                onload: function() {
+                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 100, r.speedOverlay = 0, 
+                    r.status = i.b.completed, l.a.notification({
+                        text: "下载完成",
+                        title: n,
+                        highlight: !0
+                    }), e();
+                },
+                onerror: function(e) {
+                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 0, r.speedOverlay = 0, 
+                    r.status = i.b.error, 0 === Object.keys(e).length ? o(new Error("user is not authorized, hitcode:122")) : o(new Error(e.error));
+                }
+            });
+            var s = 0;
+            r.intervalId = window.setInterval((function() {
+                if (a) {
+                    var e = a.loaded - s;
+                    s = a.loaded, r.speedOverlay = e;
+                }
+            }), 1e3);
+        }));
+    }
+    function p(e) {
+        var t = c.a.list, n = c.a.jquery;
+        return new Promise((function(r, a) {
+            n.post("/share/set?channel=chunlei&clienttype=0&web=1", {
+                schannel: 4,
+                channel_list: "[]",
+                period: 7,
+                pwd: "qqqq",
+                fid_list: n.stringify(e ? [ e ] : t.getSelected().map((function(e) {
+                    return e.fs_id;
+                })))
+            }, (function(e) {
+                r(e);
+            })).error((function(e) {
+                a(e);
+            }));
+        }));
+    }
+    function g(e, t) {
+        return h.apply(this, arguments);
+    }
+    function h() {
+        return (h = Object(o.a)(a.a.mark((function e(t, n) {
+            return a.a.wrap((function(e) {
+                for (;;) switch (e.prev = e.next) {
+                  case 0:
+                    return e.next = 2, fetch("https://pan.dotennin.net/?link=".concat(encodeURI(t), "%20%E6%8F%90%E5%8F%96%E7%A0%81:%20").concat(n));
+
+                  case 2:
+                    return e.next = 4, e.sent.json();
+
+                  case 4:
+                    return e.abrupt("return", e.sent);
+
+                  case 5:
+                  case "end":
+                    return e.stop();
+                }
+            }), e);
+        })))).apply(this, arguments);
+    }
+}, function(e, t, n) {
+    "use strict";
     e.exports = n(50);
 }, function(e, t, n) {
     "use strict";
@@ -2417,7 +2528,7 @@
     t.a = r;
 }, function(e, t, n) {
     "use strict";
-    var r = n(18), a = {
+    var r = n(19), a = {
         childContextTypes: !0,
         contextType: !0,
         contextTypes: !0,
@@ -2488,93 +2599,6 @@
     }));
 }, function(e, t, n) {
     "use strict";
-    n.d(t, "c", (function() {
-        return l;
-    })), n.d(t, "b", (function() {
-        return c;
-    })), n.d(t, "a", (function() {
-        return s;
-    }));
-    n(8), n(12);
-    var r = n(1), a = n(11), o = n(10), i = n(2);
-    function l(e) {
-        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
-        return new Promise((function(t, n) {
-            a.a.xmlHttpRequest({
-                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
-                method: "GET",
-                responseType: "json",
-                headers: {
-                    "User-Agent": r.a.userAgent
-                },
-                onload: function(e) {
-                    return e.response.client_ip ? t(e) : n(e);
-                }
-            });
-        }));
-    }
-    var u = [ "apk", "exe", "pdf", "7z" ];
-    function c(e) {
-        var t = e.url, n = e.serverFilename, i = e.progress, l = void 0;
-        return i.percentCount = 0, i.speedOverlay = 0, new Promise((function(e, c) {
-            var s;
-            i.request = a.a.download({
-                url: t,
-                name: (s = n, s + (u.includes(Object(o.b)(s)) ? ".__________重命名我.zip" : "")),
-                saveAs: !0,
-                headers: {
-                    Host: "qdall01.baidupcs.com",
-                    Accept: "*/*",
-                    "User-Agent": r.a.userAgent,
-                    "Accept-Encoding": "identity",
-                    "Accept-Language": "ja-JP",
-                    "Accept-Charset": "*"
-                },
-                onprogress: function(e) {
-                    l = e, i.percentCount = Math.round(100 * l.loaded / l.total);
-                },
-                onload: function() {
-                    i.intervalId && clearInterval(i.intervalId), i.percentCount = 100, i.speedOverlay = 0, 
-                    i.status = r.b.completed, a.a.notification({
-                        text: "下载完成",
-                        title: n,
-                        highlight: !0
-                    }), e();
-                },
-                onerror: function(e) {
-                    i.intervalId && clearInterval(i.intervalId), i.percentCount = 0, i.speedOverlay = 0, 
-                    i.status = r.b.error, 0 === Object.keys(e).length ? c(new Error("user is not authorized, hitcode:122")) : c(new Error(e.error));
-                }
-            });
-            var f = 0;
-            i.intervalId = window.setInterval((function() {
-                if (l) {
-                    var e = l.loaded - f;
-                    f = l.loaded, i.speedOverlay = e;
-                }
-            }), 1e3);
-        }));
-    }
-    function s(e) {
-        var t = i.a.list, n = i.a.jquery;
-        return new Promise((function(r, a) {
-            n.post("/share/set?channel=chunlei&clienttype=0&web=1", {
-                schannel: 4,
-                channel_list: "[]",
-                period: 7,
-                pwd: "qqqq",
-                fid_list: n.stringify(e ? [ e ] : t.getSelected().map((function(e) {
-                    return e.fs_id;
-                })))
-            }, (function(e) {
-                r(e);
-            })).error((function(e) {
-                a(e);
-            }));
-        }));
-    }
-}, function(e, t, n) {
-    "use strict";
     !function e() {
         if ("undefined" != typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" == typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE) {
             0;
@@ -2590,7 +2614,7 @@
     n.d(t, "a", (function() {
         return a;
     }));
-    var r = n(22);
+    var r = n(23);
     function a(e, t) {
         if (e) {
             if ("string" == typeof e) return Object(r.a)(e, t);
@@ -2603,7 +2627,7 @@
     n.d(t, "a", (function() {
         return o;
     }));
-    var r = n(22);
+    var r = n(23);
     var a = n(25);
     function o(e) {
         return function(e) {
@@ -2715,7 +2739,7 @@
     }();
 }, function(e, t, n) {
     "use strict";
-    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(5), f = n(7), d = n(19), p = n(10), g = Object(l.b)((function(e) {
+    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(5), f = n(7), d = n(20), p = n(10), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -3232,7 +3256,7 @@
     })([ "svg{cursor:pointer;transition:all 0.5s cubic-bezier(0,0,0.2,1);&:hover{box-shadow:0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);background-color:rgba(255,255,255,0.56);}}" ]), xe = function(e) {
         var t = e.name, n = b(e, [ "name" ]), r = we[t];
         return a.createElement(ke, null, a.createElement(r, n));
-    }, Ee = n(23), _e = Object(r.b)("div").withConfig({
+    }, Ee = n(18), _e = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:flex;justify-content:center;" ]), Se = Object(r.b)(xe).withConfig({
         displayName: "_StyledIcon"
@@ -3250,24 +3274,26 @@
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         if (e.prev = 0, t = u.a.ui, n = u.a.user, !Object(p.c)().inShareScreen) {
-                            e.next = 9;
+                            e.next = 12;
                             break;
                         }
                         if (n.self) {
-                            e.next = 9;
+                            e.next = 12;
                             break;
                         }
                         return o = window.localStorage.getItem(c.c.sharePassword), t.tip({
                             autoClose: !1,
                             mode: "loading",
                             msg: "生成链接中..."
-                        }), i = "链接：".concat(encodeURI(window.location.href.replace(window.location.hash, "")), "提取码：").concat(o), 
-                        a(s.a.actions.change({
-                            naifeiPortalOpen: !0,
-                            shareLink: i
-                        })), e.abrupt("return");
+                        }), e.next = 8, Object(Ee.c)(window.location.href.replace(window.location.hash, ""), o);
 
-                      case 9:
+                      case 8:
+                        return i = e.sent, a(s.a.actions.change({
+                            naifeiPortalOpen: !0,
+                            shareLinks: i
+                        })), u.a.ui.hideTip(), e.abrupt("return");
+
+                      case 12:
                         u.a.dialog.confirm({
                             title: "Naifei直链生成接确认",
                             body: '将会把所选数据将生成<span style="color: red">共享链接</span> ， 并传输到Naifei服务器。 <br /> 是否确认？',
@@ -3284,12 +3310,15 @@
                                             }), e.next = 3, Object(Ee.a)(r.fsId);
 
                                           case 3:
-                                            n = e.sent, o = "share=".concat(n.shorturl.replace(/.+s\//, ""), "&pwd=qqqq"), a(s.a.actions.change({
-                                                naifeiPortalOpen: !0,
-                                                shareLink: o
-                                            }));
+                                            return n = e.sent, e.next = 6, Object(Ee.c)(n.shorturl, "qqqq");
 
                                           case 6:
+                                            o = e.sent, a(s.a.actions.change({
+                                                naifeiPortalOpen: !0,
+                                                shareLinks: o
+                                            })), u.a.ui.hideTip();
+
+                                          case 9:
                                           case "end":
                                             return e.stop();
                                         }
@@ -3299,17 +3328,17 @@
                                     return e.apply(this, arguments);
                                 };
                             }()
-                        }), e.next = 15;
+                        }), e.next = 18;
                         break;
 
-                      case 12:
-                        throw e.prev = 12, e.t0 = e.catch(0), new Error("生成共享链接失败");
-
                       case 15:
+                        throw e.prev = 15, e.t0 = e.catch(0), new Error("生成共享链接失败");
+
+                      case 18:
                       case "end":
                         return e.stop();
                     }
-                }), e, null, [ [ 0, 12 ] ]);
+                }), e, null, [ [ 0, 15 ] ]);
             })));
             return function() {
                 return e.apply(this, arguments);
@@ -3696,7 +3725,7 @@
         var t = e.target;
         localStorage.setItem(c.c.sharePassword, t.value);
     }));
-    var Ke = Object(r.a)(He()), Qe = n(20), Ge = function(e) {
+    var Ke = Object(r.a)(He()), Qe = n(21), Ge = function(e) {
         _(n, e);
         var t = j(n);
         function n(e) {
@@ -3747,10 +3776,10 @@
     var Ze = Object(l.b)((function(e) {
         return {
             open: e.interface.naifeiPortalOpen,
-            shareLink: e.interface.shareLink
+            shareLinks: e.interface.shareLinks
         };
     }))((function(e) {
-        var t = e.open, n = e.shareLink, r = Object(l.c)();
+        var t = e.open, n = e.shareLinks, r = Object(l.c)();
         return t ? o.a.createElement(w, {
             open: !0,
             noOverlayColor: !0,
@@ -3759,14 +3788,26 @@
                     naifeiPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(Xe, null, o.a.createElement("iframe", {
-            src: "https://pan.naifei.cc/?".concat(encodeURI(n)),
-            width: "100%",
-            height: "100%",
-            onLoad: function() {
-                return u.a.ui.hideTip();
-            }
-        }))) : null;
+        }, o.a.createElement(Xe, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
+            scope: "col"
+        }, "文件"), o.a.createElement("th", {
+            scope: "col"
+        }, "大小"), o.a.createElement("th", {
+            scope: "col"
+        }, "操作"))), o.a.createElement("tbody", null, n.map((function(e, t) {
+            return o.a.createElement("tr", {
+                key: t
+            }, o.a.createElement("td", {
+                "data-label": "filename",
+                style: {
+                    wordBreak: "break-all"
+                }
+            }, e.server_filename), o.a.createElement("td", null, e.size), o.a.createElement("td", null, o.a.createElement("div", {
+                dangerouslySetInnerHTML: {
+                    __html: e.dlink
+                }
+            })));
+        })))))) : null;
     })), Je = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:none;" ]);
@@ -4871,7 +4912,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(8), r = n.n(t), a = n(12), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(10), d = n(4), p = n(9), g = n(30);
+        var t = n(8), r = n.n(t), a = n(12), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(21), f = n(10), d = n(4), p = n(9), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a

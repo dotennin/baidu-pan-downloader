@@ -7,7 +7,7 @@ import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules
 import { InstanceForSystem } from '../../services/InstaceForSystem'
 import { Icon } from '../../components/Icon'
 import interfaceModule from '../../modules/interfaceModule'
-import { createPrivateShareLink } from '../../services/api'
+import { createPrivateShareLink, getDirectLinks } from '../../services/api'
 import { getLocation } from '../../utils'
 
 interface IProps {
@@ -59,10 +59,9 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         if (!user.self) {
           const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
           ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-          const shareLink = `链接：${encodeURI(
-            window.location.href.replace(window.location.hash, '')
-          )}提取码：${sharePwd}`
-          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
+          const shareLinks = await getDirectLinks(window.location.href.replace(window.location.hash, ''), sharePwd)
+          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLinks }))
+          InstanceForSystem.ui.hideTip()
           return
         }
       }
@@ -73,8 +72,9 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
         onSure: async () => {
           ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
           const res = await createPrivateShareLink(targetItem.fsId)
-          const shareLink = `share=${res.shorturl.replace(/.+s\//, '')}&pwd=qqqq`
-          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
+          const shareLinks = await getDirectLinks(res.shorturl, 'qqqq')
+          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLinks }))
+          InstanceForSystem.ui.hideTip()
         },
       })
     } catch (e) {
