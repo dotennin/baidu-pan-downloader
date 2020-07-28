@@ -2,7 +2,7 @@
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
-// @version 3.0.3
+// @version 3.0.4
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
@@ -1257,38 +1257,38 @@
                     for (;;) switch (t.prev = t.next) {
                       case 0:
                         if (t.prev = 0, o = e.progress, i = Object(s.a)(r()), !e.isDir) {
-                            t.next = 6;
+                            t.next = 7;
                             break;
                         }
-                        return o.status = l.b.stopped, t.abrupt("return");
+                        return o.status = l.b.stopped, n(h()), t.abrupt("return");
 
-                      case 6:
+                      case 7:
                         if (i) {
-                            t.next = 9;
+                            t.next = 10;
                             break;
                         }
                         return o.status = l.b.inQueued, t.abrupt("return");
 
-                      case 9:
-                        return n(g.actions.requestDownload()), t.next = 12, Object(c.d)(e.path);
+                      case 10:
+                        return n(g.actions.requestDownload()), t.next = 13, Object(c.d)(e.path);
 
-                      case 12:
+                      case 13:
                         return u = t.sent, e.url = u.response.urls[0].url + "&filename=" + encodeURIComponent(e.serverFilename), 
-                        o.status = l.b.downloading, t.next = 17, Object(c.b)(e);
+                        o.status = l.b.downloading, t.next = 18, Object(c.b)(e);
 
-                      case 17:
-                        n(g.actions.successDownload()), n(h()), t.next = 26;
+                      case 18:
+                        n(g.actions.successDownload()), n(h()), t.next = 27;
                         break;
 
-                      case 21:
-                        t.prev = 21, t.t0 = t.catch(0), n(g.actions.failureDownload()), n(f.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
+                      case 22:
+                        t.prev = 22, t.t0 = t.catch(0), n(g.actions.failureDownload()), n(f.a.actions.setError(t.t0 instanceof Error ? t.t0 : new Error(JSON.stringify(t.t0)))), 
                         n(h());
 
-                      case 26:
+                      case 27:
                       case "end":
                         return t.stop();
                     }
-                }), t, null, [ [ 0, 21 ] ]);
+                }), t, null, [ [ 0, 22 ] ]);
             })));
             return function(e, n) {
                 return t.apply(this, arguments);
