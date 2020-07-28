@@ -46,3 +46,5 @@ interface Window {
     vsCode: string
   }
 }
+
+type PromiseReturnType<F> = ReturnType<F> extends Promise<infer T> ? T : never

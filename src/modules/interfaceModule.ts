@@ -1,6 +1,7 @@
 import { GM } from '../services/gmInterface/gmInterface'
 import { ValueTypes } from '../services/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getDirectLinks } from '../services/api'
 
 interface IState {
   maxDownloadCount: number
@@ -8,7 +9,7 @@ interface IState {
   downloadModalOpen: boolean
   configModalOpen: boolean
   naifeiPortalOpen: boolean
-  shareLink: string
+  shareLinks: PromiseReturnType<typeof getDirectLinks>
   error: undefined | Error
 }
 const initialState: IState = {
@@ -17,7 +18,7 @@ const initialState: IState = {
   downloadModalOpen: false,
   configModalOpen: false,
   naifeiPortalOpen: false,
-  shareLink: '',
+  shareLinks: [],
   error: undefined,
 }
 

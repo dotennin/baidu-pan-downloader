@@ -140,7 +140,7 @@ export async function getDirectLinks(
     category: string
     fs_id: string
     isdir: '0' | '1'
-    link: string
+    dlink: string
     local_ctime: string
     local_mtime: string
     md5: string
