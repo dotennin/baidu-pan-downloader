@@ -42,33 +42,35 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         data-placement="left"
         data-original-title="Create"
         onClick={() => {
-          if (getLocation().inShareScreen) {
-            const ui = InstanceForSystem.ui
-
-            ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-            const sharePwd = window.localStorage.getItem('SPWD') as string
-            if (!sharePwd) {
-              // Todo: create share link
-              return
-            }
-            const shareLink = `链接：${encodeURI(
-              window.location.href.replace(window.location.hash, '')
-            )}提取码：${sharePwd}`
-            dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
-            return
-          }
+          // if (getLocation().inShareScreen) {
+          //   const ui = InstanceForSystem.ui
+          //
+          //   const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
+          //   if (!sharePwd) {
+          //     // Todo: create share link
+          //     InstanceForSystem.dialog.alert('请输入提取码')
+          //     return
+          //   }
+          //   ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
+          //   const shareLink = `链接：${encodeURI(
+          //     window.location.href.replace(window.location.hash, '')
+          //   )}提取码：${sharePwd}`
+          //   dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
+          //   return
+          // }
           const { selectedList } = InstanceForSystem
 
           const newItems = { ...downloadItems }
           const { allDownloads } = InstanceForSystem
           selectedList.forEach((item) => {
             if (typeof downloadItems[item.fsId] === 'undefined') {
-              item.progress.status = autoStart ? StatusTypes.inQueued : StatusTypes.stopped
+              item.progress.status =
+                autoStart && getLocation().inDiskScreen ? StatusTypes.inQueued : StatusTypes.stopped
               const { intervalId, percentCount, speedOverlay, status } = item.progress
               allDownloads[item.fsId] = item
               newItems[item.fsId] = { intervalId, percentCount, speedOverlay, status }
 
-              if (downloadable && autoStart) {
+              if (downloadable && autoStart && getLocation().inDiskScreen) {
                 dispatch(fetchItem(item))
               }
             }

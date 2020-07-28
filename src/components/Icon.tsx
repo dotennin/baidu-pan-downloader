@@ -18,7 +18,24 @@ const IconLoader: Record<Props['name'], React.FunctionComponent> = {
   pause: PA,
   play_arrow: P,
 }
+
 export const Icon: React.FC<Props> = ({ name, ...rest }) => {
   const CurrentIcon = IconLoader[name]
-  return <CurrentIcon {...rest} />
+  return (
+    <span
+      css={`
+        svg {
+          cursor: pointer;
+          transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+          &:hover {
+            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.56);
+          }
+        }
+      `}
+    >
+      <CurrentIcon {...rest} />
+    </span>
+  )
 }

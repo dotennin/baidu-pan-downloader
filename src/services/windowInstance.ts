@@ -19,5 +19,5 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
 // share password user input listen, use as a cache when real download link is obtained
 window.document.querySelector('#ts8E18')?.addEventListener('input', (e) => {
   const target = e.target as HTMLInputElement
-  localStorage.setItem('SPWD', target.value)
+  localStorage.setItem(ValueTypes.sharePassword, target.value)
 })

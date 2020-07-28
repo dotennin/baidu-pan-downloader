@@ -32,6 +32,7 @@ const InstanceForSystem = {
   getList: function() {
     return this.list.getList()
   },
+  user: eval(`require('system-core:context/context.js')`).instanceForSystem.data.user as IInstance['user'],
 
   initState: function() {
     return new Promise((resolve) => {
