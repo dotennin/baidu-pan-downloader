@@ -32,7 +32,7 @@ export function getDownloadUrl(path: string) {
   })
 }
 
-const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z']
+const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a']
 const formatServerFilename = (fileName: string) =>
   fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
 
