@@ -86,7 +86,8 @@
         e.downloading = "DOWNLOADING", e.stopped = "STOPPED", e.completed = "COMPLETED", 
         e.inQueued = "IN_QUEUED", e.error = "ERROR", e.unknow = "UNKONW";
     }(r || (r = {})), function(e) {
-        e.items = "ITEM_LIST", e.autoStart = "AUTO_START", e.maxDownloadCount = "MAX_DOWNLOAD_COUNT";
+        e.items = "ITEM_LIST", e.autoStart = "AUTO_START", e.maxDownloadCount = "MAX_DOWNLOAD_COUNT", 
+        e.sharePassword = "SHARE_PASSWORD";
     }(a || (a = {})), function(e) {
         e.userAgent = "netdisk;P2SP;2.2.60.26";
     }(o || (o = {}));
@@ -95,7 +96,7 @@
     __webpack_require__.d(__webpack_exports__, "a", (function() {
         return InstanceForSystem;
     }));
-    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(29), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(11), InstanceForSystem = {
+    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(29), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10), InstanceForSystem = {
         list: eval("require('system-core:context/context.js')").instanceForSystem.list,
         dialog: eval('require("system-core:system/uiService/dialog/dialog.js")'),
         hash: eval("require('base:widget/hash/hash.js')"),
@@ -112,6 +113,7 @@
         getList: function() {
             return this.list.getList();
         },
+        user: eval("require('system-core:context/context.js')").instanceForSystem.data.user,
         initState: function() {
             var e = this;
             return new Promise((function(t) {
@@ -159,418 +161,6 @@
             }), 1500);
         }));
     }));
-}, function(e, t, n) {
-    "use strict";
-    n.d(t, "a", (function() {
-        return s;
-    })), n.d(t, "b", (function() {
-        return W;
-    })), n.d(t, "c", (function() {
-        return H;
-    })), n.d(t, "d", (function() {
-        return Y;
-    }));
-    var r = n(0), a = n.n(r), o = (n(47), a.a.createContext(null));
-    var i = function(e) {
-        e();
-    }, l = {
-        notify: function() {}
-    };
-    function u() {
-        var e = i, t = null, n = null;
-        return {
-            clear: function() {
-                t = null, n = null;
-            },
-            notify: function() {
-                e((function() {
-                    for (var e = t; e; ) e.callback(), e = e.next;
-                }));
-            },
-            get: function() {
-                for (var e = [], n = t; n; ) e.push(n), n = n.next;
-                return e;
-            },
-            subscribe: function(e) {
-                var r = !0, a = n = {
-                    callback: e,
-                    next: null,
-                    prev: n
-                };
-                return a.prev ? a.prev.next = a : t = a, function() {
-                    r && null !== t && (r = !1, a.next ? a.next.prev = a.prev : n = a.prev, a.prev ? a.prev.next = a.next : t = a.next);
-                };
-            }
-        };
-    }
-    var c = function() {
-        function e(e, t) {
-            this.store = e, this.parentSub = t, this.unsubscribe = null, this.listeners = l, 
-            this.handleChangeWrapper = this.handleChangeWrapper.bind(this);
-        }
-        var t = e.prototype;
-        return t.addNestedSub = function(e) {
-            return this.trySubscribe(), this.listeners.subscribe(e);
-        }, t.notifyNestedSubs = function() {
-            this.listeners.notify();
-        }, t.handleChangeWrapper = function() {
-            this.onStateChange && this.onStateChange();
-        }, t.isSubscribed = function() {
-            return Boolean(this.unsubscribe);
-        }, t.trySubscribe = function() {
-            this.unsubscribe || (this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.handleChangeWrapper) : this.store.subscribe(this.handleChangeWrapper), 
-            this.listeners = u());
-        }, t.tryUnsubscribe = function() {
-            this.unsubscribe && (this.unsubscribe(), this.unsubscribe = null, this.listeners.clear(), 
-            this.listeners = l);
-        }, e;
-    }();
-    var s = function(e) {
-        var t = e.store, n = e.context, i = e.children, l = Object(r.useMemo)((function() {
-            var e = new c(t);
-            return e.onStateChange = e.notifyNestedSubs, {
-                store: t,
-                subscription: e
-            };
-        }), [ t ]), u = Object(r.useMemo)((function() {
-            return t.getState();
-        }), [ t ]);
-        Object(r.useEffect)((function() {
-            var e = l.subscription;
-            return e.trySubscribe(), u !== t.getState() && e.notifyNestedSubs(), function() {
-                e.tryUnsubscribe(), e.onStateChange = null;
-            };
-        }), [ l, u ]);
-        var s = n || o;
-        return a.a.createElement(s.Provider, {
-            value: l
-        }, i);
-    };
-    function f() {
-        return (f = Object.assign || function(e) {
-            for (var t = 1; t < arguments.length; t++) {
-                var n = arguments[t];
-                for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
-            }
-            return e;
-        }).apply(this, arguments);
-    }
-    function d(e, t) {
-        if (null == e) return {};
-        var n, r, a = {}, o = Object.keys(e);
-        for (r = 0; r < o.length; r++) n = o[r], t.indexOf(n) >= 0 || (a[n] = e[n]);
-        return a;
-    }
-    var p = n(21), g = n.n(p), h = n(18), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
-    function y(e, t) {
-        var n = e[1];
-        return [ t.payload, n + 1 ];
-    }
-    function w(e, t, n) {
-        m((function() {
-            return e.apply(void 0, t);
-        }), n);
-    }
-    function k(e, t, n, r, a, o, i) {
-        e.current = r, t.current = a, n.current = !1, o.current && (o.current = null, i());
-    }
-    function x(e, t, n, r, a, o, i, l, u, c) {
-        if (e) {
-            var s = !1, f = null, d = function() {
-                if (!s) {
-                    var e, n, d = t.getState();
-                    try {
-                        e = r(d, a.current);
-                    } catch (e) {
-                        n = e, f = e;
-                    }
-                    n || (f = null), e === o.current ? i.current || u() : (o.current = e, l.current = e, 
-                    i.current = !0, c({
-                        type: "STORE_UPDATED",
-                        payload: {
-                            error: n
-                        }
-                    }));
-                }
-            };
-            n.onStateChange = d, n.trySubscribe(), d();
-            return function() {
-                if (s = !0, n.tryUnsubscribe(), n.onStateChange = null, f) throw f;
-            };
-        }
-    }
-    var E = function() {
-        return [ null, 0 ];
-    };
-    function _(e, t) {
-        void 0 === t && (t = {});
-        var n = t, i = n.getDisplayName, l = void 0 === i ? function(e) {
-            return "ConnectAdvanced(" + e + ")";
-        } : i, u = n.methodName, s = void 0 === u ? "connectAdvanced" : u, p = n.renderCountProp, m = void 0 === p ? void 0 : p, _ = n.shouldHandleStateChanges, S = void 0 === _ || _, O = n.storeKey, T = void 0 === O ? "store" : O, C = (n.withRef, 
-        n.forwardRef), P = void 0 !== C && C, j = n.context, I = void 0 === j ? o : j, N = d(n, [ "getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context" ]), A = I;
-        return function(t) {
-            var n = t.displayName || t.name || "Component", o = l(n), i = f({}, N, {
-                getDisplayName: l,
-                methodName: s,
-                renderCountProp: m,
-                shouldHandleStateChanges: S,
-                storeKey: T,
-                displayName: o,
-                wrappedComponentName: n,
-                WrappedComponent: t
-            }), u = N.pure;
-            var p = u ? r.useMemo : function(e) {
-                return e();
-            };
-            function _(n) {
-                var o = Object(r.useMemo)((function() {
-                    var e = n.forwardedRef, t = d(n, [ "forwardedRef" ]);
-                    return [ n.context, e, t ];
-                }), [ n ]), l = o[0], u = o[1], s = o[2], g = Object(r.useMemo)((function() {
-                    return l && l.Consumer && Object(h.isContextConsumer)(a.a.createElement(l.Consumer, null)) ? l : A;
-                }), [ l, A ]), m = Object(r.useContext)(g), _ = Boolean(n.store) && Boolean(n.store.getState) && Boolean(n.store.dispatch);
-                Boolean(m) && Boolean(m.store);
-                var O = _ ? n.store : m.store, T = Object(r.useMemo)((function() {
-                    return function(t) {
-                        return e(t.dispatch, i);
-                    }(O);
-                }), [ O ]), C = Object(r.useMemo)((function() {
-                    if (!S) return v;
-                    var e = new c(O, _ ? null : m.subscription), t = e.notifyNestedSubs.bind(e);
-                    return [ e, t ];
-                }), [ O, _, m ]), P = C[0], j = C[1], I = Object(r.useMemo)((function() {
-                    return _ ? m : f({}, m, {
-                        subscription: P
-                    });
-                }), [ _, m, P ]), N = Object(r.useReducer)(y, b, E), D = N[0][0], M = N[1];
-                if (D && D.error) throw D.error;
-                var R = Object(r.useRef)(), z = Object(r.useRef)(s), L = Object(r.useRef)(), F = Object(r.useRef)(!1), U = p((function() {
-                    return L.current && s === z.current ? L.current : T(O.getState(), s);
-                }), [ O, D, s ]);
-                w(k, [ z, R, F, s, U, L, j ]), w(x, [ S, O, P, T, z, R, F, L, j, M ], [ O, P, T ]);
-                var W = Object(r.useMemo)((function() {
-                    return a.a.createElement(t, f({}, U, {
-                        ref: u
-                    }));
-                }), [ u, t, U ]);
-                return Object(r.useMemo)((function() {
-                    return S ? a.a.createElement(g.Provider, {
-                        value: I
-                    }, W) : W;
-                }), [ g, W, I ]);
-            }
-            var O = u ? a.a.memo(_) : _;
-            if (O.WrappedComponent = t, O.displayName = o, P) {
-                var C = a.a.forwardRef((function(e, t) {
-                    return a.a.createElement(O, f({}, e, {
-                        forwardedRef: t
-                    }));
-                }));
-                return C.displayName = o, C.WrappedComponent = t, g()(C, t);
-            }
-            return g()(O, t);
-        };
-    }
-    function S(e, t) {
-        return e === t ? 0 !== e || 0 !== t || 1 / e == 1 / t : e != e && t != t;
-    }
-    function O(e, t) {
-        if (S(e, t)) return !0;
-        if ("object" != typeof e || null === e || "object" != typeof t || null === t) return !1;
-        var n = Object.keys(e), r = Object.keys(t);
-        if (n.length !== r.length) return !1;
-        for (var a = 0; a < n.length; a++) if (!Object.prototype.hasOwnProperty.call(t, n[a]) || !S(e[n[a]], t[n[a]])) return !1;
-        return !0;
-    }
-    var T = n(12);
-    function C(e) {
-        return function(t, n) {
-            var r = e(t, n);
-            function a() {
-                return r;
-            }
-            return a.dependsOnOwnProps = !1, a;
-        };
-    }
-    function P(e) {
-        return null !== e.dependsOnOwnProps && void 0 !== e.dependsOnOwnProps ? Boolean(e.dependsOnOwnProps) : 1 !== e.length;
-    }
-    function j(e, t) {
-        return function(t, n) {
-            n.displayName;
-            var r = function(e, t) {
-                return r.dependsOnOwnProps ? r.mapToProps(e, t) : r.mapToProps(e);
-            };
-            return r.dependsOnOwnProps = !0, r.mapToProps = function(t, n) {
-                r.mapToProps = e, r.dependsOnOwnProps = P(e);
-                var a = r(t, n);
-                return "function" == typeof a && (r.mapToProps = a, r.dependsOnOwnProps = P(a), 
-                a = r(t, n)), a;
-            }, r;
-        };
-    }
-    var I = [ function(e) {
-        return "function" == typeof e ? j(e) : void 0;
-    }, function(e) {
-        return e ? void 0 : C((function(e) {
-            return {
-                dispatch: e
-            };
-        }));
-    }, function(e) {
-        return e && "object" == typeof e ? C((function(t) {
-            return Object(T.b)(e, t);
-        })) : void 0;
-    } ];
-    var N = [ function(e) {
-        return "function" == typeof e ? j(e) : void 0;
-    }, function(e) {
-        return e ? void 0 : C((function() {
-            return {};
-        }));
-    } ];
-    function A(e, t, n) {
-        return f({}, n, {}, e, {}, t);
-    }
-    var D = [ function(e) {
-        return "function" == typeof e ? function(e) {
-            return function(t, n) {
-                n.displayName;
-                var r, a = n.pure, o = n.areMergedPropsEqual, i = !1;
-                return function(t, n, l) {
-                    var u = e(t, n, l);
-                    return i ? a && o(u, r) || (r = u) : (i = !0, r = u), r;
-                };
-            };
-        }(e) : void 0;
-    }, function(e) {
-        return e ? void 0 : function() {
-            return A;
-        };
-    } ];
-    function M(e, t, n, r) {
-        return function(a, o) {
-            return n(e(a, o), t(r, o), o);
-        };
-    }
-    function R(e, t, n, r, a) {
-        var o, i, l, u, c, s = a.areStatesEqual, f = a.areOwnPropsEqual, d = a.areStatePropsEqual, p = !1;
-        function g(a, p) {
-            var g, h, m = !f(p, i), b = !s(a, o);
-            return o = a, i = p, m && b ? (l = e(o, i), t.dependsOnOwnProps && (u = t(r, i)), 
-            c = n(l, u, i)) : m ? (e.dependsOnOwnProps && (l = e(o, i)), t.dependsOnOwnProps && (u = t(r, i)), 
-            c = n(l, u, i)) : b ? (g = e(o, i), h = !d(g, l), l = g, h && (c = n(l, u, i)), 
-            c) : c;
-        }
-        return function(a, s) {
-            return p ? g(a, s) : (l = e(o = a, i = s), u = t(r, i), c = n(l, u, i), p = !0, 
-            c);
-        };
-    }
-    function z(e, t) {
-        var n = t.initMapStateToProps, r = t.initMapDispatchToProps, a = t.initMergeProps, o = d(t, [ "initMapStateToProps", "initMapDispatchToProps", "initMergeProps" ]), i = n(e, o), l = r(e, o), u = a(e, o);
-        return (o.pure ? R : M)(i, l, u, e, o);
-    }
-    function L(e, t, n) {
-        for (var r = t.length - 1; r >= 0; r--) {
-            var a = t[r](e);
-            if (a) return a;
-        }
-        return function(t, r) {
-            throw new Error("Invalid value of type " + typeof e + " for " + n + " argument when connecting component " + r.wrappedComponentName + ".");
-        };
-    }
-    function F(e, t) {
-        return e === t;
-    }
-    function U(e) {
-        var t = void 0 === e ? {} : e, n = t.connectHOC, r = void 0 === n ? _ : n, a = t.mapStateToPropsFactories, o = void 0 === a ? N : a, i = t.mapDispatchToPropsFactories, l = void 0 === i ? I : i, u = t.mergePropsFactories, c = void 0 === u ? D : u, s = t.selectorFactory, p = void 0 === s ? z : s;
-        return function(e, t, n, a) {
-            void 0 === a && (a = {});
-            var i = a, u = i.pure, s = void 0 === u || u, g = i.areStatesEqual, h = void 0 === g ? F : g, m = i.areOwnPropsEqual, b = void 0 === m ? O : m, v = i.areStatePropsEqual, y = void 0 === v ? O : v, w = i.areMergedPropsEqual, k = void 0 === w ? O : w, x = d(i, [ "pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual" ]), E = L(e, o, "mapStateToProps"), _ = L(t, l, "mapDispatchToProps"), S = L(n, c, "mergeProps");
-            return r(p, f({
-                methodName: "connect",
-                getDisplayName: function(e) {
-                    return "Connect(" + e + ")";
-                },
-                shouldHandleStateChanges: Boolean(e),
-                initMapStateToProps: E,
-                initMapDispatchToProps: _,
-                initMergeProps: S,
-                pure: s,
-                areStatesEqual: h,
-                areOwnPropsEqual: b,
-                areStatePropsEqual: y,
-                areMergedPropsEqual: k
-            }, x));
-        };
-    }
-    var W = U();
-    function B() {
-        return Object(r.useContext)(o);
-    }
-    function V(e) {
-        void 0 === e && (e = o);
-        var t = e === o ? B : function() {
-            return Object(r.useContext)(e);
-        };
-        return function() {
-            return t().store;
-        };
-    }
-    var $ = V();
-    function q(e) {
-        void 0 === e && (e = o);
-        var t = e === o ? $ : V(e);
-        return function() {
-            return t().dispatch;
-        };
-    }
-    var H = q(), K = function(e, t) {
-        return e === t;
-    };
-    function Q(e) {
-        void 0 === e && (e = o);
-        var t = e === o ? B : function() {
-            return Object(r.useContext)(e);
-        };
-        return function(e, n) {
-            void 0 === n && (n = K);
-            var a = t();
-            return function(e, t, n, a) {
-                var o, i = Object(r.useReducer)((function(e) {
-                    return e + 1;
-                }), 0)[1], l = Object(r.useMemo)((function() {
-                    return new c(n, a);
-                }), [ n, a ]), u = Object(r.useRef)(), s = Object(r.useRef)(), f = Object(r.useRef)();
-                try {
-                    o = e !== s.current || u.current ? e(n.getState()) : f.current;
-                } catch (e) {
-                    throw u.current && (e.message += "\nThe error may be correlated with this previous error:\n" + u.current.stack + "\n\n"), 
-                    e;
-                }
-                return m((function() {
-                    s.current = e, f.current = o, u.current = void 0;
-                })), m((function() {
-                    function e() {
-                        try {
-                            var e = s.current(n.getState());
-                            if (t(e, f.current)) return;
-                            f.current = e;
-                        } catch (e) {
-                            u.current = e;
-                        }
-                        i({});
-                    }
-                    return l.onStateChange = e, l.trySubscribe(), e(), function() {
-                        return l.tryUnsubscribe();
-                    };
-                }), [ n, l ]), o;
-            }(e, n, a.store, a.subscription);
-        };
-    }
-    var G, Y = Q(), X = n(24);
-    G = X.unstable_batchedUpdates, i = G;
 }, function(e, t, n) {
     "use strict";
     (function(e) {
@@ -1119,7 +709,419 @@
     }).call(this, n(51));
 }, function(e, t, n) {
     "use strict";
-    var r = n(17), a = n(10), o = n(1), i = n(15), l = {
+    n.d(t, "a", (function() {
+        return s;
+    })), n.d(t, "b", (function() {
+        return W;
+    })), n.d(t, "c", (function() {
+        return H;
+    })), n.d(t, "d", (function() {
+        return Y;
+    }));
+    var r = n(0), a = n.n(r), o = (n(47), a.a.createContext(null));
+    var i = function(e) {
+        e();
+    }, l = {
+        notify: function() {}
+    };
+    function u() {
+        var e = i, t = null, n = null;
+        return {
+            clear: function() {
+                t = null, n = null;
+            },
+            notify: function() {
+                e((function() {
+                    for (var e = t; e; ) e.callback(), e = e.next;
+                }));
+            },
+            get: function() {
+                for (var e = [], n = t; n; ) e.push(n), n = n.next;
+                return e;
+            },
+            subscribe: function(e) {
+                var r = !0, a = n = {
+                    callback: e,
+                    next: null,
+                    prev: n
+                };
+                return a.prev ? a.prev.next = a : t = a, function() {
+                    r && null !== t && (r = !1, a.next ? a.next.prev = a.prev : n = a.prev, a.prev ? a.prev.next = a.next : t = a.next);
+                };
+            }
+        };
+    }
+    var c = function() {
+        function e(e, t) {
+            this.store = e, this.parentSub = t, this.unsubscribe = null, this.listeners = l, 
+            this.handleChangeWrapper = this.handleChangeWrapper.bind(this);
+        }
+        var t = e.prototype;
+        return t.addNestedSub = function(e) {
+            return this.trySubscribe(), this.listeners.subscribe(e);
+        }, t.notifyNestedSubs = function() {
+            this.listeners.notify();
+        }, t.handleChangeWrapper = function() {
+            this.onStateChange && this.onStateChange();
+        }, t.isSubscribed = function() {
+            return Boolean(this.unsubscribe);
+        }, t.trySubscribe = function() {
+            this.unsubscribe || (this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.handleChangeWrapper) : this.store.subscribe(this.handleChangeWrapper), 
+            this.listeners = u());
+        }, t.tryUnsubscribe = function() {
+            this.unsubscribe && (this.unsubscribe(), this.unsubscribe = null, this.listeners.clear(), 
+            this.listeners = l);
+        }, e;
+    }();
+    var s = function(e) {
+        var t = e.store, n = e.context, i = e.children, l = Object(r.useMemo)((function() {
+            var e = new c(t);
+            return e.onStateChange = e.notifyNestedSubs, {
+                store: t,
+                subscription: e
+            };
+        }), [ t ]), u = Object(r.useMemo)((function() {
+            return t.getState();
+        }), [ t ]);
+        Object(r.useEffect)((function() {
+            var e = l.subscription;
+            return e.trySubscribe(), u !== t.getState() && e.notifyNestedSubs(), function() {
+                e.tryUnsubscribe(), e.onStateChange = null;
+            };
+        }), [ l, u ]);
+        var s = n || o;
+        return a.a.createElement(s.Provider, {
+            value: l
+        }, i);
+    };
+    function f() {
+        return (f = Object.assign || function(e) {
+            for (var t = 1; t < arguments.length; t++) {
+                var n = arguments[t];
+                for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
+            }
+            return e;
+        }).apply(this, arguments);
+    }
+    function d(e, t) {
+        if (null == e) return {};
+        var n, r, a = {}, o = Object.keys(e);
+        for (r = 0; r < o.length; r++) n = o[r], t.indexOf(n) >= 0 || (a[n] = e[n]);
+        return a;
+    }
+    var p = n(21), g = n.n(p), h = n(18), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
+    function y(e, t) {
+        var n = e[1];
+        return [ t.payload, n + 1 ];
+    }
+    function w(e, t, n) {
+        m((function() {
+            return e.apply(void 0, t);
+        }), n);
+    }
+    function k(e, t, n, r, a, o, i) {
+        e.current = r, t.current = a, n.current = !1, o.current && (o.current = null, i());
+    }
+    function x(e, t, n, r, a, o, i, l, u, c) {
+        if (e) {
+            var s = !1, f = null, d = function() {
+                if (!s) {
+                    var e, n, d = t.getState();
+                    try {
+                        e = r(d, a.current);
+                    } catch (e) {
+                        n = e, f = e;
+                    }
+                    n || (f = null), e === o.current ? i.current || u() : (o.current = e, l.current = e, 
+                    i.current = !0, c({
+                        type: "STORE_UPDATED",
+                        payload: {
+                            error: n
+                        }
+                    }));
+                }
+            };
+            n.onStateChange = d, n.trySubscribe(), d();
+            return function() {
+                if (s = !0, n.tryUnsubscribe(), n.onStateChange = null, f) throw f;
+            };
+        }
+    }
+    var E = function() {
+        return [ null, 0 ];
+    };
+    function _(e, t) {
+        void 0 === t && (t = {});
+        var n = t, i = n.getDisplayName, l = void 0 === i ? function(e) {
+            return "ConnectAdvanced(" + e + ")";
+        } : i, u = n.methodName, s = void 0 === u ? "connectAdvanced" : u, p = n.renderCountProp, m = void 0 === p ? void 0 : p, _ = n.shouldHandleStateChanges, S = void 0 === _ || _, O = n.storeKey, T = void 0 === O ? "store" : O, C = (n.withRef, 
+        n.forwardRef), P = void 0 !== C && C, j = n.context, I = void 0 === j ? o : j, N = d(n, [ "getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context" ]), A = I;
+        return function(t) {
+            var n = t.displayName || t.name || "Component", o = l(n), i = f({}, N, {
+                getDisplayName: l,
+                methodName: s,
+                renderCountProp: m,
+                shouldHandleStateChanges: S,
+                storeKey: T,
+                displayName: o,
+                wrappedComponentName: n,
+                WrappedComponent: t
+            }), u = N.pure;
+            var p = u ? r.useMemo : function(e) {
+                return e();
+            };
+            function _(n) {
+                var o = Object(r.useMemo)((function() {
+                    var e = n.forwardedRef, t = d(n, [ "forwardedRef" ]);
+                    return [ n.context, e, t ];
+                }), [ n ]), l = o[0], u = o[1], s = o[2], g = Object(r.useMemo)((function() {
+                    return l && l.Consumer && Object(h.isContextConsumer)(a.a.createElement(l.Consumer, null)) ? l : A;
+                }), [ l, A ]), m = Object(r.useContext)(g), _ = Boolean(n.store) && Boolean(n.store.getState) && Boolean(n.store.dispatch);
+                Boolean(m) && Boolean(m.store);
+                var O = _ ? n.store : m.store, T = Object(r.useMemo)((function() {
+                    return function(t) {
+                        return e(t.dispatch, i);
+                    }(O);
+                }), [ O ]), C = Object(r.useMemo)((function() {
+                    if (!S) return v;
+                    var e = new c(O, _ ? null : m.subscription), t = e.notifyNestedSubs.bind(e);
+                    return [ e, t ];
+                }), [ O, _, m ]), P = C[0], j = C[1], I = Object(r.useMemo)((function() {
+                    return _ ? m : f({}, m, {
+                        subscription: P
+                    });
+                }), [ _, m, P ]), N = Object(r.useReducer)(y, b, E), D = N[0][0], M = N[1];
+                if (D && D.error) throw D.error;
+                var R = Object(r.useRef)(), z = Object(r.useRef)(s), L = Object(r.useRef)(), F = Object(r.useRef)(!1), U = p((function() {
+                    return L.current && s === z.current ? L.current : T(O.getState(), s);
+                }), [ O, D, s ]);
+                w(k, [ z, R, F, s, U, L, j ]), w(x, [ S, O, P, T, z, R, F, L, j, M ], [ O, P, T ]);
+                var W = Object(r.useMemo)((function() {
+                    return a.a.createElement(t, f({}, U, {
+                        ref: u
+                    }));
+                }), [ u, t, U ]);
+                return Object(r.useMemo)((function() {
+                    return S ? a.a.createElement(g.Provider, {
+                        value: I
+                    }, W) : W;
+                }), [ g, W, I ]);
+            }
+            var O = u ? a.a.memo(_) : _;
+            if (O.WrappedComponent = t, O.displayName = o, P) {
+                var C = a.a.forwardRef((function(e, t) {
+                    return a.a.createElement(O, f({}, e, {
+                        forwardedRef: t
+                    }));
+                }));
+                return C.displayName = o, C.WrappedComponent = t, g()(C, t);
+            }
+            return g()(O, t);
+        };
+    }
+    function S(e, t) {
+        return e === t ? 0 !== e || 0 !== t || 1 / e == 1 / t : e != e && t != t;
+    }
+    function O(e, t) {
+        if (S(e, t)) return !0;
+        if ("object" != typeof e || null === e || "object" != typeof t || null === t) return !1;
+        var n = Object.keys(e), r = Object.keys(t);
+        if (n.length !== r.length) return !1;
+        for (var a = 0; a < n.length; a++) if (!Object.prototype.hasOwnProperty.call(t, n[a]) || !S(e[n[a]], t[n[a]])) return !1;
+        return !0;
+    }
+    var T = n(13);
+    function C(e) {
+        return function(t, n) {
+            var r = e(t, n);
+            function a() {
+                return r;
+            }
+            return a.dependsOnOwnProps = !1, a;
+        };
+    }
+    function P(e) {
+        return null !== e.dependsOnOwnProps && void 0 !== e.dependsOnOwnProps ? Boolean(e.dependsOnOwnProps) : 1 !== e.length;
+    }
+    function j(e, t) {
+        return function(t, n) {
+            n.displayName;
+            var r = function(e, t) {
+                return r.dependsOnOwnProps ? r.mapToProps(e, t) : r.mapToProps(e);
+            };
+            return r.dependsOnOwnProps = !0, r.mapToProps = function(t, n) {
+                r.mapToProps = e, r.dependsOnOwnProps = P(e);
+                var a = r(t, n);
+                return "function" == typeof a && (r.mapToProps = a, r.dependsOnOwnProps = P(a), 
+                a = r(t, n)), a;
+            }, r;
+        };
+    }
+    var I = [ function(e) {
+        return "function" == typeof e ? j(e) : void 0;
+    }, function(e) {
+        return e ? void 0 : C((function(e) {
+            return {
+                dispatch: e
+            };
+        }));
+    }, function(e) {
+        return e && "object" == typeof e ? C((function(t) {
+            return Object(T.b)(e, t);
+        })) : void 0;
+    } ];
+    var N = [ function(e) {
+        return "function" == typeof e ? j(e) : void 0;
+    }, function(e) {
+        return e ? void 0 : C((function() {
+            return {};
+        }));
+    } ];
+    function A(e, t, n) {
+        return f({}, n, {}, e, {}, t);
+    }
+    var D = [ function(e) {
+        return "function" == typeof e ? function(e) {
+            return function(t, n) {
+                n.displayName;
+                var r, a = n.pure, o = n.areMergedPropsEqual, i = !1;
+                return function(t, n, l) {
+                    var u = e(t, n, l);
+                    return i ? a && o(u, r) || (r = u) : (i = !0, r = u), r;
+                };
+            };
+        }(e) : void 0;
+    }, function(e) {
+        return e ? void 0 : function() {
+            return A;
+        };
+    } ];
+    function M(e, t, n, r) {
+        return function(a, o) {
+            return n(e(a, o), t(r, o), o);
+        };
+    }
+    function R(e, t, n, r, a) {
+        var o, i, l, u, c, s = a.areStatesEqual, f = a.areOwnPropsEqual, d = a.areStatePropsEqual, p = !1;
+        function g(a, p) {
+            var g, h, m = !f(p, i), b = !s(a, o);
+            return o = a, i = p, m && b ? (l = e(o, i), t.dependsOnOwnProps && (u = t(r, i)), 
+            c = n(l, u, i)) : m ? (e.dependsOnOwnProps && (l = e(o, i)), t.dependsOnOwnProps && (u = t(r, i)), 
+            c = n(l, u, i)) : b ? (g = e(o, i), h = !d(g, l), l = g, h && (c = n(l, u, i)), 
+            c) : c;
+        }
+        return function(a, s) {
+            return p ? g(a, s) : (l = e(o = a, i = s), u = t(r, i), c = n(l, u, i), p = !0, 
+            c);
+        };
+    }
+    function z(e, t) {
+        var n = t.initMapStateToProps, r = t.initMapDispatchToProps, a = t.initMergeProps, o = d(t, [ "initMapStateToProps", "initMapDispatchToProps", "initMergeProps" ]), i = n(e, o), l = r(e, o), u = a(e, o);
+        return (o.pure ? R : M)(i, l, u, e, o);
+    }
+    function L(e, t, n) {
+        for (var r = t.length - 1; r >= 0; r--) {
+            var a = t[r](e);
+            if (a) return a;
+        }
+        return function(t, r) {
+            throw new Error("Invalid value of type " + typeof e + " for " + n + " argument when connecting component " + r.wrappedComponentName + ".");
+        };
+    }
+    function F(e, t) {
+        return e === t;
+    }
+    function U(e) {
+        var t = void 0 === e ? {} : e, n = t.connectHOC, r = void 0 === n ? _ : n, a = t.mapStateToPropsFactories, o = void 0 === a ? N : a, i = t.mapDispatchToPropsFactories, l = void 0 === i ? I : i, u = t.mergePropsFactories, c = void 0 === u ? D : u, s = t.selectorFactory, p = void 0 === s ? z : s;
+        return function(e, t, n, a) {
+            void 0 === a && (a = {});
+            var i = a, u = i.pure, s = void 0 === u || u, g = i.areStatesEqual, h = void 0 === g ? F : g, m = i.areOwnPropsEqual, b = void 0 === m ? O : m, v = i.areStatePropsEqual, y = void 0 === v ? O : v, w = i.areMergedPropsEqual, k = void 0 === w ? O : w, x = d(i, [ "pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual" ]), E = L(e, o, "mapStateToProps"), _ = L(t, l, "mapDispatchToProps"), S = L(n, c, "mergeProps");
+            return r(p, f({
+                methodName: "connect",
+                getDisplayName: function(e) {
+                    return "Connect(" + e + ")";
+                },
+                shouldHandleStateChanges: Boolean(e),
+                initMapStateToProps: E,
+                initMapDispatchToProps: _,
+                initMergeProps: S,
+                pure: s,
+                areStatesEqual: h,
+                areOwnPropsEqual: b,
+                areStatePropsEqual: y,
+                areMergedPropsEqual: k
+            }, x));
+        };
+    }
+    var W = U();
+    function B() {
+        return Object(r.useContext)(o);
+    }
+    function V(e) {
+        void 0 === e && (e = o);
+        var t = e === o ? B : function() {
+            return Object(r.useContext)(e);
+        };
+        return function() {
+            return t().store;
+        };
+    }
+    var $ = V();
+    function q(e) {
+        void 0 === e && (e = o);
+        var t = e === o ? $ : V(e);
+        return function() {
+            return t().dispatch;
+        };
+    }
+    var H = q(), K = function(e, t) {
+        return e === t;
+    };
+    function Q(e) {
+        void 0 === e && (e = o);
+        var t = e === o ? B : function() {
+            return Object(r.useContext)(e);
+        };
+        return function(e, n) {
+            void 0 === n && (n = K);
+            var a = t();
+            return function(e, t, n, a) {
+                var o, i = Object(r.useReducer)((function(e) {
+                    return e + 1;
+                }), 0)[1], l = Object(r.useMemo)((function() {
+                    return new c(n, a);
+                }), [ n, a ]), u = Object(r.useRef)(), s = Object(r.useRef)(), f = Object(r.useRef)();
+                try {
+                    o = e !== s.current || u.current ? e(n.getState()) : f.current;
+                } catch (e) {
+                    throw u.current && (e.message += "\nThe error may be correlated with this previous error:\n" + u.current.stack + "\n\n"), 
+                    e;
+                }
+                return m((function() {
+                    s.current = e, f.current = o, u.current = void 0;
+                })), m((function() {
+                    function e() {
+                        try {
+                            var e = s.current(n.getState());
+                            if (t(e, f.current)) return;
+                            f.current = e;
+                        } catch (e) {
+                            u.current = e;
+                        }
+                        i({});
+                    }
+                    return l.onStateChange = e, l.trySubscribe(), e(), function() {
+                        return l.tryUnsubscribe();
+                    };
+                }), [ n, l ]), o;
+            }(e, n, a.store, a.subscription);
+        };
+    }
+    var G, Y = Q(), X = n(24);
+    G = X.unstable_batchedUpdates, i = G;
+}, function(e, t, n) {
+    "use strict";
+    var r = n(17), a = n(11), o = n(1), i = n(15), l = {
         maxDownloadCount: a.a.getValue(o.c.maxDownloadCount, 2),
         autoStart: a.a.getValue(o.c.autoStart, !0),
         downloadModalOpen: !1,
@@ -1207,7 +1209,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(9), a = n.n(r), o = n(13), i = n(17), l = n(1), u = n(15), c = n(23), s = n(19), f = n(5), d = n(2), p = {
+    var r = n(8), a = n.n(r), o = n(12), i = n(17), l = n(1), u = n(15), c = n(23), s = n(19), f = n(5), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1288,11 +1290,13 @@
     };
     t.b = g;
 }, function(e, t, n) {
+    e.exports = n(42);
+}, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
         return p;
     }));
-    var r = n(26), a = n(15), o = n(12), i = n(36), l = n(5), u = n(7), c = Object(o.c)({
+    var r = n(26), a = n(15), o = n(13), i = n(36), l = n(5), u = n(7), c = Object(o.c)({
         download: u.b.reducer,
         interface: l.a.reducer
     }), s = n(20), f = Object(r.a)(Object(a.c)({
@@ -1312,7 +1316,42 @@
         enhancers: [ d ]
     });
 }, function(e, t, n) {
-    e.exports = n(42);
+    "use strict";
+    n.d(t, "d", (function() {
+        return r;
+    })), n.d(t, "a", (function() {
+        return a;
+    })), n.d(t, "b", (function() {
+        return o;
+    })), n.d(t, "c", (function() {
+        return i;
+    }));
+    n(8), n(12);
+    function r() {
+        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
+        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
+    }
+    function a(e) {
+        window.setTimeout(e, 0);
+        var t = window.location.href, n = new MutationObserver((function(n) {
+            n.some((function() {
+                return t !== document.location.href;
+            })) && (t = document.location.href, e());
+        }));
+        return n.observe(document.body, {
+            childList: !0,
+            subtree: !0
+        }), n;
+    }
+    var o = function(e) {
+        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
+    }, i = function() {
+        return {
+            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
+            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
+            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
+        };
+    };
 }, function(module, __webpack_exports__, __webpack_require__) {
     "use strict";
     __webpack_require__.d(__webpack_exports__, "a", (function() {
@@ -1387,41 +1426,32 @@
     };
 }, function(e, t, n) {
     "use strict";
-    n.d(t, "d", (function() {
-        return r;
-    })), n.d(t, "a", (function() {
-        return a;
-    })), n.d(t, "b", (function() {
-        return o;
-    })), n.d(t, "c", (function() {
-        return i;
-    }));
-    n(9), n(13);
-    function r() {
-        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
-        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
+    function r(e, t, n, r, a, o, i) {
+        try {
+            var l = e[o](i), u = l.value;
+        } catch (e) {
+            return void n(e);
+        }
+        l.done ? t(u) : Promise.resolve(u).then(r, a);
     }
     function a(e) {
-        window.setTimeout(e, 0);
-        var t = window.location.href, n = new MutationObserver((function(n) {
-            n.some((function() {
-                return t !== document.location.href;
-            })) && (t = document.location.href, e());
-        }));
-        return n.observe(document.body, {
-            childList: !0,
-            subtree: !0
-        }), n;
-    }
-    var o = function(e) {
-        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
-    }, i = function() {
-        return {
-            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
-            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
-            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
+        return function() {
+            var t = this, n = arguments;
+            return new Promise((function(a, o) {
+                var i = e.apply(t, n);
+                function l(e) {
+                    r(i, a, o, l, u, "next", e);
+                }
+                function u(e) {
+                    r(i, a, o, l, u, "throw", e);
+                }
+                l(void 0);
+            }));
         };
-    };
+    }
+    n.d(t, "a", (function() {
+        return a;
+    }));
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -1632,34 +1662,6 @@
             };
         };
     }
-}, function(e, t, n) {
-    "use strict";
-    function r(e, t, n, r, a, o, i) {
-        try {
-            var l = e[o](i), u = l.value;
-        } catch (e) {
-            return void n(e);
-        }
-        l.done ? t(u) : Promise.resolve(u).then(r, a);
-    }
-    function a(e) {
-        return function() {
-            var t = this, n = arguments;
-            return new Promise((function(a, o) {
-                var i = e.apply(t, n);
-                function l(e) {
-                    r(i, a, o, l, u, "next", e);
-                }
-                function u(e) {
-                    r(i, a, o, l, u, "throw", e);
-                }
-                l(void 0);
-            }));
-        };
-    }
-    n.d(t, "a", (function() {
-        return a;
-    }));
 }, function(e, t, n) {
     "use strict";
     function r(e, t) {
@@ -2133,7 +2135,7 @@
         }, e;
     }()), J = Z.produce, ee = (Z.produceWithPatches.bind(Z), Z.setAutoFreeze.bind(Z), 
     Z.setUseProxies.bind(Z), Z.applyPatches.bind(Z), Z.createDraft.bind(Z), Z.finishDraft.bind(Z), 
-    J), te = n(12);
+    J), te = n(13);
     n(6);
     function ne(e) {
         return function(t) {
@@ -2493,8 +2495,8 @@
     })), n.d(t, "a", (function() {
         return s;
     }));
-    n(9), n(13);
-    var r = n(1), a = n(10), o = n(11), i = n(2);
+    n(8), n(12);
+    var r = n(1), a = n(11), o = n(10), i = n(2);
     function l(e) {
         if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
         return new Promise((function(t, n) {
@@ -2627,7 +2629,7 @@
     n.d(t, "a", (function() {
         return c;
     }));
-    var r = n(16), a = n(14), o = n(1), i = n(8), l = n(7);
+    var r = n(16), a = n(14), o = n(1), i = n(9), l = n(7);
     var u = function() {
         function e(t, n) {
             Object(r.a)(this, e), this.intervalId = void 0, this.request = void 0, this._speedOverlay = void 0, 
@@ -2713,7 +2715,7 @@
     }();
 }, function(e, t, n) {
     "use strict";
-    var r = n(4), a = n(0), o = n.n(a), i = n(17), l = n(3), u = n(2), c = n(1), s = n(5), f = n(7), d = n(19), p = n(11), g = Object(l.b)((function(e) {
+    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(5), f = n(7), d = n(19), p = n(10), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -2744,38 +2746,23 @@
             "data-placement": "left",
             "data-original-title": "Create",
             onClick: function() {
-                if (Object(p.c)().inShareScreen) {
-                    u.a.ui.tip({
-                        autoClose: !1,
-                        mode: "loading",
-                        msg: "生成链接中..."
-                    });
-                    var e = window.localStorage.getItem("SPWD");
-                    if (!e) return;
-                    var o = "链接：".concat(encodeURI(window.location.href.replace(window.location.hash, "")), "提取码：").concat(e);
-                    r(s.a.actions.change({
-                        naifeiPortalOpen: !0,
-                        shareLink: o
-                    }));
-                } else {
-                    var l = u.a.selectedList, d = Object(i.a)({}, a), g = u.a.allDownloads;
-                    l.forEach((function(e) {
-                        if (void 0 === a[e.fsId]) {
-                            e.progress.status = t ? c.b.inQueued : c.b.stopped;
-                            var o = e.progress, i = o.intervalId, l = o.percentCount, u = o.speedOverlay, s = o.status;
-                            g[e.fsId] = e, d[e.fsId] = {
-                                intervalId: i,
-                                percentCount: l,
-                                speedOverlay: u,
-                                status: s
-                            }, n && t && r(Object(f.c)(e));
-                        }
-                    })), r(f.b.actions.change({
-                        downloadItems: d
-                    })), r(s.a.actions.change({
-                        downloadModalOpen: !0
-                    }));
-                }
+                var e = u.a.selectedList, o = Object(i.a)({}, a), l = u.a.allDownloads;
+                e.forEach((function(e) {
+                    if (void 0 === a[e.fsId]) {
+                        e.progress.status = t && Object(p.c)().inDiskScreen ? c.b.inQueued : c.b.stopped;
+                        var i = e.progress, u = i.intervalId, s = i.percentCount, d = i.speedOverlay, g = i.status;
+                        l[e.fsId] = e, o[e.fsId] = {
+                            intervalId: u,
+                            percentCount: s,
+                            speedOverlay: d,
+                            status: g
+                        }, n && t && Object(p.c)().inDiskScreen && r(Object(f.c)(e));
+                    }
+                })), r(f.b.actions.change({
+                    downloadItems: o
+                })), r(s.a.actions.change({
+                    downloadModalOpen: !0
+                }));
             }
         }, o.a.createElement("p", {
             className: "plus"
@@ -3025,7 +3012,7 @@
     U.defaultProps = {
         activeTab: 0
     };
-    var W = n(9), B = n.n(W), V = n(13);
+    var W = n(8), B = n.n(W), V = n(12);
     function $() {
         return ($ = Object.assign || function(e) {
             for (var t = 1; t < arguments.length; t++) {
@@ -3240,24 +3227,101 @@
         stop: ye,
         pause: le,
         play_arrow: pe
-    }), ke = function(e) {
+    }), ke = Object(r.b)("span").withConfig({
+        displayName: "_StyledSpan"
+    })([ "svg{cursor:pointer;transition:all 0.5s cubic-bezier(0,0,0.2,1);&:hover{box-shadow:0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);background-color:rgba(255,255,255,0.56);}}" ]), xe = function(e) {
         var t = e.name, n = b(e, [ "name" ]), r = we[t];
-        return a.createElement(r, n);
-    }, xe = n(23);
-    var Ee = Object(l.b)((function(e, t) {
+        return a.createElement(ke, null, a.createElement(r, n));
+    }, Ee = n(23), _e = Object(r.b)("div").withConfig({
+        displayName: "_StyledDiv"
+    })([ "display:flex;justify-content:center;" ]), Se = Object(r.b)(xe).withConfig({
+        displayName: "_StyledIcon"
+    })([ "opacity:0;cursor:unset !important;" ]);
+    var Oe = Object(l.b)((function(e, t) {
         var n;
         return {
             status: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.status
         };
     }))((function(e) {
-        var t = e.fsId, n = e.status, r = u.a.allDownloads[t], a = Object(l.c)();
-        return o.a.createElement(o.a.Fragment, null, o.a.createElement(ke, {
+        var t = e.fsId, n = e.status, r = u.a.allDownloads[t], a = Object(l.c)(), i = function() {
+            var e = Object(V.a)(B.a.mark((function e() {
+                var t, n, o, i;
+                return B.a.wrap((function(e) {
+                    for (;;) switch (e.prev = e.next) {
+                      case 0:
+                        if (e.prev = 0, t = u.a.ui, n = u.a.user, !Object(p.c)().inShareScreen) {
+                            e.next = 9;
+                            break;
+                        }
+                        if (n.self) {
+                            e.next = 9;
+                            break;
+                        }
+                        return o = window.localStorage.getItem(c.c.sharePassword), t.tip({
+                            autoClose: !1,
+                            mode: "loading",
+                            msg: "生成链接中..."
+                        }), i = "链接：".concat(encodeURI(window.location.href.replace(window.location.hash, "")), "提取码：").concat(o), 
+                        a(s.a.actions.change({
+                            naifeiPortalOpen: !0,
+                            shareLink: i
+                        })), e.abrupt("return");
+
+                      case 9:
+                        u.a.dialog.confirm({
+                            title: "Naifei直链生成接确认",
+                            body: '将会把所选数据将生成<span style="color: red">共享链接</span> ， 并传输到Naifei服务器。 <br /> 是否确认？',
+                            onSure: function() {
+                                var e = Object(V.a)(B.a.mark((function e() {
+                                    var n, o;
+                                    return B.a.wrap((function(e) {
+                                        for (;;) switch (e.prev = e.next) {
+                                          case 0:
+                                            return t.tip({
+                                                autoClose: !1,
+                                                mode: "loading",
+                                                msg: "生成链接中..."
+                                            }), e.next = 3, Object(Ee.a)(r.fsId);
+
+                                          case 3:
+                                            n = e.sent, o = "share=".concat(n.shorturl.replace(/.+s\//, ""), "&pwd=qqqq"), a(s.a.actions.change({
+                                                naifeiPortalOpen: !0,
+                                                shareLink: o
+                                            }));
+
+                                          case 6:
+                                          case "end":
+                                            return e.stop();
+                                        }
+                                    }), e);
+                                })));
+                                return function() {
+                                    return e.apply(this, arguments);
+                                };
+                            }()
+                        }), e.next = 15;
+                        break;
+
+                      case 12:
+                        throw e.prev = 12, e.t0 = e.catch(0), new Error("生成共享链接失败");
+
+                      case 15:
+                      case "end":
+                        return e.stop();
+                    }
+                }), e, null, [ [ 0, 12 ] ]);
+            })));
+            return function() {
+                return e.apply(this, arguments);
+            };
+        }();
+        return o.a.createElement(_e, null, Object(p.c)().inDiskScreen && o.a.createElement(o.a.Fragment, null, o.a.createElement(xe, {
             name: "play_arrow",
             onClick: function() {
                 return a(Object(f.c)(r));
             },
             className: "".concat([ c.b.downloading, c.b.inQueued ].includes(n) || r.isDir ? "disabled" : "")
-        }), o.a.createElement(ke, {
+        }), o.a.createElement(xe, {
             name: "stop",
             onClick: function() {
                 if (r) {
@@ -3271,50 +3335,13 @@
                 }
             },
             className: "".concat([ c.b.downloading, c.b.inQueued ].includes(n) && !r.isDir ? "" : "disabled")
-        }), o.a.createElement(ke, {
+        })), o.a.createElement(xe, {
             name: "open_in_new",
-            onClick: function() {
-                try {
-                    u.a.dialog.confirm({
-                        title: "生成共享链接确认",
-                        body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
-                        onSure: (e = Object(V.a)(B.a.mark((function e() {
-                            var t, n;
-                            return B.a.wrap((function(e) {
-                                for (;;) switch (e.prev = e.next) {
-                                  case 0:
-                                    return u.a.ui.tip({
-                                        autoClose: !1,
-                                        mode: "loading",
-                                        msg: "生成链接中..."
-                                    }), e.next = 3, Object(xe.a)(r.fsId);
-
-                                  case 3:
-                                    t = e.sent, n = "share=".concat(t.shorturl.replace(/.+s\//, ""), "&pwd=qqqq"), a(s.a.actions.change({
-                                        naifeiPortalOpen: !0,
-                                        shareLink: n
-                                    }));
-
-                                  case 6:
-                                  case "end":
-                                    return e.stop();
-                                }
-                            }), e);
-                        }))), function() {
-                            return e.apply(this, arguments);
-                        })
-                    });
-                } catch (e) {
-                    throw new Error("生成共享链接失败");
-                }
-                var e;
-            }
-        }), o.a.createElement(ke, {
+            onClick: i
+        }), o.a.createElement(Se, {
+            name: "clear"
+        }), o.a.createElement(xe, {
             name: "clear",
-            style: {
-                position: "relative",
-                right: -20
-            },
             onClick: function() {
                 var e;
                 r && ((null === (e = r.progress.request) || void 0 === e ? void 0 : e.abort) && r.progress.request.abort(), 
@@ -3326,7 +3353,7 @@
             }
         }));
     }));
-    var _e = Object(l.b)((function(e, t) {
+    var Te = Object(l.b)((function(e, t) {
         var n;
         return {
             percentCount: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.percentCount
@@ -3339,19 +3366,20 @@
             className: "overlay"
         }, t, "%"));
     }));
-    var Se = Object(l.b)((function(e, t) {
-        var n;
+    var Ce = Object(l.b)((function(e, t) {
+        var n, r;
         return {
-            speedOverlay: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.speedOverlay
+            speedOverlay: null === (n = e.download.downloadItems[t.fsId]) || void 0 === n ? void 0 : n.speedOverlay,
+            status: null === (r = e.download.downloadItems[t.fsId]) || void 0 === r ? void 0 : r.status
         };
     }))((function(e) {
-        var t = e.speedOverlay;
-        return o.a.createElement(o.a.Fragment, null, u.a.friendlyFileSize(t), " /s");
-    })), Oe = n(6), Te = Object(r.b)(N).withConfig({
+        var t = e.speedOverlay, n = e.status;
+        return n && n !== c.b.downloading ? null : o.a.createElement(o.a.Fragment, null, u.a.friendlyFileSize(t), " /s");
+    })), Pe = n(6), je = Object(r.b)(N).withConfig({
         displayName: "_StyledTab"
-    })([ "max-height:calc(60vh - 58px);overflow:auto;" ]), Ce = function(e) {
+    })([ "max-height:calc(60vh - 58px);overflow:auto;" ]), Ie = function(e) {
         var t = e.children, n = e.name, r = b(e, [ "children", "name" ]);
-        return o.a.createElement(Te, Object.assign({
+        return o.a.createElement(je, Object.assign({
             name: n
         }, r), o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
@@ -3365,9 +3393,9 @@
             scope: "col"
         }, "操作"))), o.a.createElement("tbody", null, t)));
     };
-    var Pe = Object(l.b)((function(e) {
+    var Ne = Object(l.b)((function(e) {
         return {
-            fsIdList: Object(Oe.a)((function(e) {
+            fsIdList: Object(Pe.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e);
@@ -3375,7 +3403,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(Ce, {
+        return o.a.createElement(Ie, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3392,24 +3420,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(_e, {
+            }, o.a.createElement(Te, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(Se, {
+            }, o.a.createElement(Ce, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(Ee, {
+            }, o.a.createElement(Oe, {
                 fsId: e
             })));
         })));
     }));
-    var je = Object(l.b)((function(e) {
+    var Ae = Object(l.b)((function(e) {
         return {
-            fsIdList: Object(Oe.a)((function(e) {
+            fsIdList: Object(Pe.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).sort((function(t) {
@@ -3421,7 +3449,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(Ce, {
+        return o.a.createElement(Ie, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3438,24 +3466,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(_e, {
+            }, o.a.createElement(Te, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(Se, {
+            }, o.a.createElement(Ce, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(Ee, {
+            }, o.a.createElement(Oe, {
                 fsId: e
             })));
         })));
     }));
-    var Ie = Object(l.b)((function(e) {
+    var De = Object(l.b)((function(e) {
         return {
-            fsIdList: Object(Oe.a)((function(e) {
+            fsIdList: Object(Pe.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).filter((function(t) {
@@ -3465,7 +3493,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(Ce, {
+        return o.a.createElement(Ie, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3482,24 +3510,24 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(_e, {
+            }, o.a.createElement(Te, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(Se, {
+            }, o.a.createElement(Ce, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(Ee, {
+            }, o.a.createElement(Oe, {
                 fsId: e
             })));
         })));
     }));
-    var Ne = Object(l.b)((function(e) {
+    var Me = Object(l.b)((function(e) {
         return {
-            fsIdList: Object(Oe.a)((function(e) {
+            fsIdList: Object(Pe.a)((function(e) {
                 return e.download.downloadItems;
             }), (function(e) {
                 return Object.keys(e).filter((function(t) {
@@ -3509,7 +3537,7 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name;
-        return o.a.createElement(Ce, {
+        return o.a.createElement(Ie, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -3526,22 +3554,22 @@
                 "data-label": "download"
             }, o.a.createElement("div", {
                 className: "wrap"
-            }, o.a.createElement(_e, {
+            }, o.a.createElement(Te, {
                 fsId: e
             }))), o.a.createElement("td", {
                 "data-label": "url"
             }, u.a.friendlyFileSize(a)), o.a.createElement("td", {
                 "data-label": "speed"
-            }, o.a.createElement(Se, {
+            }, o.a.createElement(Ce, {
                 fsId: e
             })), o.a.createElement("td", {
                 "data-label": "operation"
-            }, o.a.createElement(Ee, {
+            }, o.a.createElement(Oe, {
                 fsId: e
             })));
         })));
     }));
-    var Ae = Object(l.b)((function(e) {
+    var Re = Object(l.b)((function(e) {
         return {
             downloadModalOpen: e.interface.downloadModalOpen
         };
@@ -3560,27 +3588,27 @@
             onChange: function(e, t) {
                 u(t);
             }
-        }, o.a.createElement(Pe, {
+        }, o.a.createElement(Ne, {
             name: "所有任务"
-        }), o.a.createElement(je, {
+        }), o.a.createElement(Ae, {
             name: "下载中"
-        }), o.a.createElement(Ie, {
+        }), o.a.createElement(De, {
             name: "已停止"
-        }), o.a.createElement(Ne, {
+        }), o.a.createElement(Me, {
             name: "已完成"
         })));
-    })), De = n(26), Me = r.b.fieldset.withConfig({
+    })), ze = n(26), Le = r.b.fieldset.withConfig({
         displayName: "Form__FormField",
         componentId: "sc-1csqrgf-0"
-    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), Re = r.b.form.withConfig({
+    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), Fe = r.b.form.withConfig({
         displayName: "Form",
         componentId: "sc-1csqrgf-1"
-    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), ze = Object(r.b)("div").withConfig({
+    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), Ue = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
-    })([ ".modal-window{max-width:500px;}" ]), Le = Object(r.b)("div").withConfig({
+    })([ ".modal-window{max-width:500px;}" ]), We = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv2"
     })([ "font-size:90%;color:#999;" ]);
-    var Fe, Ue = Object(l.b)((function(e) {
+    var Be, Ve = Object(l.b)((function(e) {
         return {
             configModalOpen: e.interface.configModalOpen,
             autoStart: e.interface.autoStart,
@@ -3608,10 +3636,10 @@
         };
     }))((function(e) {
         var t = e.configModalOpen, n = e.autoStart, r = e.maxDownloadCount, a = e.closeModal, i = e.setAutoStart, l = e.setMaxDownloadCount;
-        return o.a.createElement(ze, null, o.a.createElement(w, {
+        return o.a.createElement(Ue, null, o.a.createElement(w, {
             open: t,
             close: a
-        }, o.a.createElement(Re, {
+        }, o.a.createElement(Fe, {
             action: "#"
         }, o.a.createElement("header", {
             style: {
@@ -3621,7 +3649,7 @@
             style: {
                 margin: "0 0 5px 0"
             }
-        }, "下载设置"), o.a.createElement(Le, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(Me, null, o.a.createElement("label", {
+        }, "下载设置"), o.a.createElement(We, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(Le, null, o.a.createElement("label", {
             htmlFor: "auto-start"
         }, "自动下载"), o.a.createElement("div", null, o.a.createElement("input", {
             type: "checkbox",
@@ -3631,13 +3659,13 @@
             id: "auto-start",
             tabIndex: 1,
             onChange: i
-        }))), o.a.createElement(Me, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
+        }))), o.a.createElement(Le, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
             defaultValue: r,
             id: "max-download-count",
             className: "field select medium",
             tabIndex: 2,
             onChange: l
-        }, Object(De.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
+        }, Object(ze.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
             return ++e;
         })).map((function(e, t) {
             return o.a.createElement("option", {
@@ -3645,30 +3673,30 @@
                 value: e
             }, e);
         }))))))));
-    })), We = n(10), Be = n(8);
-    function Ve() {
-        var e, t, n = (e = [ '\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    padding: 30px 0;\n    background-color: #2f3439;\n    font-family: "Noto Sans", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won\'t be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  /* modal */\n  .modal-wrapper {\n    z-index: 52;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n\n    opacity: 0;\n    visibility: hidden;\n    transition: opacity .3s, visibility .3s;\n  }\n\n  .modal-wrapper.open {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n  }\n\n  .modal-wrapper::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: ""\n  }\n\n  .modal-wrapper .modal-window {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 65vw;\n    /*padding: 30px 30px 15px;*/\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle;\n    align-self: center;\n  }\n\n  .modal-wrapper .modal-window .modal-content {\n    max-height: 60vh;\n    overflow-y: auto;\n  }\n\n  .modal-wrapper .modal-close {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c!important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0;\n    cursor: pointer;\n  }\n\n  .modal-wrapper .modal-close:hover {\n    color: #2b2e38!important\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, "Courier New", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: \'Roboto\';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  td > svg {\n    cursor: pointer;\n  }\n  td > svg:hover {\n    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);\n    background-color: rgba(255,255,255,0.56);\n  }\n\n  .module-yun-tip {\n    z-index: 999 !important;\n  }\n' ], 
+    })), $e = n(11), qe = n(9);
+    function He() {
+        var e, t, n = (e = [ '\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    padding: 30px 0;\n    background-color: #2f3439;\n    font-family: "Noto Sans", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won\'t be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  /* modal */\n  .modal-wrapper {\n    z-index: 52;\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    text-align: center;\n    display: flex;\n    justify-content: center;\n\n    opacity: 0;\n    visibility: hidden;\n    transition: opacity .3s, visibility .3s;\n  }\n\n  .modal-wrapper.open {\n    opacity: 1;\n    visibility: visible;\n    transition: opacity .4s, visibility .4s;\n  }\n\n  .modal-wrapper::after {\n    display: inline-block;\n    height: 100%;\n    margin-left: -.05em;\n    vertical-align: middle;\n    content: ""\n  }\n\n  .modal-wrapper .modal-window {\n    box-sizing: border-box;\n    display: inline-block;\n    z-index: 20;\n    position: relative;\n    width: 65vw;\n    /*padding: 30px 30px 15px;*/\n    border-radius: 2px;\n    background: #fff;\n    box-shadow: 0 0 30px rgba(0, 0, 0, .6);\n    vertical-align: middle;\n    align-self: center;\n  }\n\n  .modal-wrapper .modal-window .modal-content {\n    max-height: 60vh;\n    overflow-y: auto;\n  }\n\n  .modal-wrapper .modal-close {\n    z-index: 20;\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 35px;\n    color: #95979c!important;\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 35px;\n    text-align: center;\n    text-decoration: none;\n    text-indent: 0;\n    cursor: pointer;\n  }\n\n  .modal-wrapper .modal-close:hover {\n    color: #2b2e38!important\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, "Courier New", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: \'Roboto\';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  .module-yun-tip {\n    z-index: 999 !important;\n  }\n' ], 
         t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, {
             raw: {
                 value: Object.freeze(t)
             }
         })));
-        return Ve = function() {
+        return He = function() {
             return n;
         }, n;
     }
     window.onunload = function() {
-        We.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
+        $e.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
     }, window.onbeforeunload = function(e) {
-        var t = Be.a.getState().download.downloadItems;
+        var t = qe.a.getState().download.downloadItems;
         Object.values(t).some((function(e) {
             return e.status === c.b.downloading;
         })) && (e.preventDefault(), e.returnValue = "有未完成的下载任务， 确认关闭吗?");
-    }, null === (Fe = window.document.querySelector("#ts8E18")) || void 0 === Fe || Fe.addEventListener("input", (function(e) {
+    }, null === (Be = window.document.querySelector("#ts8E18")) || void 0 === Be || Be.addEventListener("input", (function(e) {
         var t = e.target;
-        localStorage.setItem("SPWD", t.value);
+        localStorage.setItem(c.c.sharePassword, t.value);
     }));
-    var $e = Object(r.a)(Ve()), qe = n(20), He = function(e) {
+    var Ke = Object(r.a)(He()), Qe = n(20), Ge = function(e) {
         _(n, e);
         var t = j(n);
         function n(e) {
@@ -3692,14 +3720,14 @@
                 this.setState({
                     error: null,
                     errorInfo: null
-                }), Be.a.dispatch(s.a.actions.setError(void 0));
+                }), qe.a.dispatch(s.a.actions.setError(void 0));
             }
         }, {
             key: "render",
             value: function() {
                 var e = this.props.error || this.state.error;
                 if (e) {
-                    var t, n = e.toString() + (this.state.errorInfo && qe.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
+                    var t, n = e.toString() + (this.state.errorInfo && Qe.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
                     return u.a.dialog.alert({
                         body: n,
                         onSure: this.reRenderApp,
@@ -3709,14 +3737,14 @@
                 return this.props.children;
             }
         } ]), n;
-    }(o.a.Component), Ke = Object(l.b)((function(e) {
+    }(o.a.Component), Ye = Object(l.b)((function(e) {
         return {
             error: e.interface.error
         };
-    }))(He), Qe = Object(r.b)("div").withConfig({
+    }))(Ge), Xe = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "height:60vh;overflow:hidden;" ]);
-    var Ge = Object(l.b)((function(e) {
+    var Ze = Object(l.b)((function(e) {
         return {
             open: e.interface.naifeiPortalOpen,
             shareLink: e.interface.shareLink
@@ -3731,7 +3759,7 @@
                     naifeiPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(Qe, null, o.a.createElement("iframe", {
+        }, o.a.createElement(Xe, null, o.a.createElement("iframe", {
             src: "https://pan.naifei.cc/?".concat(encodeURI(n)),
             width: "100%",
             height: "100%",
@@ -3739,11 +3767,11 @@
                 return u.a.ui.hideTip();
             }
         }))) : null;
-    })), Ye = Object(r.b)("div").withConfig({
+    })), Je = Object(r.b)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:none;" ]);
     t.a = function() {
-        return o.a.createElement(o.a.Fragment, null, o.a.createElement(Ye, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement($e, null), o.a.createElement(Ke, null, o.a.createElement(Ae, null), o.a.createElement(Ue, null), o.a.createElement(g, null), o.a.createElement(Ge, null)));
+        return o.a.createElement(o.a.Fragment, null, o.a.createElement(Je, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(Ke, null), o.a.createElement(Ye, null, o.a.createElement(Re, null), o.a.createElement(Ve, null), o.a.createElement(g, null), o.a.createElement(Ze, null)));
     };
 }, function(e, t, n) {
     "use strict";
@@ -4843,7 +4871,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(9), r = n.n(t), a = n(13), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(11), d = n(3), p = n(8), g = n(30);
+        var t = n(8), r = n.n(t), a = n(12), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(10), d = n(4), p = n(9), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a

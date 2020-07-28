@@ -11,6 +11,7 @@ export enum ValueTypes {
   items = 'ITEM_LIST',
   autoStart = 'AUTO_START',
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
+  sharePassword = 'SHARE_PASSWORD',
 }
 
 export enum HeaderTypes {
@@ -104,5 +105,65 @@ export interface IInstance {
   ui: {
     tip: (option: { mode: 'loading'; msg: string; autoClose: boolean }) => void
     hideTip: () => void
+  }
+  user: {
+    LRURPVSDB: null
+    XDUSS: 'null'
+    activity_end_time: number
+    add_friend_small_flow: number
+    applystatus: null
+    bdstoken: null
+    bt_paths: null
+    cfrom_id: string
+    ctime: number
+    curr_activity_code: number
+    description: string
+    errortype: null
+    expiredType: number
+    face_status: null
+    file_list: { errno: 0; list: [] }
+    flag: number
+    followFlag: number
+    hit_ogc: boolean
+    is_auto_svip: 0 | 1
+    is_evip: 0 | 1
+    is_master_svip: 0 | 1
+    is_master_vip: 0 | 1
+    is_svip: 0 | 1
+    is_vip: 0 | 1
+    is_year_vip: 0 | 1
+    linkusername: string
+    loginstate: 0 | 1
+    need_tips: null
+    novelid: boolean
+    openlogo: null
+    openyy: null
+    pansuk: string
+    photo: string
+    public: 0 | 1
+    sampling: boolean
+    self: boolean // determine that share file is belong to current user or not
+    share_page_type: 'multi'
+    shareid: number
+    sharesuk: string
+    show_vip_ad: null
+    sign: string
+    sign1: null
+    sign2: null
+    sign3: null
+    srv_ts: null
+    task_key: null
+    task_time: null
+    third: 0 | 1
+    timeline_status: null
+    timestamp: number
+    title_img: null
+    uk: number
+    unlogin_user_in_small_flow: 0 | 1
+    urlparam: []
+    username: string
+    vip_end_time: null
+    visitor_avatar: null
+    visitor_uk: null
   }
 }

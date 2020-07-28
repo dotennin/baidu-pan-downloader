@@ -1,5 +1,5 @@
 import React from 'react'
-import { StatusTypes } from '../../services/types'
+import { StatusTypes, ValueTypes } from '../../services/types'
 import { ItemProxy } from '../../services/ItemProxy'
 import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
@@ -8,6 +8,7 @@ import { InstanceForSystem } from '../../services/InstaceForSystem'
 import { Icon } from '../../components/Icon'
 import interfaceModule from '../../modules/interfaceModule'
 import { createPrivateShareLink } from '../../services/api'
+import { getLocation } from '../../utils'
 
 interface IProps {
   fsId: ItemProxy['fsId']
@@ -51,13 +52,26 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
     dispatch(addNextDownloadRequest())
   }
 
-  const openNaifeiModal = () => {
+  const openNaifeiModal = async () => {
     try {
+      const { ui, user } = InstanceForSystem
+      if (getLocation().inShareScreen) {
+        if (!user.self) {
+          const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
+          ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
+          const shareLink = `链接：${encodeURI(
+            window.location.href.replace(window.location.hash, '')
+          )}提取码：${sharePwd}`
+          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
+          return
+        }
+      }
       InstanceForSystem.dialog.confirm({
-        title: '生成共享链接确认',
-        body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
+        title: 'Naifei直链生成接确认',
+        body:
+          '将会把所选数据将生成<span style="color: red">共享链接</span> ， 并传输到Naifei服务器。 <br /> 是否确认？',
         onSure: async () => {
-          InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
+          ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
           const res = await createPrivateShareLink(targetItem.fsId)
           const shareLink = `share=${res.shorturl.replace(/.+s\//, '')}&pwd=qqqq`
           dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
@@ -68,24 +82,40 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
     }
   }
   return (
-    <>
-      <Icon
-        name={'play_arrow'}
-        onClick={() => dispatch(fetchItem(targetItem))}
-        className={`${
-          [StatusTypes.downloading, StatusTypes.inQueued].includes(status) || targetItem.isDir ? 'disabled' : ''
-        }`}
-      />
-      <Icon
-        name={'stop'}
-        onClick={stopItem}
-        className={`${
-          [StatusTypes.downloading, StatusTypes.inQueued].includes(status) && !targetItem.isDir ? '' : 'disabled'
-        }`}
-      />
+    <div
+      css={`
+        display: flex;
+        justify-content: center;
+      `}
+    >
+      {getLocation().inDiskScreen && (
+        <>
+          <Icon
+            name={'play_arrow'}
+            onClick={() => dispatch(fetchItem(targetItem))}
+            className={`${
+              [StatusTypes.downloading, StatusTypes.inQueued].includes(status) || targetItem.isDir ? 'disabled' : ''
+            }`}
+          />
+          <Icon
+            name={'stop'}
+            onClick={stopItem}
+            className={`${
+              [StatusTypes.downloading, StatusTypes.inQueued].includes(status) && !targetItem.isDir ? '' : 'disabled'
+            }`}
+          />
+        </>
+      )}
       <Icon name={'open_in_new'} onClick={openNaifeiModal} />
-      <Icon name={'clear'} style={{ position: 'relative', right: -20 }} onClick={deleteItem} />
-    </>
+      <Icon
+        name={'clear'}
+        css={`
+          opacity: 0;
+          cursor: unset !important;
+        `}
+      />
+      <Icon name={'clear'} onClick={deleteItem} />
+    </div>
   )
 }
 
