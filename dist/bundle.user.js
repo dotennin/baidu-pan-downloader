@@ -95,7 +95,7 @@
     __webpack_require__.d(__webpack_exports__, "a", (function() {
         return InstanceForSystem;
     }));
-    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(29), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13), InstanceForSystem = {
+    var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1), _gmInterface_gmInterface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10), _ItemProxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(29), _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8), _modules_downloadModule__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7), _modules_interfaceModule__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5), _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(11), InstanceForSystem = {
         list: eval("require('system-core:context/context.js')").instanceForSystem.list,
         dialog: eval('require("system-core:system/uiService/dialog/dialog.js")'),
         hash: eval("require('base:widget/hash/hash.js')"),
@@ -382,7 +382,7 @@
         for (var a = 0; a < n.length; a++) if (!Object.prototype.hasOwnProperty.call(t, n[a]) || !S(e[n[a]], t[n[a]])) return !1;
         return !0;
     }
-    var T = n(11);
+    var T = n(12);
     function C(e) {
         return function(t, n) {
             var r = e(t, n);
@@ -1207,7 +1207,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(9), a = n.n(r), o = n(12), i = n(17), l = n(1), u = n(15), c = n(23), s = n(19), f = n(5), d = n(2), p = {
+    var r = n(9), a = n.n(r), o = n(13), i = n(17), l = n(1), u = n(15), c = n(23), s = n(19), f = n(5), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1292,7 +1292,7 @@
     n.d(t, "a", (function() {
         return p;
     }));
-    var r = n(26), a = n(15), o = n(11), i = n(36), l = n(5), u = n(7), c = Object(o.c)({
+    var r = n(26), a = n(15), o = n(12), i = n(36), l = n(5), u = n(7), c = Object(o.c)({
         download: u.b.reducer,
         interface: l.a.reducer
     }), s = n(20), f = Object(r.a)(Object(a.c)({
@@ -1384,6 +1384,43 @@
             GM_setClipboard(e, t);
         },
         info: GM_info
+    };
+}, function(e, t, n) {
+    "use strict";
+    n.d(t, "d", (function() {
+        return r;
+    })), n.d(t, "a", (function() {
+        return a;
+    })), n.d(t, "b", (function() {
+        return o;
+    })), n.d(t, "c", (function() {
+        return i;
+    }));
+    n(9), n(13);
+    function r() {
+        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
+        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
+    }
+    function a(e) {
+        window.setTimeout(e, 0);
+        var t = window.location.href, n = new MutationObserver((function(n) {
+            n.some((function() {
+                return t !== document.location.href;
+            })) && (t = document.location.href, e());
+        }));
+        return n.observe(document.body, {
+            childList: !0,
+            subtree: !0
+        }), n;
+    }
+    var o = function(e) {
+        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
+    }, i = function() {
+        return {
+            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
+            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
+            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
+        };
     };
 }, function(e, t, n) {
     "use strict";
@@ -1623,43 +1660,6 @@
     n.d(t, "a", (function() {
         return a;
     }));
-}, function(e, t, n) {
-    "use strict";
-    n.d(t, "d", (function() {
-        return r;
-    })), n.d(t, "a", (function() {
-        return a;
-    })), n.d(t, "b", (function() {
-        return o;
-    })), n.d(t, "c", (function() {
-        return i;
-    }));
-    n(9), n(12);
-    function r() {
-        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
-        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
-    }
-    function a(e) {
-        window.setTimeout(e, 0);
-        var t = window.location.href, n = new MutationObserver((function(n) {
-            n.some((function() {
-                return t !== document.location.href;
-            })) && (t = document.location.href, e());
-        }));
-        return n.observe(document.body, {
-            childList: !0,
-            subtree: !0
-        }), n;
-    }
-    var o = function(e) {
-        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
-    }, i = function() {
-        return {
-            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
-            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
-            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
-        };
-    };
 }, function(e, t, n) {
     "use strict";
     function r(e, t) {
@@ -2133,7 +2133,7 @@
         }, e;
     }()), J = Z.produce, ee = (Z.produceWithPatches.bind(Z), Z.setAutoFreeze.bind(Z), 
     Z.setUseProxies.bind(Z), Z.applyPatches.bind(Z), Z.createDraft.bind(Z), Z.finishDraft.bind(Z), 
-    J), te = n(11);
+    J), te = n(12);
     n(6);
     function ne(e) {
         return function(t) {
@@ -2493,8 +2493,8 @@
     })), n.d(t, "a", (function() {
         return s;
     }));
-    n(9), n(12);
-    var r = n(1), a = n(10), o = n(13), i = n(2);
+    n(9), n(13);
+    var r = n(1), a = n(10), o = n(11), i = n(2);
     function l(e) {
         if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
         return new Promise((function(t, n) {
@@ -2713,7 +2713,7 @@
     }();
 }, function(e, t, n) {
     "use strict";
-    var r = n(4), a = n(0), o = n.n(a), i = n(17), l = n(3), u = n(2), c = n(1), s = n(5), f = n(7), d = n(19), p = n(13), g = Object(l.b)((function(e) {
+    var r = n(4), a = n(0), o = n.n(a), i = n(17), l = n(3), u = n(2), c = n(1), s = n(5), f = n(7), d = n(19), p = n(11), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -2744,23 +2744,38 @@
             "data-placement": "left",
             "data-original-title": "Create",
             onClick: function() {
-                var e = u.a.selectedList, o = Object(i.a)({}, a), l = u.a.allDownloads;
-                e.forEach((function(e) {
-                    if (void 0 === a[e.fsId]) {
-                        e.progress.status = t ? c.b.inQueued : c.b.stopped;
-                        var i = e.progress, u = i.intervalId, s = i.percentCount, d = i.speedOverlay, p = i.status;
-                        l[e.fsId] = e, o[e.fsId] = {
-                            intervalId: u,
-                            percentCount: s,
-                            speedOverlay: d,
-                            status: p
-                        }, n && t && r(Object(f.c)(e));
-                    }
-                })), r(f.b.actions.change({
-                    downloadItems: o
-                })), r(s.a.actions.change({
-                    downloadModalOpen: !0
-                }));
+                if (Object(p.c)().inShareScreen) {
+                    u.a.ui.tip({
+                        autoClose: !1,
+                        mode: "loading",
+                        msg: "生成链接中..."
+                    });
+                    var e = window.localStorage.getItem("SPWD");
+                    if (!e) return;
+                    var o = "链接：".concat(encodeURI(window.location.href.replace(window.location.hash, "")), "提取码：").concat(e);
+                    r(s.a.actions.change({
+                        naifeiPortalOpen: !0,
+                        shareLink: o
+                    }));
+                } else {
+                    var l = u.a.selectedList, d = Object(i.a)({}, a), g = u.a.allDownloads;
+                    l.forEach((function(e) {
+                        if (void 0 === a[e.fsId]) {
+                            e.progress.status = t ? c.b.inQueued : c.b.stopped;
+                            var o = e.progress, i = o.intervalId, l = o.percentCount, u = o.speedOverlay, s = o.status;
+                            g[e.fsId] = e, d[e.fsId] = {
+                                intervalId: i,
+                                percentCount: l,
+                                speedOverlay: u,
+                                status: s
+                            }, n && t && r(Object(f.c)(e));
+                        }
+                    })), r(f.b.actions.change({
+                        downloadItems: d
+                    })), r(s.a.actions.change({
+                        downloadModalOpen: !0
+                    }));
+                }
             }
         }, o.a.createElement("p", {
             className: "plus"
@@ -3010,7 +3025,7 @@
     U.defaultProps = {
         activeTab: 0
     };
-    var W = n(9), B = n.n(W), V = n(12);
+    var W = n(9), B = n.n(W), V = n(13);
     function $() {
         return ($ = Object.assign || function(e) {
             for (var t = 1; t < arguments.length; t++) {
@@ -3255,44 +3270,44 @@
                     clearInterval(r.progress.intervalId), a(Object(f.a)()), !1;
                 }
             },
-            className: "".concat([ c.b.downloading, c.b.inQueued ].includes(n) ? "" : "disabled")
+            className: "".concat([ c.b.downloading, c.b.inQueued ].includes(n) && !r.isDir ? "" : "disabled")
         }), o.a.createElement(ke, {
             name: "open_in_new",
             onClick: function() {
+                try {
+                    u.a.dialog.confirm({
+                        title: "生成共享链接确认",
+                        body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
+                        onSure: (e = Object(V.a)(B.a.mark((function e() {
+                            var t, n;
+                            return B.a.wrap((function(e) {
+                                for (;;) switch (e.prev = e.next) {
+                                  case 0:
+                                    return u.a.ui.tip({
+                                        autoClose: !1,
+                                        mode: "loading",
+                                        msg: "生成链接中..."
+                                    }), e.next = 3, Object(xe.a)(r.fsId);
+
+                                  case 3:
+                                    t = e.sent, n = "share=".concat(t.shorturl.replace(/.+s\//, ""), "&pwd=qqqq"), a(s.a.actions.change({
+                                        naifeiPortalOpen: !0,
+                                        shareLink: n
+                                    }));
+
+                                  case 6:
+                                  case "end":
+                                    return e.stop();
+                                }
+                            }), e);
+                        }))), function() {
+                            return e.apply(this, arguments);
+                        })
+                    });
+                } catch (e) {
+                    throw new Error("生成共享链接失败");
+                }
                 var e;
-                u.a.dialog.confirm({
-                    title: "生成共享链接确认",
-                    body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
-                    onSure: (e = Object(V.a)(B.a.mark((function e() {
-                        var t, n;
-                        return B.a.wrap((function(e) {
-                            for (;;) switch (e.prev = e.next) {
-                              case 0:
-                                return u.a.ui.tip({
-                                    autoClose: !1,
-                                    mode: "loading",
-                                    msg: "生成链接中..."
-                                }), e.prev = 1, e.next = 4, Object(xe.a)(r.fsId);
-
-                              case 4:
-                                t = e.sent, n = "share=".concat(t.shorturl.replace(/.+s\//, ""), "&pwd=qqqq"), a(s.a.actions.change({
-                                    naifeiPortalOpen: !0,
-                                    shareLink: n
-                                })), e.next = 12;
-                                break;
-
-                              case 9:
-                                throw e.prev = 9, e.t0 = e.catch(1), new Error("生成共享链接失败");
-
-                              case 12:
-                              case "end":
-                                return e.stop();
-                            }
-                        }), e, null, [ [ 1, 9 ] ]);
-                    }))), function() {
-                        return e.apply(this, arguments);
-                    })
-                });
             }
         }), o.a.createElement(ke, {
             name: "clear",
@@ -4828,7 +4843,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(9), r = n.n(t), a = n(12), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(13), d = n(3), p = n(8), g = n(30);
+        var t = n(9), r = n.n(t), a = n(13), o = n(0), i = n.n(o), l = n(24), u = n.n(l), c = n(27), s = n(20), f = n(11), d = n(3), p = n(8), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a

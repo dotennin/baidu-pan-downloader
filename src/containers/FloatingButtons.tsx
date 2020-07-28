@@ -6,8 +6,7 @@ import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { downloadableSelector } from '../selectors'
-import { getLocation, downloadURI } from '../utils'
-import { getDirectLinks } from '../services/api'
+import { getLocation } from '../utils'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
@@ -45,15 +44,17 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         onClick={() => {
           if (getLocation().inShareScreen) {
             const ui = InstanceForSystem.ui
-            ui.tip({ mode: 'loading', autoClose: false, msg: '正在获取链接地址' })
+
+            ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
             const sharePwd = window.localStorage.getItem('SPWD') as string
             if (!sharePwd) {
               // Todo: create share link
+              return
             }
-            getDirectLinks(window.location.href.replace(window.location.hash, ''), sharePwd).then((links) => {
-              ui.hideTip()
-              links.forEach(({ link, server_filename }) => downloadURI(link, server_filename))
-            })
+            const shareLink = `链接：${encodeURI(
+              window.location.href.replace(window.location.hash, '')
+            )}提取码：${sharePwd}`
+            dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
             return
           }
           const { selectedList } = InstanceForSystem
