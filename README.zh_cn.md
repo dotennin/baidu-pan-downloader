@@ -3,19 +3,23 @@
 ### 通过右下脚的下载图标<img src="https://greasyfork.org/system/screenshots/screenshots/000/021/778/thumb/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89.png?1592725597" width="5%">可以将已经勾选的文件加入下载列表
 <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/779/original/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89_%281%29.png?1592725597" width="50%">
 
-##1.4 追加了自定义设置功能
-# <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/888/original/config-modal.png?1593252766" width="70%">
-- ###默认自动下载
-- ###最大支持同时下载文件数2
+## 3.0 追加内容
+1. Naifei 直链获取
+   * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/489/original/TIM%E5%9B%BE%E7%89%8720200728225519.png?1595944564" width="80%">
+   * 共享域名(pan.baidu.com/s/***)下只支持Naifei下载
+   * 选取的目录也会加入下载列表（用于Naifei）直链
+1. 修复 7z,flac,m4a 格式下载时出现`not_whitelist`
 
-# 2.0 追加内容
-## 1. 修复一些UI错误问题
-## 2. 全局错误异常处理
-## 3. `exe` `apk` `pdf` 等格式的下载支持
-# <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/152/original/WeChat_Image_20200714003946.png?1594654806" width="70%">
+## 2.0 追加内容
+1. 用React重构框架
+1. `exe` `apk` `pdf` 等格式的下载支持
+    * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/152/original/WeChat_Image_20200714003946.png?1594654806" width="70%">
+
+## 1.4 追加了自定义设置功能
+# <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/888/original/config-modal.png?1593252766" width="70%">
 
 -----------------------------------
-## ❄ 浏览器支持情况：
+# ❄ 浏览器支持情况：
 ```
 Chrome:  ✅
 Edge:    ✅
@@ -24,17 +28,14 @@ Opera:   ⁉
 Safari:  ⁉
 ```
 
-## 关于默认下载位置，以Chrome为例(这里感谢[cw2012](https://greasyfork.org/en/users/20287-cw2012) 的帮忙)：
+>## 关于默认下载位置，以Chrome为例(这里感谢[cw2012](https://greasyfork.org/en/users/20287-cw2012) 的帮忙)：
 1. 打开设置页面：`chrome://settings/?search=下载`
 2. 修改图中的设置项即可
 
  <img src="https://greasyfork.org/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZG89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b28afb4aac736c362a53ef9e93835e4ee8df033b/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200703160219.jpg?locale=zh-CN" width="50%">
 
 ## 如果出现无法下载的情况时的处理方式:
-- 删除cookie重新登录
-
-#### 或者
-- 切换账号
+ 删除cookie重新登录 __或者__  切换账号
 
 -----------------------------------
 # 📑 Changelog

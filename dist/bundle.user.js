@@ -2422,7 +2422,7 @@
             });
         }));
     }
-    var f = [ "apk", "exe", "pdf", "7z" ];
+    var f = [ "apk", "exe", "pdf", "7z", "flac", "m4a" ];
     function d(e) {
         var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
         return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
