@@ -2,7 +2,7 @@
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
-// @version 3.0.0
+// @version 3.0.1
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
