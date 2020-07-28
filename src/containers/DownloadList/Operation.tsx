@@ -52,32 +52,36 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
   }
 
   const openNaifeiModal = () => {
-    InstanceForSystem.dialog.confirm({
-      title: '生成共享链接确认',
-      body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
-      onSure: async () => {
-        InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-        try {
+    try {
+      InstanceForSystem.dialog.confirm({
+        title: '生成共享链接确认',
+        body: '生成共享链接将<span style="color: red">公开</span>所选数据 ， 是否确认？',
+        onSure: async () => {
+          InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
           const res = await createPrivateShareLink(targetItem.fsId)
           const shareLink = `share=${res.shorturl.replace(/.+s\//, '')}&pwd=qqqq`
           dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLink }))
-        } catch (e) {
-          throw new Error('生成共享链接失败')
-        }
-      },
-    })
+        },
+      })
+    } catch (e) {
+      throw new Error('生成共享链接失败')
+    }
   }
   return (
     <>
       <Icon
         name={'play_arrow'}
         onClick={() => dispatch(fetchItem(targetItem))}
-        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? 'disabled' : ''}`}
+        className={`${
+          [StatusTypes.downloading, StatusTypes.inQueued].includes(status) || targetItem.isDir ? 'disabled' : ''
+        }`}
       />
       <Icon
         name={'stop'}
         onClick={stopItem}
-        className={`${[StatusTypes.downloading, StatusTypes.inQueued].includes(status) ? '' : 'disabled'}`}
+        className={`${
+          [StatusTypes.downloading, StatusTypes.inQueued].includes(status) && !targetItem.isDir ? '' : 'disabled'
+        }`}
       />
       <Icon name={'open_in_new'} onClick={openNaifeiModal} />
       <Icon name={'clear'} style={{ position: 'relative', right: -20 }} onClick={deleteItem} />

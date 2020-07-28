@@ -69,7 +69,13 @@ const InstanceForSystem = {
   get selectedList() {
     const selected = this.list.getSelected()
 
-    return selected.map((arr) => ItemProxy.Create(arr))
+    return (
+      selected
+        // .filter((arr) => {
+        //   return arr.isdir !== 1
+        // })
+        .map((arr) => ItemProxy.Create(arr))
+    )
   },
 
   get currentList() {
