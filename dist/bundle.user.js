@@ -2780,7 +2780,7 @@
                             percentCount: s,
                             speedOverlay: d,
                             status: g
-                        }, n && t && Object(p.c)().inDiskScreen && r(Object(f.c)(e));
+                        }, n && t && Object(p.c)().inDiskScreen && !e.isDir && r(Object(f.c)(e));
                     }
                 })), r(f.b.actions.change({
                     downloadItems: o
