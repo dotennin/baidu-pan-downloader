@@ -1,4 +1,4 @@
-import { HeaderTypes, StatusTypes } from './types'
+import { HeaderTypes, IDlinkPanResponse, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { getFileExtension } from '../utils'
@@ -129,6 +129,20 @@ export function createPrivateShareLink<
       .error(function(e: Error) {
         reject(e)
       })
+  })
+}
+
+export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pack: boolean = false) {
+  return new Promise<T>((resolve, reject) => {
+    try {
+      InstanceForSystem.dlinkService().then((dl) => {
+        const fidList = items.map((item) => item.fsId)
+        const type = pack ? 'batch' : 'nolimit'
+        dl.getDlinkPan(JSON.stringify(fidList), type, resolve)
+      })
+    } catch (e) {
+      reject(e)
+    }
   })
 }
 

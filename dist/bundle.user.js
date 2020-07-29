@@ -205,6 +205,11 @@
             };
             e ? unsafeWindow.require.async("", n) : n();
         },
+        dlinkService: function() {
+            return new Promise((function(e) {
+                unsafeWindow.require.async("function-widget-1:download/service/dlinkService.js", e);
+            }));
+        },
         initState: function() {
             var e = this;
             return new Promise((function(t) {

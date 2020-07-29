@@ -46,6 +46,11 @@ const InstanceForSystem = {
       initFunc()
     }
   },
+  dlinkService: <T extends IInstance['dlinkService']>(): Promise<T> => {
+    return new Promise((resolve) => {
+      unsafeWindow.require.async('function-widget-1:download/service/dlinkService.js', resolve)
+    })
+  },
 
   initState: function() {
     return new Promise((resolve) => {
