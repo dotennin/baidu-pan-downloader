@@ -9,30 +9,43 @@ import { getLocation } from '../utils'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
-  list: eval(`require('system-core:context/context.js')`).instanceForSystem.list as IInstance['list'],
-  dialog: eval(`require("system-core:system/uiService/dialog/dialog.js")`) as IInstance['dialog'],
-  hash: eval(`require('base:widget/hash/hash.js')`) as IInstance['hash'],
-  friendlyFileSize: (size: number): string =>
-    eval(`require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(${size})`),
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
+  list: unsafeWindow.require('system-core:context/context.js').instanceForSystem.list as IInstance['list'],
+  dialog: unsafeWindow.require('system-core:system/uiService/dialog/dialog.js') as IInstance['dialog'],
+  hash: unsafeWindow.require('base:widget/hash/hash.js') as IInstance['hash'],
+  friendlyFileSize: (size: number): string =>
+    unsafeWindow.require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(size),
   fileManagerApi:
     getLocation().inDiskScreen &&
-    (eval(
-      `require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js")`
+    (unsafeWindow.require(
+      'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
     ) as IInstance['fileManagerApi']),
   listInit:
     getLocation().inDiskScreen &&
-    (eval(`require("disk-system:widget/pageModule/list/listInit.js")`) as IInstance['listInit']),
-  listInstance: eval(
-    `require("system-core:context/context.js").instanceForSystem.listInstance`
-  ) as IInstance['listInstance'],
-  jquery: eval(`require("base:widget/libs/jquery-1.12.4.js")`),
-  ui: eval(`require('system-core:context/context.js')`).instanceForSystem.ui as IInstance['ui'],
+    (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
+  listInstance: unsafeWindow.require('system-core:context/context.js').instanceForSystem
+    .listInstance as IInstance['listInstance'],
+  jquery: unsafeWindow.require('base:widget/libs/jquery-1.12.4.js'),
+  ui: unsafeWindow.require('system-core:context/context.js').instanceForSystem.ui as IInstance['ui'],
   getList: function() {
     return this.list.getList()
   },
-  user: eval(`require('system-core:context/context.js')`).instanceForSystem.data.user as IInstance['user'],
+  user: unsafeWindow.require('system-core:context/context.js').instanceForSystem.data.user as IInstance['user'],
+  initWidgetContext: function(callback: Function) {
+    const widget = unsafeWindow.require('function-widget-1:download/util/context.js')
+    const initFunc = function() {
+      if (!widget.getContext()) {
+        widget.setContext(unsafeWindow.require('system-core:context/context.js').instanceForSystem.getSystemContext())
+      }
+      callback && callback()
+    }
+    if (callback) {
+      unsafeWindow.require.async('', initFunc)
+    } else {
+      initFunc()
+    }
+  },
 
   initState: function() {
     return new Promise((resolve) => {

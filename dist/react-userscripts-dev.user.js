@@ -24,6 +24,7 @@
 // @grant GM_setValue
 // @grant GM_deleteValue
 // @grant GM_addValueChangeListener
+// @grant unsafeWindow
 // @run-at document-idle
 // ==/UserScript==
 

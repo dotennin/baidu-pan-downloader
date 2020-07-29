@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any,no-undef */
 import { Char, IDownloadDetail, INotification, IOpenInTabOption, IXMLHttpRequestDetail } from './types'
 
 if (window.location.href.includes('localhost')) {
@@ -17,7 +16,6 @@ export const GM = {
    * @param css
    */
   addStyle: (css: HTMLStyleElement) => {
-    // @ts-ignore
     GM_addStyle(css)
   },
 
@@ -27,7 +25,6 @@ export const GM = {
    * @constructor
    */
   deleteValue: (name: string) => {
-    // @ts-ignore
     GM_deleteValue(name)
   },
 
@@ -35,7 +32,7 @@ export const GM = {
    * List all names of the storage.
    */
   listValues: () => {
-    eval(`GM_listValues()`)
+    GM_listValues()
   },
 
   /**
@@ -51,7 +48,6 @@ export const GM = {
     name: N,
     callback: (name: N, oldValue: V, newValue: V, remote: boolean) => void
   ): number => {
-    // @ts-ignore
     return GM_addValueChangeListener(name, callback)
   },
 
@@ -60,7 +56,6 @@ export const GM = {
    * @param listenerId
    */
   removeValueChangeListener: (listenerId: number) => {
-    // @ts-ignore
     GM_removeValueChangeListener(listenerId)
   },
 
@@ -71,7 +66,6 @@ export const GM = {
    * @constructor
    */
   setValue: (name: string, value: any) => {
-    // @ts-ignore
     GM_setValue(name, value)
   },
 
@@ -82,7 +76,6 @@ export const GM = {
    * @constructor
    */
   getValue: <V extends any>(name: string, defaultValue: V): V => {
-    // @ts-ignore
     return GM_getValue(name, defaultValue)
   },
 
@@ -91,7 +84,6 @@ export const GM = {
    * @param message
    */
   log: (message: any) => {
-    // @ts-ignore
     GM_log(message)
   },
 
@@ -100,7 +92,6 @@ export const GM = {
    * @param name
    */
   getResourceText: (name: string): string => {
-    // @ts-ignore
     return GM_getResourceText(name)
   },
 
@@ -109,7 +100,6 @@ export const GM = {
    * @param name
    */
   getResourceURL: (name: string): string => {
-    // @ts-ignore
     return GM_getResourceURL(name)
   },
 
@@ -121,7 +111,6 @@ export const GM = {
    * @return number a menu command ID.
    */
   registerMenuCommand: (name: string, callback: Function, accessKey: Char): number => {
-    // @ts-ignore
     return GM_registerMenuCommand(name, callback, accessKey)
   },
 
@@ -130,7 +119,6 @@ export const GM = {
    * @param menuCmdId
    */
   unregisterMenuCommand: (menuCmdId: number) => {
-    // @ts-ignore
     GM_unregisterMenuCommand(menuCmdId)
   },
 
@@ -140,7 +128,6 @@ export const GM = {
    * @param loadInBackground
    */
   openInTab: (url: string, loadInBackground: boolean | IOpenInTabOption) => {
-    // @ts-ignore
     GM_openInTab(url, loadInBackground)
   },
   /**
@@ -149,7 +136,6 @@ export const GM = {
    * @param details
    */
   xmlHttpRequest: (details: IXMLHttpRequestDetail): { abort?: () => boolean } => {
-    // @ts-ignore
     return GM_xmlhttpRequest(details)
   },
 
@@ -160,10 +146,8 @@ export const GM = {
    */
   download: (urlOrdetails: string | IDownloadDetail, name?: string): { abort?: () => boolean } => {
     if (typeof urlOrdetails === 'string') {
-      // @ts-ignore
       return GM_download(urlOrdetails, name)
     }
-    // @ts-ignore
     return GM_download(urlOrdetails)
   },
 
@@ -172,7 +156,6 @@ export const GM = {
    * @param callback
    */
   getTab: (callback: Function) => {
-    // @ts-ignore
     GM_getTab(callback)
   },
 
@@ -181,7 +164,6 @@ export const GM = {
    * @param tab
    */
   saveTab: (tab: number) => {
-    // @ts-ignore
     GM_saveTab(tab)
   },
 
@@ -190,7 +172,6 @@ export const GM = {
    * @param callback
    */
   getTabs: (callback: Function) => {
-    // @ts-ignore
     GM_getTabs(callback)
   },
 
@@ -208,10 +189,8 @@ export const GM = {
     onclick?: Function
   ) => {
     if (typeof textOrDetails === 'string') {
-      // @ts-ignore
       GM_notification(textOrDetails, titleOrOndone, image, onclick)
     } else {
-      // @ts-ignore
       GM_notification(textOrDetails, titleOrOndone)
     }
   },
@@ -228,14 +207,11 @@ export const GM = {
       mimetype: 'text/plain',
     }
   ) => {
-    // @ts-ignore
     GM_setClipboard(data, info)
   },
 
   /**
    * Get some info about the script and TM. The object might look like this:
    */
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/camelcase
   info: GM_info,
 }
