@@ -45,6 +45,20 @@ interface Window {
     wpssamping: boolean
     vsCode: string
   }
+  require: {
+    (property: string): any
+    async: (name: string, callback: Function) => void
+    resourceMap: Function
+    alias: Function
+    loadCss: Function
+  }
+}
+
+declare const unsafeWindow: Window
+
+declare module '*.svg' {
+  const content: string
+  export default content
 }
 
 type PromiseReturnType<F> = ReturnType<F> extends Promise<infer T> ? T : never

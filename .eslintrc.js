@@ -69,5 +69,29 @@ module.exports = {
       files: ['src/**/*.tsx'],
       rules: { 'react/prop-types': 'off' }
     }
-  ]
+  ],
+  globals: {
+    unsafeWindow: true,
+    GM_addStyle: true,
+    GM_deleteValue: true,
+    GM_addValueChangeListener: true,
+    GM_removeValueChangeListener: true,
+    GM_setValue: true,
+    GM_getValue: true,
+    GM_log: true,
+    GM_getResourceText: true,
+    GM_getResourceURL: true,
+    GM_registerMenuCommand: true,
+    GM_unregisterMenuCommand: true,
+    GM_openInTab: true,
+    GM_xmlhttpRequest: true,
+    GM_download: true,
+    GM_getTab: true,
+    GM_saveTab: true,
+    GM_getTabs: true,
+    GM_notification: true,
+    GM_setClipboard: true,
+    GM_info: true,
+    GM_listValues: true,
+  }
 }
