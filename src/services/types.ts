@@ -166,4 +166,16 @@ export interface IInstance {
     visitor_avatar: null
     visitor_uk: null
   }
+  dlinkService: {
+    getDlinkPan: (fsidListStringfy: string, type: 'batch' | 'nolimit', callback: Function) => void
+  }
+}
+
+export interface IDlinkPanResponse {
+  errno: number
+  request_id: number
+  dlink: {
+    fs_id: IItem['fs_id']
+    dlink: string
+  }[]
 }
