@@ -90,3 +90,7 @@ export function downloadURI(uri: string, name: string) {
   link.click()
   document.body.removeChild(link)
 }
+
+export function getRandomInt(max: number) {
+  return Math.floor(Math.random() * Math.floor(max))
+}

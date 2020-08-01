@@ -1,6 +1,7 @@
 import React from 'react'
+import { IStandardProps } from './types'
 
-interface IProps {
+interface IProps extends IStandardProps, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   selected?: boolean
 }
 const Button: React.FC<IProps> = ({ children, selected, ...rest }) => {

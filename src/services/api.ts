@@ -132,13 +132,24 @@ export function createPrivateShareLink<
   })
 }
 
-export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pack: boolean = false) {
-  return new Promise<T>((resolve, reject) => {
+export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pack: boolean = false): Promise<T> {
+  return new Promise((resolve, reject) => {
     try {
       InstanceForSystem.dlinkService().then((dl) => {
         const fidList = items.map((item) => item.fsId)
         const type = pack ? 'batch' : 'nolimit'
         dl.getDlinkPan(JSON.stringify(fidList), type, resolve)
+
+        // const yunData = unsafeWindow.yunData
+        // const data = {
+        //   list: fidList,
+        //   share_uk: yunData.SHARE_UK,
+        //   share_id: yunData.SHARE_ID,
+        //   sign: yunData.SIGN,
+        //   timestamp: yunData.TIMESTAMP,
+        //   type,
+        // }
+        // dl.getDlinkShare(data, resolve)
       })
     } catch (e) {
       reject(e)
@@ -146,7 +157,7 @@ export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pac
   })
 }
 
-export async function getDirectLinks(
+export async function getNaifeiLinks(
   link: string,
   pwd: string
 ): Promise<
@@ -154,15 +165,23 @@ export async function getDirectLinks(
     category: string
     fs_id: string
     isdir: '0' | '1'
+    /**
+     * @deprecated
+     */
     dlink: string
     local_ctime: string
     local_mtime: string
     md5: string
     path: string
     server_ctime: string
+    /**
+     * @deprecated
+     */
     server_filename: string
     server_mtime: string
     size: string
+    name: string
+    link: string
   }[]
 > {
   return await (

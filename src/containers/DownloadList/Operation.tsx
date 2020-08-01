@@ -1,13 +1,11 @@
 import React from 'react'
-import { StatusTypes, ValueTypes } from '../../services/types'
+import { StatusTypes } from '../../services/types'
 import { ItemProxy } from '../../services/ItemProxy'
 import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
 import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules/downloadModule'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
 import { Icon } from '../../components/Icon'
-import interfaceModule from '../../modules/interfaceModule'
-import { createPrivateShareLink, getDirectLinks } from '../../services/api'
 import { getLocation } from '../../utils'
 
 interface IProps {
@@ -52,35 +50,6 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
     dispatch(addNextDownloadRequest())
   }
 
-  const openNaifeiModal = async () => {
-    try {
-      const { ui, user } = InstanceForSystem
-      if (getLocation().inShareScreen) {
-        if (!user.self) {
-          const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
-          ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-          const shareLinks = await getDirectLinks(window.location.href.replace(window.location.hash, ''), sharePwd)
-          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLinks }))
-          InstanceForSystem.ui.hideTip()
-          return
-        }
-      }
-      InstanceForSystem.dialog.confirm({
-        title: 'Naifei直链生成接确认',
-        body:
-          '将会把所选数据将生成<span style="color: red">共享链接</span> ， 并传输到Naifei服务器。 <br /> 是否确认？',
-        onSure: async () => {
-          ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-          const res = await createPrivateShareLink(targetItem.fsId)
-          const shareLinks = await getDirectLinks(res.shorturl, 'qqqq')
-          dispatch(interfaceModule.actions.change({ naifeiPortalOpen: true, shareLinks }))
-          InstanceForSystem.ui.hideTip()
-        },
-      })
-    } catch (e) {
-      throw new Error('生成共享链接失败')
-    }
-  }
   return (
     <div
       css={`
@@ -106,7 +75,6 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
           />
         </>
       )}
-      <Icon name={'open_in_new'} onClick={openNaifeiModal} />
       <Icon
         name={'clear'}
         css={`
@@ -119,4 +87,4 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
   )
 }
 
-export default connect(mapStoreToProps)(Operation)
+export default connect(mapStoreToProps)(React.memo(Operation))

@@ -3,12 +3,13 @@ import { connect, useDispatch } from 'react-redux'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import { Modal } from '../components/Modal'
+import { InstanceForSystem } from '../services/InstaceForSystem'
 
 const mapStoreToProps = (store: IStoreState) => ({
-  open: store.interface.naifeiLinkPortalOpen,
-  response: store.link.naifeiLink.response,
+  open: store.interface.linkPortalOpen,
+  dlinks: store.link.response?.dlink,
 })
-function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
+function DlinkPortal({ open, dlinks }: ReturnType<typeof mapStoreToProps>) {
   const dispatch = useDispatch()
   if (!open) {
     return null
@@ -17,7 +18,7 @@ function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
     <Modal
       open={true}
       noOverlayColor={true}
-      close={() => dispatch(interfaceModule.actions.change({ naifeiLinkPortalOpen: false }))}
+      close={() => dispatch(interfaceModule.actions.change({ linkPortalOpen: false }))}
     >
       <div
         css={`
@@ -34,15 +35,14 @@ function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
             </tr>
           </thead>
           <tbody>
-            {response?.map((shareLink, index) => {
+            {dlinks?.map((link, index) => {
+              const item = InstanceForSystem.allDownloads[link.fs_id]
               return (
                 <tr key={index}>
-                  <td data-label="filename" style={{ wordBreak: 'break-all' }}>
-                    {shareLink.name}
-                  </td>
-                  <td>{shareLink.size}</td>
+                  <td>{item.serverFilename}</td>
+                  <td>{InstanceForSystem.friendlyFileSize(item.size)}</td>
                   <td>
-                    <a href={shareLink.link}>点击下载</a>
+                    <a href={link.link}>点击下载</a>
                   </td>
                 </tr>
               )
@@ -54,4 +54,4 @@ function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
   )
 }
 
-export default connect(mapStoreToProps)(NaifeiPortal)
+export default connect(mapStoreToProps)(DlinkPortal)

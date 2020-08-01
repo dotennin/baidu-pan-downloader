@@ -32,11 +32,11 @@ const InstanceForSystem = {
     return this.list.getList()
   },
   user: unsafeWindow.require('system-core:context/context.js').instanceForSystem.data.user as IInstance['user'],
-  initWidgetContext: function(callback: Function) {
+  initWidgetContext: function(callback?: Function) {
     const widget = unsafeWindow.require('function-widget-1:download/util/context.js')
     const initFunc = function() {
       if (!widget.getContext()) {
-        widget.setContext(unsafeWindow.require('system-core:context/context.js').instanceForSystem.getSystemContext())
+        widget.setContext(unsafeWindow.require('system-core:context/context.js').instanceForSystem)
       }
       callback && callback()
     }
@@ -46,7 +46,8 @@ const InstanceForSystem = {
       initFunc()
     }
   },
-  dlinkService: <T extends IInstance['dlinkService']>(): Promise<T> => {
+  dlinkService: function<T extends IInstance['dlinkService']>(): Promise<T> {
+    this.initWidgetContext()
     return new Promise((resolve) => {
       unsafeWindow.require.async('function-widget-1:download/service/dlinkService.js', resolve)
     })
