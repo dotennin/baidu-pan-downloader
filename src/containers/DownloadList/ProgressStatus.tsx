@@ -17,4 +17,4 @@ function ProgressStatus({ percentCount }: ReturnType<typeof mapStoreToProps & IP
   )
 }
 
-export default connect(mapStoreToProps)(ProgressStatus)
+export default connect(mapStoreToProps)(React.memo(ProgressStatus))

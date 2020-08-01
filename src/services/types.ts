@@ -168,6 +168,7 @@ export interface IInstance {
   }
   dlinkService: {
     getDlinkPan: (fsidListStringfy: string, type: 'batch' | 'nolimit', callback: Function) => void
+    getDlinkShare: (data: object, callback: Function) => void
   }
 }
 
@@ -177,5 +178,6 @@ export interface IDlinkPanResponse {
   dlink: {
     fs_id: IItem['fs_id']
     dlink: string
+    link: string | undefined
   }[]
 }

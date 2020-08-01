@@ -44,6 +44,10 @@ interface Window {
     wpsauth: boolean
     wpssamping: boolean
     vsCode: string
+    SHARE_UK: string
+    SHARE_ID: string
+    SIGN: string
+    TIMESTAMP: number
   }
   require: {
     (property: string): any

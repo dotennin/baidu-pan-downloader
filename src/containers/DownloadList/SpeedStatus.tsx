@@ -19,4 +19,4 @@ function SpeedStatus({ speedOverlay, status }: ReturnType<typeof mapStoreToProps
   return <>{InstanceForSystem.friendlyFileSize(speedOverlay)} /s</>
 }
 
-export default connect(mapStoreToProps)(SpeedStatus)
+export default connect(mapStoreToProps)(React.memo(SpeedStatus))
