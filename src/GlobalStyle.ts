@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components/macro'
 const GlobalStyle = createGlobalStyle`
   @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
   body {
-    padding: 30px 0;
     background-color: #2f3439;
     font-family: "Noto Sans", sans-serif;
   }
