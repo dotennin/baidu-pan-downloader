@@ -65,4 +65,5 @@ declare module '*.svg' {
   export default content
 }
 
-type PromiseReturnType<F> = ReturnType<F> extends Promise<infer T> ? T : never
+declare type PromiseReturnType<F> = ReturnType<F> extends Promise<infer T> ? T : never
+declare type PropsTypeFromFC<T extends Function> = Omit<T extends (...args: infer A) => any ? A[0] : never, 'children'>
