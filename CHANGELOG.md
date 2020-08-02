@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/dotennin/baidu-pan-downloader/compare/v3.0.5...v3.1.0) (2020-08-02)
+
+
+### Features
+
+* direct link ([8f73389](https://github.com/dotennin/baidu-pan-downloader/commit/8f7338998d42bb69e6fd41369fcb2c432bbefe95))
+* dlinkpan service ([e2611ba](https://github.com/dotennin/baidu-pan-downloader/commit/e2611bacd174cccea35778ac4a2ed1a53b5f0f4e))
+* PropsTypeFromFC ([39dbf6c](https://github.com/dotennin/baidu-pan-downloader/commit/39dbf6c7e127f798bac873f916372106bb5a491c))
+
+
+### Bug Fixes
+
+* not_whitelist error controller ([6949652](https://github.com/dotennin/baidu-pan-downloader/commit/6949652a2b1c4350d7e6265b7e86e08eb75007f2))
+* style in share screen ([2150c06](https://github.com/dotennin/baidu-pan-downloader/commit/2150c062c5e68032c292e35e48adf81774e1da4c))
+
 ### [3.0.5](https://github.com/dotennin/baidu-pan-downloader/compare/v3.0.1...v3.0.5) (2020-07-28)
 
 ### [3.0.4](https://github.com/dotennin/baidu-pan-downloader/compare/v3.0.1...v3.0.4) (2020-07-28)
