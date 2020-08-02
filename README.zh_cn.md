@@ -3,6 +3,9 @@
 ### 通过右下脚的下载图标<img src="https://greasyfork.org/system/screenshots/screenshots/000/021/778/thumb/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89.png?1592725597" width="5%">可以将已经勾选的文件加入下载列表
 <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/779/original/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89_%281%29.png?1592725597" width="50%">
 
+## 3.1 追加内容
+1. 追加本地直链接
+2. 修复了 `not_whitelist` 的问题(自动重命名)
 ## 3.0 追加内容
 1. Naifei 直链获取
    * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/489/original/TIM%E5%9B%BE%E7%89%8720200728225519.png?1595944564" width="80%">
