@@ -1,7 +1,6 @@
 import { HeaderTypes, IDlinkPanResponse, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
-import { getFileExtension } from '../utils'
 import { InstanceForSystem } from './InstaceForSystem'
 
 export function getDownloadUrl(path: string) {
@@ -32,11 +31,9 @@ export function getDownloadUrl(path: string) {
   })
 }
 
-const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a']
-const formatServerFilename = (fileName: string) =>
-  fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
+const formatServerFilename = (fileName: string) => fileName + '.__________重命名我.zip'
 
-export function download(item: ItemProxy) {
+export function download(item: ItemProxy, rename?: boolean) {
   const { url, serverFilename, progress } = item
   let currentEvent: ProgressEvent | undefined = undefined
   progress.percentCount = 0
@@ -45,7 +42,7 @@ export function download(item: ItemProxy) {
   return new Promise((resolve, reject) => {
     progress.request = GM.download({
       url,
-      name: formatServerFilename(serverFilename),
+      name: rename ? formatServerFilename(serverFilename) : serverFilename,
       saveAs: true,
       headers: {
         Host: 'qdall01.baidupcs.com',
@@ -77,9 +74,13 @@ export function download(item: ItemProxy) {
         progress.intervalId && clearInterval(progress.intervalId)
         progress.percentCount = 0
         progress.speedOverlay = 0
+        if (e.error === 'not_whitelisted') {
+          download(item, true)
+          return
+        }
         progress.status = StatusTypes.error
         if (Object.keys(e).length === 0) {
-          reject(new Error('user is not authorized, hitcode:122'))
+          reject(new Error('user is not authorized, hitcode:122, plz try again'))
         } else {
           reject(new Error(e.error))
         }

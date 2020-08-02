@@ -180,7 +180,7 @@
                 return new e(t);
             }
         } ]), e;
-    }(), f = n(6), d = n(9), p = {
+    }(), f = n(6), d = n(10), p = {
         maxDownloadCount: 2,
         allDownloads: {},
         list: unsafeWindow.require("system-core:context/context.js").instanceForSystem.list,
@@ -189,8 +189,8 @@
         friendlyFileSize: function(e) {
             return unsafeWindow.require("base:widget/tools/service/tools.format.js").toFriendlyFileSize(e);
         },
-        fileManagerApi: Object(d.c)().inDiskScreen && unsafeWindow.require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js"),
-        listInit: Object(d.c)().inDiskScreen && unsafeWindow.require("disk-system:widget/pageModule/list/listInit.js"),
+        fileManagerApi: Object(d.b)().inDiskScreen && unsafeWindow.require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js"),
+        listInit: Object(d.b)().inDiskScreen && unsafeWindow.require("disk-system:widget/pageModule/list/listInit.js"),
         listInstance: unsafeWindow.require("system-core:context/context.js").instanceForSystem.listInstance,
         jquery: unsafeWindow.require("base:widget/libs/jquery-1.12.4.js"),
         ui: unsafeWindow.require("system-core:context/context.js").instanceForSystem.ui,
@@ -1307,7 +1307,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(5), a = n.n(r), o = n(10), i = n(18), l = n(1), u = n(13), c = n(17), s = n(20), f = n(6), d = n(2), p = {
+    var r = n(5), a = n.n(r), o = n(9), i = n(18), l = n(1), u = n(13), c = n(17), s = n(20), f = n(6), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1396,48 +1396,6 @@
     t.b = g;
 }, function(e, t, n) {
     "use strict";
-    n.d(t, "e", (function() {
-        return r;
-    })), n.d(t, "a", (function() {
-        return a;
-    })), n.d(t, "b", (function() {
-        return o;
-    })), n.d(t, "c", (function() {
-        return i;
-    })), n.d(t, "d", (function() {
-        return l;
-    }));
-    n(5), n(10);
-    function r() {
-        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
-        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
-    }
-    function a(e) {
-        window.setTimeout(e, 0);
-        var t = window.location.href, n = new MutationObserver((function(n) {
-            n.some((function() {
-                return t !== document.location.href;
-            })) && (t = document.location.href, e());
-        }));
-        return n.observe(document.body, {
-            childList: !0,
-            subtree: !0
-        }), n;
-    }
-    var o = function(e) {
-        return e.substring(e.lastIndexOf(".") + 1).toLocaleLowerCase();
-    }, i = function() {
-        return {
-            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
-            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
-            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
-        };
-    };
-    function l(e) {
-        return Math.floor(Math.random() * Math.floor(e));
-    }
-}, function(e, t, n) {
-    "use strict";
     function r(e, t, n, r, a, o, i) {
         try {
             var l = e[o](i), u = l.value;
@@ -1464,6 +1422,44 @@
     n.d(t, "a", (function() {
         return a;
     }));
+}, function(e, t, n) {
+    "use strict";
+    n.d(t, "d", (function() {
+        return r;
+    })), n.d(t, "a", (function() {
+        return a;
+    })), n.d(t, "b", (function() {
+        return o;
+    })), n.d(t, "c", (function() {
+        return i;
+    }));
+    n(5), n(9);
+    function r() {
+        for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
+        (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
+    }
+    function a(e) {
+        window.setTimeout(e, 0);
+        var t = window.location.href, n = new MutationObserver((function(n) {
+            n.some((function() {
+                return t !== document.location.href;
+            })) && (t = document.location.href, e());
+        }));
+        return n.observe(document.body, {
+            childList: !0,
+            subtree: !0
+        }), n;
+    }
+    var o = function() {
+        return {
+            inDiskScreen: /(?<=pan|yun).baidu.com\/disk/.test(window.location.href),
+            inSharePwdScreen: /(?<=pan|yun).baidu.com\/share/.test(window.location.href),
+            inShareScreen: /(?<=pan|yun).baidu.com\/s/.test(window.location.href)
+        };
+    };
+    function i(e) {
+        return Math.floor(Math.random() * Math.floor(e));
+    }
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2472,18 +2468,18 @@
 }, function(e, t, n) {
     "use strict";
     n.d(t, "d", (function() {
-        return s;
+        return c;
     })), n.d(t, "b", (function() {
-        return d;
+        return s;
     })), n.d(t, "a", (function() {
-        return p;
+        return f;
     })), n.d(t, "c", (function() {
-        return g;
+        return d;
     })), n.d(t, "e", (function() {
-        return h;
+        return p;
     }));
-    var r = n(5), a = n.n(r), o = n(10), i = n(1), l = n(12), u = n(9), c = n(2);
-    function s(e) {
+    var r = n(5), a = n.n(r), o = n(9), i = n(1), l = n(12), u = n(2);
+    function c(e) {
         if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
         return new Promise((function(t, n) {
             l.a.xmlHttpRequest({
@@ -2499,14 +2495,13 @@
             });
         }));
     }
-    var f = [ "apk", "exe", "pdf", "7z", "flac", "m4a" ];
-    function d(e) {
-        var t = e.url, n = e.serverFilename, r = e.progress, a = void 0;
-        return r.percentCount = 0, r.speedOverlay = 0, new Promise((function(e, o) {
-            var c;
-            r.request = l.a.download({
-                url: t,
-                name: (c = n, c + (f.includes(Object(u.b)(c)) ? ".__________重命名我.zip" : "")),
+    function s(e, t) {
+        var n = e.url, r = e.serverFilename, a = e.progress, o = void 0;
+        return a.percentCount = 0, a.speedOverlay = 0, new Promise((function(u, c) {
+            var f;
+            a.request = l.a.download({
+                url: n,
+                name: t ? (f = r, f + ".__________重命名我.zip") : r,
                 saveAs: !0,
                 headers: {
                     Host: "qdall01.baidupcs.com",
@@ -2517,32 +2512,32 @@
                     "Accept-Charset": "*"
                 },
                 onprogress: function(e) {
-                    a = e, r.percentCount = Math.round(100 * a.loaded / a.total);
+                    o = e, a.percentCount = Math.round(100 * o.loaded / o.total);
                 },
                 onload: function() {
-                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 100, r.speedOverlay = 0, 
-                    r.status = i.b.completed, l.a.notification({
+                    a.intervalId && clearInterval(a.intervalId), a.percentCount = 100, a.speedOverlay = 0, 
+                    a.status = i.b.completed, l.a.notification({
                         text: "下载完成",
-                        title: n,
+                        title: r,
                         highlight: !0
-                    }), e();
+                    }), u();
                 },
-                onerror: function(e) {
-                    r.intervalId && clearInterval(r.intervalId), r.percentCount = 0, r.speedOverlay = 0, 
-                    r.status = i.b.error, 0 === Object.keys(e).length ? o(new Error("user is not authorized, hitcode:122")) : o(new Error(e.error));
+                onerror: function(t) {
+                    a.intervalId && clearInterval(a.intervalId), a.percentCount = 0, a.speedOverlay = 0, 
+                    "not_whitelisted" !== t.error ? (a.status = i.b.error, 0 === Object.keys(t).length ? c(new Error("user is not authorized, hitcode:122, plz try again")) : c(new Error(t.error))) : s(e, !0);
                 }
             });
-            var s = 0;
-            r.intervalId = window.setInterval((function() {
-                if (a) {
-                    var e = a.loaded - s;
-                    s = a.loaded, r.speedOverlay = e;
+            var d = 0;
+            a.intervalId = window.setInterval((function() {
+                if (o) {
+                    var e = o.loaded - d;
+                    d = o.loaded, a.speedOverlay = e;
                 }
             }), 1e3);
         }));
     }
-    function p(e) {
-        var t = c.a.list, n = c.a.jquery;
+    function f(e) {
+        var t = u.a.list, n = u.a.jquery;
         return new Promise((function(r, a) {
             n.post("/share/set?channel=chunlei&clienttype=0&web=1", {
                 schannel: 4,
@@ -2559,11 +2554,11 @@
             }));
         }));
     }
-    function g(e) {
+    function d(e) {
         var t = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
         return new Promise((function(n, r) {
             try {
-                c.a.dlinkService().then((function(r) {
+                u.a.dlinkService().then((function(r) {
                     var a = e.map((function(e) {
                         return e.fsId;
                     })), o = t ? "batch" : "nolimit";
@@ -2574,11 +2569,11 @@
             }
         }));
     }
-    function h(e, t) {
-        return m.apply(this, arguments);
+    function p(e, t) {
+        return g.apply(this, arguments);
     }
-    function m() {
-        return (m = Object(o.a)(a.a.mark((function e(t, n) {
+    function g() {
+        return (g = Object(o.a)(a.a.mark((function e(t, n) {
             return a.a.wrap((function(e) {
                 for (;;) switch (e.prev = e.next) {
                   case 0:
@@ -2722,7 +2717,7 @@
     })), n.d(t, "d", (function() {
         return h;
     }));
-    var r = n(5), a = n.n(r), o = n(10), i = n(13), l = n(17), u = n(1), c = n(9), s = {
+    var r = n(5), a = n.n(r), o = n(9), i = n(13), l = n(17), u = n(1), c = n(10), s = {
         response: void 0,
         progress: 0,
         naifeiLink: {
@@ -2762,7 +2757,7 @@
                         return t.prev = 0, f.actions.requestDownload(), t.next = 4, Object(l.c)(e);
 
                       case 4:
-                        r = t.sent, o = d[Object(c.d)(d.length)], r.dlink.forEach((function(t) {
+                        r = t.sent, o = d[Object(c.c)(d.length)], r.dlink.forEach((function(t) {
                             var n = e.find((function(e) {
                                 return e.fsId.toString() === t.fs_id;
                             }));
@@ -2904,7 +2899,7 @@
     }).call(this, n(34), n(32)(e));
 }, function(e, t, n) {
     "use strict";
-    var r = n(3), a = n(0), o = n.n(a), i = n(18), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(20), p = n(9), g = Object(l.b)((function(e) {
+    var r = n(3), a = n(0), o = n.n(a), i = n(18), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(20), p = n(10), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -2913,7 +2908,7 @@
         var t = e.autoStart, n = e.downloadable, r = Object(l.c)(), a = Object(l.d)((function(e) {
             return e.download;
         })).downloadItems;
-        return Object(p.c)().inSharePwdScreen ? null : o.a.createElement("div", {
+        return Object(p.b)().inSharePwdScreen ? null : o.a.createElement("div", {
             id: "container-floating"
         }, o.a.createElement("div", {
             id: "config-button",
@@ -2938,14 +2933,14 @@
                 var e = u.a.selectedList, o = Object(i.a)({}, a), l = u.a.allDownloads;
                 e.forEach((function(e) {
                     if (void 0 === a[e.fsId]) {
-                        e.progress.status = t && Object(p.c)().inDiskScreen ? c.b.inQueued : c.b.stopped;
+                        e.progress.status = t && Object(p.b)().inDiskScreen ? c.b.inQueued : c.b.stopped;
                         var i = e.progress, u = i.intervalId, s = i.percentCount, d = i.speedOverlay, g = i.status;
                         l[e.fsId] = e, o[e.fsId] = {
                             intervalId: u,
                             percentCount: s,
                             speedOverlay: d,
                             status: g
-                        }, n && t && Object(p.c)().inDiskScreen && r(Object(f.c)(e));
+                        }, n && t && Object(p.b)().inDiskScreen && r(Object(f.c)(e));
                     }
                 })), r(f.b.actions.change({
                     downloadItems: o
@@ -3432,7 +3427,7 @@
         };
     }))(o.a.memo((function(e) {
         var t = e.fsId, n = e.status, r = u.a.allDownloads[t], a = Object(l.c)();
-        return o.a.createElement(we, null, Object(p.c)().inDiskScreen && o.a.createElement(o.a.Fragment, null, o.a.createElement(ye, {
+        return o.a.createElement(we, null, Object(p.b)().inDiskScreen && o.a.createElement(o.a.Fragment, null, o.a.createElement(ye, {
             name: "play_arrow",
             onClick: function() {
                 return a(Object(f.c)(r));
@@ -3508,7 +3503,7 @@
         }, "速度"), o.a.createElement("th", {
             scope: "col"
         }, "操作"))), o.a.createElement("tbody", null, t)));
-    }, Pe = n(5), _e = n.n(Pe), je = n(10), Ne = Object(r.b)("a").withConfig({
+    }, Pe = n(5), _e = n.n(Pe), je = n(9), Ne = Object(r.b)("a").withConfig({
         displayName: "_StyledA"
     })([ "padding-left:10px;" ]), Ie = Object(r.b)("span").withConfig({
         displayName: "_StyledSpan"
@@ -3531,7 +3526,7 @@
                 return _e.a.wrap((function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        if (e.prev = 0, r = u.a.ui, a = u.a.user, !Object(p.c)().inShareScreen) {
+                        if (e.prev = 0, r = u.a.ui, a = u.a.user, !Object(p.b)().inShareScreen) {
                             e.next = 10;
                             break;
                         }
@@ -5124,7 +5119,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(5), r = n.n(t), a = n(10), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(21), f = n(9), d = n(4), p = n(11), g = n(30);
+        var t = n(5), r = n.n(t), a = n(9), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(21), f = n(10), d = n(4), p = n(11), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a
@@ -5151,7 +5146,7 @@
             (function() {
                 return m.apply(this, arguments);
             })().catch((function(e) {
-                return Object(f.e)(e);
+                return Object(f.d)(e);
             }));
         })), s.a && e.hot && e.hot.accept("./App.tsx", (function() {
             h(g.a);
