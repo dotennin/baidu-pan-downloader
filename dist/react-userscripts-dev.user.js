@@ -1,5 +1,6 @@
 // ==UserScript==
 // @namespace https://github.com/dotennin/baidu-pan-downloader
+// @icon https://dotennin.github.io/baidu-pan-downloader/public/favicon.ico
 // @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
 // @version 1.4.3
