@@ -1,7 +1,7 @@
 {
   "name": "baidu-pan-downloader",
   "version": "3.1.0",
-  "description": "A download manager for Baidu Yun",
+  "description": "百度盘下载管理器 / file download manager for Baidu Yun",
   "main": "dist/index.js",
   "keywords": [
     "baidu",
