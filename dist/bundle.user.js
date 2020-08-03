@@ -3,7 +3,7 @@
 // @name 百度网盘下载管理器
 // @icon https://dotennin.github.io/baidu-pan-downloader/public/favicon.ico
 // @description 百度盘下载管理器 / file download manager for Baidu Yun
-// @version 3.1.0
+// @version 3.1.1
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
