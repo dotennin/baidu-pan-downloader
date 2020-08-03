@@ -7,10 +7,10 @@
 1. 追加本地直链接
 2. 修复了 `not_whitelist` 的问题(自动重命名)
 ## 3.0 追加内容
-1. Naifei 直链获取
+1. 共享 直链获取
    * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/489/original/TIM%E5%9B%BE%E7%89%8720200728225519.png?1595944564" width="80%">
-   * 共享域名(pan.baidu.com/s/***)下只支持Naifei下载
-   * 选取的目录也会加入下载列表（用于Naifei）直链
+   * 共享域名(pan.baidu.com/s/***)下只支持共享下载
+   * 选取的目录也会加入下载列表（用于共享）直链
 1. 修复 7z,flac,m4a 格式下载时出现`not_whitelist`
 
 ## 2.0 追加内容

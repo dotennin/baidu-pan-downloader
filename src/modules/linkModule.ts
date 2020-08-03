@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
-import { getDlinkPan, getNaifeiLinks, createPrivateShareLink } from '../services/api'
+import { getDlinkPan, getShareLinks, createPrivateShareLink } from '../services/api'
 import { ValueTypes } from '../services/types'
 import { getRandomInt } from '../utils'
 
 interface IState {
   response?: PromiseReturnType<typeof getDlinkPan>
   progress: number
-  naifeiLink: {
+  shareLink: {
     progress: number
-    response?: PromiseReturnType<typeof getNaifeiLinks>
+    response?: PromiseReturnType<typeof getShareLinks>
   }
 }
 const initialState: IState = {
   response: undefined,
   progress: 0,
-  naifeiLink: {
+  shareLink: {
     progress: 0,
     response: undefined,
   },
@@ -39,17 +39,17 @@ const linkModule = createSlice({
       state.progress -= 1
       return state
     },
-    requestNaifeiDownload: (state) => {
-      state.naifeiLink.progress += 1
+    requestShareLinks: (state) => {
+      state.shareLink.progress += 1
       return state
     },
-    successNaifeiDownload: (state, action: PayloadAction<IState['naifeiLink']['response']>) => {
-      state.naifeiLink.response = action.payload
-      state.naifeiLink.progress -= 1
+    successShareLinks: (state, action: PayloadAction<IState['shareLink']['response']>) => {
+      state.shareLink.response = action.payload
+      state.shareLink.progress -= 1
       return state
     },
-    failureNaifeiDownload: (state) => {
-      state.naifeiLink.progress -= 1
+    failureShareLinks: (state) => {
+      state.shareLink.progress -= 1
       return state
     },
   },
@@ -80,29 +80,29 @@ const fetchLink = (items: ItemProxy[]): AppThunk => async (dispatch) => {
   }
 }
 
-const fetchNaifeiLink = (item: ItemProxy): AppThunk => async (dispatch) => {
+const fetchShareLinks = (item: ItemProxy): AppThunk => async (dispatch) => {
   try {
-    linkModule.actions.requestNaifeiDownload()
+    linkModule.actions.requestShareLinks()
 
     const response = await createPrivateShareLink(item.fsId)
 
-    const naifeiLinks = await getNaifeiLinks(response.shorturl, 'qqqq')
-    dispatch(linkModule.actions.successNaifeiDownload(naifeiLinks))
+    const shareLinks = await getShareLinks(response.shorturl, 'qqqq')
+    dispatch(linkModule.actions.successShareLinks(shareLinks))
   } catch (e) {
-    linkModule.actions.failureNaifeiDownload()
+    linkModule.actions.failureShareLinks()
   }
 }
 
-const fetchNaifeiLinkFromLocation = (): AppThunk => async (dispatch) => {
+const fetchShareLinksFromLocation = (): AppThunk => async (dispatch) => {
   try {
-    linkModule.actions.requestNaifeiDownload()
+    linkModule.actions.requestShareLinks()
     const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
-    const shareLinks = await getNaifeiLinks(window.location.href.replace(window.location.hash, ''), sharePwd)
-    dispatch(linkModule.actions.successNaifeiDownload(shareLinks))
+    const shareLinks = await getShareLinks(window.location.href.replace(window.location.hash, ''), sharePwd)
+    dispatch(linkModule.actions.successShareLinks(shareLinks))
   } catch (e) {
-    linkModule.actions.failureNaifeiDownload()
+    linkModule.actions.failureShareLinks()
   }
 }
 
 export default linkModule
-export { fetchLink, fetchNaifeiLink, fetchNaifeiLinkFromLocation }
+export { fetchLink, fetchShareLinks, fetchShareLinksFromLocation }

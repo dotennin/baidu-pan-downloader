@@ -158,7 +158,7 @@ export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pac
   })
 }
 
-export async function getNaifeiLinks(
+export async function getShareLinks(
   link: string,
   pwd: string
 ): Promise<

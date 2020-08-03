@@ -5,10 +5,10 @@ import interfaceModule from '../modules/interfaceModule'
 import { Modal } from '../components/Modal'
 
 const mapStoreToProps = (store: IStoreState) => ({
-  open: store.interface.naifeiLinkPortalOpen,
-  response: store.link.naifeiLink.response,
+  open: store.interface.shareLinksPortalOpen,
+  response: store.link.shareLink.response,
 })
-function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
+function ShareLinksPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
   const dispatch = useDispatch()
   if (!open) {
     return null
@@ -17,7 +17,7 @@ function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
     <Modal
       open={true}
       noOverlayColor={true}
-      close={() => dispatch(interfaceModule.actions.change({ naifeiLinkPortalOpen: false }))}
+      close={() => dispatch(interfaceModule.actions.change({ shareLinksPortalOpen: false }))}
     >
       <div
         css={`
@@ -54,4 +54,4 @@ function NaifeiPortal({ open, response }: ReturnType<typeof mapStoreToProps>) {
   )
 }
 
-export default connect(mapStoreToProps)(NaifeiPortal)
+export default connect(mapStoreToProps)(ShareLinksPortal)

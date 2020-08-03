@@ -38,10 +38,10 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * add Portal ([f456584](https://github.com/dotennin/baidu-pan-downloader/commit/f4565848e0914fe9185e6fab12f5f71823d30dd9))
-* added naifei server ([a93cc5e](https://github.com/dotennin/baidu-pan-downloader/commit/a93cc5e3bec264f7775999aa7e15c9085361cb21))
+* added share link server ([a93cc5e](https://github.com/dotennin/baidu-pan-downloader/commit/a93cc5e3bec264f7775999aa7e15c9085361cb21))
 * auto start with host pan.baidu.com ([0087173](https://github.com/dotennin/baidu-pan-downloader/commit/00871736d28efc3a297a29516dd6b7961433f334))
 * cache list api ([ce41cdf](https://github.com/dotennin/baidu-pan-downloader/commit/ce41cdf641988b23c42076e4bf842dbd25097e48))
-* Naifei share link ([bd8cc01](https://github.com/dotennin/baidu-pan-downloader/commit/bd8cc01724da7b8227a87064f44ccd625a8ffe79))
+* share link ([bd8cc01](https://github.com/dotennin/baidu-pan-downloader/commit/bd8cc01724da7b8227a87064f44ccd625a8ffe79))
 * sharelink download for one file ([7497ab1](https://github.com/dotennin/baidu-pan-downloader/commit/7497ab1d1a2633bf98195ac4757d08b7778610db))
 * steam saver ([57a5c6f](https://github.com/dotennin/baidu-pan-downloader/commit/57a5c6f58cc57aec8d67ed1bd2435cbbcf04a712))
 
@@ -59,10 +59,10 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * add Portal ([f456584](https://github.com/dotennin/baidu-pan-downloader/commit/f4565848e0914fe9185e6fab12f5f71823d30dd9))
-* added naifei server ([a93cc5e](https://github.com/dotennin/baidu-pan-downloader/commit/a93cc5e3bec264f7775999aa7e15c9085361cb21))
+* added sharelink server ([a93cc5e](https://github.com/dotennin/baidu-pan-downloader/commit/a93cc5e3bec264f7775999aa7e15c9085361cb21))
 * auto start with host pan.baidu.com ([0087173](https://github.com/dotennin/baidu-pan-downloader/commit/00871736d28efc3a297a29516dd6b7961433f334))
 * cache list api ([ce41cdf](https://github.com/dotennin/baidu-pan-downloader/commit/ce41cdf641988b23c42076e4bf842dbd25097e48))
-* Naifei share link ([bd8cc01](https://github.com/dotennin/baidu-pan-downloader/commit/bd8cc01724da7b8227a87064f44ccd625a8ffe79))
+* share link ([bd8cc01](https://github.com/dotennin/baidu-pan-downloader/commit/bd8cc01724da7b8227a87064f44ccd625a8ffe79))
 * sharelink download for one file ([7497ab1](https://github.com/dotennin/baidu-pan-downloader/commit/7497ab1d1a2633bf98195ac4757d08b7778610db))
 * steam saver ([57a5c6f](https://github.com/dotennin/baidu-pan-downloader/commit/57a5c6f58cc57aec8d67ed1bd2435cbbcf04a712))
 
