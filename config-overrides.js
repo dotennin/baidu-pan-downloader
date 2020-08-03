@@ -1,6 +1,6 @@
 const { addBabelPlugin, override, overrideDevServer, useBabelRc, watchAll, disableChunk } = require('customize-cra')
 const webpack = require('webpack')
-const UserScript = require('./user-script')
+// const UserScript = require('./user-script')
 const TerserPlugin = require('terser-webpack-plugin')
 
 const minimizer = (minJsOnly = false) => (config) => {
@@ -9,12 +9,13 @@ const minimizer = (minJsOnly = false) => (config) => {
       minimize: true,
       minimizer: [
         new TerserPlugin({
-          extractComments: {
-            condition: /eslint-disable/i,
-            banner: () => {
-              return UserScript
-            },
-          },
+          extractComments: false,
+          // extractComments: {
+            // condition: /eslint-disable/i,
+            // banner: () => {
+            //   return UserScript
+            // },
+          // },
           terserOptions: {
             ecma: 6,
             compress: true,
