@@ -9,7 +9,7 @@ const mapStoreToProps = (store: IStoreState) => ({
   open: store.interface.linkPortalOpen,
   dlinks: store.link.response?.dlink,
 })
-function DlinkPortal({ open, dlinks }: ReturnType<typeof mapStoreToProps>) {
+function DlinksPortal({ open, dlinks }: ReturnType<typeof mapStoreToProps>) {
   const dispatch = useDispatch()
   if (!open) {
     return null
@@ -54,4 +54,4 @@ function DlinkPortal({ open, dlinks }: ReturnType<typeof mapStoreToProps>) {
   )
 }
 
-export default connect(mapStoreToProps)(DlinkPortal)
+export default connect(mapStoreToProps)(DlinksPortal)

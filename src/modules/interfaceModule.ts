@@ -8,7 +8,7 @@ interface IState {
   downloadModalOpen: boolean
   configModalOpen: boolean
   linkPortalOpen: boolean
-  naifeiLinkPortalOpen: boolean
+  shareLinksPortalOpen: boolean
   error: undefined | Error
 }
 const initialState: IState = {
@@ -17,7 +17,7 @@ const initialState: IState = {
   downloadModalOpen: false,
   configModalOpen: false,
   linkPortalOpen: false,
-  naifeiLinkPortalOpen: false,
+  shareLinksPortalOpen: false,
   error: undefined,
 }
 
