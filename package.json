@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "clean": "rimraf build/*",
-    "build": "npm run clean && react-app-rewired build && cp ./build/static/js/main.js ./dist/bundle.user.js",
+    "build": "npm run clean && react-app-rewired build && node user-script.js > ./dist/bundle.user.js && cat ./build/static/js/main.js >> ./dist/bundle.user.js",
     "start": "react-app-rewired start",
     "eslint": "eslint --fix src/*.*",
     "release": "standard-version",

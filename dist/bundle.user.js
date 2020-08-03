@@ -1,4 +1,4 @@
-/*! // ==UserScript==
+// ==UserScript==
 // @namespace https://github.com/dotennin/baidu-pan-downloader
 // @name 百度网盘下载管理器
 // @icon https://dotennin.github.io/baidu-pan-downloader/public/favicon.ico
@@ -28,7 +28,7 @@
 // @grant unsafeWindow
 // @run-at document-idle
 // ==/UserScript==
- */
+
 !function(e) {
     var t = {};
     function n(r) {
