@@ -6,17 +6,13 @@
 ## 3.1 追加内容
 1. 追加本地直链接
 2. 修复了 `not_whitelist` 的问题(自动重命名)
+
 ## 3.0 追加内容
 1. 共享 直链获取
    * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/489/original/TIM%E5%9B%BE%E7%89%8720200728225519.png?1595944564" width="80%">
    * 共享域名(pan.baidu.com/s/***)下只支持共享下载
    * 选取的目录也会加入下载列表（用于共享）直链
 1. 修复 7z,flac,m4a 格式下载时出现`not_whitelist`
-
-## 2.0 追加内容
-1. 用React重构框架
-1. `exe` `apk` `pdf` 等格式的下载支持
-    * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/152/original/WeChat_Image_20200714003946.png?1594654806" width="70%">
 
 ## 1.4 追加了自定义设置功能
 # <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/888/original/config-modal.png?1593252766" width="70%">
