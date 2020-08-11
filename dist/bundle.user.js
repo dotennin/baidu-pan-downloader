@@ -2578,7 +2578,7 @@
             return a.a.wrap((function(e) {
                 for (;;) switch (e.prev = e.next) {
                   case 0:
-                    return e.next = 2, fetch("https://pan.dotennin.net/?link=".concat(encodeURI(t), "%20%E6%8F%90%E5%8F%96%E7%A0%81:%20").concat(n));
+                    return e.next = 2, fetch("https://pan.dotennin.ml/?link=".concat(encodeURI(t), "%20%E6%8F%90%E5%8F%96%E7%A0%81:%20").concat(n));
 
                   case 2:
                     return e.next = 4, e.sent.json();
