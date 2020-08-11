@@ -186,6 +186,6 @@ export async function getShareLinks(
   }[]
 > {
   return await (
-    await fetch(`https://pan.dotennin.net/?link=${encodeURI(link)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20${pwd}`)
+    await fetch(`https://pan.dotennin.ml/?link=${encodeURI(link)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20${pwd}`)
   ).json()
 }
