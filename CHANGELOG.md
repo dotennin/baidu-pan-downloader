@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/dotennin/baidu-pan-downloader/compare/v3.1.2...v3.2.0) (2020-08-23)
+
+
+### Features
+
+* open sharelink in new-window ([e7c399f](https://github.com/dotennin/baidu-pan-downloader/commit/e7c399f9dffe82d65a27e9f9e88826bcd8fadb9c))
+
 ### [3.1.2](https://github.com/dotennin/baidu-pan-downloader/compare/v3.1.1...v3.1.2) (2020-08-11)
 
 
