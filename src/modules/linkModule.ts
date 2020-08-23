@@ -3,7 +3,7 @@ import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
 import { getDlinkPan, getShareLinks, createPrivateShareLink } from '../services/api'
 import { ValueTypes } from '../services/types'
-import { getRandomInt } from '../utils'
+import { getRandomInt, postOpen } from '../utils'
 
 interface IState {
   response?: PromiseReturnType<typeof getDlinkPan>
@@ -80,14 +80,19 @@ const fetchLink = (items: ItemProxy[]): AppThunk => async (dispatch) => {
   }
 }
 
-const fetchShareLinks = (item: ItemProxy): AppThunk => async (dispatch) => {
+const fetchShareLinks = (item: ItemProxy): AppThunk => async () => {
   try {
     linkModule.actions.requestShareLinks()
 
     const response = await createPrivateShareLink(item.fsId)
 
-    const shareLinks = await getShareLinks(response.shorturl, 'qqqq')
-    dispatch(linkModule.actions.successShareLinks(shareLinks))
+    const body = {
+      surl: response.shorturl.replace('https://pan.baidu.com/s/', ''),
+      pwd: 'qqqq',
+    }
+    postOpen('https://pan.dotennin.ml', body)
+    // const shareLinks = await getShareLinks(response.shorturl, 'qqqq')
+    // dispatch(linkModule.actions.successShareLinks(shareLinks))
   } catch (e) {
     linkModule.actions.failureShareLinks()
   }
