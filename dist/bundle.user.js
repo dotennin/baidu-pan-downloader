@@ -2789,34 +2789,29 @@
             };
         }();
     }, g = function(e) {
-        return function() {
-            var t = Object(o.a)(a.a.mark((function t(n) {
-                var r, o;
-                return a.a.wrap((function(t) {
-                    for (;;) switch (t.prev = t.next) {
-                      case 0:
-                        return t.prev = 0, f.actions.requestShareLinks(), t.next = 4, Object(l.a)(e.fsId);
+        return Object(o.a)(a.a.mark((function t() {
+            var n, r;
+            return a.a.wrap((function(t) {
+                for (;;) switch (t.prev = t.next) {
+                  case 0:
+                    return t.prev = 0, f.actions.requestShareLinks(), t.next = 4, Object(l.a)(e.fsId);
 
-                      case 4:
-                        r = t.sent, o = {
-                            surl: r.shorturl.replace("https://pan.baidu.com/s/", ""),
-                            pwd: "qqqq"
-                        }, Object(c.e)("https://pan.dotennin.ml", o), t.next = 12;
-                        break;
+                  case 4:
+                    n = t.sent, r = {
+                        surl: n.shorturl.replace("https://pan.baidu.com/s/", ""),
+                        pwd: "qqqq"
+                    }, Object(c.e)("https://pan.dotennin.ml", r), t.next = 12;
+                    break;
 
-                      case 9:
-                        t.prev = 9, t.t0 = t.catch(0), f.actions.failureShareLinks();
+                  case 9:
+                    t.prev = 9, t.t0 = t.catch(0), f.actions.failureShareLinks();
 
-                      case 12:
-                      case "end":
-                        return t.stop();
-                    }
-                }), t, null, [ [ 0, 9 ] ]);
-            })));
-            return function(e) {
-                return t.apply(this, arguments);
-            };
-        }();
+                  case 12:
+                  case "end":
+                    return t.stop();
+                }
+            }), t, null, [ [ 0, 9 ] ]);
+        })));
     }, h = function() {
         return function() {
             var e = Object(o.a)(a.a.mark((function e(t) {

@@ -94,3 +94,20 @@ export function downloadURI(uri: string, name: string) {
 export function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max))
 }
+
+export function postOpen(url: string, body: object) {
+  const form = document.createElement('form')
+  form.method = 'POST'
+  form.action = url
+  form.target = 'new_window'
+  Object.keys(body).forEach((key) => {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = key
+    input.value = body[key as keyof typeof body]
+    form.appendChild(input)
+  })
+  document.body.appendChild(form)
+  form.submit()
+  document.body.removeChild(form)
+}

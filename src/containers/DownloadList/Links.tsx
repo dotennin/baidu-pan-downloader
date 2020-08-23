@@ -30,8 +30,8 @@ const Links = (props: Props) => {
         body: `将自动创建私有链接到共享服务器(<span style="color: red">隐私数据不推荐使用</span>)<br />是否继续？`,
         onSure: async () => {
           InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-          await dispatch(fetchShareLinks(targetItem))
-          dispatch(interfaceModule.actions.change({ shareLinksPortalOpen: true }))
+          dispatch(fetchShareLinks(targetItem))
+          // dispatch(interfaceModule.actions.change({ shareLinksPortalOpen: true }))
           ui.hideTip()
         },
       })
