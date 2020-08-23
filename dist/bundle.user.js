@@ -181,7 +181,7 @@
                 return new e(t);
             }
         } ]), e;
-    }(), f = n(6), d = n(10), p = {
+    }(), f = n(6), d = n(9), p = {
         maxDownloadCount: 2,
         allDownloads: {},
         list: unsafeWindow.require("system-core:context/context.js").instanceForSystem.list,
@@ -1220,7 +1220,7 @@
     e.exports = n(42);
 }, function(e, t, n) {
     "use strict";
-    var r = n(18), a = n(12), o = n(1), i = n(13), l = {
+    var r = n(17), a = n(12), o = n(1), i = n(13), l = {
         maxDownloadCount: a.a.getValue(o.c.maxDownloadCount, 2),
         autoStart: a.a.getValue(o.c.autoStart, !0),
         downloadModalOpen: !1,
@@ -1308,7 +1308,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(5), a = n.n(r), o = n(9), i = n(18), l = n(1), u = n(13), c = n(17), s = n(20), f = n(6), d = n(2), p = {
+    var r = n(5), a = n.n(r), o = n(10), i = n(17), l = n(1), u = n(13), c = n(18), s = n(20), f = n(6), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1397,34 +1397,6 @@
     t.b = g;
 }, function(e, t, n) {
     "use strict";
-    function r(e, t, n, r, a, o, i) {
-        try {
-            var l = e[o](i), u = l.value;
-        } catch (e) {
-            return void n(e);
-        }
-        l.done ? t(u) : Promise.resolve(u).then(r, a);
-    }
-    function a(e) {
-        return function() {
-            var t = this, n = arguments;
-            return new Promise((function(a, o) {
-                var i = e.apply(t, n);
-                function l(e) {
-                    r(i, a, o, l, u, "next", e);
-                }
-                function u(e) {
-                    r(i, a, o, l, u, "throw", e);
-                }
-                l(void 0);
-            }));
-        };
-    }
-    n.d(t, "a", (function() {
-        return a;
-    }));
-}, function(e, t, n) {
-    "use strict";
     n.d(t, "d", (function() {
         return r;
     })), n.d(t, "a", (function() {
@@ -1433,8 +1405,10 @@
         return o;
     })), n.d(t, "c", (function() {
         return i;
+    })), n.d(t, "e", (function() {
+        return l;
     }));
-    n(5), n(9);
+    n(5), n(10);
     function r() {
         for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++) n[r] = arguments[r];
         (e = console).log.apply(e, [ "Userscript (React Mode):" ].concat(n));
@@ -1461,6 +1435,41 @@
     function i(e) {
         return Math.floor(Math.random() * Math.floor(e));
     }
+    function l(e, t) {
+        var n = document.createElement("form");
+        n.method = "POST", n.action = e, n.target = "new_window", Object.keys(t).forEach((function(e) {
+            var r = document.createElement("input");
+            r.type = "hidden", r.name = e, r.value = t[e], n.appendChild(r);
+        })), document.body.appendChild(n), n.submit(), document.body.removeChild(n);
+    }
+}, function(e, t, n) {
+    "use strict";
+    function r(e, t, n, r, a, o, i) {
+        try {
+            var l = e[o](i), u = l.value;
+        } catch (e) {
+            return void n(e);
+        }
+        l.done ? t(u) : Promise.resolve(u).then(r, a);
+    }
+    function a(e) {
+        return function() {
+            var t = this, n = arguments;
+            return new Promise((function(a, o) {
+                var i = e.apply(t, n);
+                function l(e) {
+                    r(i, a, o, l, u, "next", e);
+                }
+                function u(e) {
+                    r(i, a, o, l, u, "throw", e);
+                }
+                l(void 0);
+            }));
+        };
+    }
+    n.d(t, "a", (function() {
+        return a;
+    }));
 }, function(e, t, n) {
     "use strict";
     n.d(t, "a", (function() {
@@ -2468,6 +2477,40 @@
     }));
 }, function(e, t, n) {
     "use strict";
+    function r(e, t, n) {
+        return t in e ? Object.defineProperty(e, t, {
+            value: n,
+            enumerable: !0,
+            configurable: !0,
+            writable: !0
+        }) : e[t] = n, e;
+    }
+    function a(e, t) {
+        var n = Object.keys(e);
+        if (Object.getOwnPropertySymbols) {
+            var r = Object.getOwnPropertySymbols(e);
+            t && (r = r.filter((function(t) {
+                return Object.getOwnPropertyDescriptor(e, t).enumerable;
+            }))), n.push.apply(n, r);
+        }
+        return n;
+    }
+    function o(e) {
+        for (var t = 1; t < arguments.length; t++) {
+            var n = null != arguments[t] ? arguments[t] : {};
+            t % 2 ? a(Object(n), !0).forEach((function(t) {
+                r(e, t, n[t]);
+            })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : a(Object(n)).forEach((function(t) {
+                Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
+            }));
+        }
+        return e;
+    }
+    n.d(t, "a", (function() {
+        return o;
+    }));
+}, function(e, t, n) {
+    "use strict";
     n.d(t, "d", (function() {
         return c;
     })), n.d(t, "b", (function() {
@@ -2479,7 +2522,7 @@
     })), n.d(t, "e", (function() {
         return p;
     }));
-    var r = n(5), a = n.n(r), o = n(9), i = n(1), l = n(12), u = n(2);
+    var r = n(5), a = n.n(r), o = n(10), i = n(1), l = n(12), u = n(2);
     function c(e) {
         if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
         return new Promise((function(t, n) {
@@ -2595,40 +2638,6 @@
     }
 }, function(e, t, n) {
     "use strict";
-    function r(e, t, n) {
-        return t in e ? Object.defineProperty(e, t, {
-            value: n,
-            enumerable: !0,
-            configurable: !0,
-            writable: !0
-        }) : e[t] = n, e;
-    }
-    function a(e, t) {
-        var n = Object.keys(e);
-        if (Object.getOwnPropertySymbols) {
-            var r = Object.getOwnPropertySymbols(e);
-            t && (r = r.filter((function(t) {
-                return Object.getOwnPropertyDescriptor(e, t).enumerable;
-            }))), n.push.apply(n, r);
-        }
-        return n;
-    }
-    function o(e) {
-        for (var t = 1; t < arguments.length; t++) {
-            var n = null != arguments[t] ? arguments[t] : {};
-            t % 2 ? a(Object(n), !0).forEach((function(t) {
-                r(e, t, n[t]);
-            })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : a(Object(n)).forEach((function(t) {
-                Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
-            }));
-        }
-        return e;
-    }
-    n.d(t, "a", (function() {
-        return o;
-    }));
-}, function(e, t, n) {
-    "use strict";
     e.exports = n(50);
 }, function(e, t, n) {
     "use strict";
@@ -2718,7 +2727,7 @@
     })), n.d(t, "d", (function() {
         return h;
     }));
-    var r = n(5), a = n.n(r), o = n(9), i = n(13), l = n(17), u = n(1), c = n(10), s = {
+    var r = n(5), a = n.n(r), o = n(10), i = n(13), l = n(18), u = n(1), c = n(9), s = {
         response: void 0,
         progress: 0,
         shareLink: {
@@ -2789,20 +2798,20 @@
                         return t.prev = 0, f.actions.requestShareLinks(), t.next = 4, Object(l.a)(e.fsId);
 
                       case 4:
-                        return r = t.sent, t.next = 7, Object(l.e)(r.shorturl, "qqqq");
-
-                      case 7:
-                        o = t.sent, n(f.actions.successShareLinks(o)), t.next = 14;
+                        r = t.sent, o = {
+                            surl: r.shorturl.replace("https://pan.baidu.com/s/", ""),
+                            pwd: "qqqq"
+                        }, Object(c.e)("https://pan.dotennin.ml", o), t.next = 12;
                         break;
 
-                      case 11:
-                        t.prev = 11, t.t0 = t.catch(0), f.actions.failureShareLinks();
+                      case 9:
+                        t.prev = 9, t.t0 = t.catch(0), f.actions.failureShareLinks();
 
-                      case 14:
+                      case 12:
                       case "end":
                         return t.stop();
                     }
-                }), t, null, [ [ 0, 11 ] ]);
+                }), t, null, [ [ 0, 9 ] ]);
             })));
             return function(e) {
                 return t.apply(this, arguments);
@@ -2900,7 +2909,7 @@
     }).call(this, n(34), n(32)(e));
 }, function(e, t, n) {
     "use strict";
-    var r = n(3), a = n(0), o = n.n(a), i = n(18), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(20), p = n(10), g = Object(l.b)((function(e) {
+    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(20), p = n(9), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -3504,7 +3513,7 @@
         }, "速度"), o.a.createElement("th", {
             scope: "col"
         }, "操作"))), o.a.createElement("tbody", null, t)));
-    }, Pe = n(5), _e = n.n(Pe), je = n(9), Ne = Object(r.b)("a").withConfig({
+    }, Pe = n(5), _e = n.n(Pe), je = n(10), Ne = Object(r.b)("a").withConfig({
         displayName: "_StyledA"
     })([ "padding-left:10px;" ]), Ie = Object(r.b)("span").withConfig({
         displayName: "_StyledSpan"
@@ -3555,18 +3564,13 @@
                                     return _e.a.wrap((function(e) {
                                         for (;;) switch (e.prev = e.next) {
                                           case 0:
-                                            return u.a.ui.tip({
+                                            u.a.ui.tip({
                                                 autoClose: !1,
                                                 mode: "loading",
                                                 msg: "生成链接中..."
-                                            }), e.next = 3, n(Object(Re.c)(t));
+                                            }), n(Object(Re.c)(t)), r.hideTip();
 
                                           case 3:
-                                            n(s.a.actions.change({
-                                                shareLinksPortalOpen: !0
-                                            })), r.hideTip();
-
-                                          case 5:
                                           case "end":
                                             return e.stop();
                                         }
@@ -5120,7 +5124,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(5), r = n.n(t), a = n(9), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(21), f = n(10), d = n(4), p = n(11), g = n(30);
+        var t = n(5), r = n.n(t), a = n(10), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(21), f = n(9), d = n(4), p = n(11), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a
