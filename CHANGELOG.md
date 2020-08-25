@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/dotennin/baidu-pan-downloader/compare/v3.2.0...v3.3.0) (2020-08-25)
+
+
+### Features
+
+* custom app id input in config screen ([ed298b6](https://github.com/dotennin/baidu-pan-downloader/commit/ed298b6505b11f261ecf2e1429ac357ef350d68f))
+* speed up frequency of progress ([229d6ac](https://github.com/dotennin/baidu-pan-downloader/commit/229d6ac7f7ef6ffee4f6c0db3938747b6237bc1c))
+
 ## [3.2.0](https://github.com/dotennin/baidu-pan-downloader/compare/v3.1.2...v3.2.0) (2020-08-23)
 
 
