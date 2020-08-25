@@ -11,6 +11,7 @@ export enum ValueTypes {
   items = 'ITEM_LIST',
   autoStart = 'AUTO_START',
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
+  appId = 'APP_ID',
   sharePassword = 'SHARE_PASSWORD',
 }
 

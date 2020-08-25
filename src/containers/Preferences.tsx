@@ -13,6 +13,7 @@ const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
   downloadable: downloadableSelector(store),
   maxDownloadCount: store.interface.maxDownloadCount,
+  appId: store.interface.appId,
 })
 
 const mapActionsToProps = (dispatch: Dispatch) => ({
@@ -24,6 +25,12 @@ const mapActionsToProps = (dispatch: Dispatch) => ({
     const count = parseInt(e.target.value)
     dispatch(interfaceModule.actions.change({ maxDownloadCount: count }))
   },
+  setAppId: (e: React.ChangeEvent<HTMLInputElement>) => {
+    const appId = e.target.value
+    if (/^\d+$/.test(appId) || !appId) {
+      dispatch(interfaceModule.actions.change({ appId }))
+    }
+  },
 })
 
 function Preferences({
@@ -33,6 +40,8 @@ function Preferences({
   closeModal,
   setAutoStart,
   setMaxDownloadCount,
+  setAppId,
+  appId,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
   return (
     <div
@@ -90,6 +99,14 @@ function Preferences({
                     )
                   })}
               </select>
+            </div>
+          </FormField>
+          <FormField>
+            <legend>
+              APP ID<small>(空值将采用随机数值)</small>
+            </legend>
+            <div>
+              <input value={appId} onChange={setAppId} />
             </div>
           </FormField>
         </Form>
