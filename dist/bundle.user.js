@@ -2576,10 +2576,10 @@
             var d = 0;
             a.intervalId = window.setInterval((function() {
                 if (o) {
-                    var e = o.loaded - d;
+                    var e = 2 * (o.loaded - d);
                     d = o.loaded, a.speedOverlay = e;
                 }
-            }), 1e3);
+            }), 500);
         }));
     }
     function f(e) {
