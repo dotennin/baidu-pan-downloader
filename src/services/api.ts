@@ -90,11 +90,11 @@ export function download(item: ItemProxy, rename?: boolean) {
     let loaded = 0
     progress.intervalId = window.setInterval(() => {
       if (currentEvent) {
-        const speed = currentEvent.loaded - loaded
+        const speed = (currentEvent.loaded - loaded) * 2
         loaded = currentEvent.loaded
         progress.speedOverlay = speed
       }
-    }, 1000)
+    }, 500)
   })
 }
 
