@@ -5,6 +5,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 interface IState {
   maxDownloadCount: number
   autoStart: boolean
+  appId: string
   downloadModalOpen: boolean
   configModalOpen: boolean
   linkPortalOpen: boolean
@@ -14,6 +15,7 @@ interface IState {
 const initialState: IState = {
   maxDownloadCount: GM.getValue(ValueTypes.maxDownloadCount, 2),
   autoStart: GM.getValue(ValueTypes.autoStart, true),
+  appId: GM.getValue(ValueTypes.appId, ''),
   downloadModalOpen: false,
   configModalOpen: false,
   linkPortalOpen: false,
@@ -40,6 +42,9 @@ export default createSlice({
             break
           case 'maxDownloadCount':
             GM.setValue(ValueTypes.maxDownloadCount, payload.maxDownloadCount)
+            break
+          case 'appId':
+            GM.setValue(ValueTypes.appId, payload.appId)
         }
       })
       state = Object.assign({ ...state }, action.payload)

@@ -55,13 +55,13 @@ const linkModule = createSlice({
   },
 })
 
-const appIds = [498065, 309847, 778750]
+const appIds = ['498065', '309847', '778750']
 
-const fetchLink = (items: ItemProxy[]): AppThunk => async (dispatch) => {
+const fetchLink = (items: ItemProxy[], app_id?: string): AppThunk => async (dispatch) => {
   try {
     linkModule.actions.requestDownload()
     const response = await getDlinkPan(items)
-    const app_id = appIds[getRandomInt(appIds.length)]
+    app_id = app_id || appIds[getRandomInt(appIds.length)]
     response.dlink.forEach((link) => {
       const targetItem = items.find((item) => item.fsId.toString() === link.fs_id)
       if (targetItem) {

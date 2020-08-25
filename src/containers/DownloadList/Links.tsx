@@ -6,6 +6,7 @@ import { getLocation } from '../../utils'
 import { useDispatch } from 'react-redux'
 import { fetchLink, fetchShareLinks, fetchShareLinksFromLocation } from '../../modules/linkModule'
 import interfaceModule from '../../modules/interfaceModule'
+import { store } from '../../store'
 
 interface Props {
   fsId: ItemProxy['fsId']
@@ -42,9 +43,10 @@ const Links = (props: Props) => {
 
   const openLinkModal = async () => {
     try {
+      const { appId } = store.getState().interface
       const { ui } = InstanceForSystem
       ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
-      await dispatch(fetchLink([targetItem]))
+      await dispatch(fetchLink([targetItem], appId))
       dispatch(interfaceModule.actions.change({ linkPortalOpen: true }))
       InstanceForSystem.ui.hideTip()
     } catch (e) {
