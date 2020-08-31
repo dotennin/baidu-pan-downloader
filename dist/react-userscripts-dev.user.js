@@ -3,7 +3,7 @@
 // @icon https://dotennin.github.io/baidu-pan-downloader/public/favicon.ico
 // @name 百度网盘下载管理器
 // @description A download manager for Baidu Yun
-// @version 1.4.3
+// @version 9.9.9
 // @author Dotennin
 // @license MIT
 // @compatible        chrome/83.0.4103.97 passed
@@ -14,7 +14,6 @@
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
 // @include https://yun.baidu.com/s/*
-// @include https://pan.baidu.com/share/*
 // @connect baidu.com
 // @connect localhost
 // @connect qdall01.baidupcs.com

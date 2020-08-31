@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
 import { getDlinkPan, getShareLinks, createPrivateShareLink } from '../services/api'
-import { ValueTypes } from '../services/types'
 import { getRandomInt, postOpen } from '../utils'
+import { InstanceForSystem } from '../services/InstaceForSystem'
 
 interface IState {
   response?: PromiseReturnType<typeof getDlinkPan>
@@ -98,12 +98,14 @@ const fetchShareLinks = (item: ItemProxy): AppThunk => async () => {
   }
 }
 
-const fetchShareLinksFromLocation = (): AppThunk => async (dispatch) => {
+const fetchShareLinksFromLocation = (): AppThunk => async () => {
   try {
     linkModule.actions.requestShareLinks()
-    const sharePwd = window.localStorage.getItem(ValueTypes.sharePassword) as string
-    const shareLinks = await getShareLinks(window.location.href.replace(window.location.hash, ''), sharePwd)
-    dispatch(linkModule.actions.successShareLinks(shareLinks))
+    const body = {
+      surl: window.location.href.replace(window.location.hash, '').replace(window.location.origin + '/s/', ''),
+      randsk: InstanceForSystem.cookie.getCookie('BDCLND'),
+    }
+    postOpen('https://pan.dotennin.ml', body)
   } catch (e) {
     linkModule.actions.failureShareLinks()
   }

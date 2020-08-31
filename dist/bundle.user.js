@@ -15,7 +15,6 @@
 // @include https://yun.baidu.com/disk/*
 // @include https://pan.baidu.com/s/*
 // @include https://yun.baidu.com/s/*
-// @include https://pan.baidu.com/share/*
 // @connect baidu.com
 // @connect qdall01.baidupcs.com
 // @grant GM_xmlhttpRequest
@@ -89,7 +88,7 @@
         e.inQueued = "IN_QUEUED", e.error = "ERROR", e.unknow = "UNKONW";
     }(r || (r = {})), function(e) {
         e.items = "ITEM_LIST", e.autoStart = "AUTO_START", e.maxDownloadCount = "MAX_DOWNLOAD_COUNT", 
-        e.appId = "APP_ID", e.sharePassword = "SHARE_PASSWORD";
+        e.appId = "APP_ID";
     }(a || (a = {})), function(e) {
         e.userAgent = "netdisk;P2SP;2.2.60.26";
     }(o || (o = {}));
@@ -98,7 +97,7 @@
     n.d(t, "a", (function() {
         return p;
     }));
-    var r = n(1), a = n(12), o = n(16), i = n(15), l = n(9), u = n(8);
+    var r = n(1), a = n(12), o = n(16), i = n(15), l = n(10), u = n(8);
     var c = function() {
         function e(t, n) {
             Object(o.a)(this, e), this.intervalId = void 0, this.request = void 0, this._speedOverlay = void 0, 
@@ -181,7 +180,7 @@
                 return new e(t);
             }
         } ]), e;
-    }(), f = n(6), d = n(10), p = {
+    }(), f = n(6), d = n(9), p = {
         maxDownloadCount: 2,
         allDownloads: {},
         list: unsafeWindow.require("system-core:context/context.js").instanceForSystem.list,
@@ -199,6 +198,7 @@
             return this.list.getList();
         },
         user: unsafeWindow.require("system-core:context/context.js").instanceForSystem.data.user,
+        cookie: unsafeWindow.require("base:widget/tools/service/tools.cookie.js"),
         initWidgetContext: function(e) {
             var t = unsafeWindow.require("function-widget-1:download/util/context.js"), n = function() {
                 t.getContext() || t.setContext(unsafeWindow.require("system-core:context/context.js").instanceForSystem), 
@@ -266,7 +266,7 @@
         })), n.d(t, "b", (function() {
             return ie;
         }));
-        var r = n(19), a = n(0), o = n.n(a), i = (n(37), n(38)), l = n(39), u = n(31), c = n(22), s = n.n(c);
+        var r = n(18), a = n(0), o = n.n(a), i = (n(37), n(38)), l = n(39), u = n(31), c = n(21), s = n.n(c);
         function f() {
             return (f = Object.assign || function(e) {
                 for (var t = 1; t < arguments.length; t++) {
@@ -908,7 +908,7 @@
         for (r = 0; r < o.length; r++) n = o[r], t.indexOf(n) >= 0 || (a[n] = e[n]);
         return a;
     }
-    var p = n(22), g = n.n(p), h = n(19), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
+    var p = n(21), g = n.n(p), h = n(18), m = "undefined" != typeof window && void 0 !== window.document && void 0 !== window.document.createElement ? r.useLayoutEffect : r.useEffect, b = [], v = [ null, null ];
     function y(e, t) {
         var n = e[1];
         return [ t.payload, n + 1 ];
@@ -1315,7 +1315,7 @@
     })), n.d(t, "c", (function() {
         return m;
     }));
-    var r = n(5), a = n.n(r), o = n(11), i = n(17), l = n(1), u = n(13), c = n(18), s = n(20), f = n(6), d = n(2), p = {
+    var r = n(5), a = n.n(r), o = n(11), i = n(17), l = n(1), u = n(13), c = n(22), s = n(19), f = n(6), d = n(2), p = {
         downloadItems: {},
         processing: 0
     }, g = Object(u.b)({
@@ -1404,31 +1404,6 @@
     t.b = g;
 }, function(e, t, n) {
     "use strict";
-    n.d(t, "a", (function() {
-        return g;
-    }));
-    var r = n(27), a = n(13), o = n(14), i = n(36), l = n(6), u = n(8), c = n(23), s = Object(o.c)({
-        download: u.b.reducer,
-        interface: l.a.reducer,
-        link: c.a.reducer
-    }), f = n(21), d = Object(r.a)(Object(a.c)({
-        serializableCheck: !1
-    }));
-    f.a && d.push(Object(i.createLogger)({
-        diff: !0,
-        collapsed: !0
-    }));
-    var p = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        trace: !0,
-        traceLimit: 10
-    }) : o.d, g = Object(a.a)({
-        reducer: s,
-        middleware: d,
-        devTools: !1,
-        enhancers: [ p ]
-    });
-}, function(e, t, n) {
-    "use strict";
     n.d(t, "d", (function() {
         return r;
     })), n.d(t, "a", (function() {
@@ -1474,6 +1449,31 @@
             r.type = "hidden", r.name = e, r.value = t[e], n.appendChild(r);
         })), document.body.appendChild(n), n.submit(), document.body.removeChild(n);
     }
+}, function(e, t, n) {
+    "use strict";
+    n.d(t, "a", (function() {
+        return g;
+    }));
+    var r = n(27), a = n(13), o = n(14), i = n(36), l = n(6), u = n(8), c = n(23), s = Object(o.c)({
+        download: u.b.reducer,
+        interface: l.a.reducer,
+        link: c.a.reducer
+    }), f = n(20), d = Object(r.a)(Object(a.c)({
+        serializableCheck: !1
+    }));
+    f.a && d.push(Object(i.createLogger)({
+        diff: !0,
+        collapsed: !0
+    }));
+    var p = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        trace: !0,
+        traceLimit: 10
+    }) : o.d, g = Object(a.a)({
+        reducer: s,
+        middleware: d,
+        devTools: !1,
+        enhancers: [ p ]
+    });
 }, function(e, t, n) {
     "use strict";
     function r(e, t, n, r, a, o, i) {
@@ -2518,133 +2518,6 @@
     }));
 }, function(e, t, n) {
     "use strict";
-    n.d(t, "d", (function() {
-        return c;
-    })), n.d(t, "b", (function() {
-        return s;
-    })), n.d(t, "a", (function() {
-        return f;
-    })), n.d(t, "c", (function() {
-        return d;
-    })), n.d(t, "e", (function() {
-        return p;
-    }));
-    var r = n(5), a = n.n(r), o = n(11), i = n(1), l = n(12), u = n(2);
-    function c(e) {
-        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
-        return new Promise((function(t, n) {
-            l.a.xmlHttpRequest({
-                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
-                method: "GET",
-                responseType: "json",
-                headers: {
-                    "User-Agent": i.a.userAgent
-                },
-                onload: function(e) {
-                    return e.response.client_ip ? t(e) : n(e);
-                }
-            });
-        }));
-    }
-    function s(e, t) {
-        var n = e.url, r = e.serverFilename, a = e.progress, o = void 0;
-        return a.percentCount = 0, a.speedOverlay = 0, new Promise((function(u, c) {
-            var f;
-            a.request = l.a.download({
-                url: n,
-                name: t ? (f = r, f + ".__________重命名我.zip") : r,
-                saveAs: !0,
-                headers: {
-                    Host: "qdall01.baidupcs.com",
-                    Accept: "*/*",
-                    "User-Agent": i.a.userAgent,
-                    "Accept-Encoding": "identity",
-                    "Accept-Language": "ja-JP",
-                    "Accept-Charset": "*"
-                },
-                onprogress: function(e) {
-                    o = e, a.percentCount = Math.round(100 * o.loaded / o.total);
-                },
-                onload: function() {
-                    a.intervalId && clearInterval(a.intervalId), a.percentCount = 100, a.speedOverlay = 0, 
-                    a.status = i.b.completed, l.a.notification({
-                        text: "下载完成",
-                        title: r,
-                        highlight: !0
-                    }), u();
-                },
-                onerror: function(t) {
-                    a.intervalId && clearInterval(a.intervalId), a.percentCount = 0, a.speedOverlay = 0, 
-                    "not_whitelisted" !== t.error ? (a.status = i.b.error, 0 === Object.keys(t).length ? c(new Error("user is not authorized, hitcode:122, plz try again")) : c(new Error(t.error))) : s(e, !0);
-                }
-            });
-            var d = 0;
-            a.intervalId = window.setInterval((function() {
-                if (o) {
-                    var e = 2 * (o.loaded - d);
-                    d = o.loaded, a.speedOverlay = e;
-                }
-            }), 500);
-        }));
-    }
-    function f(e) {
-        var t = u.a.list, n = u.a.jquery;
-        return new Promise((function(r, a) {
-            n.post("/share/set?channel=chunlei&clienttype=0&web=1", {
-                schannel: 4,
-                channel_list: "[]",
-                period: 7,
-                pwd: "qqqq",
-                fid_list: n.stringify(e ? [ e ] : t.getSelected().map((function(e) {
-                    return e.fs_id;
-                })))
-            }, (function(e) {
-                r(e);
-            })).error((function(e) {
-                a(e);
-            }));
-        }));
-    }
-    function d(e) {
-        var t = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
-        return new Promise((function(n, r) {
-            try {
-                u.a.dlinkService().then((function(r) {
-                    var a = e.map((function(e) {
-                        return e.fsId;
-                    })), o = t ? "batch" : "nolimit";
-                    r.getDlinkPan(JSON.stringify(a), o, n);
-                }));
-            } catch (e) {
-                r(e);
-            }
-        }));
-    }
-    function p(e, t) {
-        return g.apply(this, arguments);
-    }
-    function g() {
-        return (g = Object(o.a)(a.a.mark((function e(t, n) {
-            return a.a.wrap((function(e) {
-                for (;;) switch (e.prev = e.next) {
-                  case 0:
-                    return e.next = 2, fetch("https://pan.dotennin.ml/?link=".concat(encodeURI(t), "%20%E6%8F%90%E5%8F%96%E7%A0%81:%20").concat(n));
-
-                  case 2:
-                    return e.next = 4, e.sent.json();
-
-                  case 4:
-                    return e.abrupt("return", e.sent);
-
-                  case 5:
-                  case "end":
-                    return e.stop();
-                }
-            }), e);
-        })))).apply(this, arguments);
-    }
-}, function(e, t, n) {
-    "use strict";
     e.exports = n(50);
 }, function(e, t, n) {
     "use strict";
@@ -2666,7 +2539,7 @@
     t.a = r;
 }, function(e, t, n) {
     "use strict";
-    var r = n(19), a = {
+    var r = n(18), a = {
         childContextTypes: !0,
         contextType: !0,
         contextTypes: !0,
@@ -2727,6 +2600,109 @@
     };
 }, function(e, t, n) {
     "use strict";
+    n.d(t, "d", (function() {
+        return i;
+    })), n.d(t, "b", (function() {
+        return l;
+    })), n.d(t, "a", (function() {
+        return u;
+    })), n.d(t, "c", (function() {
+        return c;
+    }));
+    n(5), n(11);
+    var r = n(1), a = n(12), o = n(2);
+    function i(e) {
+        if (null !== e.match(/^\/sharelink\d+/)) throw new Error('需要先「保存到我的百度网盘」后<br />在网盘列表(<a target="_blank" href="https://pan.baidu.com/disk/home">https://pan.baidu.com/disk/home</a>)中下载');
+        return new Promise((function(t, n) {
+            a.a.xmlHttpRequest({
+                url: "http://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&ver=2.0&method=locatedownload&path=" + encodeURIComponent(e),
+                method: "GET",
+                responseType: "json",
+                headers: {
+                    "User-Agent": r.a.userAgent
+                },
+                onload: function(e) {
+                    return e.response.client_ip ? t(e) : n(e);
+                }
+            });
+        }));
+    }
+    function l(e, t) {
+        var n = e.url, o = e.serverFilename, i = e.progress, u = void 0;
+        return i.percentCount = 0, i.speedOverlay = 0, new Promise((function(c, s) {
+            var f;
+            i.request = a.a.download({
+                url: n,
+                name: t ? (f = o, f + ".__________重命名我.zip") : o,
+                saveAs: !0,
+                headers: {
+                    Host: "qdall01.baidupcs.com",
+                    Accept: "*/*",
+                    "User-Agent": r.a.userAgent,
+                    "Accept-Encoding": "identity",
+                    "Accept-Language": "ja-JP",
+                    "Accept-Charset": "*"
+                },
+                onprogress: function(e) {
+                    u = e, i.percentCount = Math.round(100 * u.loaded / u.total);
+                },
+                onload: function() {
+                    i.intervalId && clearInterval(i.intervalId), i.percentCount = 100, i.speedOverlay = 0, 
+                    i.status = r.b.completed, a.a.notification({
+                        text: "下载完成",
+                        title: o,
+                        highlight: !0
+                    }), c();
+                },
+                onerror: function(t) {
+                    i.intervalId && clearInterval(i.intervalId), i.percentCount = 0, i.speedOverlay = 0, 
+                    "not_whitelisted" !== t.error ? (i.status = r.b.error, 0 === Object.keys(t).length ? s(new Error("user is not authorized, hitcode:122, plz try again")) : s(new Error(t.error))) : l(e, !0);
+                }
+            });
+            var d = 0;
+            i.intervalId = window.setInterval((function() {
+                if (u) {
+                    var e = 2 * (u.loaded - d);
+                    d = u.loaded, i.speedOverlay = e;
+                }
+            }), 500);
+        }));
+    }
+    function u(e) {
+        var t = o.a.list, n = o.a.jquery;
+        return new Promise((function(r, a) {
+            n.post("/share/set?channel=chunlei&clienttype=0&web=1", {
+                schannel: 4,
+                channel_list: "[]",
+                period: 7,
+                pwd: "qqqq",
+                fid_list: n.stringify(e ? [ e ] : t.getSelected().map((function(e) {
+                    return e.fs_id;
+                })))
+            }, (function(e) {
+                r(e);
+            })).error((function(e) {
+                a(e);
+            }));
+        }));
+    }
+    function c(e) {
+        var t = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
+        return new Promise((function(n, r) {
+            try {
+                o.a.dlinkService().then((function(r) {
+                    var a = e.map((function(e) {
+                        return e.fsId;
+                    })), o = t ? "batch" : "nolimit";
+                    r.getDlinkPan(JSON.stringify(a), o, n);
+                }));
+            } catch (e) {
+                r(e);
+            }
+        }));
+    }
+}, function(e, t, n) {
+    "use strict";
     n.d(t, "b", (function() {
         return p;
     })), n.d(t, "c", (function() {
@@ -2734,7 +2710,7 @@
     })), n.d(t, "d", (function() {
         return h;
     }));
-    var r = n(5), a = n.n(r), o = n(11), i = n(13), l = n(18), u = n(1), c = n(10), s = {
+    var r = n(5), a = n.n(r), o = n(11), i = n(13), l = n(22), u = n(9), c = n(2), s = {
         response: void 0,
         progress: 0,
         shareLink: {
@@ -2774,7 +2750,7 @@
                         return n.prev = 0, f.actions.requestDownload(), n.next = 4, Object(l.c)(e);
 
                       case 4:
-                        o = n.sent, t = t || d[Object(c.c)(d.length)], o.dlink.forEach((function(n) {
+                        o = n.sent, t = t || d[Object(u.c)(d.length)], o.dlink.forEach((function(n) {
                             var r = e.find((function(e) {
                                 return e.fsId.toString() === n.fs_id;
                             }));
@@ -2807,7 +2783,7 @@
                     n = t.sent, r = {
                         surl: n.shorturl.replace("https://pan.baidu.com/s/", ""),
                         pwd: "qqqq"
-                    }, Object(c.e)("https://pan.dotennin.ml", r), t.next = 12;
+                    }, Object(u.e)("https://pan.dotennin.ml", r), t.next = 12;
                     break;
 
                   case 9:
@@ -2820,32 +2796,26 @@
             }), t, null, [ [ 0, 9 ] ]);
         })));
     }, h = function() {
-        return function() {
-            var e = Object(o.a)(a.a.mark((function e(t) {
-                var n, r;
-                return a.a.wrap((function(e) {
-                    for (;;) switch (e.prev = e.next) {
-                      case 0:
-                        return e.prev = 0, f.actions.requestShareLinks(), n = window.localStorage.getItem(u.c.sharePassword), 
-                        e.next = 5, Object(l.e)(window.location.href.replace(window.location.hash, ""), n);
-
-                      case 5:
-                        r = e.sent, t(f.actions.successShareLinks(r)), e.next = 12;
-                        break;
-
-                      case 9:
-                        e.prev = 9, e.t0 = e.catch(0), f.actions.failureShareLinks();
-
-                      case 12:
-                      case "end":
-                        return e.stop();
+        return Object(o.a)(a.a.mark((function e() {
+            var t;
+            return a.a.wrap((function(e) {
+                for (;;) switch (e.prev = e.next) {
+                  case 0:
+                    try {
+                        f.actions.requestShareLinks(), t = {
+                            surl: window.location.href.replace(window.location.hash, "").replace(window.location.origin + "/s/", ""),
+                            randsk: c.a.cookie.getCookie("BDCLND")
+                        }, Object(u.e)("https://pan.dotennin.ml", t);
+                    } catch (e) {
+                        f.actions.failureShareLinks();
                     }
-                }), e, null, [ [ 0, 9 ] ]);
-            })));
-            return function(t) {
-                return e.apply(this, arguments);
-            };
-        }();
+
+                  case 1:
+                  case "end":
+                    return e.stop();
+                }
+            }), e);
+        })));
     };
     t.a = f;
 }, function(e, t, n) {
@@ -2911,7 +2881,7 @@
     }).call(this, n(34), n(32)(e));
 }, function(e, t, n) {
     "use strict";
-    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(20), p = n(10), g = Object(l.b)((function(e) {
+    var r = n(3), a = n(0), o = n.n(a), i = n(17), l = n(4), u = n(2), c = n(1), s = n(6), f = n(8), d = n(19), p = n(9), g = Object(l.b)((function(e) {
         return {
             autoStart: e.interface.autoStart,
             downloadable: Object(d.a)(e)
@@ -3546,7 +3516,7 @@
         }, o.a.createElement("span", {
             className: "text"
         }, t)));
-    }, We = n(23), Ve = n(9), $e = Object(r.c)("div").withConfig({
+    }, We = n(23), Ve = n(10), $e = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:flex;justify-content:center;flex-direction:column;" ]), qe = a.memo((function(e) {
         var t = u.a.allDownloads[e.fsId], n = Object(l.c)(), r = function() {
@@ -3556,11 +3526,11 @@
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         if (e.prev = 0, r = u.a.ui, a = u.a.user, !Object(p.b)().inShareScreen) {
-                            e.next = 10;
+                            e.next = 9;
                             break;
                         }
-                        if (a.self) {
-                            e.next = 10;
+                        if (null == a ? void 0 : a.self) {
+                            e.next = 9;
                             break;
                         }
                         return r.tip({
@@ -3570,11 +3540,9 @@
                         }), e.next = 7, n(Object(We.d)());
 
                       case 7:
-                        return n(s.a.actions.change({
-                            shareLinksPortalOpen: !0
-                        })), r.hideTip(), e.abrupt("return");
+                        return r.hideTip(), e.abrupt("return");
 
-                      case 10:
+                      case 9:
                         u.a.dialog.confirm({
                             title: "生成共享链接确认",
                             body: '将自动创建私有链接到共享服务器(<span style="color: red">隐私数据不推荐使用</span>)<br />是否继续？',
@@ -3599,17 +3567,17 @@
                                     return e.apply(this, arguments);
                                 };
                             }()
-                        }), e.next = 16;
+                        }), e.next = 15;
                         break;
 
-                      case 13:
-                        throw e.prev = 13, e.t0 = e.catch(0), new Error("生成共享链接失败");
+                      case 12:
+                        throw e.prev = 12, e.t0 = e.catch(0), new Error("生成共享链接失败");
 
-                      case 16:
+                      case 15:
                       case "end":
                         return e.stop();
                     }
-                }), e, null, [ [ 0, 13 ] ]);
+                }), e, null, [ [ 0, 12 ] ]);
             })));
             return function() {
                 return e.apply(this, arguments);
@@ -3838,7 +3806,7 @@
     })([ ".modal-window{max-width:500px;}" ]), et = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv2"
     })([ "font-size:90%;color:#999;" ]);
-    var tt, nt = Object(l.b)((function(e) {
+    var tt = Object(l.b)((function(e) {
         return {
             configModalOpen: e.interface.configModalOpen,
             autoStart: e.interface.autoStart,
@@ -3913,25 +3881,22 @@
             value: s,
             onChange: c
         }))))));
-    })), rt = n(12);
-    function at() {
+    })), nt = n(12);
+    function rt() {
         var e = v([ '\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    background-color: #2f3439;\n    font-family: "Noto Sans", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won\'t be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, "Courier New", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: \'Roboto\';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  .module-yun-tip {\n    z-index: 999 !important;\n  }\n' ]);
-        return at = function() {
+        return rt = function() {
             return e;
         }, e;
     }
     window.onunload = function() {
-        rt.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
+        nt.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
     }, window.onbeforeunload = function(e) {
         var t = Ve.a.getState().download.downloadItems;
         Object.values(t).some((function(e) {
             return e.status === c.b.downloading;
         })) && (e.preventDefault(), e.returnValue = "有未完成的下载任务， 确认关闭吗?");
-    }, null === (tt = window.document.querySelector("#ts8E18")) || void 0 === tt || tt.addEventListener("input", (function(e) {
-        var t = e.target;
-        localStorage.setItem(c.c.sharePassword, t.value);
-    }));
-    var ot = Object(r.a)(at()), it = n(21), lt = function(e) {
+    };
+    var at = Object(r.a)(rt()), ot = n(20), it = function(e) {
         I(n, e);
         var t = z(n);
         function n(e) {
@@ -3962,7 +3927,7 @@
             value: function() {
                 var e = this.props.error || this.state.error;
                 if (e) {
-                    var t, n = e.toString() + (this.state.errorInfo && it.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
+                    var t, n = e.toString() + (this.state.errorInfo && ot.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
                     return u.a.dialog.alert({
                         body: n,
                         onSure: this.reRenderApp,
@@ -3972,14 +3937,14 @@
                 return this.props.children;
             }
         } ]), n;
-    }(o.a.Component), ut = Object(l.b)((function(e) {
+    }(o.a.Component), lt = Object(l.b)((function(e) {
         return {
             error: e.interface.error
         };
-    }))(lt), ct = Object(r.c)("div").withConfig({
+    }))(it), ut = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "height:60vh;overflow:hidden;" ]);
-    var st = Object(l.b)((function(e) {
+    var ct = Object(l.b)((function(e) {
         var t;
         return {
             open: e.interface.linkPortalOpen,
@@ -3995,7 +3960,7 @@
                     linkPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(ct, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
+        }, o.a.createElement(ut, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
         }, "文件"), o.a.createElement("th", {
             scope: "col"
@@ -4009,10 +3974,10 @@
                 href: e.link
             }, "点击下载")));
         })))))) : null;
-    })), ft = Object(r.c)("div").withConfig({
+    })), st = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "height:60vh;overflow:hidden;" ]);
-    var dt = Object(l.b)((function(e) {
+    var ft = Object(l.b)((function(e) {
         return {
             open: e.interface.shareLinksPortalOpen,
             response: e.link.shareLink.response
@@ -4027,7 +3992,7 @@
                     shareLinksPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(ft, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
+        }, o.a.createElement(st, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
         }, "文件"), o.a.createElement("th", {
             scope: "col"
@@ -4045,11 +4010,11 @@
                 href: e.link
             }, "点击下载")));
         })))))) : null;
-    })), pt = Object(r.c)("div").withConfig({
+    })), dt = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:none;" ]);
     t.a = function() {
-        return o.a.createElement(o.a.Fragment, null, o.a.createElement(pt, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(ot, null), o.a.createElement(ut, null, o.a.createElement(Ke, null), o.a.createElement(nt, null), o.a.createElement(g, null), o.a.createElement(dt, null), o.a.createElement(st, null)));
+        return o.a.createElement(o.a.Fragment, null, o.a.createElement(dt, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(at, null), o.a.createElement(lt, null, o.a.createElement(Ke, null), o.a.createElement(tt, null), o.a.createElement(g, null), o.a.createElement(ft, null), o.a.createElement(ct, null)));
     };
 }, function(e, t, n) {
     "use strict";
@@ -5149,7 +5114,7 @@
 }, function(e, t, n) {
     "use strict";
     n.r(t), function(e) {
-        var t = n(5), r = n.n(t), a = n(11), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(21), f = n(10), d = n(4), p = n(9), g = n(30);
+        var t = n(5), r = n.n(t), a = n(11), o = n(0), i = n.n(o), l = n(25), u = n.n(l), c = n(28), s = n(20), f = n(9), d = n(4), p = n(10), g = n(30);
         function h(e) {
             u.a.render(i.a.createElement(d.a, {
                 store: p.a

@@ -18,10 +18,9 @@ const Links = (props: Props) => {
     try {
       const { ui, user } = InstanceForSystem
       if (getLocation().inShareScreen) {
-        if (!user.self) {
+        if (!user?.self) {
           ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
           await dispatch(fetchShareLinksFromLocation())
-          dispatch(interfaceModule.actions.change({ shareLinksPortalOpen: true }))
           ui.hideTip()
           return
         }
@@ -32,7 +31,6 @@ const Links = (props: Props) => {
         onSure: async () => {
           InstanceForSystem.ui.tip({ autoClose: false, mode: 'loading', msg: '生成链接中...' })
           dispatch(fetchShareLinks(targetItem))
-          // dispatch(interfaceModule.actions.change({ shareLinksPortalOpen: true }))
           ui.hideTip()
         },
       })
