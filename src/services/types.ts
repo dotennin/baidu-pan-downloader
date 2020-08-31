@@ -12,7 +12,6 @@ export enum ValueTypes {
   autoStart = 'AUTO_START',
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
   appId = 'APP_ID',
-  sharePassword = 'SHARE_PASSWORD',
 }
 
 export enum HeaderTypes {
@@ -170,6 +169,11 @@ export interface IInstance {
   dlinkService: {
     getDlinkPan: (fsidListStringfy: string, type: 'batch' | 'nolimit', callback: Function) => void
     getDlinkShare: (data: object, callback: Function) => void
+  }
+
+  cookie: {
+    getCookie: (v: string) => string
+    setCookie: (v: string) => void
   }
 }
 

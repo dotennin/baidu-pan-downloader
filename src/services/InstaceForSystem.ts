@@ -32,6 +32,7 @@ const InstanceForSystem = {
     return this.list.getList()
   },
   user: unsafeWindow.require('system-core:context/context.js').instanceForSystem.data.user as IInstance['user'],
+  cookie: unsafeWindow.require('base:widget/tools/service/tools.cookie.js') as IInstance['cookie'],
   initWidgetContext: function(callback?: Function) {
     const widget = unsafeWindow.require('function-widget-1:download/util/context.js')
     const initFunc = function() {
