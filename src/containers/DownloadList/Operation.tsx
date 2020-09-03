@@ -5,8 +5,8 @@ import { IStoreState } from '../../store'
 import { connect, useDispatch } from 'react-redux'
 import downloadModule, { addNextDownloadRequest, fetchItem } from '../../modules/downloadModule'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
-import { Icon } from '../../components/Icon'
 import { getLocation } from '../../utils'
+import { ActionButton } from '../../components/ActionButton'
 
 interface IProps {
   fsId: ItemProxy['fsId']
@@ -59,15 +59,15 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
     >
       {getLocation().inDiskScreen && (
         <>
-          <Icon
-            name={'play_arrow'}
+          <ActionButton
+            icon={'play_arrow'}
             onClick={() => dispatch(fetchItem(targetItem))}
             className={`${
               [StatusTypes.downloading, StatusTypes.inQueued].includes(status) || targetItem.isDir ? 'disabled' : ''
             }`}
           />
-          <Icon
-            name={'stop'}
+          <ActionButton
+            icon={'stop'}
             onClick={stopItem}
             className={`${
               [StatusTypes.downloading, StatusTypes.inQueued].includes(status) && !targetItem.isDir ? '' : 'disabled'
@@ -75,14 +75,14 @@ function Operation({ fsId, status }: ReturnType<typeof mapStoreToProps> & IProps
           />
         </>
       )}
-      <Icon
-        name={'clear'}
+      <ActionButton
+        icon={'clear'}
         css={`
           opacity: 0;
           cursor: unset !important;
         `}
       />
-      <Icon name={'clear'} onClick={deleteItem} />
+      <ActionButton icon={'clear'} onClick={deleteItem} />
     </div>
   )
 }
