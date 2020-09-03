@@ -4,11 +4,13 @@ import { ReactComponent as C } from '../assets/icons/clear-24px.svg'
 import { ReactComponent as PA } from '../assets/icons/pause-24px.svg'
 import { ReactComponent as P } from '../assets/icons/play_arrow-24px.svg'
 import { ReactComponent as S } from '../assets/icons/stop-24px.svg'
+import { ReactComponent as keyboardArrowUp } from '../assets/icons/keyboard_arrow_up.svg'
+import { ReactComponent as keyboardArrowDown } from '../assets/icons/keyboard_arrow_down.svg'
 import { IStandardProps } from './types'
 
 type Props = IStandardProps &
   React.SVGAttributes<HTMLOrSVGElement> & {
-    name: 'clear' | 'open_in_new' | 'pause' | 'play_arrow' | 'stop'
+    name: 'clear' | 'open_in_new' | 'pause' | 'play_arrow' | 'stop' | 'keyboard_arrow_up' | 'keyboard_arrow_down'
   }
 
 const IconLoader: Record<Props['name'], React.FunctionComponent> = {
@@ -17,6 +19,8 @@ const IconLoader: Record<Props['name'], React.FunctionComponent> = {
   stop: S,
   pause: PA,
   play_arrow: P,
+  keyboard_arrow_up: keyboardArrowUp,
+  keyboard_arrow_down: keyboardArrowDown,
 }
 
 export const Icon: React.FC<Props> = ({ name, ...rest }) => {
@@ -27,11 +31,6 @@ export const Icon: React.FC<Props> = ({ name, ...rest }) => {
         svg {
           cursor: pointer;
           transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
-          &:hover {
-            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-            background-color: rgba(255, 255, 255, 0.56);
-          }
         }
       `}
     >

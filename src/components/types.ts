@@ -1,9 +1,5 @@
 import { ComponentType, Ref, RefObject, ReactNode, CSSProperties } from 'react'
 
-/**
- * All standard components exposed by `uap-ui-component` are `StyledComponents` with
- * certain `as` and `ref`
- */
 export type IStandardProps = IStyledComponentProps & IStandardStyledProps
 
 export interface IStyledComponentProps {
