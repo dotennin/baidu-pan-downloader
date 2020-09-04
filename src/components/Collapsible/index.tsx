@@ -112,7 +112,11 @@ const Collapsible = (props: ICollapsible) => {
           <GridRow style={{ width: '100%', height: '67px' }}>
             <div style={{ margin: '15px' }}>
               {/* arrows are flipped/animated by CSS, but somehow still need different icons */}
-              <ActionButton icon={open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} onClick={onClick} size="large" />
+              <ActionButton
+                icon={open ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}
+                onClick={onClick}
+                size="large"
+              />
             </div>
             <GridRow style={{ flex: '1 1 auto' }}>
               <GridCol align="left" sizeL={6}>

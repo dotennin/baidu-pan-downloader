@@ -12,11 +12,11 @@ export const GridContext = React.createContext({
 const StyledDiv = styled.div<IGridRow>`
   box-sizing: border-box;
   flex: 0 1 auto;
-  display: ${(props) => props.theme.gridRow.display};
-  align-items: ${(props) => (props.alignItems ? props.alignItems : props.theme.gridRow.alignItems)};
-  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : props.theme.gridRow.justifyContent)};
-  flex-wrap: ${(props) => props.theme.gridRow.flexWrap};
-  position: ${(props) => props.theme.gridRow.position};
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  position: relative;
 
   margin-left: ${(props) => (props.colSpacing ? '-' + String(props.colSpacing / 2) : 0)}px;
   margin-right: ${(props) => (props.colSpacing ? '-' + String(props.colSpacing / 2) : 0)}px;
