@@ -3735,7 +3735,10 @@
         var t = e.children, n = e.selected, r = b(e, [ "children", "selected" ]);
         return o.a.createElement(ut, Object.assign({
             className: "g-float-left create-bt-button upload-wrapper g-button".concat(n ? " g-button-blue" : ""),
-            href: "javascript:void(0);"
+            href: "#",
+            onClick: function(e) {
+                return e.preventDefault();
+            }
         }, r), o.a.createElement(ct, {
             className: "g-button-right"
         }, o.a.createElement("span", {
@@ -3898,14 +3901,8 @@
     }
     var xt = r.c.div.withConfig({
         displayName: "StyledDiv"
-    })([ "box-sizing:content-box;position:", ";display:", ";flex-direction:", ";flex-wrap:", ";justify-content:", ";align-items:", ";padding-left:", "px;padding-right:", "px;padding-bottom:", "px;", " ", ";@media screen and (max-width:992px){", " ", ";}@media screen and (max-width:550px){", " ", ";}" ], (function(e) {
-        return e.theme.gridCol.position;
-    }), (function(e) {
-        return e.theme.gridCol.display;
-    }), (function(e) {
+    })([ "box-sizing:content-box;position:relative;display:flex;flex-direction:", ";flex-wrap:wrap;justify-content:", ";align-items:", ";padding-left:", "px;padding-right:", "px;padding-bottom:", "px;", " ", ";@media screen and (max-width:992px){", " ", ";}@media screen and (max-width:550px){", " ", ";}" ], (function(e) {
         return e.direction ? e.direction : "column";
-    }), (function(e) {
-        return e.theme.gridCol.flexWrap;
     }), (function(e) {
         return e.direction && "row" === e.direction ? kt(e.align) : kt(e.valign);
     }), (function(e) {
@@ -4094,12 +4091,12 @@
         };
     }))((function(e) {
         var t = e.fsIdList, n = e.name, r = m(o.a.useState(!1), 2), a = r[0], i = r[1];
-        return o.a.createElement(at, {
+        return o.a.createElement(o.a.Fragment, null, o.a.createElement(at, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
-            var n = u.a.allDownloads[e], r = n.serverFilename, l = n.size;
-            return o.a.createElement(o.a.Fragment, null, o.a.createElement("div", null, o.a.createElement("tr", {
+            var n = u.a.allDownloads[e], r = n.serverFilename, a = n.size;
+            return o.a.createElement("tr", {
                 key: t,
                 id: "row-" + e
             }, o.a.createElement("td", {
@@ -4108,7 +4105,7 @@
                 }
             }, r), o.a.createElement("td", null, o.a.createElement(gt, {
                 fsId: e
-            })), o.a.createElement("td", null, u.a.friendlyFileSize(l)), o.a.createElement("td", null, o.a.createElement("div", {
+            })), o.a.createElement("td", null, u.a.friendlyFileSize(a)), o.a.createElement("td", null, o.a.createElement("div", {
                 className: "wrap"
             }, o.a.createElement(et, {
                 fsId: e
@@ -4116,14 +4113,14 @@
                 fsId: e
             })), o.a.createElement("td", null, o.a.createElement(Je, {
                 fsId: e
-            }))), o.a.createElement(Nt, {
-                onClick: function() {
-                    return i(!a);
-                },
-                open: a,
-                variant: "arrowBottom"
-            }, "3434 3434 3434 3434 3434")));
-        })));
+            })));
+        }))), o.a.createElement(St, null, o.a.createElement(Nt, {
+            onClick: function() {
+                return i(!a);
+            },
+            open: a,
+            variant: "arrowBottom"
+        }, "33333333333333")));
     }));
     var At = Object(l.b)((function(e) {
         return {

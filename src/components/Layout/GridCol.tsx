@@ -38,10 +38,10 @@ function calcAlign(direction?: string) {
 
 const StyledDiv = styled.div<IGridCol & { context: any }>`
   box-sizing: content-box;
-  position: ${(props) => props.theme.gridCol.position};
-  display: ${(props) => props.theme.gridCol.display};
+  position: relative;
+  display: flex;
   flex-direction: ${(props) => (props.direction ? props.direction : 'column')};
-  flex-wrap: ${(props) => props.theme.gridCol.flexWrap};
+  flex-wrap: wrap;
   justify-content: ${(props) =>
     props.direction && props.direction === 'row' ? calcAlign(props.align) : calcAlign(props.valign)};
   align-items: ${(props) =>
