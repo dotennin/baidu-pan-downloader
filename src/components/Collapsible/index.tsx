@@ -29,6 +29,9 @@ const StyledBox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    &:focus {
+      background-color: rgba(25, 118, 210, 0.12);
+    }
     .content {
       transition: height .3s;
       min-height: 0;
@@ -53,36 +56,14 @@ const StyledBox = styled.div`
     },
 `
 
-const calcHeight = (props: any, container: any) => {
-  if (!props.open) {
-    return '0px'
-  }
-
-  //make clone element, append it to body to get height, remove it to clean up
-  const element = container.current.cloneNode(true) as HTMLElement
-  element.style.width = container.current.getBoundingClientRect().width + 'px'
-  element.style.position = 'absolute'
-  element.style.left = '-100vw'
-  element.style.height = 'auto'
-  document.getElementsByTagName('body')[0].appendChild(element)
-
-  const height = element.getBoundingClientRect().height + 'px'
-  document.getElementsByTagName('body')[0].removeChild(element)
-
-  setTimeout(() => {
-    if (container && container.current && container.current.className.indexOf('finally') <= 0) {
-      container.current.className += ' finally'
-    }
-  }, 400)
-  return height
-}
-
 const config = { attributes: true, childList: true, subtree: true }
 
-const Collapsible = (props: ICollapsible) => {
+const Collapsible = React.memo((props: ICollapsible) => {
+  const { variant, title, addendum, children, nonIcon, toggleCollapses, ...rest } = props
   const container = useRef(null)
   const content = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState('0px')
+  const [open, setOpen] = useState(Boolean(props.expanded))
 
   // these are to make the component realize that it's content has changed
   const [random, setRandom] = useState(1)
@@ -92,8 +73,32 @@ const Collapsible = (props: ICollapsible) => {
     })
   )
 
+  const calcHeight = (container: React.MutableRefObject<any>) => {
+    if (!open) {
+      return '0px'
+    }
+
+    //make clone element, append it to body to get height, remove it to clean up
+    const element = container.current.cloneNode(true) as HTMLElement
+    element.style.width = container.current.getBoundingClientRect().width + 'px'
+    element.style.position = 'absolute'
+    element.style.left = '-100vw'
+    element.style.height = 'auto'
+    document.getElementsByTagName('body')[0].appendChild(element)
+
+    const height = element.getBoundingClientRect().height + 'px'
+    document.getElementsByTagName('body')[0].removeChild(element)
+
+    setTimeout(() => {
+      if (container && container.current && container.current.className.indexOf('finally') <= 0) {
+        container.current.className += ' finally'
+      }
+    }, 400)
+    return height
+  }
+
   useLayoutEffect(() => {
-    setHeight(calcHeight(props, container))
+    setHeight(calcHeight(container))
 
     // these are to make the component realize that it's content has changed
     if (observer && content.current) {
@@ -102,26 +107,65 @@ const Collapsible = (props: ICollapsible) => {
     }
 
     // this works, so ignore the issue
-  }, [props.open, random])
+  }, [open, random])
+  const handleClick = () => {
+    setOpen(!open)
+    typeof toggleCollapses === 'function' && toggleCollapses(!open)
+  }
 
-  const { variant, title, addendum, children, onClick, open, ...rest } = props
   return (
     <>
       {variant === 'arrowLeft' ? (
         <StyledBox className={open ? 'collapsible open' : 'collapsible'} {...rest}>
-          <GridRow style={{ width: '100%', height: '67px' }}>
-            <div style={{ margin: '15px' }}>
-              {/* arrows are flipped/animated by CSS, but somehow still need different icons */}
+          <GridRow style={{ width: '100%' }}>
+            {!nonIcon && (
               <ActionButton
                 icon={open ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}
-                onClick={onClick}
-                size="large"
+                onClick={handleClick}
+                size={'small'}
+                css={`
+                  button {
+                    width: auto;
+                    height: auto;
+                    span {
+                      width: auto;
+                      height: 18px;
+                    }
+                  }
+                  svg {
+                    width: 18px;
+                    height: 18px;
+                  }
+                `}
               />
-            </div>
+            )}
             <GridRow style={{ flex: '1 1 auto' }}>
-              <GridCol align="left" sizeL={6}>
-                <H4>{title}</H4>
-              </GridCol>
+              <span
+                onClick={handleClick}
+                css={`
+                  -webkit-font-smoothing: antialiased;
+                  color: rgba(0, 0, 0, 0.87);
+                  list-style: none;
+                  -webkit-tap-highlight-color: transparent;
+                  cursor: pointer;
+                  box-sizing: inherit;
+                  margin: 0;
+                  text-align: left;
+                  font-size: 1rem;
+                  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+                  font-weight: 400;
+                  line-height: 1.5;
+                  letter-spacing: 0.00938em;
+                  width: 100%;
+                  position: relative;
+                  margin-left: ${nonIcon ? '18px' : '4px'};
+                  &:hover {
+                    background-color: rgba(0, 0, 0, 0.04);
+                  }
+                `}
+              >
+                {title}
+              </span>
               <GridCol align="left" sizeL={6}>
                 <Body2>{addendum}</Body2>
               </GridCol>
@@ -144,7 +188,11 @@ const Collapsible = (props: ICollapsible) => {
               </GridCol>
             </GridRow>
             <div style={{ margin: '15px' }}>
-              <ActionButton icon={open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} onClick={onClick} size="large" />
+              <ActionButton
+                icon={open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+                onClick={handleClick}
+                size="large"
+              />
             </div>
           </GridRow>
           <div ref={container} style={{ height: height }} className={open ? 'content open' : 'content'}>
@@ -157,16 +205,12 @@ const Collapsible = (props: ICollapsible) => {
             <div ref={content}>{children}</div>
           </div>
           <Spacer height={4} />
-          <ActionButton
-            id="close_collapse"
-            icon={open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-            onClick={onClick}
-            size="small"
-          />
+          <ActionButton icon={open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} onClick={handleClick} size="large" />
         </StyledBox>
       )}
     </>
   )
-}
+})
+Collapsible.displayName = 'Collapsible'
 
 export { Collapsible }

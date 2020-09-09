@@ -3932,232 +3932,8 @@
         }, "本地直链"), a.createElement(kt, {
             onClick: r
         }, "共享直链"));
-    })), Tt = o.a.createContext({
-        colSpacing: 0,
-        colVSpacing: 0,
-        gridSize: 12,
-        mode: !1
-    }), Pt = r.c.div.withConfig({
-        displayName: "StyledDiv"
-    })([ "box-sizing:border-box;flex:0 1 auto;display:flex;align-items:stretch;justify-content:flex-start;flex-wrap:wrap;position:relative;margin-left:", "px;margin-right:", "px;" ], (function(e) {
-        return e.colSpacing ? "-" + String(e.colSpacing / 2) : 0;
-    }), (function(e) {
-        return e.colSpacing ? "-" + String(e.colSpacing / 2) : 0;
-    })), jt = function(e) {
-        N(n, e);
-        var t = z(n);
-        function n(e) {
-            return Object(P.a)(this, n), t.call(this, e);
-        }
-        return Object(j.a)(n, [ {
-            key: "render",
-            value: function() {
-                return o.a.createElement(Pt, Object.assign({}, this.props, {
-                    className: this.props.className ? "gridRow " + this.props.className : "gridRow"
-                }), o.a.createElement(Tt.Provider, {
-                    value: {
-                        colSpacing: this.props.colSpacing,
-                        colVSpacing: this.props.colVSpacing,
-                        gridSize: this.props.gridSize ? this.props.gridSize : 12,
-                        mode: !!this.props.useFlexBasis
-                    }
-                }, this.props.children));
-            }
-        } ]), n;
-    }(o.a.Component), _t = 12;
-    function Nt(e) {
-        var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 ? arguments[2] : void 0;
-        return e ? n ? "flex-basis" : "width: calc(" + e / _t * 100 + "% - " + Number(t) + "px);" : "";
-    }
-    function It(e) {
-        return isNaN(e) ? "" : e > 0 ? "margin-left: " + e / _t * 100 + "%;" : "margin-left:0;";
-    }
-    function At(e) {
-        return e = "left" === e || "top" === e ? "start" : "right" === e || "bottom" === e ? "flex-end" : "center";
-    }
-    var Rt = r.c.div.withConfig({
-        displayName: "StyledDiv"
-    })([ "box-sizing:content-box;position:relative;display:flex;flex-direction:", ";flex-wrap:wrap;justify-content:", ";align-items:", ";padding-left:", "px;padding-right:", "px;padding-bottom:", "px;", " ", ";@media screen and (max-width:992px){", " ", ";}@media screen and (max-width:550px){", " ", ";}" ], (function(e) {
-        return e.direction ? e.direction : "column";
-    }), (function(e) {
-        return e.direction && "row" === e.direction ? At(e.align) : At(e.valign);
-    }), (function(e) {
-        return e.direction && "row" === e.direction ? At(e.valign) : At(e.align);
-    }), (function(e) {
-        return e.context.colSpacing && e.context.colSpacing > 0 ? e.context.colSpacing / 2 : 0;
-    }), (function(e) {
-        return e.context.colSpacing && e.context.colSpacing > 0 ? e.context.colSpacing / 2 : 0;
-    }), (function(e) {
-        return e.context.colVSpacing && e.context.colVSpacing > 0 ? e.context.colVSpacing : 0;
-    }), (function(e) {
-        return Nt(e.sizeL, e.context.colSpacing, e.context.mode);
-    }), (function(e) {
-        return It(void 0 === e.offsetL ? null : e.offsetL);
-    }), (function(e) {
-        return Nt(e.sizeM, e.context.colSpacing, e.context.mode);
-    }), (function(e) {
-        return It(null === e.offsetM ? null : e.offsetM);
-    }), (function(e) {
-        return Nt(e.sizeS, e.context.colSpacing, e.context.mode);
-    }), (function(e) {
-        return It(null === e.offsetS ? null : e.offsetS);
-    })), Dt = function(e) {
-        N(n, e);
-        var t = z(n);
-        function n(e) {
-            return Object(P.a)(this, n), t.call(this, e);
-        }
-        return Object(j.a)(n, [ {
-            key: "render",
-            value: function() {
-                return _t = this.context.gridSize ? this.context.gridSize : 12, o.a.createElement(Rt, Object.assign({
-                    context: this.context
-                }, this.props, {
-                    className: this.props.className ? "gridCol " + this.props.className : "gridCol"
-                }), this.props.children);
-            }
-        } ]), n;
-    }(o.a.Component);
-    Dt.contextType = Tt;
-    var Mt = Dt, zt = r.c.div.withConfig({
-        displayName: "SpacerDiv"
-    })([ "", " ", " ", " ", " ", " ", " ", "" ], (function(e) {
-        var t = e.width;
-        return t ? "width:" + t + "px;" : "";
-    }), (function(e) {
-        var t = e.width;
-        return t ? "min-width:" + t + "px;" : "";
-    }), (function(e) {
-        var t = e.width;
-        return t ? "max-width:" + t + "px;" : "";
-    }), (function(e) {
-        var t = e.height;
-        return t ? "height:" + t + "px;" : "";
-    }), (function(e) {
-        var t = e.height;
-        return t ? "min-height:" + t + "px;" : "";
-    }), (function(e) {
-        return e.height ? "width:100%;min-width: 1px;" : "";
-    }), (function(e) {
-        return e.width ? "height:100%;min-height: 1px;" : "";
-    })), Lt = function(e) {
-        var t = Object.assign({}, e);
-        return o.a.createElement(zt, Object.assign({}, t, {
-            className: "spacer"
-        }));
-    }, Ft = r.c.h3.withConfig({
-        displayName: "H4"
-    })([ "font-size:16px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.63;margin:0;letter-spacing:normal;" ]), Ut = r.c.p.withConfig({
-        displayName: "Body2"
-    })([ "font-size:13px;font-weight:normal;font-style:normal;font-stretch:normal;line-height:1.54;letter-spacing:0.5px;margin:0;" ]), Wt = r.c.div.withConfig({
-        displayName: "StyledBox"
-    })([ "width:100%;display:flex;flex-direction:column;.content{transition:height .3s;min-height:0;overflow:hidden;},.content.open{transition:height .3s;}.content.open.finally{overflow:visible;}#close_collapse{&:focus{background-color:transparent;}&:active{background-color:transparent;}margin:auto;width:32px;height:32px;}," ]), Vt = {
-        attributes: !0,
-        childList: !0,
-        subtree: !0
-    }, Bt = function(e) {
-        var t = Object(a.useRef)(null), n = Object(a.useRef)(null), r = m(Object(a.useState)("0px"), 2), i = r[0], l = r[1], u = m(Object(a.useState)(1), 2), c = u[0], s = u[1], f = m(Object(a.useState)(new MutationObserver((function() {
-            s(Math.random());
-        }))), 1)[0];
-        Object(a.useLayoutEffect)((function() {
-            l(function(e, t) {
-                if (!e.open) return "0px";
-                var n = t.current.cloneNode(!0);
-                n.style.width = t.current.getBoundingClientRect().width + "px", n.style.position = "absolute", 
-                n.style.left = "-100vw", n.style.height = "auto", document.getElementsByTagName("body")[0].appendChild(n);
-                var r = n.getBoundingClientRect().height + "px";
-                return document.getElementsByTagName("body")[0].removeChild(n), setTimeout((function() {
-                    t && t.current && t.current.className.indexOf("finally") <= 0 && (t.current.className += " finally");
-                }), 400), r;
-            }(e, t)), f && n.current && (f.disconnect(), f.observe(n.current, Vt));
-        }), [ e.open, c ]);
-        var d = e.variant, p = e.title, g = e.addendum, h = e.children, v = e.onClick, y = e.open, w = b(e, [ "variant", "title", "addendum", "children", "onClick", "open" ]);
-        return o.a.createElement(o.a.Fragment, null, "arrowLeft" === d ? o.a.createElement(Wt, Object.assign({
-            className: y ? "collapsible open" : "collapsible"
-        }, w), o.a.createElement(jt, {
-            style: {
-                width: "100%",
-                height: "67px"
-            }
-        }, o.a.createElement("div", {
-            style: {
-                margin: "15px"
-            }
-        }, o.a.createElement(ut, {
-            icon: y ? "keyboard_arrow_down" : "keyboard_arrow_right",
-            onClick: v,
-            size: "large"
-        })), o.a.createElement(jt, {
-            style: {
-                flex: "1 1 auto"
-            }
-        }, o.a.createElement(Mt, {
-            align: "left",
-            sizeL: 6
-        }, o.a.createElement(Ft, null, p)), o.a.createElement(Mt, {
-            align: "left",
-            sizeL: 6
-        }, o.a.createElement(Ut, null, g)))), o.a.createElement("div", {
-            ref: t,
-            style: {
-                height: i
-            },
-            className: y ? "content open" : "content"
-        }, o.a.createElement("div", {
-            ref: n
-        }, h))) : "arrowRight" === d ? o.a.createElement(Wt, Object.assign({
-            className: y ? "collapsible open" : "collapsible"
-        }, w), o.a.createElement(jt, {
-            style: {
-                width: "100%",
-                height: "67px"
-            }
-        }, o.a.createElement(jt, {
-            style: {
-                flex: "1 1 auto"
-            }
-        }, o.a.createElement(Mt, {
-            align: "left",
-            sizeL: 6
-        }, o.a.createElement(Ft, null, p)), o.a.createElement(Mt, {
-            align: "left",
-            sizeL: 6
-        }, o.a.createElement(Ut, null, g))), o.a.createElement("div", {
-            style: {
-                margin: "15px"
-            }
-        }, o.a.createElement(ut, {
-            icon: y ? "keyboard_arrow_up" : "keyboard_arrow_down",
-            onClick: v,
-            size: "large"
-        }))), o.a.createElement("div", {
-            ref: t,
-            style: {
-                height: i
-            },
-            className: y ? "content open" : "content"
-        }, o.a.createElement("div", {
-            ref: n
-        }, h))) : o.a.createElement(Wt, Object.assign({
-            className: y ? "collapsible open" : "collapsible"
-        }, w), o.a.createElement("div", {
-            ref: t,
-            style: {
-                height: i
-            },
-            className: y ? "content open" : "content"
-        }, o.a.createElement("div", {
-            ref: n
-        }, h)), o.a.createElement(Lt, {
-            height: 4
-        }), o.a.createElement(ut, {
-            id: "close_collapse",
-            icon: y ? "keyboard_arrow_up" : "keyboard_arrow_down",
-            onClick: v,
-            size: "small"
-        })));
-    };
-    var $t = Object(l.b)((function(e) {
+    }));
+    var Tt = Object(l.b)((function(e) {
         return {
             fsIdList: Object(gt.a)((function(e) {
                 return e.download.downloadItems;
@@ -4166,15 +3942,8 @@
             }))(e)
         };
     }))((function(e) {
-        var t = e.fsIdList, n = e.name, r = m(o.a.useState(!1), 2), a = r[0], i = r[1];
-        return o.a.createElement(Mt, null, o.a.createElement(Bt, {
-            title: ":33",
-            onClick: function() {
-                return i(!a);
-            },
-            open: a,
-            variant: "arrowLeft"
-        }, o.a.createElement(mt, {
+        var t = e.fsIdList, n = e.name;
+        return o.a.createElement(mt, {
             name: n
         }, t.map((function(e, t) {
             if (!u.a.allDownloads[e]) return null;
@@ -4197,9 +3966,9 @@
             })), o.a.createElement("td", null, o.a.createElement(ft, {
                 fsId: e
             })));
-        })))));
+        })));
     }));
-    var qt = Object(l.b)((function(e) {
+    var Pt = Object(l.b)((function(e) {
         return {
             fsIdList: Object(gt.a)((function(e) {
                 return e.download.downloadItems;
@@ -4238,7 +4007,7 @@
             })));
         })));
     }));
-    var Ht = Object(l.b)((function(e) {
+    var jt = Object(l.b)((function(e) {
         return {
             fsIdList: Object(gt.a)((function(e) {
                 return e.download.downloadItems;
@@ -4275,7 +4044,7 @@
             })));
         })));
     }));
-    var Qt = Object(l.b)((function(e) {
+    var _t = Object(l.b)((function(e) {
         return {
             fsIdList: Object(gt.a)((function(e) {
                 return e.download.downloadItems;
@@ -4311,8 +4080,284 @@
                 fsId: e
             })));
         })));
+    })), Nt = o.a.createContext({
+        colSpacing: 0,
+        colVSpacing: 0,
+        gridSize: 12,
+        mode: !1
+    }), It = r.c.div.withConfig({
+        displayName: "StyledDiv"
+    })([ "box-sizing:border-box;flex:0 1 auto;display:flex;align-items:stretch;justify-content:flex-start;flex-wrap:wrap;position:relative;margin-left:", "px;margin-right:", "px;" ], (function(e) {
+        return e.colSpacing ? "-" + String(e.colSpacing / 2) : 0;
+    }), (function(e) {
+        return e.colSpacing ? "-" + String(e.colSpacing / 2) : 0;
+    })), At = function(e) {
+        N(n, e);
+        var t = z(n);
+        function n(e) {
+            return Object(P.a)(this, n), t.call(this, e);
+        }
+        return Object(j.a)(n, [ {
+            key: "render",
+            value: function() {
+                return o.a.createElement(It, Object.assign({}, this.props, {
+                    className: this.props.className ? "gridRow " + this.props.className : "gridRow"
+                }), o.a.createElement(Nt.Provider, {
+                    value: {
+                        colSpacing: this.props.colSpacing,
+                        colVSpacing: this.props.colVSpacing,
+                        gridSize: this.props.gridSize ? this.props.gridSize : 12,
+                        mode: !!this.props.useFlexBasis
+                    }
+                }, this.props.children));
+            }
+        } ]), n;
+    }(o.a.Component), Rt = 12;
+    function Dt(e) {
+        var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0, n = arguments.length > 2 ? arguments[2] : void 0;
+        return e ? n ? "flex-basis" : "width: calc(" + e / Rt * 100 + "% - " + Number(t) + "px);" : "";
+    }
+    function Mt(e) {
+        return isNaN(e) ? "" : e > 0 ? "margin-left: " + e / Rt * 100 + "%;" : "margin-left:0;";
+    }
+    function zt(e) {
+        return e = "left" === e || "top" === e ? "start" : "right" === e || "bottom" === e ? "flex-end" : "center";
+    }
+    var Lt = r.c.div.withConfig({
+        displayName: "StyledDiv"
+    })([ "box-sizing:content-box;position:relative;display:flex;flex-direction:", ";flex-wrap:wrap;justify-content:", ";align-items:", ";padding-left:", "px;padding-right:", "px;padding-bottom:", "px;", " ", ";@media screen and (max-width:992px){", " ", ";}@media screen and (max-width:550px){", " ", ";}" ], (function(e) {
+        return e.direction ? e.direction : "column";
+    }), (function(e) {
+        return e.direction && "row" === e.direction ? zt(e.align) : zt(e.valign);
+    }), (function(e) {
+        return e.direction && "row" === e.direction ? zt(e.valign) : zt(e.align);
+    }), (function(e) {
+        return e.context.colSpacing && e.context.colSpacing > 0 ? e.context.colSpacing / 2 : 0;
+    }), (function(e) {
+        return e.context.colSpacing && e.context.colSpacing > 0 ? e.context.colSpacing / 2 : 0;
+    }), (function(e) {
+        return e.context.colVSpacing && e.context.colVSpacing > 0 ? e.context.colVSpacing : 0;
+    }), (function(e) {
+        return Dt(e.sizeL, e.context.colSpacing, e.context.mode);
+    }), (function(e) {
+        return Mt(void 0 === e.offsetL ? null : e.offsetL);
+    }), (function(e) {
+        return Dt(e.sizeM, e.context.colSpacing, e.context.mode);
+    }), (function(e) {
+        return Mt(null === e.offsetM ? null : e.offsetM);
+    }), (function(e) {
+        return Dt(e.sizeS, e.context.colSpacing, e.context.mode);
+    }), (function(e) {
+        return Mt(null === e.offsetS ? null : e.offsetS);
+    })), Ft = function(e) {
+        N(n, e);
+        var t = z(n);
+        function n(e) {
+            return Object(P.a)(this, n), t.call(this, e);
+        }
+        return Object(j.a)(n, [ {
+            key: "render",
+            value: function() {
+                return Rt = this.context.gridSize ? this.context.gridSize : 12, o.a.createElement(Lt, Object.assign({
+                    context: this.context
+                }, this.props, {
+                    className: this.props.className ? "gridCol " + this.props.className : "gridCol"
+                }), this.props.children);
+            }
+        } ]), n;
+    }(o.a.Component);
+    Ft.contextType = Nt;
+    var Ut = Ft, Wt = r.c.div.withConfig({
+        displayName: "SpacerDiv"
+    })([ "", " ", " ", " ", " ", " ", " ", "" ], (function(e) {
+        var t = e.width;
+        return t ? "width:" + t + "px;" : "";
+    }), (function(e) {
+        var t = e.width;
+        return t ? "min-width:" + t + "px;" : "";
+    }), (function(e) {
+        var t = e.width;
+        return t ? "max-width:" + t + "px;" : "";
+    }), (function(e) {
+        var t = e.height;
+        return t ? "height:" + t + "px;" : "";
+    }), (function(e) {
+        var t = e.height;
+        return t ? "min-height:" + t + "px;" : "";
+    }), (function(e) {
+        return e.height ? "width:100%;min-width: 1px;" : "";
+    }), (function(e) {
+        return e.width ? "height:100%;min-height: 1px;" : "";
+    })), Vt = function(e) {
+        var t = Object.assign({}, e);
+        return o.a.createElement(Wt, Object.assign({}, t, {
+            className: "spacer"
+        }));
+    }, Bt = r.c.h3.withConfig({
+        displayName: "H4"
+    })([ "font-size:16px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.63;margin:0;letter-spacing:normal;" ]), $t = r.c.p.withConfig({
+        displayName: "Body2"
+    })([ "font-size:13px;font-weight:normal;font-style:normal;font-stretch:normal;line-height:1.54;letter-spacing:0.5px;margin:0;" ]), qt = r.c.div.withConfig({
+        displayName: "StyledBox"
+    })([ "width:100%;display:flex;flex-direction:column;&:focus{background-color:rgba(25,118,210,0.12);}.content{transition:height .3s;min-height:0;overflow:hidden;},.content.open{transition:height .3s;}.content.open.finally{overflow:visible;}#close_collapse{&:focus{background-color:transparent;}&:active{background-color:transparent;}margin:auto;width:32px;height:32px;}," ]), Ht = {
+        attributes: !0,
+        childList: !0,
+        subtree: !0
+    }, Qt = Object(r.c)(ut).withConfig({
+        displayName: "_StyledActionButton"
+    })([ "button{width:auto;height:auto;span{width:auto;height:18px;}}svg{width:18px;height:18px;}" ]), Gt = Object(r.c)("span").withConfig({
+        displayName: "_StyledSpan"
+    })([ "-webkit-font-smoothing:antialiased;color:rgba(0,0,0,0.87);list-style:none;-webkit-tap-highlight-color:transparent;cursor:pointer;box-sizing:inherit;margin:0;text-align:left;font-size:1rem;font-family:'Roboto','Helvetica','Arial',sans-serif;font-weight:400;line-height:1.5;letter-spacing:0.00938em;width:100%;position:relative;margin-left:", ";&:hover{background-color:rgba(0,0,0,0.04);}" ], (function(e) {
+        return e._css;
+    })), Kt = o.a.memo((function(e) {
+        var t = e.variant, n = e.title, r = e.addendum, i = e.children, l = e.nonIcon, u = e.toggleCollapses, c = b(e, [ "variant", "title", "addendum", "children", "nonIcon", "toggleCollapses" ]), s = Object(a.useRef)(null), f = Object(a.useRef)(null), d = m(Object(a.useState)("0px"), 2), p = d[0], g = d[1], h = m(Object(a.useState)(Boolean(e.expanded)), 2), v = h[0], y = h[1], w = m(Object(a.useState)(1), 2), x = w[0], k = w[1], E = m(Object(a.useState)(new MutationObserver((function() {
+            k(Math.random());
+        }))), 1)[0];
+        Object(a.useLayoutEffect)((function() {
+            g(function(e) {
+                if (!v) return "0px";
+                var t = e.current.cloneNode(!0);
+                t.style.width = e.current.getBoundingClientRect().width + "px", t.style.position = "absolute", 
+                t.style.left = "-100vw", t.style.height = "auto", document.getElementsByTagName("body")[0].appendChild(t);
+                var n = t.getBoundingClientRect().height + "px";
+                return document.getElementsByTagName("body")[0].removeChild(t), setTimeout((function() {
+                    e && e.current && e.current.className.indexOf("finally") <= 0 && (e.current.className += " finally");
+                }), 400), n;
+            }(s)), E && f.current && (E.disconnect(), E.observe(f.current, Ht));
+        }), [ v, x ]);
+        var S = function() {
+            y(!v), "function" == typeof u && u(!v);
+        };
+        return o.a.createElement(o.a.Fragment, null, "arrowLeft" === t ? o.a.createElement(qt, Object.assign({
+            className: v ? "collapsible open" : "collapsible"
+        }, c), o.a.createElement(At, {
+            style: {
+                width: "100%"
+            }
+        }, !l && o.a.createElement(Qt, {
+            icon: v ? "keyboard_arrow_down" : "keyboard_arrow_right",
+            onClick: S,
+            size: "small"
+        }), o.a.createElement(At, {
+            style: {
+                flex: "1 1 auto"
+            }
+        }, o.a.createElement(Gt, {
+            onClick: S,
+            _css: l ? "18px" : "4px"
+        }, n), o.a.createElement(Ut, {
+            align: "left",
+            sizeL: 6
+        }, o.a.createElement($t, null, r)))), o.a.createElement("div", {
+            ref: s,
+            style: {
+                height: p
+            },
+            className: v ? "content open" : "content"
+        }, o.a.createElement("div", {
+            ref: f
+        }, i))) : "arrowRight" === t ? o.a.createElement(qt, Object.assign({
+            className: v ? "collapsible open" : "collapsible"
+        }, c), o.a.createElement(At, {
+            style: {
+                width: "100%",
+                height: "67px"
+            }
+        }, o.a.createElement(At, {
+            style: {
+                flex: "1 1 auto"
+            }
+        }, o.a.createElement(Ut, {
+            align: "left",
+            sizeL: 6
+        }, o.a.createElement(Bt, null, n)), o.a.createElement(Ut, {
+            align: "left",
+            sizeL: 6
+        }, o.a.createElement($t, null, r))), o.a.createElement("div", {
+            style: {
+                margin: "15px"
+            }
+        }, o.a.createElement(ut, {
+            icon: v ? "keyboard_arrow_up" : "keyboard_arrow_down",
+            onClick: S,
+            size: "large"
+        }))), o.a.createElement("div", {
+            ref: s,
+            style: {
+                height: p
+            },
+            className: v ? "content open" : "content"
+        }, o.a.createElement("div", {
+            ref: f
+        }, i))) : o.a.createElement(qt, Object.assign({
+            className: v ? "collapsible open" : "collapsible"
+        }, c), o.a.createElement("div", {
+            ref: s,
+            style: {
+                height: p
+            },
+            className: v ? "content open" : "content"
+        }, o.a.createElement("div", {
+            ref: f
+        }, i)), o.a.createElement(Vt, {
+            height: 4
+        }), o.a.createElement(ut, {
+            icon: v ? "keyboard_arrow_up" : "keyboard_arrow_down",
+            onClick: S,
+            size: "large"
+        })));
     }));
-    var Gt = Object(l.b)((function(e) {
+    Kt.displayName = "Collapsible";
+    var Yt = function(e) {
+        var t, n = e.tree, r = e.toggleCollapses, a = b(e, [ "tree", "toggleCollapses" ]);
+        return o.a.createElement(Kt, Object.assign({
+            tabIndex: parseInt(n.id),
+            title: n.name,
+            variant: "arrowLeft",
+            nonIcon: !n.children || 0 === n.children.length,
+            toggleCollapses: function(e) {
+                "function" == typeof r && r({
+                    open: e,
+                    node: n
+                });
+            }
+        }, a), null === (t = n.children) || void 0 === t ? void 0 : t.map((function(e, t) {
+            return o.a.createElement(Xt, {
+                key: t,
+                tree: e,
+                toggleCollapses: r
+            });
+        })));
+    }, Xt = Object(r.c)(Yt).withConfig({
+        displayName: "_StyledTreeView"
+    })([ "box-sizing:border-box;padding-left:24px;" ]), Zt = Yt, Jt = {
+        id: "0",
+        name: "parent",
+        children: [ {
+            id: "1",
+            name: "11",
+            children: [ {
+                id: "1_1",
+                name: "11_11"
+            }, {
+                id: "1_2",
+                name: "11_22"
+            } ]
+        }, {
+            id: "2",
+            name: "22",
+            children: [ {
+                id: "2_1",
+                name: "22_11"
+            }, {
+                id: "2_2",
+                name: "22_22"
+            } ]
+        } ]
+    }, en = Object(r.c)(Q).withConfig({
+        displayName: "_StyledTabs"
+    })([ "border-radius:unset;" ]);
+    var tn = Object(l.b)((function(e) {
         return {
             downloadModalOpen: e.interface.downloadModalOpen
         };
@@ -4325,33 +4370,47 @@
                     downloadModalOpen: !1
                 }));
             }
-        }, o.a.createElement(Q, {
+        }, o.a.createElement(At, null, o.a.createElement(Ut, {
+            align: "left",
+            valign: "top",
+            sizeL: 3
+        }, o.a.createElement(Zt, {
+            tree: Jt,
+            toggleCollapses: function(e) {
+                e.open;
+                var t = e.node;
+                console.log(t);
+            }
+        })), o.a.createElement(Ut, {
+            align: "right",
+            sizeL: 9
+        }, o.a.createElement(en, {
             activeTab: i,
             key: "tabs",
             onChange: function(e, t) {
                 u(t);
             }
-        }, o.a.createElement($t, {
+        }, o.a.createElement(Tt, {
             name: "所有任务"
-        }), o.a.createElement(qt, {
+        }), o.a.createElement(Pt, {
             name: "下载中"
-        }), o.a.createElement(Ht, {
+        }), o.a.createElement(jt, {
             name: "已停止"
-        }), o.a.createElement(Qt, {
+        }), o.a.createElement(_t, {
             name: "已完成"
-        })));
-    })), Kt = n(28), Yt = r.c.fieldset.withConfig({
+        })))));
+    })), nn = n(28), rn = r.c.fieldset.withConfig({
         displayName: "Form__FormField",
         componentId: "sc-1csqrgf-0"
-    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), Xt = r.c.form.withConfig({
+    })([ "clear:both;overflow:hidden;padding:1px;margin:0 0 10px 0;border:0;> label,legend{width:25%;float:left;padding-right:10px;font-size:90%;color:#000;}& > *:nth-child(2){width:75%;float:right;}@media (min-width:1200px){& > label,legend{text-align:right;}}@media (max-width:600px){margin:0 0 15px 0;& > label,legend{width:100%;float:none;margin:0 0 5px 0;}& > *:nth-child(2){width:100%;float:none;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea,select{width:100%;}}" ]), an = r.c.form.withConfig({
         displayName: "Form",
         componentId: "sc-1csqrgf-1"
-    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), Zt = Object(r.c)("div").withConfig({
+    })([ "text-align:left;margin:10px;border:1px solid;border-radius:3px;padding:5px;font-family:sans-serif;font-size:13px;letter-spacing:1px;& *{box-sizing:border-box;}input[type='text'],input[type='email'],input[type='url'],input[type='password'],textarea{width:100%;border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #eee;border-bottom:1px solid #eee;}input[type='text'],input[type='email'],input[type='url'],input[type='password']{width:50%;}input[type='checkbox']{transform:scale(1.2);}select{min-width:50px;}input[type='text']:focus,input[type='email']:focus,input[type='url']:focus,input[type='password']:focus,textarea:focus{outline:0;border-color:#4697e4;}" ]), on = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
-    })([ ".modal-window{max-width:500px;}" ]), Jt = Object(r.c)("div").withConfig({
+    })([ ".modal-window{max-width:500px;}" ]), ln = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv2"
     })([ "font-size:90%;color:#999;" ]);
-    var en = Object(l.b)((function(e) {
+    var un = Object(l.b)((function(e) {
         return {
             configModalOpen: e.interface.configModalOpen,
             autoStart: e.interface.autoStart,
@@ -4386,10 +4445,10 @@
         };
     }))((function(e) {
         var t = e.configModalOpen, n = e.autoStart, r = e.maxDownloadCount, a = e.closeModal, i = e.setAutoStart, l = e.setMaxDownloadCount, c = e.setAppId, s = e.appId;
-        return o.a.createElement(Zt, null, o.a.createElement(T, {
+        return o.a.createElement(on, null, o.a.createElement(T, {
             open: t,
             close: a
-        }, o.a.createElement(Xt, {
+        }, o.a.createElement(an, {
             action: "#"
         }, o.a.createElement("header", {
             style: {
@@ -4399,7 +4458,7 @@
             style: {
                 margin: "0 0 5px 0"
             }
-        }, "下载设置"), o.a.createElement(Jt, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(Yt, null, o.a.createElement("label", {
+        }, "下载设置"), o.a.createElement(ln, null, "如果下载经常出错，建议将下载数设置为1")), o.a.createElement(rn, null, o.a.createElement("label", {
             htmlFor: "auto-start"
         }, "自动下载"), o.a.createElement("div", null, o.a.createElement("input", {
             type: "checkbox",
@@ -4409,39 +4468,39 @@
             id: "auto-start",
             tabIndex: 1,
             onChange: i
-        }))), o.a.createElement(Yt, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
+        }))), o.a.createElement(rn, null, o.a.createElement("legend", null, "最大同时下载数"), o.a.createElement("div", null, o.a.createElement("select", {
             defaultValue: r,
             id: "max-download-count",
             className: "field select medium",
             tabIndex: 2,
             onChange: l
-        }, Object(Kt.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
+        }, Object(nn.a)(Array(u.a.maxDownloadCount).keys()).map((function(e) {
             return ++e;
         })).map((function(e, t) {
             return o.a.createElement("option", {
                 key: t,
                 value: e
             }, e);
-        }))))), o.a.createElement(Yt, null, o.a.createElement("legend", null, "APP ID", o.a.createElement("small", null, "(空值将采用随机数值)")), o.a.createElement("div", null, o.a.createElement("input", {
+        }))))), o.a.createElement(rn, null, o.a.createElement("legend", null, "APP ID", o.a.createElement("small", null, "(空值将采用随机数值)")), o.a.createElement("div", null, o.a.createElement("input", {
             value: s,
             onChange: c
         }))))));
-    })), tn = n(14);
-    function nn() {
+    })), cn = n(14);
+    function sn() {
         var e = v([ '\n  @import url(https://fonts.googleapis.com/css?family=Noto+Sans);\n  body {\n    background-color: #2f3439;\n    font-family: "Noto Sans", sans-serif;\n  }\n\n  .wrap {\n    display: flex;\n    justify-content: center;\n    width: 100%;\n  }\n\n  /* -------------------------------------\n   * Bar container\n   * ------------------------------------- */\n  .progress-radial {\n    float: left;\n    position: relative;\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid #2f3439;\n    background-color: tomato;\n    transition: all 1s ease-out;\n    cursor: pointer;\n  }\n  .progress-radial:hover {\n    background: #2e6da4;\n  }\n\n  /* -------------------------------------\n   * Optional centered circle w/text\n   * ------------------------------------- */\n  .progress-radial .overlay {\n    position: absolute;\n    width: 30px;\n    height: 30px;\n    background-color: #fffde8;\n    border-radius: 50%;\n    margin-left: 10px;\n    margin-top: 10px;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 12px;\n  }\n\n  /* -------------------------------------\n   * Mixin for progress-% class\n   * ------------------------------------- */\n  .progress-0 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-1 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(93.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-2 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(97.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-3 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(100.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-4 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(104.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-5 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-6 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(111.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-7 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(115.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-8 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(118.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-9 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(122.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-10 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-11 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(129.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-12 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(133.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-13 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(136.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-14 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(140.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-15 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-16 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(147.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-17 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(151.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-18 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(154.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-19 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(158.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-20 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-21 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(165.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-22 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(169.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-23 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(172.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-24 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(176.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-25 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-26 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(183.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-27 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(187.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-28 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(190.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-29 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(194.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-30 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-31 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(201.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-32 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(205.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-33 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(208.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-34 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(212.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-35 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-36 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(219.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-37 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(223.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-38 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(226.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-39 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(230.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-40 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-41 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(237.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-42 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(241.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-43 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(244.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-44 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(248.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-45 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-46 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(255.6deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-47 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(259.2deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-48 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(262.8deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-49 {\n    background-image: linear-gradient(90deg, #2f3439 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(266.4deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-50 {\n    background-image: linear-gradient(-90deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-51 {\n    background-image: linear-gradient(-86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-52 {\n    background-image: linear-gradient(-82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-53 {\n    background-image: linear-gradient(-79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-54 {\n    background-image: linear-gradient(-75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-55 {\n    background-image: linear-gradient(-72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-56 {\n    background-image: linear-gradient(-68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-57 {\n    background-image: linear-gradient(-64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-58 {\n    background-image: linear-gradient(-61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-59 {\n    background-image: linear-gradient(-57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-60 {\n    background-image: linear-gradient(-54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-61 {\n    background-image: linear-gradient(-50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-62 {\n    background-image: linear-gradient(-46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-63 {\n    background-image: linear-gradient(-43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-64 {\n    background-image: linear-gradient(-39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-65 {\n    background-image: linear-gradient(-36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-66 {\n    background-image: linear-gradient(-32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-67 {\n    background-image: linear-gradient(-28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-68 {\n    background-image: linear-gradient(-25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-69 {\n    background-image: linear-gradient(-21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-70 {\n    background-image: linear-gradient(-18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-71 {\n    background-image: linear-gradient(-14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-72 {\n    background-image: linear-gradient(-10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-73 {\n    background-image: linear-gradient(-7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-74 {\n    background-image: linear-gradient(-3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-75 {\n    background-image: linear-gradient(0deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-76 {\n    background-image: linear-gradient(3.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-77 {\n    background-image: linear-gradient(7.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-78 {\n    background-image: linear-gradient(10.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-79 {\n    background-image: linear-gradient(14.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-80 {\n    background-image: linear-gradient(18deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-81 {\n    background-image: linear-gradient(21.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-82 {\n    background-image: linear-gradient(25.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-83 {\n    background-image: linear-gradient(28.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-84 {\n    background-image: linear-gradient(32.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-85 {\n    background-image: linear-gradient(36deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-86 {\n    background-image: linear-gradient(39.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-87 {\n    background-image: linear-gradient(43.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-88 {\n    background-image: linear-gradient(46.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-89 {\n    background-image: linear-gradient(50.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-90 {\n    background-image: linear-gradient(54deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-91 {\n    background-image: linear-gradient(57.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-92 {\n    background-image: linear-gradient(61.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-93 {\n    background-image: linear-gradient(64.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-94 {\n    background-image: linear-gradient(68.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-95 {\n    background-image: linear-gradient(72deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-96 {\n    background-image: linear-gradient(75.6deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-97 {\n    background-image: linear-gradient(79.2deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-98 {\n    background-image: linear-gradient(82.8deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-99 {\n    background-image: linear-gradient(86.4deg, #ff6347 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n  .progress-100 {\n    background-image: linear-gradient(90deg, #ff6347 52%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #ff6347 50%, #2f3439 50%, #2f3439);\n  }\n\n\n  table {\n    border: 1px solid #ccc;\n    border-collapse: collapse;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    table-layout: fixed;\n  }\n\n  table caption {\n    font-size: 1.5em;\n    margin: .5em 0 .75em;\n  }\n\n  table tr {\n    background-color: #f8f8f8;\n    border: 1px solid #ddd;\n    padding: .35em;\n  }\n\n  table th,\n  table td {\n    padding: .625em;\n    text-align: center;\n  }\n\n  table th {\n    font-size: .85em;\n    letter-spacing: .1em;\n    text-transform: uppercase;\n  }\n\n  @media screen and (max-width: 600px) {\n    table {\n      border: 0;\n    }\n\n    table caption {\n      font-size: 1.3em;\n    }\n\n    table thead {\n      border: none;\n      clip: rect(0 0 0 0);\n      height: 1px;\n      margin: -1px;\n      overflow: hidden;\n      padding: 0;\n      position: absolute;\n      width: 1px;\n    }\n\n    table tr {\n      border-bottom: 3px solid #ddd;\n      display: block;\n      margin-bottom: .625em;\n    }\n\n    table td {\n      border-bottom: 1px solid #ddd;\n      display: block;\n      font-size: .8em;\n      text-align: right;\n    }\n\n    table td::before {\n      /*\n      * aria-label has no advantage, it won\'t be read inside a table\n      content: attr(aria-label);\n      */\n      content: attr(data-label);\n      float: left;\n      font-weight: bold;\n      text-transform: uppercase;\n    }\n\n    table td:last-child {\n      border-bottom: 0;\n    }\n  }\n  pre.code {\n    text-align: left;\n    background: rgb(250, 250, 250);\n    border-radius: 3px;\n    border: 0px;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px inset;\n    color: #4d4d4d;\n    font-family: Monaco, Consolas, "Courier New", Courier, monospace, sans-serif;\n    font-size: 13px;\n    outline: 0px;\n    overflow: auto;\n    max-height: 55vh;\n    padding: 10px;\n    vertical-align: baseline;\n    line-height: normal;\n  }\n\n  #floating-button{\n    width: 55px;\n    height: 55px;\n    border-radius: 50%;\n    background: #db4437;\n    position: fixed;\n    bottom: 55px;\n    right: 32px;\n    cursor: pointer;\n    box-shadow: 0px 2px 5px #666;\n  }\n\n  .plus{\n    color: white;\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    text-align: center;\n    padding: 0;\n    margin: 0;\n    line-height: 55px;\n    font-size: 38px;\n    font-family: \'Roboto\';\n    font-weight: 300;\n    animation: plus-out 0.3s;\n    transition: all 0.3s;\n  }\n\n  #container-floating{\n    position: fixed;\n    width: 70px;\n    height: 70px;\n    bottom: 30px;\n    right: 30px;\n    z-index: 50;\n  }\n\n  #container-floating:hover{\n    height: 400px;\n    width: 90px;\n    padding: 30px;\n  }\n\n  #container-floating:hover .plus{\n    animation: plus-in 0.15s linear;\n    animation-fill-mode: forwards;\n  }\n\n  .edit{\n    position: absolute;\n    top: 0;\n    display: block;\n    bottom: 0;\n    left: 0;\n    display: block;\n    right: 0;\n    padding: 0;\n    opacity: 0;\n    margin: auto;\n    line-height: 65px;\n    transform: rotateZ(-70deg);\n    transition: all 0.3s;\n    animation: edit-out 0.3s;\n  }\n\n  #container-floating:hover .edit{\n    animation: edit-in 0.2s;\n    animation-delay: 0.1s;\n    animation-fill-mode: forwards;\n  }\n\n  @keyframes edit-in{\n    from {opacity: 0; transform: rotateZ(-70deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n\n  @keyframes edit-out{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(-70deg);}\n  }\n\n  @keyframes plus-in{\n    from {opacity: 1; transform: rotateZ(0deg);}\n    to {opacity: 0; transform: rotateZ(180deg);}\n  }\n\n  @keyframes plus-out{\n    from {opacity: 0; transform: rotateZ(180deg);}\n    to {opacity: 1; transform: rotateZ(0deg);}\n  }\n  .nds{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    position: fixed;\n    z-index: 300;\n    transform:  scale(0);\n    cursor: pointer;\n  }\n\n  .nd1{\n    background: #d3a411;\n    right: 40px;\n    bottom: 120px;\n    animation-delay: 0.2s;\n    animation: bounce-out-nds 0.3s linear;\n    animation-fill-mode:  forwards;\n  }\n  @keyframes bounce-nds{\n    from {opacity: 0;}\n    to {opacity: 1; transform: scale(1);}\n  }\n\n  @keyframes bounce-out-nds{\n    from {opacity: 1; transform: scale(1);}\n    to {opacity: 0; transform: scale(0);}\n  }\n\n  #container-floating:hover .nds{\n\n    animation: bounce-nds 0.1s linear;\n    animation-fill-mode:  forwards;\n  }\n  .reminder{\n    position: absolute;\n    left: 0;\n    right: 0;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    line-height: 40px;\n  }\n\n  .module-yun-tip {\n    z-index: 999 !important;\n  }\n' ]);
-        return nn = function() {
+        return sn = function() {
             return e;
         }, e;
     }
     window.onunload = function() {
-        tn.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
+        cn.a.setValue(c.c.items, Object.values(u.a.allDownloads)), u.a.stopAll();
     }, window.onbeforeunload = function(e) {
         var t = St.a.getState().download.downloadItems;
         Object.values(t).some((function(e) {
             return e.status === c.b.downloading;
         })) && (e.preventDefault(), e.returnValue = "有未完成的下载任务， 确认关闭吗?");
     };
-    var rn = Object(r.a)(nn()), an = n(21), on = function(e) {
+    var fn = Object(r.a)(sn()), dn = n(21), pn = function(e) {
         N(n, e);
         var t = z(n);
         function n(e) {
@@ -4472,7 +4531,7 @@
             value: function() {
                 var e = this.props.error || this.state.error;
                 if (e) {
-                    var t, n = e.toString() + (this.state.errorInfo && an.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
+                    var t, n = e.toString() + (this.state.errorInfo && dn.a ? '<details style="white-space: pre-wrap">'.concat(null === (t = this.state.errorInfo) || void 0 === t ? void 0 : t.componentStack, "</details>") : "");
                     return u.a.dialog.alert({
                         body: n,
                         onSure: this.reRenderApp,
@@ -4482,14 +4541,14 @@
                 return this.props.children;
             }
         } ]), n;
-    }(o.a.Component), ln = Object(l.b)((function(e) {
+    }(o.a.Component), gn = Object(l.b)((function(e) {
         return {
             error: e.interface.error
         };
-    }))(on), un = Object(r.c)("div").withConfig({
+    }))(pn), hn = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "height:60vh;overflow:hidden;" ]);
-    var cn = Object(l.b)((function(e) {
+    var mn = Object(l.b)((function(e) {
         var t;
         return {
             open: e.interface.linkPortalOpen,
@@ -4505,7 +4564,7 @@
                     linkPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(un, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
+        }, o.a.createElement(hn, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
         }, "文件"), o.a.createElement("th", {
             scope: "col"
@@ -4519,10 +4578,10 @@
                 href: e.link
             }, "点击下载")));
         })))))) : null;
-    })), sn = Object(r.c)("div").withConfig({
+    })), bn = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "height:60vh;overflow:hidden;" ]);
-    var fn = Object(l.b)((function(e) {
+    var vn = Object(l.b)((function(e) {
         return {
             open: e.interface.shareLinksPortalOpen,
             response: e.link.shareLink.response
@@ -4537,7 +4596,7 @@
                     shareLinksPortalOpen: !1
                 }));
             }
-        }, o.a.createElement(sn, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
+        }, o.a.createElement(bn, null, o.a.createElement("table", null, o.a.createElement("thead", null, o.a.createElement("tr", null, o.a.createElement("th", {
             scope: "col"
         }, "文件"), o.a.createElement("th", {
             scope: "col"
@@ -4555,11 +4614,11 @@
                 href: e.link
             }, "点击下载")));
         })))))) : null;
-    })), dn = Object(r.c)("div").withConfig({
+    })), yn = Object(r.c)("div").withConfig({
         displayName: "_StyledDiv"
     })([ "display:none;" ]);
     t.a = function() {
-        return o.a.createElement(o.a.Fragment, null, o.a.createElement(dn, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(rn, null), o.a.createElement(ln, null, o.a.createElement(Gt, null), o.a.createElement(en, null), o.a.createElement(g, null), o.a.createElement(fn, null), o.a.createElement(cn, null)));
+        return o.a.createElement(o.a.Fragment, null, o.a.createElement(yn, null, "Todo Don’t know the reason. Once delete this element, Styled-components will not load properly."), o.a.createElement(fn, null), o.a.createElement(gn, null, o.a.createElement(tn, null), o.a.createElement(un, null), o.a.createElement(g, null), o.a.createElement(vn, null), o.a.createElement(mn, null)));
     };
 }, function(e, t, n) {
     "use strict";
