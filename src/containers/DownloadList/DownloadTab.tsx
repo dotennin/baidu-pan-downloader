@@ -3,21 +3,10 @@ import Operation from './Operation'
 import ProgressStatus from './ProgressStatus'
 import SpeedStatus from './SpeedStatus'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
-import { IStoreState } from '../../store'
-import { createSelector } from 'reselect'
-import { connect } from 'react-redux'
 import TabTableHeader from '../../components/TabTableHeader'
-import { StatusTypes } from '../../services/types'
 import Links from './Links'
 
-const mapStoreToProps = (store: IStoreState) => ({
-  fsIdList: createSelector(
-    (store: IStoreState) => store.download.downloadItems,
-    (allDownloads) => Object.keys(allDownloads).filter((fsId) => allDownloads[fsId].status === StatusTypes.completed)
-  )(store),
-})
-
-function CompletedTab({ fsIdList, name }: ReturnType<typeof mapStoreToProps> & { name: string }) {
+function AllDownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }) {
   return (
     <TabTableHeader name={name}>
       {fsIdList.map((fsId, key) => {
@@ -50,4 +39,5 @@ function CompletedTab({ fsIdList, name }: ReturnType<typeof mapStoreToProps> & {
     </TabTableHeader>
   )
 }
-export default connect(mapStoreToProps)(CompletedTab)
+const Memorized = React.memo(AllDownloadTab)
+export default Memorized
