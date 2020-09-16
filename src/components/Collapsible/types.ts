@@ -4,7 +4,6 @@ export interface ICollapsible extends React.InputHTMLAttributes<HTMLDivElement> 
   container?: any
   title?: string
   addendum?: string
-  children?: any
   update?: any
   expanded?: boolean
   nonIcon?: boolean

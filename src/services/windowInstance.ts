@@ -28,5 +28,5 @@ window.onload = () => {
         store.dispatch(interfaceModule.actions.change({ downloadModalOpen: true }))
       }
     })
-  }, 500)
+  }, 1000)
 }

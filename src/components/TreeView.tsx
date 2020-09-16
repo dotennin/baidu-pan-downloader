@@ -5,6 +5,7 @@ import { IItem } from '../services/types'
 
 interface ITreeViewProps extends IItem {
   children?: ITreeViewProps[]
+  expanded?: boolean
 }
 
 const TreeView: React.FC<{
@@ -12,12 +13,12 @@ const TreeView: React.FC<{
   childrenLength: number
   toggleCollapses?: (obj: { open: boolean; node: ITreeViewProps }) => void
 } & IStandardProps> = ({ tree, toggleCollapses, ...rest }) => {
-  console.log(tree)
   return (
     <Collapsible
       tabIndex={!tree.fs_id ? 0 : typeof tree.fs_id === 'number' ? tree.fs_id : parseInt(tree.fs_id)}
       title={tree.server_filename}
       variant={'arrowLeft'}
+      expanded={tree.expanded}
       nonIcon={tree.isdir === 0 && (!tree.children || tree.children.length === 0)}
       toggleCollapses={(open) => {
         typeof toggleCollapses === 'function' && toggleCollapses({ open, node: tree })

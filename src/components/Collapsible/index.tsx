@@ -59,32 +59,32 @@ const Collapsible = React.memo((props: ICollapsible) => {
     })
   )
 
-  const calcHeight = (container: React.MutableRefObject<any>) => {
-    if (!open) {
-      return '0px'
-    }
-    // if (variant === 'arrowLeft') {
-    //   return 'auto'
-    // }
-
-    //make clone element, append it to body to get height, remove it to clean up
-    const element = container.current.cloneNode(true) as HTMLElement
-    element.style.width = container.current.getBoundingClientRect().width + 'px'
-    element.style.position = 'absolute'
-    element.style.left = '-100vw'
-    element.style.height = 'auto'
-    document.getElementsByTagName('body')[0].appendChild(element)
-
-    const height = element.getBoundingClientRect().height + 'px'
-    document.getElementsByTagName('body')[0].removeChild(element)
-
-    setTimeout(() => {
-      if (container && container.current && container.current.className.indexOf('finally') <= 0) {
-        container.current.className += ' finally'
+  const calcHeight = React.useCallback(
+    (container: React.MutableRefObject<any>) => {
+      if (!open) {
+        return '0px'
       }
-    }, 400)
-    return height
-  }
+
+      //make clone element, append it to body to get height, remove it to clean up
+      const element = container.current.cloneNode(true) as HTMLElement
+      element.style.width = container.current.getBoundingClientRect().width + 'px'
+      element.style.position = 'absolute'
+      element.style.left = '-100vw'
+      element.style.height = 'auto'
+      document.getElementsByTagName('body')[0].appendChild(element)
+
+      const height = element.getBoundingClientRect().height + 'px'
+      document.getElementsByTagName('body')[0].removeChild(element)
+
+      setTimeout(() => {
+        if (container && container.current && container.current.className.indexOf('finally') <= 0) {
+          container.current.className += ' finally'
+        }
+      }, 400)
+      return height
+    },
+    [open]
+  )
 
   useLayoutEffect(() => {
     setHeight(calcHeight(container))
@@ -94,7 +94,7 @@ const Collapsible = React.memo((props: ICollapsible) => {
       observer.disconnect()
       observer.observe(content.current, config)
     }
-  }, [open, random])
+  }, [open, random, calcHeight, observer])
   const handleClick = () => {
     setOpen(!open)
     typeof toggleCollapses === 'function' && toggleCollapses(!open)
@@ -151,6 +151,22 @@ const Collapsible = React.memo((props: ICollapsible) => {
 
                   word-break: break-all;
                   overflow: auto;
+                  ::-webkit-scrollbar {
+                    height: 4px;
+                  }
+
+                  ::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+                    border-radius: 4px;
+                  }
+                  ::-webkit-scrollbar-track-piece {
+                    background-color: unset;
+                  }
+
+                  ::-webkit-scrollbar-thumb {
+                    border: 4px solid #61aeb273;
+                    outline: unset;
+                  }
                   //text-overflow: ellipsis;
                   white-space: nowrap;
                 `}

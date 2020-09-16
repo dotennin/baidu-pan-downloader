@@ -92,7 +92,6 @@ const InstanceForSystem = {
     })
 
     store.dispatch(downloadModule.actions.change({ downloadItems: downloadItemsForStore }))
-    this.itemRoot = await this.getCacheData('/')
   },
 
   get selectedList() {

@@ -12,6 +12,7 @@ import { StatusTypes } from '../../services/types'
 
 const mapStoreToProps = (store: IStoreState) => ({
   downloadModalOpen: store.interface.downloadModalOpen,
+  itemLoaded: store.interface.itemLoaded,
   fsIdList: createSelector(
     (store: IStoreState) => store.download.downloadItems,
     (allDownloads) => Object.keys(allDownloads)
@@ -39,6 +40,7 @@ function DownloadList({
   completedList,
   downloadingList,
   stoppedList,
+  itemLoaded,
 }: ReturnType<typeof mapStoreToProps>) {
   const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState(0)
@@ -48,13 +50,27 @@ function DownloadList({
   return (
     <Modal
       open={downloadModalOpen}
+      css={`
+        min-height: 30vh;
+      `}
       close={() => {
         dispatch(interfaceModule.actions.change({ downloadModalOpen: false }))
       }}
     >
       <GridRow>
-        <GridCol valign={'top'} sizeL={3}>
-          <ItemTree />
+        <GridCol
+          valign={'top'}
+          sizeL={3}
+          direction={'row'}
+          css={`
+            overflow-y: auto;
+            max-height: ${itemLoaded ? '60vh' : '200px'};;
+            //height: calc(100% - 40vh);
+            // height: ${itemLoaded ? '500px' : 'auto'};
+            transition: max-height 0.5s;
+          `}
+        >
+          <ItemTree itemLoaded={itemLoaded} />
         </GridCol>
         <GridCol valign={'top'} sizeL={9}>
           <Tabs

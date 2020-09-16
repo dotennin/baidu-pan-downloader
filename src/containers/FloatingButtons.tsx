@@ -15,7 +15,9 @@ const mapStoreToProps = (store: IStoreState) => ({
 
 const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoStart, downloadable }) => {
   const dispatch = useDispatch()
-  const { downloadItems } = useSelector((state: IStoreState) => state.download)
+  const {
+    download: { downloadItems },
+  } = useSelector((state: IStoreState) => state)
   if (getLocation().inSharePwdScreen) {
     return null
   }
@@ -43,7 +45,6 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         data-original-title="Create"
         onClick={() => {
           const { selectedList } = InstanceForSystem
-
           const newItems = { ...downloadItems }
           const { allDownloads } = InstanceForSystem
           selectedList.forEach((item) => {

@@ -10,6 +10,8 @@ interface IState {
   configModalOpen: boolean
   linkPortalOpen: boolean
   shareLinksPortalOpen: boolean
+  itemLoaded: boolean
+
   error: undefined | Error
 }
 const initialState: IState = {
@@ -20,6 +22,8 @@ const initialState: IState = {
   configModalOpen: false,
   linkPortalOpen: false,
   shareLinksPortalOpen: false,
+  itemLoaded: false,
+
   error: undefined,
 }
 

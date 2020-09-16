@@ -1,6 +1,9 @@
 import TreeView from '../../components/TreeView'
 import React from 'react'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
+import { PcManLoader } from '../../components/loaders'
+import { useDispatch } from 'react-redux'
+import interfaceModule from '../../modules/interfaceModule'
 
 const childrenCounter = (accumulator: number, currentValue: React.ComponentProps<typeof TreeView>['tree']) => {
   if (!currentValue.children) {
@@ -12,9 +15,18 @@ const childrenCounter = (accumulator: number, currentValue: React.ComponentProps
   }
   return count
 }
-const ItemTree: React.FunctionComponent = () => {
+
+const ItemTree: React.FunctionComponent<{ itemLoaded: boolean }> = ({ itemLoaded }) => {
   const [...rest] = React.useState<string>('/')
+  const dispatch = useDispatch()
   const setPath = rest[1]
+  if (!itemLoaded) {
+    InstanceForSystem.getCacheData('/').then((items) => {
+      InstanceForSystem.itemRoot = items
+      dispatch(interfaceModule.actions.change({ itemLoaded: true }))
+    })
+    return <PcManLoader />
+  }
   return (
     <>
       {InstanceForSystem.itemRoot.map((item, index) => {
@@ -24,10 +36,11 @@ const ItemTree: React.FunctionComponent = () => {
             key={index}
             tree={item}
             childrenLength={childrenLength}
-            toggleCollapses={({ node }) => {
+            toggleCollapses={({ open, node }) => {
               const newPath = node.path
               InstanceForSystem.getCacheData(newPath).then((children) => {
                 node.children = children
+                node.expanded = open
                 setPath(newPath)
               })
             }}
