@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Ripple } from '../Ripple'
 import { IActionButtonProps } from './types'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
@@ -110,7 +109,6 @@ const ActionButton = (props: IActionButtonProps) => {
         {props.badgeContent ? (
           <Badge variant={props.color === 'primary' ? 'blue' : 'green'} badgeContent={props.badgeContent} />
         ) : null}
-        <Ripple />
         {props.icon ? <Icon name={props.icon} /> : null}
       </ActionButtonButton>
       {props.children ? <Label>{props.children}</Label> : null}

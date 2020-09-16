@@ -1,15 +1,10 @@
 import { Char, IDownloadDetail, INotification, IOpenInTabOption, IXMLHttpRequestDetail } from './types'
 
-if (window.location.href.includes('localhost')) {
-  window.location.replace('https://pan.baidu.com/disk/home')
-}
-
 /**
  * This section describes how the Tampermonkey API can be used
  * Application Programming Interface
  * @link https://www.tampermonkey.net/documentation.php
  */
-
 export const GM = {
   /**
    * Adds the given style to the document and returns the injected style element.

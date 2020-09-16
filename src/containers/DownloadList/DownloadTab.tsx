@@ -6,7 +6,7 @@ import { InstanceForSystem } from '../../services/InstaceForSystem'
 import TabTableHeader from '../../components/TabTableHeader'
 import Links from './Links'
 
-function AllDownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }) {
+function DownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }) {
   return (
     <TabTableHeader name={name}>
       {fsIdList.map((fsId, key) => {
@@ -39,5 +39,5 @@ function AllDownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }
     </TabTableHeader>
   )
 }
-const Memorized = React.memo(AllDownloadTab)
+const Memorized = React.memo(DownloadTab)
 export default Memorized

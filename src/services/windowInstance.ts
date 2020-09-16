@@ -2,6 +2,7 @@ import { GM } from './gmInterface/gmInterface'
 import { StatusTypes, ValueTypes } from './types'
 import { store } from '../store'
 import { InstanceForSystem } from './InstaceForSystem'
+import interfaceModule from '../modules/interfaceModule'
 
 window.onunload = () => {
   GM.setValue(ValueTypes.items, Object.values(InstanceForSystem.allDownloads))
@@ -14,4 +15,18 @@ window.onbeforeunload = (e: BeforeUnloadEvent) => {
     e.preventDefault()
     e.returnValue = '有未完成的下载任务， 确认关闭吗?'
   }
+}
+window.onload = () => {
+  // Resolve store initiation
+  setTimeout(() => {
+    InstanceForSystem.initState().then(() => {
+      const {
+        download: { processing },
+      } = store.getState()
+      if (processing > 0) {
+        // if there is a task that automatically starts downloading then open download-modal directly after initialization
+        store.dispatch(interfaceModule.actions.change({ downloadModalOpen: true }))
+      }
+    })
+  }, 500)
 }

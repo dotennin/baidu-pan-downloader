@@ -2,7 +2,7 @@
 // @namespace https://dotennin.blogspot.com/
 // @name 百度网盘直链提取（多选）
 // @description 百度网盘直链提取（多选）配合IDM下载
-// @version 1.1.2
+// @version 1.1.5
 // @author Dotennin
 // @license MIT
 // @compatible        chrome 测试通过
@@ -47,6 +47,148 @@ const ui = (function() {
     },
   }
 })()
+
+function encodeBase64(bytes) {
+  if (bytes === undefined || bytes === null) {
+    return ''
+  }
+  if (bytes instanceof Array) {
+    bytes = bytes.filter((item) => {
+      return Number.isFinite(item) && item >= 0 && item <= 255
+    })
+  }
+
+  if (!(bytes instanceof Uint8Array || bytes instanceof Uint8ClampedArray || bytes instanceof Array)) {
+    if (typeof bytes === 'string') {
+      const str = bytes
+      bytes = Array.from(unescape(encodeURIComponent(str))).map((ch) => ch.codePointAt(0))
+    } else {
+      throw new TypeError('bytes must be of type Uint8Array or String.')
+    }
+  }
+
+  const keys = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '+',
+    '/',
+  ]
+  const fillKey = '='
+
+  let byte1
+  let byte2
+  let byte3
+  let sign1 = ' '
+  let sign2 = ' '
+  let sign3 = ' '
+  let sign4 = ' '
+
+  let result = ''
+
+  for (let index = 0; index < bytes.length; ) {
+    let fillUpAt = 0
+
+    // tslint:disable:no-increment-decrement
+    byte1 = bytes[index++]
+    byte2 = bytes[index++]
+    byte3 = bytes[index++]
+
+    if (byte2 === undefined) {
+      byte2 = 0
+      fillUpAt = 2
+    }
+
+    if (byte3 === undefined) {
+      byte3 = 0
+      if (!fillUpAt) {
+        fillUpAt = 3
+      }
+    }
+
+    // tslint:disable:no-bitwise
+    sign1 = keys[byte1 >> 2]
+    sign2 = keys[((byte1 & 0x3) << 4) + (byte2 >> 4)]
+    sign3 = keys[((byte2 & 0xf) << 2) + (byte3 >> 6)]
+    sign4 = keys[byte3 & 0x3f]
+
+    if (fillUpAt > 0) {
+      if (fillUpAt <= 2) {
+        sign3 = fillKey
+      }
+      if (fillUpAt <= 3) {
+        sign4 = fillKey
+      }
+    }
+
+    result += sign1 + sign2 + sign3 + sign4
+
+    if (fillUpAt) {
+      break
+    }
+  }
+
+  return result
+}
 
 function onNavigationChange() {
   const isShareMode = location.href.includes('baidu.com/s/')
@@ -96,9 +238,10 @@ function onNavigationChange() {
           createRequestList().then((requestList) => {
             Promise.all(requestList).then((res) => {
               ui.hideTip()
-              document.getElementById('python-code').href = 'data:text/plain;charset=utf-8,' + pyScriptCreator(res)
+              document.getElementById('python-code').href =
+                'data:text/plain;;base64,' + encodeBase64(pyScriptCreator(res))
               document.getElementById('python-code').className = ''
-              document.getElementById('bat-code').href = 'data:text/plain;charset=utf-8,' + batScriptCreator(res)
+              document.getElementById('bat-code').href = 'data:text/plain;base64,' + encodeBase64(batScriptCreator(res))
               document.getElementById('bat-code').className = ''
               dom.removeAttribute('style')
               document.querySelector('#copy-code').className = ''
@@ -113,17 +256,22 @@ const task = () => {
   setInterval(() => {}, 100)
 }
 
+function itemPathCreator(item) {
+  const currentCacheKey = getcurrentCacheKey()
+  return item.path
+    .replace(currentCacheKey + currentCacheKey !== '/' ? '/' : '', '')
+    .replace(/\//g, '\\')
+    .replace('\\' + item.server_filename, '')
+}
+
 function pyScriptCreator(res) {
   const loopOutPutFiles = (res) => {
     let text = ''
     res.forEach((item) => {
       return (text += `
-down_url = r'${item.url}'
-down_path = down_root_path + r'${item.path
-        .replace(getcurrentCacheKey(), '')
-        .replace(/\//g, '\\')
-        .replace('\\' + item.server_filename, '')}'
-output_filename = r'${item.server_filename}'
+down_url = r"""${item.url}"""
+down_path = down_root_path + r"""\\${itemPathCreator(item)}"""
+output_filename = r"""${item.server_filename}"""
 subprocess.call([IDM, '/d',down_url, '/p',down_path, '/f', output_filename, '/n', '/a', '/s'])
       `)
     })
@@ -133,7 +281,7 @@ subprocess.call([IDM, '/d',down_url, '/p',down_path, '/f', output_filename, '/n'
 __idm_location_shell = r"""for /f "tokens=1,2,* " %i in ('REG QUERY HKEY_CURRENT_USER\\Software\\DownloadManager /v ExePath ^| find /i "ExePath"') do @echo %k"""
 __down_root_path__shell = r"""echo %USERPROFILE%\\Downloads"""
 IDM = str(subprocess.check_output(__idm_location_shell, shell=True)).replace('b\\'', '').replace('\\\\r\\\\n\\'', '')
-down_root_path = str(subprocess.check_output(__down_root_path__shell, shell=True)).replace('b\\'', '').replace('\\\\r\\\\n\\'', '')
+down_root_path = str(subprocess.check_output(__down_root_path__shell, shell=True)).replace('b\\'', '').replace('\\\\r\\\\n\\'', '').replace('\\\\\\\\', '\\\\')
 subprocess.call(IDM)
 ${loopOutPutFiles(res)}
   `
@@ -144,10 +292,7 @@ function batScriptCreator(res) {
     let text = ''
     res.forEach((item) => {
       return (text += `
-"%IDM%" /d "${item.url}" /p %DOWNLOAD_PATH%\\${item.path
-        .replace(getcurrentCacheKey(), '')
-        .replace(/\//g, '\\')
-        .replace('\\' + item.server_filename, '')} /f ${item.server_filename} /n /a
+"%IDM%" /d "${item.url}" /p %DOWNLOAD_PATH%\\${itemPathCreator(item)} /f ${item.server_filename} /n /a
       `)
     })
     return text

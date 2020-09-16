@@ -82,18 +82,18 @@ export interface IInstance {
     goHistory: (path: string) => void
     getSelected: () => IItem[]
     getCurrentList: () => IItem[]
-    getList: () => {
-      cache: {
-        getCacheConfig: () => void
-        getCacheData: (
-          number: -1 | -2,
-          callback: (list: IItem, loadingTip: boolean, cache: any, r: any) => void
-        ) => void
-        key: string
-      }
-      loadInitData: () => void
-      loadMoreData: () => void
+  }
+  getList: () => {
+    cache: {
+      getCacheConfig: () => void
+      getCacheData: (
+        number: -1 | -2,
+        callback: (list: IItem[], loadingTip: boolean, cache: any, r: any) => void
+      ) => void
+      key: string
     }
+    loadInitData: () => void
+    loadMoreData: () => void
   }
   listInit: {
     getCheckedIndexs: () => number[]
@@ -101,6 +101,12 @@ export interface IInstance {
   }
   listInstance: {
     cancelFilesSelect: () => void
+  }
+  message: {
+    listen: (mode: 'ViewPanelChanged', callback: (called: boolean) => void) => void
+  }
+  router: {
+    emit: (v1: 'eachEnter', v2: 'list') => void
   }
   ui: {
     tip: (option: { mode: 'loading'; msg: string; autoClose: boolean }) => void

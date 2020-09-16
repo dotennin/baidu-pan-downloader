@@ -26,34 +26,20 @@ const Body2 = styled.p`
 `
 
 const StyledBox = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    &:focus {
-      background-color: rgba(25, 118, 210, 0.12);
-    }
-    .content {
-      transition: height .3s;
-      min-height: 0;
-      overflow: hidden;
-    },
-    .content.open {
-      transition: height .3s;
-    }
-    .content.open.finally {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &:focus {
+    background-color: rgba(25, 118, 210, 0.12);
+  }
+  .content {
+    transition: height 0.3s;
+    min-height: 0;
+    overflow: hidden;
+    &.finally {
       overflow: visible;
     }
-    #close_collapse {
-      &:focus {
-        background-color: transparent;
-      }
-      &:active {
-        background-color: transparent;
-      }
-      margin: auto;
-      width: 32px;
-      height: 32px;
-    },
+  }
 `
 
 const config = { attributes: true, childList: true, subtree: true }
@@ -77,6 +63,9 @@ const Collapsible = React.memo((props: ICollapsible) => {
     if (!open) {
       return '0px'
     }
+    // if (variant === 'arrowLeft') {
+    //   return 'auto'
+    // }
 
     //make clone element, append it to body to get height, remove it to clean up
     const element = container.current.cloneNode(true) as HTMLElement
@@ -105,8 +94,6 @@ const Collapsible = React.memo((props: ICollapsible) => {
       observer.disconnect()
       observer.observe(content.current, config)
     }
-
-    // this works, so ignore the issue
   }, [open, random])
   const handleClick = () => {
     setOpen(!open)
@@ -139,7 +126,7 @@ const Collapsible = React.memo((props: ICollapsible) => {
                 `}
               />
             )}
-            <GridRow style={{ flex: '1 1 auto' }}>
+            <GridRow style={{ flex: '1 1 auto', maxWidth: '90%' }}>
               <span
                 onClick={handleClick}
                 css={`
@@ -151,7 +138,6 @@ const Collapsible = React.memo((props: ICollapsible) => {
                   box-sizing: inherit;
                   margin: 0;
                   text-align: left;
-                  font-size: 1rem;
                   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
                   font-weight: 400;
                   line-height: 1.5;
@@ -162,6 +148,11 @@ const Collapsible = React.memo((props: ICollapsible) => {
                   &:hover {
                     background-color: rgba(0, 0, 0, 0.04);
                   }
+
+                  word-break: break-all;
+                  overflow: auto;
+                  //text-overflow: ellipsis;
+                  white-space: nowrap;
                 `}
               >
                 {title}

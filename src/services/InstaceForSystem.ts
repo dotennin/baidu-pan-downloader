@@ -4,8 +4,8 @@ import { ItemProxy } from './ItemProxy'
 import { store } from '../store'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { Dispatch } from 'redux'
-import interfaceModule from '../modules/interfaceModule'
 import { getLocation } from '../utils'
+import TreeView from '../components/TreeView'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -28,11 +28,11 @@ const InstanceForSystem = {
     .listInstance as IInstance['listInstance'],
   jquery: unsafeWindow.require('base:widget/libs/jquery-1.12.4.js'),
   ui: unsafeWindow.require('system-core:context/context.js').instanceForSystem.ui as IInstance['ui'],
-  getList: function() {
-    return this.list.getList()
-  },
+  getList: unsafeWindow.require('system-core:context/context.js').instanceForSystem.getList as IInstance['getList'],
   user: unsafeWindow.require('system-core:context/context.js').instanceForSystem.data.user as IInstance['user'],
   cookie: unsafeWindow.require('base:widget/tools/service/tools.cookie.js') as IInstance['cookie'],
+  message: unsafeWindow.require('system-core:context/context.js').instanceForSystem.message as IInstance['message'],
+  router: unsafeWindow.require('system-core:context/context.js').instanceForSystem.router as IInstance['router'],
   initWidgetContext: function(callback?: Function) {
     const widget = unsafeWindow.require('function-widget-1:download/util/context.js')
     const initFunc = function() {
@@ -53,38 +53,46 @@ const InstanceForSystem = {
       unsafeWindow.require.async('function-widget-1:download/service/dlinkService.js', resolve)
     })
   },
-
-  initState: function() {
+  getCacheData: function(key: string): Promise<IItem[]> {
     return new Promise((resolve) => {
-      const objectFromValue = (GM.getValue(ValueTypes.items, {}) as IItem[]).map((arr) => ItemProxy.Create(arr))
-      GM.deleteValue(ValueTypes.items)
-
-      const state = store.getState()
-      const dispatch: Dispatch<any> = store.dispatch
-      const {
-        interface: { autoStart },
-      } = state
-
-      const downloadItemsForStore: Record<ItemProxy['fsId'], IProgress> = {}
-      objectFromValue.forEach((item) => {
-        if (!autoStart && [StatusTypes.downloading, StatusTypes.inQueued].includes(item.progress.status)) {
-          // stop downloading item if user set autoStart as false
-          item.progress.status = StatusTypes.stopped
-        }
-
-        const { intervalId, percentCount, speedOverlay, status } = item.progress
-        downloadItemsForStore[item.fsId] = { intervalId, percentCount, speedOverlay, status }
-        this.allDownloads[item.fsId] = item
-
-        if (autoStart && [StatusTypes.downloading].includes(status)) {
-          dispatch(fetchItem(item))
-        }
+      const { cache } = this.getList()
+      const currentKey = cache.key
+      cache.key = key
+      cache.getCacheData(-1, (list: IItem[]) => {
+        resolve(list)
+        // 恢复默认key值
+        cache.key = currentKey
       })
-
-      store.dispatch(downloadModule.actions.change({ downloadItems: downloadItemsForStore }))
-
-      resolve(this)
     })
+  },
+  initState: async function() {
+    const objectFromValue = (GM.getValue(ValueTypes.items, []) as IItem[]).map((arr) => ItemProxy.Create(arr))
+    GM.deleteValue(ValueTypes.items)
+
+    const state = store.getState()
+    const dispatch: Dispatch<any> = store.dispatch
+    const {
+      interface: { autoStart },
+    } = state
+
+    const downloadItemsForStore: Record<ItemProxy['fsId'], IProgress> = {}
+    objectFromValue.forEach((item) => {
+      if (!autoStart && [StatusTypes.downloading, StatusTypes.inQueued].includes(item.progress.status)) {
+        // stop downloading item if user set autoStart as false
+        item.progress.status = StatusTypes.stopped
+      }
+
+      const { intervalId, percentCount, speedOverlay, status } = item.progress
+      downloadItemsForStore[item.fsId] = { intervalId, percentCount, speedOverlay, status }
+      this.allDownloads[item.fsId] = item
+
+      if (autoStart && [StatusTypes.downloading].includes(status)) {
+        dispatch(fetchItem(item))
+      }
+    })
+
+    store.dispatch(downloadModule.actions.change({ downloadItems: downloadItemsForStore }))
+    this.itemRoot = await this.getCacheData('/')
   },
 
   get selectedList() {
@@ -110,21 +118,7 @@ const InstanceForSystem = {
         item.progress.request && item.progress.request.abort && item.progress.request.abort()
       })
   },
+  itemRoot: [] as React.ComponentProps<typeof TreeView>['tree'][],
 }
-
-// Resolve store initiation
-setTimeout(() => {
-  InstanceForSystem.initState().then(() => {
-    setTimeout(() => {
-      const {
-        download: { processing },
-      } = store.getState()
-      if (processing > 0) {
-        // if there is a task that automatically starts downloading then open download-modal directly after initialization
-        store.dispatch(interfaceModule.actions.change({ downloadModalOpen: true }))
-      }
-    }, 1500)
-  })
-})
 
 export { InstanceForSystem }
