@@ -1,7 +1,7 @@
 -----------------------------------
 # 🎁  Feature 
-### 通过右下脚的下载图标<img src="https://greasyfork.org/system/screenshots/screenshots/000/021/778/thumb/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89.png?1592725597" width="5%">可以将已经勾选的文件加入下载列表
-<img src="https://greasyfork.org/system/screenshots/screenshots/000/021/779/original/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89_%281%29.png?1592725597" width="50%">
+### 通过右下脚的下载图标<img src="https://raw.githubusercontent.com/dotennin/dotennin/main/assets/images/icon-plus.png" width="5%">可以将已经勾选的文件加入下载列表
+<img src="https://raw.githubusercontent.com/dotennin/dotennin/main/assets/images/pandown-main.png" width="50%">
 
 ## 3.1 追加内容
 1. 追加本地直链接
@@ -9,13 +9,13 @@
 
 ## 3.0 追加内容
 1. 共享 直链获取
-   * <img src="https://greasyfork.org/system/screenshots/screenshots/000/022/489/original/TIM%E5%9B%BE%E7%89%8720200728225519.png?1595944564" width="80%">
+   * <img src="https://raw.githubusercontent.com/dotennin/dotennin/main/assets/images/pandown-operation.png" width="80%">
    * 共享域名(pan.baidu.com/s/***)下只支持共享下载
    * 选取的目录也会加入下载列表（用于共享）直链
 1. 修复 7z,flac,m4a 格式下载时出现`not_whitelist`
 
 ## 1.4 追加了自定义设置功能
-# <img src="https://greasyfork.org/system/screenshots/screenshots/000/021/888/original/config-modal.png?1593252766" width="70%">
+# <img src="https://raw.githubusercontent.com/dotennin/dotennin/main/assets/images/pandown-config.png" width="70%">
 
 -----------------------------------
 # ❄ 浏览器支持情况：
