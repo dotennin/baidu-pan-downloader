@@ -3,6 +3,9 @@ import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { InstanceForSystem } from './InstaceForSystem'
 
+/**@deprecated
+ * its supppper slow than shareDlink
+ * */
 export function getDownloadUrl(path: string) {
   if (path.match(/^\/sharelink\d+/) !== null) {
     throw new Error(
@@ -45,16 +48,12 @@ export function download(item: ItemProxy, rename?: boolean) {
       name: rename ? formatServerFilename(serverFilename) : serverFilename,
       saveAs: true,
       headers: {
-        Host: 'qdall01.baidupcs.com',
-        Accept: '*/*',
-        'User-Agent': HeaderTypes.userAgent,
-        'Accept-Encoding': 'identity',
-        'Accept-Language': 'ja-JP',
-        'Accept-Charset': '*',
+        'User-Agent': 'LogStatistic',
       },
       onprogress: (e: ProgressEvent) => {
         currentEvent = e
 
+        console.log(currentEvent.loaded)
         progress.percentCount = Math.round((currentEvent.loaded * 100) / currentEvent.total)
       },
       onload: () => {
@@ -133,6 +132,7 @@ export function createPrivateShareLink<
   })
 }
 
+/** @deprecated dlink service has been removed from baidu client */
 export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pack: boolean = false): Promise<T> {
   return new Promise((resolve, reject) => {
     try {
@@ -158,34 +158,136 @@ export function getDlinkPan<T extends IDlinkPanResponse>(items: ItemProxy[], pac
   })
 }
 
-export async function getShareLinks(
+/**
+ * get randsk (cookie)
+ */
+export async function getBDCLND(
   link: string,
   pwd: string
-): Promise<
-  {
-    category: string
-    fs_id: string
-    isdir: '0' | '1'
-    /**
-     * @deprecated
-     */
+): Promise<{
+  appeal_status: number
+  expiredType: number
+  expired_type: number
+  fileNums: number
+  has_more: boolean
+  hitrisk: number
+  link_ctime: number
+  list: []
+  seckey: string
+  shareid: number
+  sharetype: number
+  title: string
+  uk: number
+  uname: string
+  user: {
+    avatar: string
+  }
+  view_limit: 0
+  view_visited: 0
+  wx_headurl: string
+  wx_name: string
+}> {
+  return new Promise((resolve, reject) => {
+    GM.xmlHttpRequest({
+      url: `https://pan.baidu.com/share/wxlist?clienttype=25&shorturl=${link}&pwd=${pwd}`,
+      method: 'GET',
+      responseType: 'json',
+      headers: {
+        'User-Agent': HeaderTypes.userAgent,
+      },
+      onload: (r) => {
+        if (r?.response?.data) {
+          return resolve(r.response.data)
+        } else {
+          // Todo return error message
+          return reject(r)
+        }
+      },
+    })
+  })
+}
+
+export function getSign<
+  R extends {
+    sign: string
+    timestamp: number
+  }
+>(request: { surl: string; shareId: number; uk: string; bdstoken: string }): Promise<R> {
+  const { jquery } = InstanceForSystem
+  return new Promise((resolve, reject) => {
+    jquery
+      .get(
+        `/share/tplconfig?shareid=${request.shareId}&uk=${request.uk}&fields=sign,timestamp&channel=chunlei&web=1&app_id=250528&clienttype=0`,
+        function(r: { data: R; errno: number; request_id: number; show_msg: 'success' }) {
+          if (r?.data) {
+            resolve(r.data)
+          } else {
+            reject(new Error(`cannot found corresponding data on:${r}`))
+          }
+        }
+      )
+      .error(function(e: Error) {
+        reject(e)
+      })
+  })
+}
+
+export function getDlink<
+  R extends {
+    category: number
+    context: string
+    delete_fs_id: string
     dlink: string
-    local_ctime: string
-    local_mtime: string
+    extent_int3: string
+    extent_tinyint1: string
+    extent_tinyint2: string
+    extent_tinyint3: string
+    extent_tinyint4: string
+    file_key: string
+    fs_id: number
+    headurl: string
+    isdir: 0 | 1
+    isenum: 0 | 1
+    local_ctime: number
+    local_mtime: number
     md5: string
+    oper_id: string
+    owner_id: string
+    owner_type: string
     path: string
-    server_ctime: string
-    /**
-     * @deprecated
-     */
+    path_md5: string
+    privacy: string
+    real_category: string
+    resource_type: number
+    server_atime: string
+    server_ctime: number
     server_filename: string
-    server_mtime: string
-    size: string
-    name: string
-    link: string
+    server_mtime: number
+    share: string
+    size: number
+    tkbind_id: string
+    videotag: string
+    wpfile: string
   }[]
-> {
-  return await (
-    await fetch(`https://pan.dotennin.ml/?link=${encodeURI(link)}%20%E6%8F%90%E5%8F%96%E7%A0%81:%20${pwd}`)
-  ).json()
+>(request: { fsId: string; time: number; sign: string; randsk?: string; shareId: number; uk: string }): Promise<R> {
+  const payload = `encrypt=0&fid_list=[${request.fsId}]&primaryid=${request.shareId}&uk=${request.uk}&product=share&type=nolimit`
+  return new Promise((resolve, reject) => {
+    GM.xmlHttpRequest({
+      url: `/api/sharedownload?app_id=${InstanceForSystem.appIds[0]}&channel=chunlei&clienttype=12&sign=${request.sign}&timestamp=${request.time}&web=1`,
+      method: 'POST',
+      data: payload,
+      responseType: 'json',
+      headers: {
+        'User-Agent': HeaderTypes.userAgent,
+      },
+      onload: (e: { response: { errno: 0 | 1 | 2; list: R; request_id: number; server_time: number } }) => {
+        if (e.response.errno === 0) {
+          resolve(e.response.list)
+        } else {
+          reject(new Error(`cannot found corresponding data on:${e}`))
+        }
+      },
+      onerror: (e) => reject(e),
+    })
+  })
 }

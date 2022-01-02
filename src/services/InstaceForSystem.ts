@@ -9,6 +9,7 @@ import { getLocation } from '../utils'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
+  appIds: ['250528', '498065', '309847', '778750'],
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
   list: unsafeWindow.require('system-core:context/context.js').instanceForSystem.list as IInstance['list'],
@@ -47,6 +48,8 @@ const InstanceForSystem = {
       initFunc()
     }
   },
+
+  /** deprecated */
   dlinkService: function<T extends IInstance['dlinkService']>(): Promise<T> {
     this.initWidgetContext()
     return new Promise((resolve) => {

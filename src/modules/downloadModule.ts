@@ -2,10 +2,11 @@ import { IProgress, StatusTypes } from '../services/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
-import { download, getDownloadUrl } from '../services/api'
+import { download, createPrivateShareLink, getSign, getDlink } from '../services/api'
 import { downloadableSelector } from '../selectors'
 import interfaceModule from './interfaceModule'
 import { InstanceForSystem } from '../services/InstaceForSystem'
+import linkModule from './linkModule'
 
 const allDownloads: Record<ItemProxy['fsId'], IProgress> = {}
 const initialState = {
@@ -82,8 +83,27 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
     }
 
     dispatch(downloadModule.actions.requestDownload())
-    const res: any = await getDownloadUrl(item.path)
-    item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
+
+    linkModule.actions.requestShareLinks()
+
+    const privateShareLink = await createPrivateShareLink(item.fsId)
+
+    const request = {
+      surl: privateShareLink.shorturl.replace('https://pan.baidu.com/s/', ''),
+      shareId: privateShareLink.shareid,
+      uk: unsafeWindow.locals.get('uk') as string,
+      bdstoken: unsafeWindow.locals.get('bdstoken') as string,
+    }
+    const signReponse = await getSign(request)
+
+    const dlinkReponse = await getDlink({
+      fsId: item.fsId as string,
+      time: signReponse.timestamp,
+      sign: signReponse.sign,
+      shareId: privateShareLink.shareid,
+      uk: request.uk,
+    })
+    item.url = dlinkReponse[0].dlink
 
     progress.status = StatusTypes.downloading
     await download(item)

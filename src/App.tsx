@@ -6,7 +6,6 @@ import './services/windowInstance'
 import { GlobalStyle } from './GlobalStyle'
 import ErrorBoundary from './services/ErrorBoundary'
 import DlinksPortal from './containers/DlinksPortal'
-import ShareLinksPortal from './containers/ShareLinksPortal'
 
 const App: FunctionComponent = () => {
   return (
@@ -23,7 +22,6 @@ const App: FunctionComponent = () => {
         <DownloadList />
         <Preferences />
         <FloatingButtons />
-        <ShareLinksPortal />
         <DlinksPortal />
       </ErrorBoundary>
     </>
