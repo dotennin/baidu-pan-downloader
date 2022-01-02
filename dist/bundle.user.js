@@ -172,7 +172,6 @@
         friendlyFileSize: function(e) {
             return unsafeWindow.require("base:widget/tools/service/tools.format.js").toFriendlyFileSize(e);
         },
-        fileManagerApi: Object(d.b)().inDiskScreen && unsafeWindow.require("disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js"),
         listInit: Object(d.b)().inDiskScreen && unsafeWindow.require("disk-system:widget/pageModule/list/listInit.js"),
         listInstance: unsafeWindow.require("system-core:context/context.js").instanceForSystem.listInstance,
         jquery: unsafeWindow.require("base:widget/libs/jquery-1.12.4.js"),

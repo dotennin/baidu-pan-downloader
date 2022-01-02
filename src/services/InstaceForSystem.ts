@@ -17,11 +17,11 @@ const InstanceForSystem = {
   hash: unsafeWindow.require('base:widget/hash/hash.js') as IInstance['hash'],
   friendlyFileSize: (size: number): string =>
     unsafeWindow.require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(size),
-  fileManagerApi:
-    getLocation().inDiskScreen &&
-    (unsafeWindow.require(
-      'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
-    ) as IInstance['fileManagerApi']),
+  // fileManagerApi:
+  //   getLocation().inDiskScreen &&
+  //   (unsafeWindow.require(
+  //     'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
+  //   ) as IInstance['fileManagerApi']),
   listInit:
     getLocation().inDiskScreen &&
     (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
