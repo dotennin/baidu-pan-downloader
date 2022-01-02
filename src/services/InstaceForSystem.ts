@@ -5,7 +5,6 @@ import { store } from '../store'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { Dispatch } from 'redux'
 import interfaceModule from '../modules/interfaceModule'
-import { getLocation } from '../utils'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
@@ -22,9 +21,9 @@ const InstanceForSystem = {
   //   (unsafeWindow.require(
   //     'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
   //   ) as IInstance['fileManagerApi']),
-  listInit:
-    getLocation().inDiskScreen &&
-    (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
+  // listInit:
+  //   getLocation().inDiskScreen &&
+  //   (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
   listInstance: unsafeWindow.require('system-core:context/context.js').instanceForSystem
     .listInstance as IInstance['listInstance'],
   jquery: unsafeWindow.require('base:widget/libs/jquery-1.12.4.js'),

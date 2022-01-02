@@ -2,6 +2,7 @@ import { HeaderTypes, IDlinkPanResponse, StatusTypes } from './types'
 import { GM } from './gmInterface/gmInterface'
 import { ItemProxy } from './ItemProxy'
 import { InstanceForSystem } from './InstaceForSystem'
+import { getFileExtension } from '../utils'
 
 /**@deprecated
  * its supppper slow than shareDlink
@@ -34,7 +35,9 @@ export function getDownloadUrl(path: string) {
   })
 }
 
-const formatServerFilename = (fileName: string) => fileName + '.__________重命名我.zip'
+const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a']
+const formatServerFilename = (fileName: string) =>
+  fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
 
 export function download(item: ItemProxy, rename?: boolean) {
   const { url, serverFilename, progress } = item
