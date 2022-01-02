@@ -103,7 +103,7 @@ export interface IInstance {
     cancelFilesSelect: () => void
   }
   ui: {
-    tip: (option: { mode: 'loading'; msg: string; autoClose: boolean }) => void
+    tip: (option: { mode?: 'loading'; msg: string; autoClose: boolean }) => void
     hideTip: () => void
   }
   user: {

@@ -103,6 +103,10 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
       shareId: privateShareLink.shareid,
       uk: request.uk,
     })
+
+    // Todo download with local mode
+    // const res: any = await getDownloadUrl(item.path)
+    // item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
     item.url = dlinkReponse[0].dlink
 
     progress.status = StatusTypes.downloading

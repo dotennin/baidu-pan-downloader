@@ -2505,7 +2505,7 @@
     }));
     n(5), n(11);
     var r = n(2), a = n(10), o = n(1), i = n(12);
-    var l = [ "apk", "exe", "pdf", "7z", "flac", "m4a" ];
+    var l = [ "apk", "exe", "pdf", "7z", "flac", "m4a", "zip" ];
     function u(e, t) {
         var n = e.url, o = e.serverFilename, c = e.progress, s = void 0;
         return c.percentCount = 0, c.speedOverlay = 0, new Promise((function(f, d) {
@@ -2518,7 +2518,7 @@
                     "User-Agent": "LogStatistic"
                 },
                 onprogress: function(e) {
-                    s = e, console.log(s.loaded), c.percentCount = Math.round(100 * s.loaded / s.total);
+                    s = e, c.percentCount = Math.round(100 * s.loaded / s.total);
                 },
                 onload: function() {
                     c.intervalId && clearInterval(c.intervalId), c.percentCount = 100, c.speedOverlay = 0, 
@@ -2597,7 +2597,10 @@
                     "User-Agent": r.a.userAgent
                 },
                 onload: function(e) {
-                    0 === e.response.errno ? n(e.response.list) : i(new Error("cannot found corresponding data on:".concat(e)));
+                    0 === e.response.errno ? n(e.response.list) : 2 === e.response.errno ? (o.a.ui.tip({
+                        autoClose: !0,
+                        msg: "该文件禁止分享, 请换用本地下载模式."
+                    }), i(new Error("cannot download this file with share mode on:".concat(e)))) : i(new Error("cannot found corresponding data on:".concat(e)));
                 },
                 onerror: function(e) {
                     return i(e);

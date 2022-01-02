@@ -35,7 +35,7 @@ export function getDownloadUrl(path: string) {
   })
 }
 
-const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a']
+const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a', 'zip']
 const formatServerFilename = (fileName: string) =>
   fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
 
@@ -56,7 +56,6 @@ export function download(item: ItemProxy, rename?: boolean) {
       onprogress: (e: ProgressEvent) => {
         currentEvent = e
 
-        console.log(currentEvent.loaded)
         progress.percentCount = Math.round((currentEvent.loaded * 100) / currentEvent.total)
       },
       onload: () => {
@@ -286,6 +285,9 @@ export function getDlink<
       onload: (e: { response: { errno: 0 | 1 | 2; list: R; request_id: number; server_time: number } }) => {
         if (e.response.errno === 0) {
           resolve(e.response.list)
+        } else if (e.response.errno === 2) {
+          InstanceForSystem.ui.tip({ autoClose: true, msg: '该文件禁止分享, 请换用本地下载模式.' })
+          reject(new Error(`cannot download this file with share mode on:${e}`))
         } else {
           reject(new Error(`cannot found corresponding data on:${e}`))
         }
