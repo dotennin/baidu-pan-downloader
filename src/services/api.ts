@@ -91,7 +91,13 @@ export function download(item: ItemProxy, rename?: boolean) {
     let loaded = 0
     progress.intervalId = window.setInterval(() => {
       if (currentEvent) {
-        const speed = (currentEvent.loaded - loaded) * 2
+        let speed = 0
+        // prevent baidu yun server from limiting the download speed to 0 at once
+        if (currentEvent.loaded === loaded) {
+          speed = progress.speedOverlay / 2
+        } else {
+          speed = (currentEvent.loaded - loaded) * 2
+        }
         loaded = currentEvent.loaded
         progress.speedOverlay = speed
       }

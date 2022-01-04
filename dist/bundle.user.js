@@ -2536,8 +2536,8 @@
             var g = 0;
             c.intervalId = window.setInterval((function() {
                 if (s) {
-                    var e = 2 * (s.loaded - g);
-                    g = s.loaded, c.speedOverlay = e;
+                    var e = 0;
+                    e = s.loaded === g ? c.speedOverlay / 2 : 2 * (s.loaded - g), g = s.loaded, c.speedOverlay = e;
                 }
             }), 500);
         }));
