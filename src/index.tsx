@@ -12,6 +12,7 @@ function render(RootComponent: ComponentType) {
     <Provider store={store}>
       <Suspense fallback={<div>on suspensing....</div>}>
         <RootComponent />
+        <div></div>
       </Suspense>
     </Provider>,
     document.getElementById(name)

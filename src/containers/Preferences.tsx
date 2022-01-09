@@ -11,6 +11,7 @@ import { downloadableSelector } from '../selectors'
 const mapStoreToProps = (store: IStoreState) => ({
   configModalOpen: store.interface.configModalOpen,
   autoStart: store.interface.autoStart,
+  debug: store.interface.debug,
   downloadable: downloadableSelector(store),
   maxDownloadCount: store.interface.maxDownloadCount,
   appId: store.interface.appId,
@@ -20,6 +21,9 @@ const mapActionsToProps = (dispatch: Dispatch) => ({
   closeModal: () => dispatch(interfaceModule.actions.change({ configModalOpen: false })),
   setAutoStart: (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(interfaceModule.actions.change({ autoStart: e.target.checked }))
+  },
+  setDebug: (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(interfaceModule.actions.change({ debug: e.target.checked }))
   },
   setMaxDownloadCount: (e: React.ChangeEvent<HTMLSelectElement>) => {
     const count = parseInt(e.target.value)
@@ -42,6 +46,8 @@ function Preferences({
   setMaxDownloadCount,
   setAppId,
   appId,
+  debug,
+  setDebug,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
   return (
     <div
@@ -69,13 +75,18 @@ function Preferences({
             <div>
               <input
                 type="checkbox"
-                name="checkbox"
                 value="true"
                 checked={autoStart}
                 id="auto-start"
                 tabIndex={1}
                 onChange={setAutoStart}
               />
+            </div>
+          </FormField>
+          <FormField>
+            <label htmlFor={'debug-mode'}>debug mode</label>
+            <div>
+              <input type="checkbox" value="true" checked={debug} id="debug-mode" tabIndex={1} onChange={setDebug} />
             </div>
           </FormField>
           <FormField>

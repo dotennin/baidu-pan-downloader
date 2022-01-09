@@ -11,6 +11,7 @@ interface IState {
   linkPortalOpen: boolean
   shareLinksPortalOpen: boolean
   error: undefined | Error
+  debug: boolean
 }
 const initialState: IState = {
   maxDownloadCount: GM.getValue(ValueTypes.maxDownloadCount, 2),
@@ -21,6 +22,7 @@ const initialState: IState = {
   linkPortalOpen: false,
   shareLinksPortalOpen: false,
   error: undefined,
+  debug: GM.getValue(ValueTypes.debug, false),
 }
 
 export default createSlice({
@@ -45,6 +47,9 @@ export default createSlice({
             break
           case 'appId':
             GM.setValue(ValueTypes.appId, payload.appId)
+            break
+          case 'debug':
+            GM.setValue(ValueTypes.debug, payload.debug)
         }
       })
       state = Object.assign({ ...state }, action.payload)

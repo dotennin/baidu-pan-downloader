@@ -12,6 +12,7 @@ export enum ValueTypes {
   autoStart = 'AUTO_START',
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
   appId = 'APP_ID',
+  debug = 'DEBUG',
 }
 
 export enum HeaderTypes {

@@ -6,6 +6,7 @@ import './services/windowInstance'
 import { GlobalStyle } from './GlobalStyle'
 import ErrorBoundary from './services/ErrorBoundary'
 import DlinksPortal from './containers/DlinksPortal'
+import { FastReduxLogger } from './containers/FastReduxLogger'
 
 const App: FunctionComponent = () => {
   return (
@@ -15,10 +16,11 @@ const App: FunctionComponent = () => {
           display: none;
         `}
       >
-        Todo Don’t know the reason. Once delete this element, Styled-components will not load properly.
+        Todo Not sure what the reason is Once delete this element, Styled-components will not load properly.
       </div>
       <GlobalStyle />
       <ErrorBoundary>
+        <FastReduxLogger />
         <DownloadList />
         <Preferences />
         <FloatingButtons />
