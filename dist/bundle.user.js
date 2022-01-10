@@ -3377,7 +3377,7 @@
         }, i.a.createElement("p", {
             className: "plus"
         }, "+"), i.a.createElement("img", {
-            alt: "bt_compose2_1x",
+            alt: "bt_compose2_1x_plus",
             className: "edit",
             src: "//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
         })));
@@ -3955,8 +3955,7 @@
     })([ "padding-right:10px;" ]), Be = function(e) {
         var t = e.children, n = e.selected, r = e.disabled, o = v(e, [ "children", "selected", "disabled" ]);
         return i.a.createElement(Le, Object.assign({
-            className: "g-float-left create-bt-button upload-wrapper g-button".concat(n ? " g-button-blue" : ""),
-            href: "javascript:void(0);"
+            className: "g-float-left create-bt-button upload-wrapper g-button".concat(n ? " g-button-blue" : "")
         }, o, {
             _css: r && "pointer-events: none; color: gray !important;"
         }), i.a.createElement(Fe, {

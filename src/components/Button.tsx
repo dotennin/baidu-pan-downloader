@@ -9,7 +9,6 @@ const Button: React.FC<IProps> = ({ children, selected, disabled, ...rest }) => 
   return (
     <a
       className={`g-float-left create-bt-button upload-wrapper g-button${selected ? ' g-button-blue' : ''}`}
-      href="javascript:void(0);"
       css={`
         padding-left: 10px;
         ${disabled && 'pointer-events: none; color: gray !important;'}
