@@ -1,6 +1,4 @@
 const { addBabelPlugin, override, overrideDevServer, useBabelRc, watchAll, disableChunk } = require('customize-cra')
-const webpack = require('webpack')
-// const UserScript = require('./user-script')
 const TerserPlugin = require('terser-webpack-plugin')
 
 const minimizer = (minJsOnly = false) => (config) => {
@@ -9,19 +7,18 @@ const minimizer = (minJsOnly = false) => (config) => {
       minimize: true,
       minimizer: [
         new TerserPlugin({
+          minify: TerserPlugin.esbuildMinify,
           extractComments: false,
-          // extractComments: {
-            // condition: /eslint-disable/i,
-            // banner: () => {
-            //   return UserScript
-            // },
-          // },
           terserOptions: {
+            minify: true,
+            minifyWhitespace: true,
+            minifyIdentifiers: true,
+            minifySyntax: true,
             ecma: 6,
             compress: true,
             output: {
               comments: false,
-              beautify: true,
+              beautify: false,
             },
           },
         }),
@@ -42,15 +39,6 @@ const minimizer = (minJsOnly = false) => (config) => {
           Object.assign(plugin.options, { assetNameRegExp: /\.min\.css$/ })
         }
       }
-
-      // add user-script banner for Tampermonkey
-      config.plugins.push(
-        new webpack.BannerPlugin({
-          banner: UserScript,
-          raw: true,
-          entryOnly: true,
-        })
-      )
     }
   }
   return config
