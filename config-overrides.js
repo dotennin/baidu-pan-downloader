@@ -11,17 +11,17 @@ const minimizer = (minJsOnly = false) => (config) => {
         new TerserPlugin({
           extractComments: false,
           // extractComments: {
-            // condition: /eslint-disable/i,
-            // banner: () => {
-            //   return UserScript
-            // },
+          // condition: /eslint-disable/i,
+          // banner: () => {
+          //   return UserScript
+          // },
           // },
           terserOptions: {
             ecma: 6,
             compress: true,
             output: {
               comments: false,
-              beautify: true,
+              beautify: false,
             },
           },
         }),
