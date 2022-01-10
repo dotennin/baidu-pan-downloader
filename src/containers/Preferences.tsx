@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from '../components/Modal'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { Dispatch } from 'redux'
 import { Form, FormField } from '../components/Form'
 import { InstanceForSystem } from '../services/InstaceForSystem'
@@ -50,6 +50,8 @@ function Preferences({
   debug,
   setDebug,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
+  const dispatch = useDispatch()
+  const downloadMode = useSelector((store: IStoreState) => store.interface.downloadMode)
   return (
     <div
       css={`
@@ -112,6 +114,26 @@ function Preferences({
                       </option>
                     )
                   })}
+              </select>
+            </div>
+          </FormField>
+
+          <FormField>
+            <legend>下载方式</legend>
+            <div>
+              <select
+                id="download-method"
+                defaultValue={downloadMode}
+                className="field select medium"
+                tabIndex={2}
+                onChange={(e) => {
+                  dispatch(
+                    interfaceModule.actions.change({ downloadMode: e.currentTarget.value as typeof downloadMode })
+                  )
+                }}
+              >
+                <option value={'LOCAL'}>本地直链</option>
+                <option value={'SHARING'}>共享直链</option>
               </select>
             </div>
           </FormField>

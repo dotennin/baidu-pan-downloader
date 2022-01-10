@@ -8,7 +8,6 @@ import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { StatusTypes } from '../../services/types'
 import TabTableHeader from '../../components/TabTableHeader'
-import Links from './Links'
 
 const mapStoreToProps = (store: IStoreState) => ({
   fsIdList: createSelector(
@@ -32,9 +31,6 @@ function DownloadingTab({ fsIdList, name }: ReturnType<typeof mapStoreToProps> &
         return (
           <tr key={key} id={'row-' + fsId}>
             <td style={{ wordBreak: 'break-all' }}>{serverFilename}</td>
-            <td>
-              <Links fsId={fsId} />
-            </td>
             <td>{InstanceForSystem.friendlyFileSize(size)}</td>
             <td>
               <div className="wrap">

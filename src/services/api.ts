@@ -21,7 +21,7 @@ export function getDownloadUrl(path: string) {
       method: 'GET',
       responseType: 'json',
       headers: {
-        'User-Agent': HeaderTypes.userAgent,
+        'User-Agent': HeaderTypes.userAgentNetdisk,
       },
       onload: (r) => {
         if (r.response.client_ip) {
@@ -39,8 +39,9 @@ const blackListedFileExtension = ['apk', 'exe', 'pdf', '7z', 'flac', 'm4a', 'zip
 const formatServerFilename = (fileName: string) =>
   fileName + (blackListedFileExtension.includes(getFileExtension(fileName)) ? '.__________重命名我.zip' : '')
 
-export function download(item: ItemProxy, rename?: boolean) {
+export function download(item: ItemProxy, option: { rename?: boolean; userAgent?: HeaderTypes }) {
   const { url, serverFilename, progress } = item
+  const { rename, userAgent } = option
   let currentEvent: ProgressEvent | undefined = undefined
   progress.percentCount = 0
   progress.speedOverlay = 0
@@ -51,7 +52,7 @@ export function download(item: ItemProxy, rename?: boolean) {
       name: rename ? formatServerFilename(serverFilename) : serverFilename,
       saveAs: true,
       headers: {
-        'User-Agent': 'LogStatistic',
+        'User-Agent': userAgent || HeaderTypes.userAgentNetdisk,
       },
       onprogress: (e: ProgressEvent) => {
         currentEvent = e
@@ -76,7 +77,7 @@ export function download(item: ItemProxy, rename?: boolean) {
         progress.percentCount = 0
         progress.speedOverlay = 0
         if (e.error === 'not_whitelisted') {
-          download(item, true)
+          download(item, { rename: true })
           return
         }
         progress.status = StatusTypes.error
@@ -201,7 +202,7 @@ export async function getBDCLND(
       method: 'GET',
       responseType: 'json',
       headers: {
-        'User-Agent': HeaderTypes.userAgent,
+        'User-Agent': HeaderTypes.userAgentNetdisk,
       },
       onload: (r) => {
         if (r?.response?.data) {
@@ -286,7 +287,7 @@ export function getDlink<
       data: payload,
       responseType: 'json',
       headers: {
-        'User-Agent': HeaderTypes.userAgent,
+        'User-Agent': HeaderTypes.userAgentNetdisk,
       },
       onload: (e: { response: { errno: 0 | 1 | 2; list: R; request_id: number; server_time: number } }) => {
         if (e.response.errno === 0) {

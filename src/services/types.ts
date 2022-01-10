@@ -13,10 +13,12 @@ export enum ValueTypes {
   maxDownloadCount = 'MAX_DOWNLOAD_COUNT',
   appId = 'APP_ID',
   debug = 'DEBUG',
+  downloadMode = 'DOWNLOAD_MODE',
 }
 
 export enum HeaderTypes {
-  userAgent = 'netdisk;P2SP;2.2.60.26',
+  userAgentNetdisk = 'netdisk;P2SP;2.2.60.26',
+  userAgentLogStatistic = 'LogStatistic',
 }
 
 export interface IItem {
