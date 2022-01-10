@@ -7,6 +7,7 @@ import { InstanceForSystem } from '../services/InstaceForSystem'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import { downloadableSelector } from '../selectors'
+import devNodeEnv from '../utils/nodeEnvIs/devNodeEnv'
 
 const mapStoreToProps = (store: IStoreState) => ({
   configModalOpen: store.interface.configModalOpen,
@@ -83,12 +84,14 @@ function Preferences({
               />
             </div>
           </FormField>
-          <FormField>
-            <label htmlFor={'debug-mode'}>debug mode</label>
-            <div>
-              <input type="checkbox" value="true" checked={debug} id="debug-mode" tabIndex={1} onChange={setDebug} />
-            </div>
-          </FormField>
+          {devNodeEnv && (
+            <FormField>
+              <label htmlFor={'debug-mode'}>debug mode</label>
+              <div>
+                <input type="checkbox" value="true" checked={debug} id="debug-mode" tabIndex={1} onChange={setDebug} />
+              </div>
+            </FormField>
+          )}
           <FormField>
             <legend>最大同时下载数</legend>
             <div>

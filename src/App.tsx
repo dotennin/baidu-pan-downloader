@@ -7,6 +7,7 @@ import { GlobalStyle } from './GlobalStyle'
 import ErrorBoundary from './services/ErrorBoundary'
 import DlinksPortal from './containers/DlinksPortal'
 import { FastReduxLogger } from './containers/FastReduxLogger'
+import devNodeEnv from './utils/nodeEnvIs/devNodeEnv'
 
 const App: FunctionComponent = () => {
   return (
@@ -20,7 +21,7 @@ const App: FunctionComponent = () => {
       </div>
       <GlobalStyle />
       <ErrorBoundary>
-        <FastReduxLogger />
+        {devNodeEnv && <FastReduxLogger />}
         <DownloadList />
         <Preferences />
         <FloatingButtons />
