@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
-import { getDlinkPan, getShareLinks, createPrivateShareLink } from '../services/api'
-import { getRandomInt, postOpen } from '../utils'
+import { createPrivateShareLink, getSign, getDlink, getDlinkPan } from '../services/api'
+import { postOpen } from '../utils'
 import { InstanceForSystem } from '../services/InstaceForSystem'
 
 interface IState {
@@ -10,7 +10,7 @@ interface IState {
   progress: number
   shareLink: {
     progress: number
-    response?: PromiseReturnType<typeof getShareLinks>
+    response?: PromiseReturnType<typeof getDlink>
   }
 }
 const initialState: IState = {
@@ -55,13 +55,11 @@ const linkModule = createSlice({
   },
 })
 
-const appIds = ['498065', '309847', '778750']
-
 const fetchLink = (items: ItemProxy[], app_id?: string): AppThunk => async (dispatch) => {
   try {
     linkModule.actions.requestDownload()
     const response = await getDlinkPan(items)
-    app_id = app_id || appIds[getRandomInt(appIds.length)]
+    app_id = app_id || InstanceForSystem.appIds[0]
     response.dlink.forEach((link) => {
       const targetItem = items.find((item) => item.fsId.toString() === link.fs_id)
       if (targetItem) {
@@ -80,19 +78,30 @@ const fetchLink = (items: ItemProxy[], app_id?: string): AppThunk => async (disp
   }
 }
 
-const fetchShareLinks = (item: ItemProxy): AppThunk => async () => {
+const fetchShareLinks = (item: ItemProxy): AppThunk => async (dispatch) => {
   try {
     linkModule.actions.requestShareLinks()
 
-    const response = await createPrivateShareLink(item.fsId)
+    const privateShareLink = await createPrivateShareLink(item.fsId)
 
-    const body = {
-      surl: response.shorturl.replace('https://pan.baidu.com/s/', ''),
-      pwd: 'qqqq',
+    const request = {
+      surl: privateShareLink.shorturl.replace('https://pan.baidu.com/s/', ''),
+      shareId: privateShareLink.shareid,
+      uk: unsafeWindow.locals.get('uk') as string,
+      bdstoken: unsafeWindow.locals.get('bdstoken') as string,
     }
-    postOpen('https://pan.dotennin.ml', body)
-    // const shareLinks = await getShareLinks(response.shorturl, 'qqqq')
-    // dispatch(linkModule.actions.successShareLinks(shareLinks))
+    const signReponse = await getSign(request)
+
+    const dlinkReponse = await getDlink({
+      fsId: item.fsId as string,
+      time: signReponse.timestamp,
+      sign: signReponse.sign,
+      shareId: privateShareLink.shareid,
+      uk: request.uk,
+    })
+
+    dispatch(linkModule.actions.successShareLinks(dlinkReponse))
+    return true
   } catch (e) {
     linkModule.actions.failureShareLinks()
   }

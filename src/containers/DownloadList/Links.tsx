@@ -51,6 +51,7 @@ const Links = (props: Props) => {
       throw new Error('生成共享链接失败')
     }
   }
+
   return (
     <div
       css={`
@@ -59,8 +60,13 @@ const Links = (props: Props) => {
         flex-direction: column;
       `}
     >
-      <Button onClick={openLinkModal}>本地直链</Button>
-      <Button onClick={openShareLinksModal}>共享直链</Button>
+      {/**Todo active these functions */}
+      <Button disabled onClick={openLinkModal}>
+        本地直链
+      </Button>
+      <Button disabled onClick={openShareLinksModal}>
+        共享直链
+      </Button>
     </div>
   )
 }

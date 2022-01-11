@@ -4,7 +4,6 @@ import ProgressStatus from './ProgressStatus'
 import SpeedStatus from './SpeedStatus'
 import { InstanceForSystem } from '../../services/InstaceForSystem'
 import TabTableHeader from '../../components/TabTableHeader'
-import Links from './Links'
 
 function DownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }) {
   return (
@@ -18,9 +17,6 @@ function DownloadTab({ fsIdList, name }: { name: string; fsIdList: string[] }) {
         return (
           <tr key={key} id={'row-' + fsId}>
             <td style={{ wordBreak: 'break-all' }}>{serverFilename}</td>
-            <td>
-              <Links fsId={fsId} />
-            </td>
             <td>{InstanceForSystem.friendlyFileSize(size)}</td>
             <td>
               <div className="wrap">

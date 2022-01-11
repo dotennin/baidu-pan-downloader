@@ -15,7 +15,6 @@ const TabTableHeader: React.FC<{ name: string }> = ({ children, name, ...rest })
         <thead>
           <tr>
             <th scope="col">文件</th>
-            <th scope="col">直链</th>
             <th scope="col">大小</th>
             <th scope="col">进度</th>
             <th scope="col">速度</th>

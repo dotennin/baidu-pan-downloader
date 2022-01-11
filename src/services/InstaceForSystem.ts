@@ -4,11 +4,11 @@ import { ItemProxy } from './ItemProxy'
 import { store } from '../store'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { Dispatch } from 'redux'
-import { getLocation } from '../utils'
 import TreeView from '../components/TreeView'
 
 type ItemObject = Record<ItemProxy['fsId'], ItemProxy>
 const InstanceForSystem = {
+  appIds: ['250528', '498065', '309847', '778750'],
   maxDownloadCount: 2,
   allDownloads: {} as ItemObject,
   list: unsafeWindow.require('system-core:context/context.js').instanceForSystem.list as IInstance['list'],
@@ -16,14 +16,14 @@ const InstanceForSystem = {
   hash: unsafeWindow.require('base:widget/hash/hash.js') as IInstance['hash'],
   friendlyFileSize: (size: number): string =>
     unsafeWindow.require('base:widget/tools/service/tools.format.js').toFriendlyFileSize(size),
-  fileManagerApi:
-    getLocation().inDiskScreen &&
-    (unsafeWindow.require(
-      'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
-    ) as IInstance['fileManagerApi']),
-  listInit:
-    getLocation().inDiskScreen &&
-    (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
+  // fileManagerApi:
+  //   getLocation().inDiskScreen &&
+  //   (unsafeWindow.require(
+  //     'disk-system:widget/system/fileService/fileManagerApi/fileManagerApi.js'
+  //   ) as IInstance['fileManagerApi']),
+  // listInit:
+  //   getLocation().inDiskScreen &&
+  //   (unsafeWindow.require('disk-system:widget/pageModule/list/listInit.js') as IInstance['listInit']),
   listInstance: unsafeWindow.require('system-core:context/context.js').instanceForSystem
     .listInstance as IInstance['listInstance'],
   jquery: unsafeWindow.require('base:widget/libs/jquery-1.12.4.js'),
@@ -47,6 +47,8 @@ const InstanceForSystem = {
       initFunc()
     }
   },
+
+  /** deprecated */
   dlinkService: function<T extends IInstance['dlinkService']>(): Promise<T> {
     this.initWidgetContext()
     return new Promise((resolve) => {

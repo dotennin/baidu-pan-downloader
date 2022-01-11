@@ -1,16 +1,18 @@
 import React from 'react'
 import { Modal } from '../components/Modal'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { Dispatch } from 'redux'
 import { Form, FormField } from '../components/Form'
 import { InstanceForSystem } from '../services/InstaceForSystem'
 import { IStoreState } from '../store'
 import interfaceModule from '../modules/interfaceModule'
 import { downloadableSelector } from '../selectors'
+import devNodeEnv from '../utils/nodeEnvIs/devNodeEnv'
 
 const mapStoreToProps = (store: IStoreState) => ({
   configModalOpen: store.interface.configModalOpen,
   autoStart: store.interface.autoStart,
+  debug: store.interface.debug,
   downloadable: downloadableSelector(store),
   maxDownloadCount: store.interface.maxDownloadCount,
   appId: store.interface.appId,
@@ -20,6 +22,9 @@ const mapActionsToProps = (dispatch: Dispatch) => ({
   closeModal: () => dispatch(interfaceModule.actions.change({ configModalOpen: false })),
   setAutoStart: (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(interfaceModule.actions.change({ autoStart: e.target.checked }))
+  },
+  setDebug: (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(interfaceModule.actions.change({ debug: e.target.checked }))
   },
   setMaxDownloadCount: (e: React.ChangeEvent<HTMLSelectElement>) => {
     const count = parseInt(e.target.value)
@@ -42,7 +47,11 @@ function Preferences({
   setMaxDownloadCount,
   setAppId,
   appId,
+  debug,
+  setDebug,
 }: ReturnType<typeof mapStoreToProps> & ReturnType<typeof mapActionsToProps>) {
+  const dispatch = useDispatch()
+  const downloadMode = useSelector((store: IStoreState) => store.interface.downloadMode)
   return (
     <div
       css={`
@@ -69,7 +78,6 @@ function Preferences({
             <div>
               <input
                 type="checkbox"
-                name="checkbox"
                 value="true"
                 checked={autoStart}
                 id="auto-start"
@@ -78,6 +86,14 @@ function Preferences({
               />
             </div>
           </FormField>
+          {devNodeEnv && (
+            <FormField>
+              <label htmlFor={'debug-mode'}>debug mode</label>
+              <div>
+                <input type="checkbox" value="true" checked={debug} id="debug-mode" tabIndex={1} onChange={setDebug} />
+              </div>
+            </FormField>
+          )}
           <FormField>
             <legend>最大同时下载数</legend>
             <div>
@@ -98,6 +114,26 @@ function Preferences({
                       </option>
                     )
                   })}
+              </select>
+            </div>
+          </FormField>
+
+          <FormField>
+            <legend>下载方式</legend>
+            <div>
+              <select
+                id="download-method"
+                defaultValue={downloadMode}
+                className="field select medium"
+                tabIndex={2}
+                onChange={(e) => {
+                  dispatch(
+                    interfaceModule.actions.change({ downloadMode: e.currentTarget.value as typeof downloadMode })
+                  )
+                }}
+              >
+                <option value={'LOCAL'}>本地直链</option>
+                <option value={'SHARING'}>共享直链</option>
               </select>
             </div>
           </FormField>

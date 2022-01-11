@@ -1,11 +1,12 @@
-import { IProgress, StatusTypes } from '../services/types'
+import { IProgress, StatusTypes, HeaderTypes } from '../services/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ItemProxy } from '../services/ItemProxy'
 import { AppThunk } from '../store'
-import { download, getDownloadUrl } from '../services/api'
+import { download, createPrivateShareLink, getSign, getDlink, getDownloadUrl } from '../services/api'
 import { downloadableSelector } from '../selectors'
 import interfaceModule from './interfaceModule'
 import { InstanceForSystem } from '../services/InstaceForSystem'
+import linkModule from './linkModule'
 
 const allDownloads: Record<ItemProxy['fsId'], IProgress> = {}
 const initialState = {
@@ -70,6 +71,8 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
   try {
     const { progress } = item
     const downloadable = downloadableSelector(getState())
+    const downloadMode = getState().interface.downloadMode
+
     if (item.isDir) {
       progress.status = StatusTypes.stopped
       dispatch(addNextDownloadRequest())
@@ -82,11 +85,42 @@ export const fetchItem = (item: ItemProxy): AppThunk => async (dispatch, getStat
     }
 
     dispatch(downloadModule.actions.requestDownload())
-    const res: any = await getDownloadUrl(item.path)
-    item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
+
+    linkModule.actions.requestShareLinks()
+
+    const privateShareLink = await createPrivateShareLink(item.fsId)
+
+    const request = {
+      surl: privateShareLink.shorturl.replace('https://pan.baidu.com/s/', ''),
+      shareId: privateShareLink.shareid,
+      uk: unsafeWindow.locals.get('uk') as string,
+      bdstoken: unsafeWindow.locals.get('bdstoken') as string,
+    }
+    const signResponse = await getSign(request)
+
+    let userAgent = undefined
+    switch (downloadMode) {
+      case 'LOCAL':
+        const res: any = await getDownloadUrl(item.path)
+        item.url = res.response.urls[0].url + '&filename=' + encodeURIComponent(item.serverFilename)
+
+        userAgent = HeaderTypes.userAgentNetdisk
+        break
+      case 'SHARING':
+        const dlinkReponse = await getDlink({
+          fsId: item.fsId as string,
+          time: signResponse.timestamp,
+          sign: signResponse.sign,
+          shareId: privateShareLink.shareid,
+          uk: request.uk,
+        })
+        item.url = dlinkReponse[0].dlink
+
+        userAgent = HeaderTypes.userAgentLogStatistic
+    }
 
     progress.status = StatusTypes.downloading
-    await download(item)
+    await download(item, { userAgent })
 
     dispatch(downloadModule.actions.successDownload())
     dispatch(addNextDownloadRequest())

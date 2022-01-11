@@ -7,6 +7,8 @@ import interfaceModule from '../modules/interfaceModule'
 import downloadModule, { fetchItem } from '../modules/downloadModule'
 import { downloadableSelector } from '../selectors'
 import { getLocation } from '../utils'
+import editImage from '../assets/images/edit.png'
+import reminder from '../assets/images/reminder.png'
 
 const mapStoreToProps = (store: IStoreState) => ({
   autoStart: store.interface.autoStart,
@@ -32,11 +34,7 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
           dispatch(interfaceModule.actions.change({ configModalOpen: true }))
         }}
       >
-        <img
-          alt={'bt_compose2_1x'}
-          className="reminder"
-          src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png"
-        />
+        <img alt={'bt_compose2_1x'} className="reminder" src={editImage} />
       </div>
       <div
         id="floating-button"
@@ -65,11 +63,7 @@ const FloatingButtons: React.FC<ReturnType<typeof mapStoreToProps>> = ({ autoSta
         }}
       >
         <p className="plus">+</p>
-        <img
-          alt={'bt_compose2_1x'}
-          className="edit"
-          src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png"
-        />
+        <img alt={'bt_compose2_1x_plus'} className="edit" src={reminder} />
       </div>
     </div>
   )

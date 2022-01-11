@@ -7,6 +7,7 @@ let gridSize = 12 // default only
 
 function calcBasis(size?: number, spacing: number = 0, mode?: string) {
   if (size) {
+    // eslint-disable-next-line
     return mode ? 'flex-basis' : 'width' + ': calc(' + (size / gridSize) * 100 + '% - ' + Number(spacing) + 'px);'
   } else {
     return ''

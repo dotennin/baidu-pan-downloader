@@ -13,6 +13,8 @@ interface IState {
   itemLoaded: boolean
 
   error: undefined | Error
+  debug: boolean
+  downloadMode: 'LOCAL' | 'SHARING'
 }
 const initialState: IState = {
   maxDownloadCount: GM.getValue(ValueTypes.maxDownloadCount, 2),
@@ -25,6 +27,8 @@ const initialState: IState = {
   itemLoaded: false,
 
   error: undefined,
+  debug: GM.getValue(ValueTypes.debug, false),
+  downloadMode: GM.getValue(ValueTypes.downloadMode, 'LOCAL'),
 }
 
 export default createSlice({
@@ -42,13 +46,11 @@ export default createSlice({
         const key = k as keyof IState
         switch (key) {
           case 'autoStart':
-            GM.setValue(ValueTypes.autoStart, payload.autoStart)
-            break
           case 'maxDownloadCount':
-            GM.setValue(ValueTypes.maxDownloadCount, payload.maxDownloadCount)
-            break
           case 'appId':
-            GM.setValue(ValueTypes.appId, payload.appId)
+          case 'debug':
+          case 'downloadMode':
+            GM.setValue(ValueTypes[key], payload[key])
         }
       })
       state = Object.assign({ ...state }, action.payload)
